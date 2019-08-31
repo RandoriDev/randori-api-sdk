@@ -51,8 +51,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -121,8 +121,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -191,8 +191,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -261,8 +261,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -331,8 +331,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -401,8 +401,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -471,8 +471,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -541,8 +541,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -611,8 +611,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -1321,9 +1321,9 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-interval = 56 # int | number of records to skip between responses (optional)
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+interval = 0 # int | number of records to skip between responses (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
@@ -1393,8 +1393,8 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+limit = 0 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
 
