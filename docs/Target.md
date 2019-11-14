@@ -10,11 +10,14 @@ Name | Type | Description | Notes
 **criticality** | **int** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
 **description** | **str** |  | [optional] 
+**detection_criteria** | [**object**](.md) |  | [optional] 
 **enumerability** | **int** |  | [optional] 
 **first_seen** | **datetime** |  | [optional] 
 **headers_uuid** | **str** |  | [optional] 
 **hostname** | **str** |  | [optional] 
+**hostname_id** | **str** |  | [optional] 
 **id** | **str** |  | 
+**ip** | **str** |  | [optional] 
 **ip_id** | **str** |  | [optional] 
 **ip_str** | **str** |  | [optional] 
 **last_seen** | **datetime** |  | [optional] 
@@ -34,6 +37,7 @@ Name | Type | Description | Notes
 **service_id** | **str** |  | [optional] 
 **tags** | [**object**](.md) |  | [optional] 
 **target_temptation** | **int** |  | [optional] 
+**thumbnail_uuid** | **str** |  | [optional] 
 **vendor** | **str** |  | [optional] 
 **version** | **str** |  | [optional] 
 

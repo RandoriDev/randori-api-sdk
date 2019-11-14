@@ -139,6 +139,8 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         self.retries = None
         """Adding retries to override urllib3 default value 3
         """
+        # Disable client side validation
+        self.client_side_validation = True
 
     @property
     def logger_file(self):
@@ -275,7 +277,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0\n"\
-               "SDK Package Version: 1.0.0".\
+               "SDK Package Version: 1.1.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

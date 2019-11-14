@@ -4,6 +4,8 @@ All URIs are relative to *https://alpha.randori.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_detection_target**](RandoriApi.md#get_detection_target) | **GET** /recon/api/v1/detection-target | 
+[**get_detections_for_target**](RandoriApi.md#get_detections_for_target) | **GET** /recon/api/v1/detections-for-target | 
 [**get_hostname**](RandoriApi.md#get_hostname) | **GET** /recon/api/v1/hostname | 
 [**get_hostnames_for_ip**](RandoriApi.md#get_hostnames_for_ip) | **GET** /recon/api/v1/hostnames-for-ip | 
 [**get_ip**](RandoriApi.md#get_ip) | **GET** /recon/api/v1/ip | 
@@ -27,8 +29,152 @@ Method | HTTP request | Description
 [**get_target**](RandoriApi.md#get_target) | **GET** /recon/api/v1/target | 
 
 
+# **get_detection_target**
+> DetectionTargetGetOutput get_detection_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+
+
+
+Search detection-target objects with an optional filter
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+```python
+from __future__ import print_function
+import time
+import randori_api
+from randori_api.rest import ApiException
+from pprint import pprint
+configuration = randori_api.Configuration()
+# Configure Bearer authorization (JWT): bearerAuth
+configuration.access_token = 'YOUR_BEARER_TOKEN'
+
+# Defining host is optional and default to https://alpha.randori.io
+configuration.host = "https://alpha.randori.io"
+# Create an instance of the API class
+api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
+sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+
+try:
+    api_response = api_instance.get_detection_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RandoriApi->get_detection_target: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
+
+### Return type
+
+[**DetectionTargetGetOutput**](DetectionTargetGetOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_detections_for_target**
+> DetectionsForTargetGetOutput get_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+
+
+
+Search detections-for-target objects with an optional filter
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+```python
+from __future__ import print_function
+import time
+import randori_api
+from randori_api.rest import ApiException
+from pprint import pprint
+configuration = randori_api.Configuration()
+# Configure Bearer authorization (JWT): bearerAuth
+configuration.access_token = 'YOUR_BEARER_TOKEN'
+
+# Defining host is optional and default to https://alpha.randori.io
+configuration.host = "https://alpha.randori.io"
+# Create an instance of the API class
+api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
+sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+
+try:
+    api_response = api_instance.get_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RandoriApi->get_detections_for_target: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
+
+### Return type
+
+[**DetectionsForTargetGetOutput**](DetectionsForTargetGetOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_hostname**
-> HostnameGetOutput get_hostname(offset=offset, limit=limit, sort=sort, q=q)
+> HostnameGetOutput get_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -51,13 +197,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_hostname(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_hostname: %s\n" % e)
@@ -71,6 +218,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -98,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hostnames_for_ip**
-> HostnamesForIpGetOutput get_hostnames_for_ip(offset=offset, limit=limit, sort=sort, q=q)
+> HostnamesForIpGetOutput get_hostnames_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -121,13 +269,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_hostnames_for_ip(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_hostnames_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_hostnames_for_ip: %s\n" % e)
@@ -141,6 +290,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -168,7 +318,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ip**
-> IpGetOutput get_ip(offset=offset, limit=limit, sort=sort, q=q)
+> IpGetOutput get_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -191,13 +341,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_ip(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_ip: %s\n" % e)
@@ -211,6 +362,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -238,7 +390,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ips_for_hostname**
-> IpsForHostnameGetOutput get_ips_for_hostname(offset=offset, limit=limit, sort=sort, q=q)
+> IpsForHostnameGetOutput get_ips_for_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -261,13 +413,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_ips_for_hostname(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_ips_for_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_ips_for_hostname: %s\n" % e)
@@ -281,6 +434,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -308,7 +462,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ips_for_network**
-> IpsForNetworkGetOutput get_ips_for_network(offset=offset, limit=limit, sort=sort, q=q)
+> IpsForNetworkGetOutput get_ips_for_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -331,13 +485,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_ips_for_network(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_ips_for_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_ips_for_network: %s\n" % e)
@@ -351,6 +506,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -378,7 +534,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ips_for_service**
-> IpsForServiceGetOutput get_ips_for_service(offset=offset, limit=limit, sort=sort, q=q)
+> IpsForServiceGetOutput get_ips_for_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -401,13 +557,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_ips_for_service(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_ips_for_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_ips_for_service: %s\n" % e)
@@ -421,6 +578,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -448,7 +606,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_network**
-> NetworkGetOutput get_network(offset=offset, limit=limit, sort=sort, q=q)
+> NetworkGetOutput get_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -471,13 +629,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_network(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_network: %s\n" % e)
@@ -491,6 +650,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -518,7 +678,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ports_for_ip**
-> PortsForIpGetOutput get_ports_for_ip(offset=offset, limit=limit, sort=sort, q=q)
+> PortsForIpGetOutput get_ports_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -541,13 +701,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_ports_for_ip(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_ports_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_ports_for_ip: %s\n" % e)
@@ -561,6 +722,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -588,7 +750,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_service**
-> ServiceGetOutput get_service(offset=offset, limit=limit, sort=sort, q=q)
+> ServiceGetOutput get_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -611,13 +773,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_service(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_service: %s\n" % e)
@@ -631,6 +794,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1298,7 +1462,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_statistics**
-> StatisticsGetOutput get_statistics(interval=interval, offset=offset, limit=limit, sort=sort, q=q)
+> StatisticsGetOutput get_statistics(interval=interval, offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1321,14 +1485,15 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-interval = 0 # int | number of records to skip between responses (optional)
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+interval = 56 # int | number of records to skip between responses (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_statistics(interval=interval, offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_statistics(interval=interval, offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_statistics: %s\n" % e)
@@ -1343,6 +1508,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1370,7 +1536,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_target**
-> TargetGetOutput get_target(offset=offset, limit=limit, sort=sort, q=q)
+> TargetGetOutput get_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1393,13 +1559,14 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 configuration.host = "https://alpha.randori.io"
 # Create an instance of the API class
 api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 0 # int | offset into avilable records after filtering (optional)
-limit = 200 # int | maximum number of records to return (optional)
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
 sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
 q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_target(offset=offset, limit=limit, sort=sort, q=q)
+    api_response = api_instance.get_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RandoriApi->get_target: %s\n" % e)
@@ -1413,6 +1580,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| maximum number of records to return | [optional] 
  **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
  **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 

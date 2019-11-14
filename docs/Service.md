@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **criticality** | **int** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
 **description** | **str** |  | [optional] 
+**detection_criteria** | [**object**](.md) |  | [optional] 
 **enumerability** | **int** |  | [optional] 
 **first_seen** | **datetime** |  | [optional] 
 **id** | **str** |  | 

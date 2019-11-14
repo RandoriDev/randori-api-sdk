@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "Randori-API"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -32,7 +32,7 @@ setup(
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Randori API"],
     install_requires=REQUIRES,
-    packages=find_packages(),
+    packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description="""\
     Endpoints accessible using API tokens  # noqa: E501

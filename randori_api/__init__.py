@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 # import apis into sdk package
 from randori_api.api.randori_api import RandoriApi
@@ -29,6 +29,10 @@ from randori_api.exceptions import ApiValueError
 from randori_api.exceptions import ApiKeyError
 from randori_api.exceptions import ApiException
 # import models into sdk package
+from randori_api.models.detection_target import DetectionTarget
+from randori_api.models.detection_target_get_output import DetectionTargetGetOutput
+from randori_api.models.detections_for_target import DetectionsForTarget
+from randori_api.models.detections_for_target_get_output import DetectionsForTargetGetOutput
 from randori_api.models.error_schema import ErrorSchema
 from randori_api.models.hostname import Hostname
 from randori_api.models.hostname_get_output import HostnameGetOutput
