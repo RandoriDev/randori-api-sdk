@@ -14,7 +14,10 @@ Name | Type | Description | Notes
 **network_str** | **str** |  | [optional] 
 **open_port_count** | **int** |  | [optional] 
 **org_id** | **str** |  | 
+**perspective** | **str** |  | [optional] 
+**perspective_name** | **str** |  | [optional] 
 **service_count** | **int** |  | [optional] 
+**status** | **str** |  | [optional] 
 **tags** | [**object**](.md) |  | [optional] 
 **target_count** | **int** |  | [optional] 
 **target_temptation** | **int** |  | [optional] 

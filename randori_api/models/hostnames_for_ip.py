@@ -43,7 +43,9 @@ class HostnamesForIp(object):
         'ip_id': 'str',
         'last_seen': 'datetime',
         'max_confidence': 'int',
-        'org_id': 'str'
+        'org_id': 'str',
+        'perspective': 'str',
+        'perspective_name': 'str'
     }
 
     attribute_map = {
@@ -56,10 +58,12 @@ class HostnamesForIp(object):
         'ip_id': 'ip_id',
         'last_seen': 'last_seen',
         'max_confidence': 'max_confidence',
-        'org_id': 'org_id'
+        'org_id': 'org_id',
+        'perspective': 'perspective',
+        'perspective_name': 'perspective_name'
     }
 
-    def __init__(self, confidence=None, deleted=None, hostname=None, hostname_id=None, hostname_tags=None, id=None, ip_id=None, last_seen=None, max_confidence=None, org_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, confidence=None, deleted=None, hostname=None, hostname_id=None, hostname_tags=None, id=None, ip_id=None, last_seen=None, max_confidence=None, org_id=None, perspective=None, perspective_name=None, local_vars_configuration=None):  # noqa: E501
         """HostnamesForIp - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -75,6 +79,8 @@ class HostnamesForIp(object):
         self._last_seen = None
         self._max_confidence = None
         self._org_id = None
+        self._perspective = None
+        self._perspective_name = None
         self.discriminator = None
 
         self.confidence = confidence
@@ -88,6 +94,8 @@ class HostnamesForIp(object):
         self.last_seen = last_seen
         self.max_confidence = max_confidence
         self.org_id = org_id
+        self.perspective = perspective
+        self.perspective_name = perspective_name
 
     @property
     def confidence(self):
@@ -302,6 +310,48 @@ class HostnamesForIp(object):
             raise ValueError("Invalid value for `org_id`, must not be `None`")  # noqa: E501
 
         self._org_id = org_id
+
+    @property
+    def perspective(self):
+        """Gets the perspective of this HostnamesForIp.  # noqa: E501
+
+
+        :return: The perspective of this HostnamesForIp.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective
+
+    @perspective.setter
+    def perspective(self, perspective):
+        """Sets the perspective of this HostnamesForIp.
+
+
+        :param perspective: The perspective of this HostnamesForIp.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective = perspective
+
+    @property
+    def perspective_name(self):
+        """Gets the perspective_name of this HostnamesForIp.  # noqa: E501
+
+
+        :return: The perspective_name of this HostnamesForIp.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective_name
+
+    @perspective_name.setter
+    def perspective_name(self, perspective_name):
+        """Sets the perspective_name of this HostnamesForIp.
+
+
+        :param perspective_name: The perspective_name of this HostnamesForIp.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective_name = perspective_name
 
     def to_dict(self):
         """Returns the model properties as a dict"""

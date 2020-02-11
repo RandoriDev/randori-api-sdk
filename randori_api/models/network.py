@@ -45,7 +45,10 @@ class Network(object):
         'network_str': 'str',
         'open_port_count': 'int',
         'org_id': 'str',
+        'perspective': 'str',
+        'perspective_name': 'str',
         'service_count': 'int',
+        'status': 'str',
         'tags': 'object',
         'target_count': 'int',
         'target_temptation': 'int'
@@ -63,13 +66,16 @@ class Network(object):
         'network_str': 'network_str',
         'open_port_count': 'open_port_count',
         'org_id': 'org_id',
+        'perspective': 'perspective',
+        'perspective_name': 'perspective_name',
         'service_count': 'service_count',
+        'status': 'status',
         'tags': 'tags',
         'target_count': 'target_count',
         'target_temptation': 'target_temptation'
     }
 
-    def __init__(self, confidence=None, deleted=None, first_seen=None, id=None, ip_count=None, last_seen=None, max_confidence=None, network=None, network_str=None, open_port_count=None, org_id=None, service_count=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, confidence=None, deleted=None, first_seen=None, id=None, ip_count=None, last_seen=None, max_confidence=None, network=None, network_str=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, service_count=None, status=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
         """Network - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -86,7 +92,10 @@ class Network(object):
         self._network_str = None
         self._open_port_count = None
         self._org_id = None
+        self._perspective = None
+        self._perspective_name = None
         self._service_count = None
+        self._status = None
         self._tags = None
         self._target_count = None
         self._target_temptation = None
@@ -104,7 +113,11 @@ class Network(object):
         self.network_str = network_str
         self.open_port_count = open_port_count
         self.org_id = org_id
+        self.perspective = perspective
+        self.perspective_name = perspective_name
         self.service_count = service_count
+        if status is not None:
+            self.status = status
         self.tags = tags
         self.target_count = target_count
         self.target_temptation = target_temptation
@@ -345,6 +358,48 @@ class Network(object):
         self._org_id = org_id
 
     @property
+    def perspective(self):
+        """Gets the perspective of this Network.  # noqa: E501
+
+
+        :return: The perspective of this Network.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective
+
+    @perspective.setter
+    def perspective(self, perspective):
+        """Sets the perspective of this Network.
+
+
+        :param perspective: The perspective of this Network.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective = perspective
+
+    @property
+    def perspective_name(self):
+        """Gets the perspective_name of this Network.  # noqa: E501
+
+
+        :return: The perspective_name of this Network.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective_name
+
+    @perspective_name.setter
+    def perspective_name(self, perspective_name):
+        """Sets the perspective_name of this Network.
+
+
+        :param perspective_name: The perspective_name of this Network.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective_name = perspective_name
+
+    @property
     def service_count(self):
         """Gets the service_count of this Network.  # noqa: E501
 
@@ -364,6 +419,33 @@ class Network(object):
         """
 
         self._service_count = service_count
+
+    @property
+    def status(self):
+        """Gets the status of this Network.  # noqa: E501
+
+
+        :return: The status of this Network.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this Network.
+
+
+        :param status: The status of this Network.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
+
+        self._status = status
 
     @property
     def tags(self):

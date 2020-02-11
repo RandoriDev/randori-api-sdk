@@ -41,6 +41,8 @@ class PortsForIp(object):
         'last_seen': 'datetime',
         'max_confidence': 'int',
         'org_id': 'str',
+        'perspective': 'str',
+        'perspective_name': 'str',
         'port': 'int',
         'protocol': 'int',
         'seen_open': 'bool',
@@ -55,13 +57,15 @@ class PortsForIp(object):
         'last_seen': 'last_seen',
         'max_confidence': 'max_confidence',
         'org_id': 'org_id',
+        'perspective': 'perspective',
+        'perspective_name': 'perspective_name',
         'port': 'port',
         'protocol': 'protocol',
         'seen_open': 'seen_open',
         'state': 'state'
     }
 
-    def __init__(self, confidence=None, deleted=None, id=None, ip_id=None, last_seen=None, max_confidence=None, org_id=None, port=None, protocol=None, seen_open=None, state=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, confidence=None, deleted=None, id=None, ip_id=None, last_seen=None, max_confidence=None, org_id=None, perspective=None, perspective_name=None, port=None, protocol=None, seen_open=None, state=None, local_vars_configuration=None):  # noqa: E501
         """PortsForIp - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -74,6 +78,8 @@ class PortsForIp(object):
         self._last_seen = None
         self._max_confidence = None
         self._org_id = None
+        self._perspective = None
+        self._perspective_name = None
         self._port = None
         self._protocol = None
         self._seen_open = None
@@ -88,6 +94,8 @@ class PortsForIp(object):
         self.last_seen = last_seen
         self.max_confidence = max_confidence
         self.org_id = org_id
+        self.perspective = perspective
+        self.perspective_name = perspective_name
         self.port = port
         self.protocol = protocol
         self.seen_open = seen_open
@@ -243,6 +251,48 @@ class PortsForIp(object):
             raise ValueError("Invalid value for `org_id`, must not be `None`")  # noqa: E501
 
         self._org_id = org_id
+
+    @property
+    def perspective(self):
+        """Gets the perspective of this PortsForIp.  # noqa: E501
+
+
+        :return: The perspective of this PortsForIp.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective
+
+    @perspective.setter
+    def perspective(self, perspective):
+        """Sets the perspective of this PortsForIp.
+
+
+        :param perspective: The perspective of this PortsForIp.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective = perspective
+
+    @property
+    def perspective_name(self):
+        """Gets the perspective_name of this PortsForIp.  # noqa: E501
+
+
+        :return: The perspective_name of this PortsForIp.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective_name
+
+    @perspective_name.setter
+    def perspective_name(self, perspective_name):
+        """Sets the perspective_name of this PortsForIp.
+
+
+        :param perspective_name: The perspective_name of this PortsForIp.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective_name = perspective_name
 
     @property
     def port(self):

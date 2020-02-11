@@ -9,10 +9,14 @@ Name | Type | Description | Notes
 **hostname** | **str** |  | [optional] 
 **id** | **str** |  | 
 **ip_count** | **int** |  | [optional] 
+**is_prime** | **bool** |  | [optional] 
 **last_seen** | **datetime** |  | [optional] 
 **max_confidence** | **int** |  | [optional] 
 **name_type** | **int** |  | [optional] 
 **org_id** | **str** |  | 
+**perspective** | **str** |  | [optional] 
+**perspective_name** | **str** |  | [optional] 
+**status** | **str** |  | [optional] 
 **tags** | [**object**](.md) |  | [optional] 
 **target_temptation** | **int** |  | [optional] 
 

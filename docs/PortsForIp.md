@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **last_seen** | **datetime** |  | [optional] 
 **max_confidence** | **int** |  | [optional] 
 **org_id** | **str** |  | 
+**perspective** | **str** |  | [optional] 
+**perspective_name** | **str** |  | [optional] 
 **port** | **int** |  | [optional] 
 **protocol** | **int** |  | [optional] 
 **seen_open** | **bool** |  | [optional] 

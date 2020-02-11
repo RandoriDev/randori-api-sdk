@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **max_confidence** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **org_id** | **str** |  | 
+**perspective** | **str** |  | [optional] 
+**perspective_name** | **str** |  | [optional] 
 **post_exploit** | **int** |  | [optional] 
 **private_weakness** | **int** |  | [optional] 
 **public_weakness** | **int** |  | [optional] 
@@ -25,6 +27,7 @@ Name | Type | Description | Notes
 **reference** | **str** |  | [optional] 
 **research** | **int** |  | [optional] 
 **service_id** | **str** |  | [optional] 
+**status** | **str** |  | [optional] 
 **tags** | [**object**](.md) |  | [optional] 
 **target_temptation** | **int** |  | [optional] 
 **vendor** | **str** |  | [optional] 

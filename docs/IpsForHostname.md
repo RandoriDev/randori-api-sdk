@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **max_confidence** | **int** |  | [optional] 
 **open_port_count** | **int** |  | [optional] 
 **org_id** | **str** |  | 
+**perspective** | **str** |  | [optional] 
+**perspective_name** | **str** |  | [optional] 
 **radius** | **float** |  | [optional] 
 **service_count** | **int** |  | [optional] 
 **target_count** | **int** |  | [optional] 

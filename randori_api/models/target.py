@@ -56,6 +56,8 @@ class Target(object):
         'name': 'str',
         'org_id': 'str',
         'path': 'str',
+        'perspective': 'str',
+        'perspective_name': 'str',
         'port': 'int',
         'post_exploit': 'int',
         'private_weakness': 'int',
@@ -66,6 +68,7 @@ class Target(object):
         'research': 'int',
         'screenshot_uuid': 'str',
         'service_id': 'str',
+        'status': 'str',
         'tags': 'object',
         'target_temptation': 'int',
         'thumbnail_uuid': 'str',
@@ -96,6 +99,8 @@ class Target(object):
         'name': 'name',
         'org_id': 'org_id',
         'path': 'path',
+        'perspective': 'perspective',
+        'perspective_name': 'perspective_name',
         'port': 'port',
         'post_exploit': 'post_exploit',
         'private_weakness': 'private_weakness',
@@ -106,6 +111,7 @@ class Target(object):
         'research': 'research',
         'screenshot_uuid': 'screenshot_uuid',
         'service_id': 'service_id',
+        'status': 'status',
         'tags': 'tags',
         'target_temptation': 'target_temptation',
         'thumbnail_uuid': 'thumbnail_uuid',
@@ -113,7 +119,7 @@ class Target(object):
         'version': 'version'
     }
 
-    def __init__(self, applicability=None, banner_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, ip=None, ip_id=None, ip_str=None, last_seen=None, max_confidence=None, name=None, org_id=None, path=None, port=None, post_exploit=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, research=None, screenshot_uuid=None, service_id=None, tags=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, applicability=None, banner_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, ip=None, ip_id=None, ip_str=None, last_seen=None, max_confidence=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, port=None, post_exploit=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """Target - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -141,6 +147,8 @@ class Target(object):
         self._name = None
         self._org_id = None
         self._path = None
+        self._perspective = None
+        self._perspective_name = None
         self._port = None
         self._post_exploit = None
         self._private_weakness = None
@@ -151,6 +159,7 @@ class Target(object):
         self._research = None
         self._screenshot_uuid = None
         self._service_id = None
+        self._status = None
         self._tags = None
         self._target_temptation = None
         self._thumbnail_uuid = None
@@ -181,6 +190,8 @@ class Target(object):
         self.name = name
         self.org_id = org_id
         self.path = path
+        self.perspective = perspective
+        self.perspective_name = perspective_name
         self.port = port
         self.post_exploit = post_exploit
         self.private_weakness = private_weakness
@@ -191,6 +202,8 @@ class Target(object):
         self.research = research
         self.screenshot_uuid = screenshot_uuid
         self.service_id = service_id
+        if status is not None:
+            self.status = status
         self.tags = tags
         self.target_temptation = target_temptation
         self.thumbnail_uuid = thumbnail_uuid
@@ -664,6 +677,48 @@ class Target(object):
         self._path = path
 
     @property
+    def perspective(self):
+        """Gets the perspective of this Target.  # noqa: E501
+
+
+        :return: The perspective of this Target.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective
+
+    @perspective.setter
+    def perspective(self, perspective):
+        """Sets the perspective of this Target.
+
+
+        :param perspective: The perspective of this Target.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective = perspective
+
+    @property
+    def perspective_name(self):
+        """Gets the perspective_name of this Target.  # noqa: E501
+
+
+        :return: The perspective_name of this Target.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective_name
+
+    @perspective_name.setter
+    def perspective_name(self, perspective_name):
+        """Sets the perspective_name of this Target.
+
+
+        :param perspective_name: The perspective_name of this Target.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective_name = perspective_name
+
+    @property
     def port(self):
         """Gets the port of this Target.  # noqa: E501
 
@@ -872,6 +927,33 @@ class Target(object):
         """
 
         self._service_id = service_id
+
+    @property
+    def status(self):
+        """Gets the status of this Target.  # noqa: E501
+
+
+        :return: The status of this Target.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this Target.
+
+
+        :param status: The status of this Target.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
+
+        self._status = status
 
     @property
     def tags(self):

@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **org_id** | **str** |  | 
 **path** | **str** |  | [optional] 
+**perspective** | **str** |  | [optional] 
+**perspective_name** | **str** |  | [optional] 
 **port** | **int** |  | [optional] 
 **post_exploit** | **int** |  | [optional] 
 **private_weakness** | **int** |  | [optional] 
@@ -35,6 +37,7 @@ Name | Type | Description | Notes
 **research** | **int** |  | [optional] 
 **screenshot_uuid** | **str** |  | [optional] 
 **service_id** | **str** |  | [optional] 
+**status** | **str** |  | [optional] 
 **tags** | [**object**](.md) |  | [optional] 
 **target_temptation** | **int** |  | [optional] 
 **thumbnail_uuid** | **str** |  | [optional] 

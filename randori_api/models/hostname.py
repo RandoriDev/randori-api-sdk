@@ -40,10 +40,14 @@ class Hostname(object):
         'hostname': 'str',
         'id': 'str',
         'ip_count': 'int',
+        'is_prime': 'bool',
         'last_seen': 'datetime',
         'max_confidence': 'int',
         'name_type': 'int',
         'org_id': 'str',
+        'perspective': 'str',
+        'perspective_name': 'str',
+        'status': 'str',
         'tags': 'object',
         'target_temptation': 'int'
     }
@@ -55,15 +59,19 @@ class Hostname(object):
         'hostname': 'hostname',
         'id': 'id',
         'ip_count': 'ip_count',
+        'is_prime': 'is_prime',
         'last_seen': 'last_seen',
         'max_confidence': 'max_confidence',
         'name_type': 'name_type',
         'org_id': 'org_id',
+        'perspective': 'perspective',
+        'perspective_name': 'perspective_name',
+        'status': 'status',
         'tags': 'tags',
         'target_temptation': 'target_temptation'
     }
 
-    def __init__(self, confidence=None, deleted=None, first_seen=None, hostname=None, id=None, ip_count=None, last_seen=None, max_confidence=None, name_type=None, org_id=None, tags=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, confidence=None, deleted=None, first_seen=None, hostname=None, id=None, ip_count=None, is_prime=None, last_seen=None, max_confidence=None, name_type=None, org_id=None, perspective=None, perspective_name=None, status=None, tags=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
         """Hostname - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -75,10 +83,14 @@ class Hostname(object):
         self._hostname = None
         self._id = None
         self._ip_count = None
+        self._is_prime = None
         self._last_seen = None
         self._max_confidence = None
         self._name_type = None
         self._org_id = None
+        self._perspective = None
+        self._perspective_name = None
+        self._status = None
         self._tags = None
         self._target_temptation = None
         self.discriminator = None
@@ -90,10 +102,15 @@ class Hostname(object):
         self.hostname = hostname
         self.id = id
         self.ip_count = ip_count
+        self.is_prime = is_prime
         self.last_seen = last_seen
         self.max_confidence = max_confidence
         self.name_type = name_type
         self.org_id = org_id
+        self.perspective = perspective
+        self.perspective_name = perspective_name
+        if status is not None:
+            self.status = status
         self.tags = tags
         self.target_temptation = target_temptation
 
@@ -226,6 +243,27 @@ class Hostname(object):
         self._ip_count = ip_count
 
     @property
+    def is_prime(self):
+        """Gets the is_prime of this Hostname.  # noqa: E501
+
+
+        :return: The is_prime of this Hostname.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_prime
+
+    @is_prime.setter
+    def is_prime(self, is_prime):
+        """Sets the is_prime of this Hostname.
+
+
+        :param is_prime: The is_prime of this Hostname.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_prime = is_prime
+
+    @property
     def last_seen(self):
         """Gets the last_seen of this Hostname.  # noqa: E501
 
@@ -310,6 +348,75 @@ class Hostname(object):
             raise ValueError("Invalid value for `org_id`, must not be `None`")  # noqa: E501
 
         self._org_id = org_id
+
+    @property
+    def perspective(self):
+        """Gets the perspective of this Hostname.  # noqa: E501
+
+
+        :return: The perspective of this Hostname.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective
+
+    @perspective.setter
+    def perspective(self, perspective):
+        """Sets the perspective of this Hostname.
+
+
+        :param perspective: The perspective of this Hostname.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective = perspective
+
+    @property
+    def perspective_name(self):
+        """Gets the perspective_name of this Hostname.  # noqa: E501
+
+
+        :return: The perspective_name of this Hostname.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective_name
+
+    @perspective_name.setter
+    def perspective_name(self, perspective_name):
+        """Sets the perspective_name of this Hostname.
+
+
+        :param perspective_name: The perspective_name of this Hostname.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective_name = perspective_name
+
+    @property
+    def status(self):
+        """Gets the status of this Hostname.  # noqa: E501
+
+
+        :return: The status of this Hostname.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this Hostname.
+
+
+        :param status: The status of this Hostname.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
+
+        self._status = status
 
     @property
     def tags(self):

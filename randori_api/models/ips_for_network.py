@@ -52,6 +52,8 @@ class IpsForNetwork(object):
         'network_str': 'str',
         'open_port_count': 'int',
         'org_id': 'str',
+        'perspective': 'str',
+        'perspective_name': 'str',
         'radius': 'float',
         'service_count': 'int',
         'target_count': 'int',
@@ -77,13 +79,15 @@ class IpsForNetwork(object):
         'network_str': 'network_str',
         'open_port_count': 'open_port_count',
         'org_id': 'org_id',
+        'perspective': 'perspective',
+        'perspective_name': 'perspective_name',
         'radius': 'radius',
         'service_count': 'service_count',
         'target_count': 'target_count',
         'target_temptation': 'target_temptation'
     }
 
-    def __init__(self, confidence=None, country=None, deleted=None, hostname=None, id=None, ip=None, ip_id=None, ip_str=None, ip_tags=None, last_seen=None, latitude=None, longitude=None, max_confidence=None, network=None, network_id=None, network_str=None, open_port_count=None, org_id=None, radius=None, service_count=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, confidence=None, country=None, deleted=None, hostname=None, id=None, ip=None, ip_id=None, ip_str=None, ip_tags=None, last_seen=None, latitude=None, longitude=None, max_confidence=None, network=None, network_id=None, network_str=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, radius=None, service_count=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
         """IpsForNetwork - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -107,6 +111,8 @@ class IpsForNetwork(object):
         self._network_str = None
         self._open_port_count = None
         self._org_id = None
+        self._perspective = None
+        self._perspective_name = None
         self._radius = None
         self._service_count = None
         self._target_count = None
@@ -132,6 +138,8 @@ class IpsForNetwork(object):
         self.network_str = network_str
         self.open_port_count = open_port_count
         self.org_id = org_id
+        self.perspective = perspective
+        self.perspective_name = perspective_name
         self.radius = radius
         self.service_count = service_count
         self.target_count = target_count
@@ -518,6 +526,48 @@ class IpsForNetwork(object):
             raise ValueError("Invalid value for `org_id`, must not be `None`")  # noqa: E501
 
         self._org_id = org_id
+
+    @property
+    def perspective(self):
+        """Gets the perspective of this IpsForNetwork.  # noqa: E501
+
+
+        :return: The perspective of this IpsForNetwork.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective
+
+    @perspective.setter
+    def perspective(self, perspective):
+        """Sets the perspective of this IpsForNetwork.
+
+
+        :param perspective: The perspective of this IpsForNetwork.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective = perspective
+
+    @property
+    def perspective_name(self):
+        """Gets the perspective_name of this IpsForNetwork.  # noqa: E501
+
+
+        :return: The perspective_name of this IpsForNetwork.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective_name
+
+    @perspective_name.setter
+    def perspective_name(self, perspective_name):
+        """Sets the perspective_name of this IpsForNetwork.
+
+
+        :param perspective_name: The perspective_name of this IpsForNetwork.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective_name = perspective_name
 
     @property
     def radius(self):

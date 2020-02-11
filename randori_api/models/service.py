@@ -49,6 +49,8 @@ class Service(object):
         'max_confidence': 'int',
         'name': 'str',
         'org_id': 'str',
+        'perspective': 'str',
+        'perspective_name': 'str',
         'post_exploit': 'int',
         'private_weakness': 'int',
         'public_weakness': 'int',
@@ -56,6 +58,7 @@ class Service(object):
         'reference': 'str',
         'research': 'int',
         'service_id': 'str',
+        'status': 'str',
         'tags': 'object',
         'target_temptation': 'int',
         'vendor': 'str',
@@ -78,6 +81,8 @@ class Service(object):
         'max_confidence': 'max_confidence',
         'name': 'name',
         'org_id': 'org_id',
+        'perspective': 'perspective',
+        'perspective_name': 'perspective_name',
         'post_exploit': 'post_exploit',
         'private_weakness': 'private_weakness',
         'public_weakness': 'public_weakness',
@@ -85,13 +90,14 @@ class Service(object):
         'reference': 'reference',
         'research': 'research',
         'service_id': 'service_id',
+        'status': 'status',
         'tags': 'tags',
         'target_temptation': 'target_temptation',
         'vendor': 'vendor',
         'version': 'version'
     }
 
-    def __init__(self, applicability=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, id=None, instance_count=None, ip_count=None, last_seen=None, max_confidence=None, name=None, org_id=None, post_exploit=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, research=None, service_id=None, tags=None, target_temptation=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, applicability=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, id=None, instance_count=None, ip_count=None, last_seen=None, max_confidence=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, research=None, service_id=None, status=None, tags=None, target_temptation=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """Service - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -112,6 +118,8 @@ class Service(object):
         self._max_confidence = None
         self._name = None
         self._org_id = None
+        self._perspective = None
+        self._perspective_name = None
         self._post_exploit = None
         self._private_weakness = None
         self._public_weakness = None
@@ -119,6 +127,7 @@ class Service(object):
         self._reference = None
         self._research = None
         self._service_id = None
+        self._status = None
         self._tags = None
         self._target_temptation = None
         self._vendor = None
@@ -141,6 +150,8 @@ class Service(object):
         self.max_confidence = max_confidence
         self.name = name
         self.org_id = org_id
+        self.perspective = perspective
+        self.perspective_name = perspective_name
         self.post_exploit = post_exploit
         self.private_weakness = private_weakness
         self.public_weakness = public_weakness
@@ -148,6 +159,8 @@ class Service(object):
         self.reference = reference
         self.research = research
         self.service_id = service_id
+        if status is not None:
+            self.status = status
         self.tags = tags
         self.target_temptation = target_temptation
         self.vendor = vendor
@@ -473,6 +486,48 @@ class Service(object):
         self._org_id = org_id
 
     @property
+    def perspective(self):
+        """Gets the perspective of this Service.  # noqa: E501
+
+
+        :return: The perspective of this Service.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective
+
+    @perspective.setter
+    def perspective(self, perspective):
+        """Sets the perspective of this Service.
+
+
+        :param perspective: The perspective of this Service.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective = perspective
+
+    @property
+    def perspective_name(self):
+        """Gets the perspective_name of this Service.  # noqa: E501
+
+
+        :return: The perspective_name of this Service.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective_name
+
+    @perspective_name.setter
+    def perspective_name(self, perspective_name):
+        """Sets the perspective_name of this Service.
+
+
+        :param perspective_name: The perspective_name of this Service.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective_name = perspective_name
+
+    @property
     def post_exploit(self):
         """Gets the post_exploit of this Service.  # noqa: E501
 
@@ -618,6 +673,33 @@ class Service(object):
         """
 
         self._service_id = service_id
+
+    @property
+    def status(self):
+        """Gets the status of this Service.  # noqa: E501
+
+
+        :return: The status of this Service.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this Service.
+
+
+        :param status: The status of this Service.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
+
+        self._status = status
 
     @property
     def tags(self):

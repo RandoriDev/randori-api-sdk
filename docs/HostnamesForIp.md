@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **last_seen** | **datetime** |  | [optional] 
 **max_confidence** | **int** |  | [optional] 
 **org_id** | **str** |  | 
+**perspective** | **str** |  | [optional] 
+**perspective_name** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

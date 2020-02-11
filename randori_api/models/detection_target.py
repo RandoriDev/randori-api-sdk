@@ -57,6 +57,8 @@ class DetectionTarget(object):
         'name': 'str',
         'org_id': 'str',
         'path': 'str',
+        'perspective': 'str',
+        'perspective_name': 'str',
         'port': 'int',
         'post_exploit': 'int',
         'private_weakness': 'int',
@@ -68,7 +70,9 @@ class DetectionTarget(object):
         'research': 'int',
         'screenshot_uuid': 'str',
         'service_id': 'str',
+        'status': 'str',
         'tags': 'object',
+        'target_confidence': 'int',
         'target_detection_criteria': 'object',
         'target_first_seen': 'str',
         'target_hostname': 'str',
@@ -110,6 +114,8 @@ class DetectionTarget(object):
         'name': 'name',
         'org_id': 'org_id',
         'path': 'path',
+        'perspective': 'perspective',
+        'perspective_name': 'perspective_name',
         'port': 'port',
         'post_exploit': 'post_exploit',
         'private_weakness': 'private_weakness',
@@ -121,7 +127,9 @@ class DetectionTarget(object):
         'research': 'research',
         'screenshot_uuid': 'screenshot_uuid',
         'service_id': 'service_id',
+        'status': 'status',
         'tags': 'tags',
+        'target_confidence': 'target_confidence',
         'target_detection_criteria': 'target_detection_criteria',
         'target_first_seen': 'target_first_seen',
         'target_hostname': 'target_hostname',
@@ -139,7 +147,7 @@ class DetectionTarget(object):
         'version': 'version'
     }
 
-    def __init__(self, applicability=None, banners_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, detection_uuid=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, ip=None, ip_id=None, ip_str=None, last_seen=None, max_confidence=None, name=None, org_id=None, path=None, port=None, post_exploit=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, refreshed=None, research=None, screenshot_uuid=None, service_id=None, tags=None, target_detection_criteria=None, target_first_seen=None, target_hostname=None, target_hostname_id=None, target_id=None, target_ip=None, target_ip_str=None, target_last_seen=None, target_path=None, target_port=None, target_protocol=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, applicability=None, banners_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, detection_uuid=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, ip=None, ip_id=None, ip_str=None, last_seen=None, max_confidence=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, port=None, post_exploit=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, refreshed=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_confidence=None, target_detection_criteria=None, target_first_seen=None, target_hostname=None, target_hostname_id=None, target_id=None, target_ip=None, target_ip_str=None, target_last_seen=None, target_path=None, target_port=None, target_protocol=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """DetectionTarget - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -168,6 +176,8 @@ class DetectionTarget(object):
         self._name = None
         self._org_id = None
         self._path = None
+        self._perspective = None
+        self._perspective_name = None
         self._port = None
         self._post_exploit = None
         self._private_weakness = None
@@ -179,7 +189,9 @@ class DetectionTarget(object):
         self._research = None
         self._screenshot_uuid = None
         self._service_id = None
+        self._status = None
         self._tags = None
+        self._target_confidence = None
         self._target_detection_criteria = None
         self._target_first_seen = None
         self._target_hostname = None
@@ -223,6 +235,8 @@ class DetectionTarget(object):
         self.name = name
         self.org_id = org_id
         self.path = path
+        self.perspective = perspective
+        self.perspective_name = perspective_name
         self.port = port
         self.post_exploit = post_exploit
         self.private_weakness = private_weakness
@@ -235,8 +249,11 @@ class DetectionTarget(object):
         self.research = research
         self.screenshot_uuid = screenshot_uuid
         self.service_id = service_id
+        if status is not None:
+            self.status = status
         if tags is not None:
             self.tags = tags
+        self.target_confidence = target_confidence
         self.target_detection_criteria = target_detection_criteria
         if target_first_seen is not None:
             self.target_first_seen = target_first_seen
@@ -741,6 +758,48 @@ class DetectionTarget(object):
         self._path = path
 
     @property
+    def perspective(self):
+        """Gets the perspective of this DetectionTarget.  # noqa: E501
+
+
+        :return: The perspective of this DetectionTarget.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective
+
+    @perspective.setter
+    def perspective(self, perspective):
+        """Sets the perspective of this DetectionTarget.
+
+
+        :param perspective: The perspective of this DetectionTarget.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective = perspective
+
+    @property
+    def perspective_name(self):
+        """Gets the perspective_name of this DetectionTarget.  # noqa: E501
+
+
+        :return: The perspective_name of this DetectionTarget.  # noqa: E501
+        :rtype: str
+        """
+        return self._perspective_name
+
+    @perspective_name.setter
+    def perspective_name(self, perspective_name):
+        """Sets the perspective_name of this DetectionTarget.
+
+
+        :param perspective_name: The perspective_name of this DetectionTarget.  # noqa: E501
+        :type: str
+        """
+
+        self._perspective_name = perspective_name
+
+    @property
     def port(self):
         """Gets the port of this DetectionTarget.  # noqa: E501
 
@@ -972,6 +1031,33 @@ class DetectionTarget(object):
         self._service_id = service_id
 
     @property
+    def status(self):
+        """Gets the status of this DetectionTarget.  # noqa: E501
+
+
+        :return: The status of this DetectionTarget.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this DetectionTarget.
+
+
+        :param status: The status of this DetectionTarget.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
+
+        self._status = status
+
+    @property
     def tags(self):
         """Gets the tags of this DetectionTarget.  # noqa: E501
 
@@ -991,6 +1077,27 @@ class DetectionTarget(object):
         """
 
         self._tags = tags
+
+    @property
+    def target_confidence(self):
+        """Gets the target_confidence of this DetectionTarget.  # noqa: E501
+
+
+        :return: The target_confidence of this DetectionTarget.  # noqa: E501
+        :rtype: int
+        """
+        return self._target_confidence
+
+    @target_confidence.setter
+    def target_confidence(self, target_confidence):
+        """Sets the target_confidence of this DetectionTarget.
+
+
+        :param target_confidence: The target_confidence of this DetectionTarget.  # noqa: E501
+        :type: int
+        """
+
+        self._target_confidence = target_confidence
 
     @property
     def target_detection_criteria(self):
