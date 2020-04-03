@@ -29,14 +29,8 @@ class TestRandoriApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_detection_target(self):
-        """Test case for get_detection_target
-
-        """
-        pass
-
-    def test_get_detections_for_target(self):
-        """Test case for get_detections_for_target
+    def test_get_all_detections_for_target(self):
+        """Test case for get_all_detections_for_target
 
         """
         pass
@@ -91,6 +85,12 @@ class TestRandoriApi(unittest.TestCase):
 
     def test_get_service(self):
         """Test case for get_service
+
+        """
+        pass
+
+    def test_get_single_detection_for_target(self):
+        """Test case for get_single_detection_for_target
 
         """
         pass

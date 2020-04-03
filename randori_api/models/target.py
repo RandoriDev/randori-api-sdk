@@ -34,7 +34,9 @@ class Target(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'affiliation_state': 'str',
         'applicability': 'int',
+        'authorization_state': 'str',
         'banner_uuid': 'str',
         'cert_uuid': 'str',
         'confidence': 'int',
@@ -43,15 +45,16 @@ class Target(object):
         'description': 'str',
         'detection_criteria': 'object',
         'enumerability': 'int',
-        'first_seen': 'datetime',
+        'first_seen': 'str',
         'headers_uuid': 'str',
         'hostname': 'str',
         'hostname_id': 'str',
         'id': 'str',
+        'impact_score': 'str',
         'ip': 'str',
         'ip_id': 'str',
         'ip_str': 'str',
-        'last_seen': 'datetime',
+        'last_seen': 'str',
         'max_confidence': 'int',
         'name': 'str',
         'org_id': 'str',
@@ -65,6 +68,7 @@ class Target(object):
         'public_weakness': 'int',
         'randori_notes': 'str',
         'reference': 'str',
+        'refreshed': 'bool',
         'research': 'int',
         'screenshot_uuid': 'str',
         'service_id': 'str',
@@ -77,7 +81,9 @@ class Target(object):
     }
 
     attribute_map = {
+        'affiliation_state': 'affiliation_state',
         'applicability': 'applicability',
+        'authorization_state': 'authorization_state',
         'banner_uuid': 'banner_uuid',
         'cert_uuid': 'cert_uuid',
         'confidence': 'confidence',
@@ -91,6 +97,7 @@ class Target(object):
         'hostname': 'hostname',
         'hostname_id': 'hostname_id',
         'id': 'id',
+        'impact_score': 'impact_score',
         'ip': 'ip',
         'ip_id': 'ip_id',
         'ip_str': 'ip_str',
@@ -108,6 +115,7 @@ class Target(object):
         'public_weakness': 'public_weakness',
         'randori_notes': 'randori_notes',
         'reference': 'reference',
+        'refreshed': 'refreshed',
         'research': 'research',
         'screenshot_uuid': 'screenshot_uuid',
         'service_id': 'service_id',
@@ -119,13 +127,15 @@ class Target(object):
         'version': 'version'
     }
 
-    def __init__(self, applicability=None, banner_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, ip=None, ip_id=None, ip_str=None, last_seen=None, max_confidence=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, port=None, post_exploit=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, banner_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, max_confidence=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, port=None, post_exploit=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, refreshed=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """Target - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._affiliation_state = None
         self._applicability = None
+        self._authorization_state = None
         self._banner_uuid = None
         self._cert_uuid = None
         self._confidence = None
@@ -139,6 +149,7 @@ class Target(object):
         self._hostname = None
         self._hostname_id = None
         self._id = None
+        self._impact_score = None
         self._ip = None
         self._ip_id = None
         self._ip_str = None
@@ -156,6 +167,7 @@ class Target(object):
         self._public_weakness = None
         self._randori_notes = None
         self._reference = None
+        self._refreshed = None
         self._research = None
         self._screenshot_uuid = None
         self._service_id = None
@@ -167,7 +179,11 @@ class Target(object):
         self._version = None
         self.discriminator = None
 
+        if affiliation_state is not None:
+            self.affiliation_state = affiliation_state
         self.applicability = applicability
+        if authorization_state is not None:
+            self.authorization_state = authorization_state
         self.banner_uuid = banner_uuid
         self.cert_uuid = cert_uuid
         self.confidence = confidence
@@ -177,15 +193,19 @@ class Target(object):
         self.description = description
         self.detection_criteria = detection_criteria
         self.enumerability = enumerability
-        self.first_seen = first_seen
+        if first_seen is not None:
+            self.first_seen = first_seen
         self.headers_uuid = headers_uuid
         self.hostname = hostname
         self.hostname_id = hostname_id
         self.id = id
+        if impact_score is not None:
+            self.impact_score = impact_score
         self.ip = ip
         self.ip_id = ip_id
         self.ip_str = ip_str
-        self.last_seen = last_seen
+        if last_seen is not None:
+            self.last_seen = last_seen
         self.max_confidence = max_confidence
         self.name = name
         self.org_id = org_id
@@ -199,16 +219,46 @@ class Target(object):
         self.public_weakness = public_weakness
         self.randori_notes = randori_notes
         self.reference = reference
+        if refreshed is not None:
+            self.refreshed = refreshed
         self.research = research
         self.screenshot_uuid = screenshot_uuid
         self.service_id = service_id
         if status is not None:
             self.status = status
-        self.tags = tags
+        if tags is not None:
+            self.tags = tags
         self.target_temptation = target_temptation
         self.thumbnail_uuid = thumbnail_uuid
         self.vendor = vendor
         self.version = version
+
+    @property
+    def affiliation_state(self):
+        """Gets the affiliation_state of this Target.  # noqa: E501
+
+
+        :return: The affiliation_state of this Target.  # noqa: E501
+        :rtype: str
+        """
+        return self._affiliation_state
+
+    @affiliation_state.setter
+    def affiliation_state(self, affiliation_state):
+        """Sets the affiliation_state of this Target.
+
+
+        :param affiliation_state: The affiliation_state of this Target.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["Affiliated", "Unaffiliated", "None"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
+                .format(affiliation_state, allowed_values)
+            )
+
+        self._affiliation_state = affiliation_state
 
     @property
     def applicability(self):
@@ -230,6 +280,33 @@ class Target(object):
         """
 
         self._applicability = applicability
+
+    @property
+    def authorization_state(self):
+        """Gets the authorization_state of this Target.  # noqa: E501
+
+
+        :return: The authorization_state of this Target.  # noqa: E501
+        :rtype: str
+        """
+        return self._authorization_state
+
+    @authorization_state.setter
+    def authorization_state(self, authorization_state):
+        """Sets the authorization_state of this Target.
+
+
+        :param authorization_state: The authorization_state of this Target.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["Authorized", "Prohibited", "None"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and authorization_state not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `authorization_state` ({0}), must be one of {1}"  # noqa: E501
+                .format(authorization_state, allowed_values)
+            )
+
+        self._authorization_state = authorization_state
 
     @property
     def banner_uuid(self):
@@ -405,7 +482,7 @@ class Target(object):
 
 
         :return: The first_seen of this Target.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._first_seen
 
@@ -415,7 +492,7 @@ class Target(object):
 
 
         :param first_seen: The first_seen of this Target.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._first_seen = first_seen
@@ -507,6 +584,33 @@ class Target(object):
         self._id = id
 
     @property
+    def impact_score(self):
+        """Gets the impact_score of this Target.  # noqa: E501
+
+
+        :return: The impact_score of this Target.  # noqa: E501
+        :rtype: str
+        """
+        return self._impact_score
+
+    @impact_score.setter
+    def impact_score(self, impact_score):
+        """Sets the impact_score of this Target.
+
+
+        :param impact_score: The impact_score of this Target.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Low", "Medium", "High"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and impact_score not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `impact_score` ({0}), must be one of {1}"  # noqa: E501
+                .format(impact_score, allowed_values)
+            )
+
+        self._impact_score = impact_score
+
+    @property
     def ip(self):
         """Gets the ip of this Target.  # noqa: E501
 
@@ -575,7 +679,7 @@ class Target(object):
 
 
         :return: The last_seen of this Target.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._last_seen
 
@@ -585,7 +689,7 @@ class Target(object):
 
 
         :param last_seen: The last_seen of this Target.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._last_seen = last_seen
@@ -864,6 +968,27 @@ class Target(object):
         """
 
         self._reference = reference
+
+    @property
+    def refreshed(self):
+        """Gets the refreshed of this Target.  # noqa: E501
+
+
+        :return: The refreshed of this Target.  # noqa: E501
+        :rtype: bool
+        """
+        return self._refreshed
+
+    @refreshed.setter
+    def refreshed(self, refreshed):
+        """Sets the refreshed of this Target.
+
+
+        :param refreshed: The refreshed of this Target.  # noqa: E501
+        :type: bool
+        """
+
+        self._refreshed = refreshed
 
     @property
     def research(self):

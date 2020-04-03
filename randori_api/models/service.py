@@ -41,11 +41,11 @@ class Service(object):
         'description': 'str',
         'detection_criteria': 'object',
         'enumerability': 'int',
-        'first_seen': 'datetime',
+        'first_seen': 'str',
         'id': 'str',
         'instance_count': 'int',
         'ip_count': 'int',
-        'last_seen': 'datetime',
+        'last_seen': 'str',
         'max_confidence': 'int',
         'name': 'str',
         'org_id': 'str',
@@ -56,9 +56,9 @@ class Service(object):
         'public_weakness': 'int',
         'randori_notes': 'str',
         'reference': 'str',
+        'refreshed': 'bool',
         'research': 'int',
         'service_id': 'str',
-        'status': 'str',
         'tags': 'object',
         'target_temptation': 'int',
         'vendor': 'str',
@@ -88,16 +88,16 @@ class Service(object):
         'public_weakness': 'public_weakness',
         'randori_notes': 'randori_notes',
         'reference': 'reference',
+        'refreshed': 'refreshed',
         'research': 'research',
         'service_id': 'service_id',
-        'status': 'status',
         'tags': 'tags',
         'target_temptation': 'target_temptation',
         'vendor': 'vendor',
         'version': 'version'
     }
 
-    def __init__(self, applicability=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, id=None, instance_count=None, ip_count=None, last_seen=None, max_confidence=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, research=None, service_id=None, status=None, tags=None, target_temptation=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, applicability=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, id=None, instance_count=None, ip_count=None, last_seen=None, max_confidence=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, refreshed=None, research=None, service_id=None, tags=None, target_temptation=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """Service - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -125,9 +125,9 @@ class Service(object):
         self._public_weakness = None
         self._randori_notes = None
         self._reference = None
+        self._refreshed = None
         self._research = None
         self._service_id = None
-        self._status = None
         self._tags = None
         self._target_temptation = None
         self._vendor = None
@@ -142,11 +142,13 @@ class Service(object):
         self.description = description
         self.detection_criteria = detection_criteria
         self.enumerability = enumerability
-        self.first_seen = first_seen
+        if first_seen is not None:
+            self.first_seen = first_seen
         self.id = id
         self.instance_count = instance_count
         self.ip_count = ip_count
-        self.last_seen = last_seen
+        if last_seen is not None:
+            self.last_seen = last_seen
         self.max_confidence = max_confidence
         self.name = name
         self.org_id = org_id
@@ -157,11 +159,12 @@ class Service(object):
         self.public_weakness = public_weakness
         self.randori_notes = randori_notes
         self.reference = reference
+        if refreshed is not None:
+            self.refreshed = refreshed
         self.research = research
         self.service_id = service_id
-        if status is not None:
-            self.status = status
-        self.tags = tags
+        if tags is not None:
+            self.tags = tags
         self.target_temptation = target_temptation
         self.vendor = vendor
         self.version = version
@@ -319,7 +322,7 @@ class Service(object):
 
 
         :return: The first_seen of this Service.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._first_seen
 
@@ -329,7 +332,7 @@ class Service(object):
 
 
         :param first_seen: The first_seen of this Service.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._first_seen = first_seen
@@ -405,7 +408,7 @@ class Service(object):
 
 
         :return: The last_seen of this Service.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._last_seen
 
@@ -415,7 +418,7 @@ class Service(object):
 
 
         :param last_seen: The last_seen of this Service.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._last_seen = last_seen
@@ -633,6 +636,27 @@ class Service(object):
         self._reference = reference
 
     @property
+    def refreshed(self):
+        """Gets the refreshed of this Service.  # noqa: E501
+
+
+        :return: The refreshed of this Service.  # noqa: E501
+        :rtype: bool
+        """
+        return self._refreshed
+
+    @refreshed.setter
+    def refreshed(self, refreshed):
+        """Sets the refreshed of this Service.
+
+
+        :param refreshed: The refreshed of this Service.  # noqa: E501
+        :type: bool
+        """
+
+        self._refreshed = refreshed
+
+    @property
     def research(self):
         """Gets the research of this Service.  # noqa: E501
 
@@ -673,33 +697,6 @@ class Service(object):
         """
 
         self._service_id = service_id
-
-    @property
-    def status(self):
-        """Gets the status of this Service.  # noqa: E501
-
-
-        :return: The status of this Service.  # noqa: E501
-        :rtype: str
-        """
-        return self._status
-
-    @status.setter
-    def status(self, status):
-        """Sets the status of this Service.
-
-
-        :param status: The status of this Service.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
-                .format(status, allowed_values)
-            )
-
-        self._status = status
 
     @property
     def tags(self):

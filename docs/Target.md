@@ -3,7 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**affiliation_state** | **str** |  | [optional] 
 **applicability** | **int** |  | [optional] 
+**authorization_state** | **str** |  | [optional] 
 **banner_uuid** | **str** |  | [optional] 
 **cert_uuid** | **str** |  | [optional] 
 **confidence** | **int** |  | [optional] 
@@ -12,15 +14,16 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **detection_criteria** | [**object**](.md) |  | [optional] 
 **enumerability** | **int** |  | [optional] 
-**first_seen** | **datetime** |  | [optional] 
+**first_seen** | **str** |  | [optional] 
 **headers_uuid** | **str** |  | [optional] 
 **hostname** | **str** |  | [optional] 
 **hostname_id** | **str** |  | [optional] 
 **id** | **str** |  | 
+**impact_score** | **str** |  | [optional] 
 **ip** | **str** |  | [optional] 
 **ip_id** | **str** |  | [optional] 
 **ip_str** | **str** |  | [optional] 
-**last_seen** | **datetime** |  | [optional] 
+**last_seen** | **str** |  | [optional] 
 **max_confidence** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **org_id** | **str** |  | 
@@ -34,6 +37,7 @@ Name | Type | Description | Notes
 **public_weakness** | **int** |  | [optional] 
 **randori_notes** | **str** |  | [optional] 
 **reference** | **str** |  | [optional] 
+**refreshed** | **bool** |  | [optional] 
 **research** | **int** |  | [optional] 
 **screenshot_uuid** | **str** |  | [optional] 
 **service_id** | **str** |  | [optional] 

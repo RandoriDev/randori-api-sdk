@@ -3,16 +3,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**affiliation_state** | **str** |  | [optional] 
 **confidence** | **int** |  | [optional] 
 **country** | **str** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
-**first_seen** | **datetime** |  | [optional] 
+**first_seen** | **str** |  | [optional] 
 **hostname** | **str** |  | [optional] 
 **hostname_count** | **int** |  | [optional] 
 **id** | **str** |  | 
+**impact_score** | **str** |  | [optional] 
 **ip** | **str** |  | [optional] 
 **ip_str** | **str** |  | [optional] 
-**last_seen** | **datetime** |  | [optional] 
+**last_seen** | **str** |  | [optional] 
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
 **max_confidence** | **int** |  | [optional] 
@@ -21,6 +23,7 @@ Name | Type | Description | Notes
 **perspective** | **str** |  | [optional] 
 **perspective_name** | **str** |  | [optional] 
 **radius** | **float** |  | [optional] 
+**refreshed** | **bool** |  | [optional] 
 **service_count** | **int** |  | [optional] 
 **status** | **str** |  | [optional] 
 **tags** | [**object**](.md) |  | [optional] 

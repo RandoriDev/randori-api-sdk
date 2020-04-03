@@ -15,10 +15,8 @@
 from __future__ import absolute_import
 
 # import models into model package
-from randori_api.models.detection_target import DetectionTarget
-from randori_api.models.detection_target_get_output import DetectionTargetGetOutput
-from randori_api.models.detections_for_target import DetectionsForTarget
-from randori_api.models.detections_for_target_get_output import DetectionsForTargetGetOutput
+from randori_api.models.all_detections_for_target import AllDetectionsForTarget
+from randori_api.models.all_detections_for_target_get_output import AllDetectionsForTargetGetOutput
 from randori_api.models.error_schema import ErrorSchema
 from randori_api.models.hostname import Hostname
 from randori_api.models.hostname_get_output import HostnameGetOutput
@@ -47,6 +45,8 @@ from randori_api.models.ports_for_ip_single_output import PortsForIpSingleOutput
 from randori_api.models.service import Service
 from randori_api.models.service_get_output import ServiceGetOutput
 from randori_api.models.service_single_output import ServiceSingleOutput
+from randori_api.models.single_detection_for_target import SingleDetectionForTarget
+from randori_api.models.single_detection_for_target_get_output import SingleDetectionForTargetGetOutput
 from randori_api.models.statistics import Statistics
 from randori_api.models.statistics_get_output import StatisticsGetOutput
 from randori_api.models.target import Target

@@ -34,16 +34,18 @@ class Ip(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'affiliation_state': 'str',
         'confidence': 'int',
         'country': 'str',
         'deleted': 'bool',
-        'first_seen': 'datetime',
+        'first_seen': 'str',
         'hostname': 'str',
         'hostname_count': 'int',
         'id': 'str',
+        'impact_score': 'str',
         'ip': 'str',
         'ip_str': 'str',
-        'last_seen': 'datetime',
+        'last_seen': 'str',
         'latitude': 'float',
         'longitude': 'float',
         'max_confidence': 'int',
@@ -52,6 +54,7 @@ class Ip(object):
         'perspective': 'str',
         'perspective_name': 'str',
         'radius': 'float',
+        'refreshed': 'bool',
         'service_count': 'int',
         'status': 'str',
         'tags': 'object',
@@ -60,6 +63,7 @@ class Ip(object):
     }
 
     attribute_map = {
+        'affiliation_state': 'affiliation_state',
         'confidence': 'confidence',
         'country': 'country',
         'deleted': 'deleted',
@@ -67,6 +71,7 @@ class Ip(object):
         'hostname': 'hostname',
         'hostname_count': 'hostname_count',
         'id': 'id',
+        'impact_score': 'impact_score',
         'ip': 'ip',
         'ip_str': 'ip_str',
         'last_seen': 'last_seen',
@@ -78,6 +83,7 @@ class Ip(object):
         'perspective': 'perspective',
         'perspective_name': 'perspective_name',
         'radius': 'radius',
+        'refreshed': 'refreshed',
         'service_count': 'service_count',
         'status': 'status',
         'tags': 'tags',
@@ -85,12 +91,13 @@ class Ip(object):
         'target_temptation': 'target_temptation'
     }
 
-    def __init__(self, confidence=None, country=None, deleted=None, first_seen=None, hostname=None, hostname_count=None, id=None, ip=None, ip_str=None, last_seen=None, latitude=None, longitude=None, max_confidence=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, radius=None, service_count=None, status=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, confidence=None, country=None, deleted=None, first_seen=None, hostname=None, hostname_count=None, id=None, impact_score=None, ip=None, ip_str=None, last_seen=None, latitude=None, longitude=None, max_confidence=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, radius=None, refreshed=None, service_count=None, status=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
         """Ip - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._affiliation_state = None
         self._confidence = None
         self._country = None
         self._deleted = None
@@ -98,6 +105,7 @@ class Ip(object):
         self._hostname = None
         self._hostname_count = None
         self._id = None
+        self._impact_score = None
         self._ip = None
         self._ip_str = None
         self._last_seen = None
@@ -109,6 +117,7 @@ class Ip(object):
         self._perspective = None
         self._perspective_name = None
         self._radius = None
+        self._refreshed = None
         self._service_count = None
         self._status = None
         self._tags = None
@@ -116,17 +125,23 @@ class Ip(object):
         self._target_temptation = None
         self.discriminator = None
 
+        if affiliation_state is not None:
+            self.affiliation_state = affiliation_state
         self.confidence = confidence
         self.country = country
         if deleted is not None:
             self.deleted = deleted
-        self.first_seen = first_seen
+        if first_seen is not None:
+            self.first_seen = first_seen
         self.hostname = hostname
         self.hostname_count = hostname_count
         self.id = id
+        if impact_score is not None:
+            self.impact_score = impact_score
         self.ip = ip
         self.ip_str = ip_str
-        self.last_seen = last_seen
+        if last_seen is not None:
+            self.last_seen = last_seen
         self.latitude = latitude
         self.longitude = longitude
         self.max_confidence = max_confidence
@@ -135,12 +150,42 @@ class Ip(object):
         self.perspective = perspective
         self.perspective_name = perspective_name
         self.radius = radius
+        if refreshed is not None:
+            self.refreshed = refreshed
         self.service_count = service_count
         if status is not None:
             self.status = status
-        self.tags = tags
+        if tags is not None:
+            self.tags = tags
         self.target_count = target_count
         self.target_temptation = target_temptation
+
+    @property
+    def affiliation_state(self):
+        """Gets the affiliation_state of this Ip.  # noqa: E501
+
+
+        :return: The affiliation_state of this Ip.  # noqa: E501
+        :rtype: str
+        """
+        return self._affiliation_state
+
+    @affiliation_state.setter
+    def affiliation_state(self, affiliation_state):
+        """Sets the affiliation_state of this Ip.
+
+
+        :param affiliation_state: The affiliation_state of this Ip.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["Affiliated", "Unaffiliated", "None"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
+                .format(affiliation_state, allowed_values)
+            )
+
+        self._affiliation_state = affiliation_state
 
     @property
     def confidence(self):
@@ -211,7 +256,7 @@ class Ip(object):
 
 
         :return: The first_seen of this Ip.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._first_seen
 
@@ -221,7 +266,7 @@ class Ip(object):
 
 
         :param first_seen: The first_seen of this Ip.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._first_seen = first_seen
@@ -292,6 +337,33 @@ class Ip(object):
         self._id = id
 
     @property
+    def impact_score(self):
+        """Gets the impact_score of this Ip.  # noqa: E501
+
+
+        :return: The impact_score of this Ip.  # noqa: E501
+        :rtype: str
+        """
+        return self._impact_score
+
+    @impact_score.setter
+    def impact_score(self, impact_score):
+        """Sets the impact_score of this Ip.
+
+
+        :param impact_score: The impact_score of this Ip.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Low", "Medium", "High"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and impact_score not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `impact_score` ({0}), must be one of {1}"  # noqa: E501
+                .format(impact_score, allowed_values)
+            )
+
+        self._impact_score = impact_score
+
+    @property
     def ip(self):
         """Gets the ip of this Ip.  # noqa: E501
 
@@ -339,7 +411,7 @@ class Ip(object):
 
 
         :return: The last_seen of this Ip.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._last_seen
 
@@ -349,7 +421,7 @@ class Ip(object):
 
 
         :param last_seen: The last_seen of this Ip.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._last_seen = last_seen
@@ -523,6 +595,27 @@ class Ip(object):
         """
 
         self._radius = radius
+
+    @property
+    def refreshed(self):
+        """Gets the refreshed of this Ip.  # noqa: E501
+
+
+        :return: The refreshed of this Ip.  # noqa: E501
+        :rtype: bool
+        """
+        return self._refreshed
+
+    @refreshed.setter
+    def refreshed(self, refreshed):
+        """Sets the refreshed of this Ip.
+
+
+        :param refreshed: The refreshed of this Ip.  # noqa: E501
+        :type: bool
+        """
+
+        self._refreshed = refreshed
 
     @property
     def service_count(self):

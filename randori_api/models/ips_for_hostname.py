@@ -34,16 +34,18 @@ class IpsForHostname(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'affiliation_state': 'str',
         'confidence': 'int',
         'country': 'str',
         'deleted': 'bool',
+        'first_seen': 'str',
         'hostname_id': 'str',
         'id': 'str',
+        'impact_score': 'str',
         'ip': 'str',
         'ip_id': 'str',
         'ip_str': 'str',
-        'ip_tags': 'object',
-        'last_seen': 'datetime',
+        'last_seen': 'str',
         'latitude': 'float',
         'longitude': 'float',
         'max_confidence': 'int',
@@ -52,22 +54,27 @@ class IpsForHostname(object):
         'perspective': 'str',
         'perspective_name': 'str',
         'radius': 'float',
+        'refreshed': 'bool',
         'service_count': 'int',
+        'status': 'str',
+        'tags': 'object',
         'target_count': 'int',
         'target_temptation': 'int',
         'top_hostname': 'str'
     }
 
     attribute_map = {
+        'affiliation_state': 'affiliation_state',
         'confidence': 'confidence',
         'country': 'country',
         'deleted': 'deleted',
+        'first_seen': 'first_seen',
         'hostname_id': 'hostname_id',
         'id': 'id',
+        'impact_score': 'impact_score',
         'ip': 'ip',
         'ip_id': 'ip_id',
         'ip_str': 'ip_str',
-        'ip_tags': 'ip_tags',
         'last_seen': 'last_seen',
         'latitude': 'latitude',
         'longitude': 'longitude',
@@ -77,27 +84,32 @@ class IpsForHostname(object):
         'perspective': 'perspective',
         'perspective_name': 'perspective_name',
         'radius': 'radius',
+        'refreshed': 'refreshed',
         'service_count': 'service_count',
+        'status': 'status',
+        'tags': 'tags',
         'target_count': 'target_count',
         'target_temptation': 'target_temptation',
         'top_hostname': 'top_hostname'
     }
 
-    def __init__(self, confidence=None, country=None, deleted=None, hostname_id=None, id=None, ip=None, ip_id=None, ip_str=None, ip_tags=None, last_seen=None, latitude=None, longitude=None, max_confidence=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, radius=None, service_count=None, target_count=None, target_temptation=None, top_hostname=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, confidence=None, country=None, deleted=None, first_seen=None, hostname_id=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, latitude=None, longitude=None, max_confidence=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, radius=None, refreshed=None, service_count=None, status=None, tags=None, target_count=None, target_temptation=None, top_hostname=None, local_vars_configuration=None):  # noqa: E501
         """IpsForHostname - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._affiliation_state = None
         self._confidence = None
         self._country = None
         self._deleted = None
+        self._first_seen = None
         self._hostname_id = None
         self._id = None
+        self._impact_score = None
         self._ip = None
         self._ip_id = None
         self._ip_str = None
-        self._ip_tags = None
         self._last_seen = None
         self._latitude = None
         self._longitude = None
@@ -107,23 +119,32 @@ class IpsForHostname(object):
         self._perspective = None
         self._perspective_name = None
         self._radius = None
+        self._refreshed = None
         self._service_count = None
+        self._status = None
+        self._tags = None
         self._target_count = None
         self._target_temptation = None
         self._top_hostname = None
         self.discriminator = None
 
+        if affiliation_state is not None:
+            self.affiliation_state = affiliation_state
         self.confidence = confidence
         self.country = country
         if deleted is not None:
             self.deleted = deleted
+        if first_seen is not None:
+            self.first_seen = first_seen
         self.hostname_id = hostname_id
         self.id = id
+        if impact_score is not None:
+            self.impact_score = impact_score
         self.ip = ip
         self.ip_id = ip_id
         self.ip_str = ip_str
-        self.ip_tags = ip_tags
-        self.last_seen = last_seen
+        if last_seen is not None:
+            self.last_seen = last_seen
         self.latitude = latitude
         self.longitude = longitude
         self.max_confidence = max_confidence
@@ -132,10 +153,43 @@ class IpsForHostname(object):
         self.perspective = perspective
         self.perspective_name = perspective_name
         self.radius = radius
+        if refreshed is not None:
+            self.refreshed = refreshed
         self.service_count = service_count
+        if status is not None:
+            self.status = status
+        if tags is not None:
+            self.tags = tags
         self.target_count = target_count
         self.target_temptation = target_temptation
         self.top_hostname = top_hostname
+
+    @property
+    def affiliation_state(self):
+        """Gets the affiliation_state of this IpsForHostname.  # noqa: E501
+
+
+        :return: The affiliation_state of this IpsForHostname.  # noqa: E501
+        :rtype: str
+        """
+        return self._affiliation_state
+
+    @affiliation_state.setter
+    def affiliation_state(self, affiliation_state):
+        """Sets the affiliation_state of this IpsForHostname.
+
+
+        :param affiliation_state: The affiliation_state of this IpsForHostname.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["Affiliated", "Unaffiliated", "None"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
+                .format(affiliation_state, allowed_values)
+            )
+
+        self._affiliation_state = affiliation_state
 
     @property
     def confidence(self):
@@ -201,6 +255,27 @@ class IpsForHostname(object):
         self._deleted = deleted
 
     @property
+    def first_seen(self):
+        """Gets the first_seen of this IpsForHostname.  # noqa: E501
+
+
+        :return: The first_seen of this IpsForHostname.  # noqa: E501
+        :rtype: str
+        """
+        return self._first_seen
+
+    @first_seen.setter
+    def first_seen(self, first_seen):
+        """Sets the first_seen of this IpsForHostname.
+
+
+        :param first_seen: The first_seen of this IpsForHostname.  # noqa: E501
+        :type: str
+        """
+
+        self._first_seen = first_seen
+
+    @property
     def hostname_id(self):
         """Gets the hostname_id of this IpsForHostname.  # noqa: E501
 
@@ -243,6 +318,33 @@ class IpsForHostname(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def impact_score(self):
+        """Gets the impact_score of this IpsForHostname.  # noqa: E501
+
+
+        :return: The impact_score of this IpsForHostname.  # noqa: E501
+        :rtype: str
+        """
+        return self._impact_score
+
+    @impact_score.setter
+    def impact_score(self, impact_score):
+        """Sets the impact_score of this IpsForHostname.
+
+
+        :param impact_score: The impact_score of this IpsForHostname.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Low", "Medium", "High"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and impact_score not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `impact_score` ({0}), must be one of {1}"  # noqa: E501
+                .format(impact_score, allowed_values)
+            )
+
+        self._impact_score = impact_score
 
     @property
     def ip(self):
@@ -308,33 +410,12 @@ class IpsForHostname(object):
         self._ip_str = ip_str
 
     @property
-    def ip_tags(self):
-        """Gets the ip_tags of this IpsForHostname.  # noqa: E501
-
-
-        :return: The ip_tags of this IpsForHostname.  # noqa: E501
-        :rtype: object
-        """
-        return self._ip_tags
-
-    @ip_tags.setter
-    def ip_tags(self, ip_tags):
-        """Sets the ip_tags of this IpsForHostname.
-
-
-        :param ip_tags: The ip_tags of this IpsForHostname.  # noqa: E501
-        :type: object
-        """
-
-        self._ip_tags = ip_tags
-
-    @property
     def last_seen(self):
         """Gets the last_seen of this IpsForHostname.  # noqa: E501
 
 
         :return: The last_seen of this IpsForHostname.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._last_seen
 
@@ -344,7 +425,7 @@ class IpsForHostname(object):
 
 
         :param last_seen: The last_seen of this IpsForHostname.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._last_seen = last_seen
@@ -520,6 +601,27 @@ class IpsForHostname(object):
         self._radius = radius
 
     @property
+    def refreshed(self):
+        """Gets the refreshed of this IpsForHostname.  # noqa: E501
+
+
+        :return: The refreshed of this IpsForHostname.  # noqa: E501
+        :rtype: bool
+        """
+        return self._refreshed
+
+    @refreshed.setter
+    def refreshed(self, refreshed):
+        """Sets the refreshed of this IpsForHostname.
+
+
+        :param refreshed: The refreshed of this IpsForHostname.  # noqa: E501
+        :type: bool
+        """
+
+        self._refreshed = refreshed
+
+    @property
     def service_count(self):
         """Gets the service_count of this IpsForHostname.  # noqa: E501
 
@@ -539,6 +641,54 @@ class IpsForHostname(object):
         """
 
         self._service_count = service_count
+
+    @property
+    def status(self):
+        """Gets the status of this IpsForHostname.  # noqa: E501
+
+
+        :return: The status of this IpsForHostname.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this IpsForHostname.
+
+
+        :param status: The status of this IpsForHostname.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
+
+        self._status = status
+
+    @property
+    def tags(self):
+        """Gets the tags of this IpsForHostname.  # noqa: E501
+
+
+        :return: The tags of this IpsForHostname.  # noqa: E501
+        :rtype: object
+        """
+        return self._tags
+
+    @tags.setter
+    def tags(self, tags):
+        """Sets the tags of this IpsForHostname.
+
+
+        :param tags: The tags of this IpsForHostname.  # noqa: E501
+        :type: object
+        """
+
+        self._tags = tags
 
     @property
     def target_count(self):

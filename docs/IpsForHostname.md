@@ -3,16 +3,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**affiliation_state** | **str** |  | [optional] 
 **confidence** | **int** |  | [optional] 
 **country** | **str** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
+**first_seen** | **str** |  | [optional] 
 **hostname_id** | **str** |  | [optional] 
 **id** | **str** |  | 
+**impact_score** | **str** |  | [optional] 
 **ip** | **str** |  | [optional] 
 **ip_id** | **str** |  | [optional] 
 **ip_str** | **str** |  | [optional] 
-**ip_tags** | [**object**](.md) |  | [optional] 
-**last_seen** | **datetime** |  | [optional] 
+**last_seen** | **str** |  | [optional] 
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
 **max_confidence** | **int** |  | [optional] 
@@ -21,7 +23,10 @@ Name | Type | Description | Notes
 **perspective** | **str** |  | [optional] 
 **perspective_name** | **str** |  | [optional] 
 **radius** | **float** |  | [optional] 
+**refreshed** | **bool** |  | [optional] 
 **service_count** | **int** |  | [optional] 
+**status** | **str** |  | [optional] 
+**tags** | [**object**](.md) |  | [optional] 
 **target_count** | **int** |  | [optional] 
 **target_temptation** | **int** |  | [optional] 
 **top_hostname** | **str** |  | [optional] 

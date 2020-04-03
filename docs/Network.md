@@ -3,12 +3,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**affiliation_state** | **str** |  | [optional] 
 **confidence** | **int** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
-**first_seen** | **datetime** |  | [optional] 
+**first_seen** | **str** |  | [optional] 
 **id** | **str** |  | 
+**impact_score** | **str** |  | [optional] 
 **ip_count** | **int** |  | [optional] 
-**last_seen** | **datetime** |  | [optional] 
+**last_seen** | **str** |  | [optional] 
 **max_confidence** | **int** |  | [optional] 
 **network** | **str** |  | [optional] 
 **network_str** | **str** |  | [optional] 
@@ -16,6 +18,7 @@ Name | Type | Description | Notes
 **org_id** | **str** |  | 
 **perspective** | **str** |  | [optional] 
 **perspective_name** | **str** |  | [optional] 
+**refreshed** | **bool** |  | [optional] 
 **service_count** | **int** |  | [optional] 
 **status** | **str** |  | [optional] 
 **tags** | [**object**](.md) |  | [optional] 

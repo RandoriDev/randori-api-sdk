@@ -36,22 +36,26 @@ class PortsForIp(object):
     openapi_types = {
         'confidence': 'int',
         'deleted': 'bool',
+        'first_seen': 'str',
         'id': 'str',
         'ip_id': 'str',
-        'last_seen': 'datetime',
+        'last_seen': 'str',
         'max_confidence': 'int',
         'org_id': 'str',
         'perspective': 'str',
         'perspective_name': 'str',
         'port': 'int',
         'protocol': 'int',
+        'refreshed': 'bool',
         'seen_open': 'bool',
-        'state': 'str'
+        'state': 'str',
+        'tags': 'object'
     }
 
     attribute_map = {
         'confidence': 'confidence',
         'deleted': 'deleted',
+        'first_seen': 'first_seen',
         'id': 'id',
         'ip_id': 'ip_id',
         'last_seen': 'last_seen',
@@ -61,11 +65,13 @@ class PortsForIp(object):
         'perspective_name': 'perspective_name',
         'port': 'port',
         'protocol': 'protocol',
+        'refreshed': 'refreshed',
         'seen_open': 'seen_open',
-        'state': 'state'
+        'state': 'state',
+        'tags': 'tags'
     }
 
-    def __init__(self, confidence=None, deleted=None, id=None, ip_id=None, last_seen=None, max_confidence=None, org_id=None, perspective=None, perspective_name=None, port=None, protocol=None, seen_open=None, state=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, confidence=None, deleted=None, first_seen=None, id=None, ip_id=None, last_seen=None, max_confidence=None, org_id=None, perspective=None, perspective_name=None, port=None, protocol=None, refreshed=None, seen_open=None, state=None, tags=None, local_vars_configuration=None):  # noqa: E501
         """PortsForIp - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,6 +79,7 @@ class PortsForIp(object):
 
         self._confidence = None
         self._deleted = None
+        self._first_seen = None
         self._id = None
         self._ip_id = None
         self._last_seen = None
@@ -82,24 +89,33 @@ class PortsForIp(object):
         self._perspective_name = None
         self._port = None
         self._protocol = None
+        self._refreshed = None
         self._seen_open = None
         self._state = None
+        self._tags = None
         self.discriminator = None
 
         self.confidence = confidence
         if deleted is not None:
             self.deleted = deleted
+        if first_seen is not None:
+            self.first_seen = first_seen
         self.id = id
         self.ip_id = ip_id
-        self.last_seen = last_seen
+        if last_seen is not None:
+            self.last_seen = last_seen
         self.max_confidence = max_confidence
         self.org_id = org_id
         self.perspective = perspective
         self.perspective_name = perspective_name
         self.port = port
         self.protocol = protocol
+        if refreshed is not None:
+            self.refreshed = refreshed
         self.seen_open = seen_open
         self.state = state
+        if tags is not None:
+            self.tags = tags
 
     @property
     def confidence(self):
@@ -142,6 +158,27 @@ class PortsForIp(object):
         """
 
         self._deleted = deleted
+
+    @property
+    def first_seen(self):
+        """Gets the first_seen of this PortsForIp.  # noqa: E501
+
+
+        :return: The first_seen of this PortsForIp.  # noqa: E501
+        :rtype: str
+        """
+        return self._first_seen
+
+    @first_seen.setter
+    def first_seen(self, first_seen):
+        """Sets the first_seen of this PortsForIp.
+
+
+        :param first_seen: The first_seen of this PortsForIp.  # noqa: E501
+        :type: str
+        """
+
+        self._first_seen = first_seen
 
     @property
     def id(self):
@@ -193,7 +230,7 @@ class PortsForIp(object):
 
 
         :return: The last_seen of this PortsForIp.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._last_seen
 
@@ -203,7 +240,7 @@ class PortsForIp(object):
 
 
         :param last_seen: The last_seen of this PortsForIp.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._last_seen = last_seen
@@ -337,6 +374,27 @@ class PortsForIp(object):
         self._protocol = protocol
 
     @property
+    def refreshed(self):
+        """Gets the refreshed of this PortsForIp.  # noqa: E501
+
+
+        :return: The refreshed of this PortsForIp.  # noqa: E501
+        :rtype: bool
+        """
+        return self._refreshed
+
+    @refreshed.setter
+    def refreshed(self, refreshed):
+        """Sets the refreshed of this PortsForIp.
+
+
+        :param refreshed: The refreshed of this PortsForIp.  # noqa: E501
+        :type: bool
+        """
+
+        self._refreshed = refreshed
+
+    @property
     def seen_open(self):
         """Gets the seen_open of this PortsForIp.  # noqa: E501
 
@@ -377,6 +435,27 @@ class PortsForIp(object):
         """
 
         self._state = state
+
+    @property
+    def tags(self):
+        """Gets the tags of this PortsForIp.  # noqa: E501
+
+
+        :return: The tags of this PortsForIp.  # noqa: E501
+        :rtype: object
+        """
+        return self._tags
+
+    @tags.setter
+    def tags(self, tags):
+        """Sets the tags of this PortsForIp.
+
+
+        :param tags: The tags of this PortsForIp.  # noqa: E501
+        :type: object
+        """
+
+        self._tags = tags
 
     def to_dict(self):
         """Returns the model properties as a dict"""

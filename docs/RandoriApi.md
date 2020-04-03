@@ -4,8 +4,7 @@ All URIs are relative to *https://alpha.randori.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_detection_target**](RandoriApi.md#get_detection_target) | **GET** /recon/api/v1/detection-target | 
-[**get_detections_for_target**](RandoriApi.md#get_detections_for_target) | **GET** /recon/api/v1/detections-for-target | 
+[**get_all_detections_for_target**](RandoriApi.md#get_all_detections_for_target) | **GET** /recon/api/v1/all-detections-for-target | 
 [**get_hostname**](RandoriApi.md#get_hostname) | **GET** /recon/api/v1/hostname | 
 [**get_hostnames_for_ip**](RandoriApi.md#get_hostnames_for_ip) | **GET** /recon/api/v1/hostnames-for-ip | 
 [**get_ip**](RandoriApi.md#get_ip) | **GET** /recon/api/v1/ip | 
@@ -15,6 +14,7 @@ Method | HTTP request | Description
 [**get_network**](RandoriApi.md#get_network) | **GET** /recon/api/v1/network | 
 [**get_ports_for_ip**](RandoriApi.md#get_ports_for_ip) | **GET** /recon/api/v1/ports-for-ip | 
 [**get_service**](RandoriApi.md#get_service) | **GET** /recon/api/v1/service | 
+[**get_single_detection_for_target**](RandoriApi.md#get_single_detection_for_target) | **GET** /recon/api/v1/single-detection-for-target | 
 [**get_single_hostname**](RandoriApi.md#get_single_hostname) | **GET** /recon/api/v1/hostname/{id} | 
 [**get_single_hostnames_for_ip**](RandoriApi.md#get_single_hostnames_for_ip) | **GET** /recon/api/v1/hostnames-for-ip/{id} | 
 [**get_single_ip**](RandoriApi.md#get_single_ip) | **GET** /recon/api/v1/ip/{id} | 
@@ -29,84 +29,12 @@ Method | HTTP request | Description
 [**get_target**](RandoriApi.md#get_target) | **GET** /recon/api/v1/target | 
 
 
-# **get_detection_target**
-> DetectionTargetGetOutput get_detection_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+# **get_all_detections_for_target**
+> AllDetectionsForTargetGetOutput get_all_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
-Search detection-target objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-configuration = randori_api.Configuration()
-# Configure Bearer authorization (JWT): bearerAuth
-configuration.access_token = 'YOUR_BEARER_TOKEN'
-
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
-# Create an instance of the API class
-api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-try:
-    api_response = api_instance.get_detection_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling RandoriApi->get_detection_target: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**DetectionTargetGetOutput**](DetectionTargetGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_detections_for_target**
-> DetectionsForTargetGetOutput get_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search detections-for-target objects with an optional filter
+Search all-detections-for-target objects with an optional filter
 
 ### Example
 
@@ -132,10 +60,10 @@ q = 'q_example' # str | base64 encoded jquery querybuilder complex search field 
 reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
 try:
-    api_response = api_instance.get_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+    api_response = api_instance.get_all_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling RandoriApi->get_detections_for_target: %s\n" % e)
+    print("Exception when calling RandoriApi->get_all_detections_for_target: %s\n" % e)
 ```
 
 ### Parameters
@@ -150,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DetectionsForTargetGetOutput**](DetectionsForTargetGetOutput.md)
+[**AllDetectionsForTargetGetOutput**](AllDetectionsForTargetGetOutput.md)
 
 ### Authorization
 
@@ -799,6 +727,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ServiceGetOutput**](ServiceGetOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_single_detection_for_target**
+> SingleDetectionForTargetGetOutput get_single_detection_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+
+
+
+Search single-detection-for-target objects with an optional filter
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+```python
+from __future__ import print_function
+import time
+import randori_api
+from randori_api.rest import ApiException
+from pprint import pprint
+configuration = randori_api.Configuration()
+# Configure Bearer authorization (JWT): bearerAuth
+configuration.access_token = 'YOUR_BEARER_TOKEN'
+
+# Defining host is optional and default to https://alpha.randori.io
+configuration.host = "https://alpha.randori.io"
+# Create an instance of the API class
+api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
+offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
+sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+
+try:
+    api_response = api_instance.get_single_detection_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RandoriApi->get_single_detection_for_target: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
+
+### Return type
+
+[**SingleDetectionForTargetGetOutput**](SingleDetectionForTargetGetOutput.md)
 
 ### Authorization
 
