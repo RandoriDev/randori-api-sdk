@@ -10,7 +10,7 @@ For more information, please visit [https://www.randori.com/contact/](https://ww
 
 ## Requirements.
 
-Python 2.7 and 3.4+
+Python 2.7 or 3.4+
 
 ## Installation & Usage
 ### pip install
@@ -18,9 +18,9 @@ Python 2.7 and 3.4+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+pip install git+https://github.com/RandoriDev/randori-api-sdk.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/RandoriDev/randori-api-sdk.git`)
 
 Then import the package:
 ```python
