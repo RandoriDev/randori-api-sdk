@@ -1,2 +1,5 @@
 *.idea
 *.pyc
+.openapi-generator/*
+.openapi-generator-ignore
+git_push.sh
