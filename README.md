@@ -21,7 +21,8 @@ If the python package is hosted on a repository, you can install directly using:
 ```sh
 pip install git+https://github.com/RandoriDev/randori-api-sdk.git
 ```
-Note: you may need to run `pip` with root permission: 
+Note - you may need to run `pip` with root permission:
+
 `sudo pip install git+https://github.com/RandoriDev/randori-api-sdk.git`
 
 Then import the package:
