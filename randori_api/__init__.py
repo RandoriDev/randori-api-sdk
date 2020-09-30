@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 # import apis into sdk package
 from randori_api.api.default_api import DefaultApi
