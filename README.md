@@ -18,9 +18,9 @@ Python 2.7 and 3.4+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+pip install git+https://github.com/RandoriDev/randori-api-sdk.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/RandoriDev/randori-api-sdk.git`)
 
 Then import the package:
 ```python
@@ -47,29 +47,62 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 from __future__ import print_function
-import time
+  
+import base64
+import json
 import randori_api
 from randori_api.rest import ApiException
 from pprint import pprint
 
 configuration = randori_api.Configuration()
+
 # Configure Bearer authorization (JWT): bearerAuth
-configuration.access_token = 'YOUR_BEARER_TOKEN'
+configuration.access_token = 'YOUR_API_TOKEN_HERE'
 
 # Defining host is optional and default to https://alpha.randori.io
 configuration.host = "https://alpha.randori.io"
+
 # Create an instance of the API class
-api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
+
+# int | offset into avilable records after filtering (optional)
+offset = 0
+
+# int | maximum number of records to return (optional). Max value = 1000
+limit = 5 
+
+# list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+sort = ['-priority_score']
+
+# sample jquery query
+initial_query = json.loads('''{
+  "condition": "AND",
+  "rules": [
+    {
+      "field": "table.target_temptation",
+      "operator": "greater_or_equal",
+      "value": 20
+    }
+  ],
+  "valid": true
+  }''')
+  
+iq = json.dumps(initial_query).encode()
+
+# str | base64 encoded jquery querybuilder complex search field (optional)
+query = base64.b64encode(iq)
+
+# bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+reversed_nulls = True
 
 try:
-    api_response = api_instance.get_all_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+
+    api_response = api_instance.get_all_detections_for_target(offset=offset, limit=limit, sort=sort, q=query, reversed_nulls=reversed_nulls)
+
     pprint(api_response)
+
 except ApiException as e:
+
     print("Exception when calling DefaultApi->get_all_detections_for_target: %s\n" % e)
 
 ```
