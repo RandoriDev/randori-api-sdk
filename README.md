@@ -63,7 +63,7 @@ configuration.access_token = 'YOUR_API_TOKEN_HERE'
 configuration.host = "https://alpha.randori.io"
 
 # Create an instance of the API class
-api_instance = randori_api.RandoriApi(randori_api.ApiClient(configuration))
+api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 
 # int | offset into avilable records after filtering (optional)
 offset = 0
