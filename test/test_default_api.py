@@ -149,12 +149,6 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_get_single_tagcounts(self):
-        """Test case for get_single_tagcounts
-
-        """
-        pass
-
     def test_get_single_target(self):
         """Test case for get_single_target
 
@@ -173,20 +167,8 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_get_tagcounts(self):
-        """Test case for get_tagcounts
-
-        """
-        pass
-
     def test_get_target(self):
         """Test case for get_target
-
-        """
-        pass
-
-    def test_paths(self):
-        """Test case for paths
 
         """
         pass

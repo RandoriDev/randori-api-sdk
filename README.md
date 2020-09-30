@@ -100,13 +100,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_single_network**](docs/DefaultApi.md#get_single_network) | **GET** /recon/api/v1/network/{id} | 
 *DefaultApi* | [**get_single_ports_for_ip**](docs/DefaultApi.md#get_single_ports_for_ip) | **GET** /recon/api/v1/ports-for-ip/{id} | 
 *DefaultApi* | [**get_single_service**](docs/DefaultApi.md#get_single_service) | **GET** /recon/api/v1/service/{id} | 
-*DefaultApi* | [**get_single_tagcounts**](docs/DefaultApi.md#get_single_tagcounts) | **GET** /recon/api/v1/tagcounts/{id} | 
 *DefaultApi* | [**get_single_target**](docs/DefaultApi.md#get_single_target) | **GET** /recon/api/v1/target/{id} | 
 *DefaultApi* | [**get_social_entity**](docs/DefaultApi.md#get_social_entity) | **GET** /recon/api/v1/social-entity | 
 *DefaultApi* | [**get_statistics**](docs/DefaultApi.md#get_statistics) | **GET** /recon/api/v1/statistics | 
-*DefaultApi* | [**get_tagcounts**](docs/DefaultApi.md#get_tagcounts) | **GET** /recon/api/v1/tagcounts | 
 *DefaultApi* | [**get_target**](docs/DefaultApi.md#get_target) | **GET** /recon/api/v1/target | 
-*DefaultApi* | [**paths**](docs/DefaultApi.md#paths) | **GET** /recon/api/v1/paths | 
 *DefaultApi* | [**tag**](docs/DefaultApi.md#tag) | **GET** /recon/api/v1/tag | 
 
 
@@ -114,7 +111,6 @@ Class | Method | HTTP request | Description
 
  - [AllDetectionsForTarget](docs/AllDetectionsForTarget.md)
  - [AllDetectionsForTargetGetOutput](docs/AllDetectionsForTargetGetOutput.md)
- - [EdgeSchema](docs/EdgeSchema.md)
  - [ErrorSchema](docs/ErrorSchema.md)
  - [Hostname](docs/Hostname.md)
  - [HostnameGetOutput](docs/HostnameGetOutput.md)
@@ -137,9 +133,6 @@ Class | Method | HTTP request | Description
  - [Network](docs/Network.md)
  - [NetworkGetOutput](docs/NetworkGetOutput.md)
  - [NetworkSingleOutput](docs/NetworkSingleOutput.md)
- - [NodeSchema](docs/NodeSchema.md)
- - [PathsDataSchema](docs/PathsDataSchema.md)
- - [PathsOutputSchema](docs/PathsOutputSchema.md)
  - [PortsForIp](docs/PortsForIp.md)
  - [PortsForIpGetOutput](docs/PortsForIpGetOutput.md)
  - [PortsForIpSingleOutput](docs/PortsForIpSingleOutput.md)
@@ -152,9 +145,6 @@ Class | Method | HTTP request | Description
  - [SocialEntityGetOutput](docs/SocialEntityGetOutput.md)
  - [Statistics](docs/Statistics.md)
  - [StatisticsGetOutput](docs/StatisticsGetOutput.md)
- - [Tagcounts](docs/Tagcounts.md)
- - [TagcountsGetOutput](docs/TagcountsGetOutput.md)
- - [TagcountsSingleOutput](docs/TagcountsSingleOutput.md)
  - [Target](docs/Target.md)
  - [TargetGetOutput](docs/TargetGetOutput.md)
  - [TargetSingleOutput](docs/TargetSingleOutput.md)

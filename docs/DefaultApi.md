@@ -24,13 +24,10 @@ Method | HTTP request | Description
 [**get_single_network**](DefaultApi.md#get_single_network) | **GET** /recon/api/v1/network/{id} | 
 [**get_single_ports_for_ip**](DefaultApi.md#get_single_ports_for_ip) | **GET** /recon/api/v1/ports-for-ip/{id} | 
 [**get_single_service**](DefaultApi.md#get_single_service) | **GET** /recon/api/v1/service/{id} | 
-[**get_single_tagcounts**](DefaultApi.md#get_single_tagcounts) | **GET** /recon/api/v1/tagcounts/{id} | 
 [**get_single_target**](DefaultApi.md#get_single_target) | **GET** /recon/api/v1/target/{id} | 
 [**get_social_entity**](DefaultApi.md#get_social_entity) | **GET** /recon/api/v1/social-entity | 
 [**get_statistics**](DefaultApi.md#get_statistics) | **GET** /recon/api/v1/statistics | 
-[**get_tagcounts**](DefaultApi.md#get_tagcounts) | **GET** /recon/api/v1/tagcounts | 
 [**get_target**](DefaultApi.md#get_target) | **GET** /recon/api/v1/target | 
-[**paths**](DefaultApi.md#paths) | **GET** /recon/api/v1/paths | 
 [**tag**](DefaultApi.md#tag) | **GET** /recon/api/v1/tag | 
 
 
@@ -1402,70 +1399,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_single_tagcounts**
-> TagcountsSingleOutput get_single_tagcounts(id)
-
-
-
-Get one tagcounts object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-configuration = randori_api.Configuration()
-# Configure Bearer authorization (JWT): bearerAuth
-configuration.access_token = 'YOUR_BEARER_TOKEN'
-
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
-# Create an instance of the API class
-api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
-id = 'id_example' # str | 
-
-try:
-    api_response = api_instance.get_single_tagcounts(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->get_single_tagcounts: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
-
-### Return type
-
-[**TagcountsSingleOutput**](TagcountsSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_single_target**
 > TargetSingleOutput get_single_target(id)
 
@@ -1676,78 +1609,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_tagcounts**
-> TagcountsGetOutput get_tagcounts(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search tagcounts objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-configuration = randori_api.Configuration()
-# Configure Bearer authorization (JWT): bearerAuth
-configuration.access_token = 'YOUR_BEARER_TOKEN'
-
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
-# Create an instance of the API class
-api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-try:
-    api_response = api_instance.get_tagcounts(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->get_tagcounts: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**TagcountsGetOutput**](TagcountsGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_target**
 > TargetGetOutput get_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
@@ -1798,70 +1659,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TargetGetOutput**](TargetGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **paths**
-> PathsOutputSchema paths(terminal=terminal)
-
-
-
-Returns paths from query param to nearest prime entity(s)
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-configuration = randori_api.Configuration()
-# Configure Bearer authorization (JWT): bearerAuth
-configuration.access_token = 'YOUR_BEARER_TOKEN'
-
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
-# Create an instance of the API class
-api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
-terminal = 'terminal_example' # str |  (optional)
-
-try:
-    api_response = api_instance.paths(terminal=terminal)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->paths: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **terminal** | [**str**](.md)|  | [optional] 
-
-### Return type
-
-[**PathsOutputSchema**](PathsOutputSchema.md)
 
 ### Authorization
 
