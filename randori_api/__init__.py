@@ -18,7 +18,7 @@ from __future__ import absolute_import
 __version__ = "1.2.0"
 
 # import apis into sdk package
-from randori_api.api.randori_api import RandoriApi
+from randori_api.api.default_api import DefaultApi
 
 # import ApiClient
 from randori_api.api_client import ApiClient
@@ -31,6 +31,7 @@ from randori_api.exceptions import ApiException
 # import models into sdk package
 from randori_api.models.all_detections_for_target import AllDetectionsForTarget
 from randori_api.models.all_detections_for_target_get_output import AllDetectionsForTargetGetOutput
+from randori_api.models.edge_schema import EdgeSchema
 from randori_api.models.error_schema import ErrorSchema
 from randori_api.models.hostname import Hostname
 from randori_api.models.hostname_get_output import HostnameGetOutput
@@ -53,6 +54,9 @@ from randori_api.models.ips_for_service_single_output import IpsForServiceSingle
 from randori_api.models.network import Network
 from randori_api.models.network_get_output import NetworkGetOutput
 from randori_api.models.network_single_output import NetworkSingleOutput
+from randori_api.models.node_schema import NodeSchema
+from randori_api.models.paths_data_schema import PathsDataSchema
+from randori_api.models.paths_output_schema import PathsOutputSchema
 from randori_api.models.ports_for_ip import PortsForIp
 from randori_api.models.ports_for_ip_get_output import PortsForIpGetOutput
 from randori_api.models.ports_for_ip_single_output import PortsForIpSingleOutput
@@ -61,9 +65,15 @@ from randori_api.models.service_get_output import ServiceGetOutput
 from randori_api.models.service_single_output import ServiceSingleOutput
 from randori_api.models.single_detection_for_target import SingleDetectionForTarget
 from randori_api.models.single_detection_for_target_get_output import SingleDetectionForTargetGetOutput
+from randori_api.models.social_entity import SocialEntity
+from randori_api.models.social_entity_get_output import SocialEntityGetOutput
 from randori_api.models.statistics import Statistics
 from randori_api.models.statistics_get_output import StatisticsGetOutput
+from randori_api.models.tagcounts import Tagcounts
+from randori_api.models.tagcounts_get_output import TagcountsGetOutput
+from randori_api.models.tagcounts_single_output import TagcountsSingleOutput
 from randori_api.models.target import Target
 from randori_api.models.target_get_output import TargetGetOutput
 from randori_api.models.target_single_output import TargetSingleOutput
+from randori_api.models.user_tag_name_list import UserTagNameList
 

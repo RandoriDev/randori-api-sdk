@@ -44,9 +44,9 @@ class AllDetectionsForTarget(object):
         'deleted': 'bool',
         'description': 'str',
         'detection_criteria': 'object',
-        'detection_uuid': 'str',
+        'detection_relevance': 'int',
         'enumerability': 'int',
-        'first_seen': 'str',
+        'first_seen': 'datetime',
         'headers_uuid': 'str',
         'hostname': 'str',
         'hostname_id': 'str',
@@ -55,8 +55,9 @@ class AllDetectionsForTarget(object):
         'ip': 'str',
         'ip_id': 'str',
         'ip_str': 'str',
-        'last_seen': 'str',
-        'max_confidence': 'int',
+        'last_seen': 'datetime',
+        'lens_id': 'str',
+        'lens_view': 'str',
         'name': 'str',
         'org_id': 'str',
         'path': 'str',
@@ -64,29 +65,24 @@ class AllDetectionsForTarget(object):
         'perspective_name': 'str',
         'port': 'int',
         'post_exploit': 'int',
+        'priority_impact_factor': 'float',
+        'priority_score': 'float',
+        'priority_status_factor': 'float',
+        'priority_tags_factor': 'float',
         'private_weakness': 'int',
         'protocol': 'str',
         'public_weakness': 'int',
         'randori_notes': 'str',
         'reference': 'str',
-        'refreshed': 'bool',
         'research': 'int',
         'screenshot_uuid': 'str',
         'service_id': 'str',
         'status': 'str',
         'tags': 'object',
         'target_confidence': 'int',
-        'target_detection_criteria': 'object',
-        'target_first_seen': 'str',
-        'target_hostname': 'str',
-        'target_hostname_id': 'str',
+        'target_first_seen': 'datetime',
         'target_id': 'str',
-        'target_ip': 'str',
-        'target_ip_str': 'str',
-        'target_last_seen': 'str',
-        'target_path': 'str',
-        'target_port': 'int',
-        'target_protocol': 'str',
+        'target_last_seen': 'datetime',
         'target_temptation': 'int',
         'thumbnail_uuid': 'str',
         'vendor': 'str',
@@ -104,7 +100,7 @@ class AllDetectionsForTarget(object):
         'deleted': 'deleted',
         'description': 'description',
         'detection_criteria': 'detection_criteria',
-        'detection_uuid': 'detection_uuid',
+        'detection_relevance': 'detection_relevance',
         'enumerability': 'enumerability',
         'first_seen': 'first_seen',
         'headers_uuid': 'headers_uuid',
@@ -116,7 +112,8 @@ class AllDetectionsForTarget(object):
         'ip_id': 'ip_id',
         'ip_str': 'ip_str',
         'last_seen': 'last_seen',
-        'max_confidence': 'max_confidence',
+        'lens_id': 'lens_id',
+        'lens_view': 'lens_view',
         'name': 'name',
         'org_id': 'org_id',
         'path': 'path',
@@ -124,36 +121,31 @@ class AllDetectionsForTarget(object):
         'perspective_name': 'perspective_name',
         'port': 'port',
         'post_exploit': 'post_exploit',
+        'priority_impact_factor': 'priority_impact_factor',
+        'priority_score': 'priority_score',
+        'priority_status_factor': 'priority_status_factor',
+        'priority_tags_factor': 'priority_tags_factor',
         'private_weakness': 'private_weakness',
         'protocol': 'protocol',
         'public_weakness': 'public_weakness',
         'randori_notes': 'randori_notes',
         'reference': 'reference',
-        'refreshed': 'refreshed',
         'research': 'research',
         'screenshot_uuid': 'screenshot_uuid',
         'service_id': 'service_id',
         'status': 'status',
         'tags': 'tags',
         'target_confidence': 'target_confidence',
-        'target_detection_criteria': 'target_detection_criteria',
         'target_first_seen': 'target_first_seen',
-        'target_hostname': 'target_hostname',
-        'target_hostname_id': 'target_hostname_id',
         'target_id': 'target_id',
-        'target_ip': 'target_ip',
-        'target_ip_str': 'target_ip_str',
         'target_last_seen': 'target_last_seen',
-        'target_path': 'target_path',
-        'target_port': 'target_port',
-        'target_protocol': 'target_protocol',
         'target_temptation': 'target_temptation',
         'thumbnail_uuid': 'thumbnail_uuid',
         'vendor': 'vendor',
         'version': 'version'
     }
 
-    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, banners_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, detection_uuid=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, max_confidence=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, port=None, post_exploit=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, refreshed=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_confidence=None, target_detection_criteria=None, target_first_seen=None, target_hostname=None, target_hostname_id=None, target_id=None, target_ip=None, target_ip_str=None, target_last_seen=None, target_path=None, target_port=None, target_protocol=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, banners_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, detection_relevance=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, port=None, post_exploit=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_confidence=None, target_first_seen=None, target_id=None, target_last_seen=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """AllDetectionsForTarget - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -169,7 +161,7 @@ class AllDetectionsForTarget(object):
         self._deleted = None
         self._description = None
         self._detection_criteria = None
-        self._detection_uuid = None
+        self._detection_relevance = None
         self._enumerability = None
         self._first_seen = None
         self._headers_uuid = None
@@ -181,7 +173,8 @@ class AllDetectionsForTarget(object):
         self._ip_id = None
         self._ip_str = None
         self._last_seen = None
-        self._max_confidence = None
+        self._lens_id = None
+        self._lens_view = None
         self._name = None
         self._org_id = None
         self._path = None
@@ -189,29 +182,24 @@ class AllDetectionsForTarget(object):
         self._perspective_name = None
         self._port = None
         self._post_exploit = None
+        self._priority_impact_factor = None
+        self._priority_score = None
+        self._priority_status_factor = None
+        self._priority_tags_factor = None
         self._private_weakness = None
         self._protocol = None
         self._public_weakness = None
         self._randori_notes = None
         self._reference = None
-        self._refreshed = None
         self._research = None
         self._screenshot_uuid = None
         self._service_id = None
         self._status = None
         self._tags = None
         self._target_confidence = None
-        self._target_detection_criteria = None
         self._target_first_seen = None
-        self._target_hostname = None
-        self._target_hostname_id = None
         self._target_id = None
-        self._target_ip = None
-        self._target_ip_str = None
         self._target_last_seen = None
-        self._target_path = None
-        self._target_port = None
-        self._target_protocol = None
         self._target_temptation = None
         self._thumbnail_uuid = None
         self._vendor = None
@@ -220,72 +208,108 @@ class AllDetectionsForTarget(object):
 
         if affiliation_state is not None:
             self.affiliation_state = affiliation_state
-        self.applicability = applicability
+        if applicability is not None:
+            self.applicability = applicability
         if authorization_state is not None:
             self.authorization_state = authorization_state
-        self.banners_uuid = banners_uuid
-        self.cert_uuid = cert_uuid
-        self.confidence = confidence
-        self.criticality = criticality
+        if banners_uuid is not None:
+            self.banners_uuid = banners_uuid
+        if cert_uuid is not None:
+            self.cert_uuid = cert_uuid
+        if confidence is not None:
+            self.confidence = confidence
+        if criticality is not None:
+            self.criticality = criticality
         if deleted is not None:
             self.deleted = deleted
-        self.description = description
-        self.detection_criteria = detection_criteria
-        self.detection_uuid = detection_uuid
-        self.enumerability = enumerability
+        if description is not None:
+            self.description = description
+        if detection_criteria is not None:
+            self.detection_criteria = detection_criteria
+        if detection_relevance is not None:
+            self.detection_relevance = detection_relevance
+        if enumerability is not None:
+            self.enumerability = enumerability
         if first_seen is not None:
             self.first_seen = first_seen
-        self.headers_uuid = headers_uuid
-        self.hostname = hostname
-        self.hostname_id = hostname_id
+        if headers_uuid is not None:
+            self.headers_uuid = headers_uuid
+        if hostname is not None:
+            self.hostname = hostname
+        if hostname_id is not None:
+            self.hostname_id = hostname_id
         self.id = id
         if impact_score is not None:
             self.impact_score = impact_score
-        self.ip = ip
-        self.ip_id = ip_id
-        self.ip_str = ip_str
+        if ip is not None:
+            self.ip = ip
+        if ip_id is not None:
+            self.ip_id = ip_id
+        if ip_str is not None:
+            self.ip_str = ip_str
         if last_seen is not None:
             self.last_seen = last_seen
-        self.max_confidence = max_confidence
-        self.name = name
+        if lens_id is not None:
+            self.lens_id = lens_id
+        if lens_view is not None:
+            self.lens_view = lens_view
+        if name is not None:
+            self.name = name
         self.org_id = org_id
-        self.path = path
-        self.perspective = perspective
-        self.perspective_name = perspective_name
-        self.port = port
-        self.post_exploit = post_exploit
-        self.private_weakness = private_weakness
-        self.protocol = protocol
-        self.public_weakness = public_weakness
-        self.randori_notes = randori_notes
-        self.reference = reference
-        if refreshed is not None:
-            self.refreshed = refreshed
-        self.research = research
-        self.screenshot_uuid = screenshot_uuid
-        self.service_id = service_id
+        if path is not None:
+            self.path = path
+        if perspective is not None:
+            self.perspective = perspective
+        if perspective_name is not None:
+            self.perspective_name = perspective_name
+        if port is not None:
+            self.port = port
+        if post_exploit is not None:
+            self.post_exploit = post_exploit
+        if priority_impact_factor is not None:
+            self.priority_impact_factor = priority_impact_factor
+        if priority_score is not None:
+            self.priority_score = priority_score
+        if priority_status_factor is not None:
+            self.priority_status_factor = priority_status_factor
+        if priority_tags_factor is not None:
+            self.priority_tags_factor = priority_tags_factor
+        if private_weakness is not None:
+            self.private_weakness = private_weakness
+        if protocol is not None:
+            self.protocol = protocol
+        if public_weakness is not None:
+            self.public_weakness = public_weakness
+        if randori_notes is not None:
+            self.randori_notes = randori_notes
+        if reference is not None:
+            self.reference = reference
+        if research is not None:
+            self.research = research
+        if screenshot_uuid is not None:
+            self.screenshot_uuid = screenshot_uuid
+        if service_id is not None:
+            self.service_id = service_id
         if status is not None:
             self.status = status
         if tags is not None:
             self.tags = tags
-        self.target_confidence = target_confidence
-        self.target_detection_criteria = target_detection_criteria
+        if target_confidence is not None:
+            self.target_confidence = target_confidence
         if target_first_seen is not None:
             self.target_first_seen = target_first_seen
-        self.target_hostname = target_hostname
-        self.target_hostname_id = target_hostname_id
-        self.target_id = target_id
-        self.target_ip = target_ip
-        self.target_ip_str = target_ip_str
+        if target_id is not None:
+            self.target_id = target_id
         if target_last_seen is not None:
             self.target_last_seen = target_last_seen
-        self.target_path = target_path
-        self.target_port = target_port
-        self.target_protocol = target_protocol
-        self.target_temptation = target_temptation
-        self.thumbnail_uuid = thumbnail_uuid
-        self.vendor = vendor
-        self.version = version
+        if target_temptation is not None:
+            self.target_temptation = target_temptation
+        if thumbnail_uuid is not None:
+            self.thumbnail_uuid = thumbnail_uuid
+        if vendor is not None:
+            self.vendor = vendor
+        if version is not None:
+            self.version = version
 
     @property
     def affiliation_state(self):
@@ -305,7 +329,7 @@ class AllDetectionsForTarget(object):
         :param affiliation_state: The affiliation_state of this AllDetectionsForTarget.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Affiliated", "Unaffiliated", "None"]  # noqa: E501
+        allowed_values = ["None", "Affiliated", "Unaffiliated"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
@@ -510,25 +534,25 @@ class AllDetectionsForTarget(object):
         self._detection_criteria = detection_criteria
 
     @property
-    def detection_uuid(self):
-        """Gets the detection_uuid of this AllDetectionsForTarget.  # noqa: E501
+    def detection_relevance(self):
+        """Gets the detection_relevance of this AllDetectionsForTarget.  # noqa: E501
 
 
-        :return: The detection_uuid of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
+        :return: The detection_relevance of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: int
         """
-        return self._detection_uuid
+        return self._detection_relevance
 
-    @detection_uuid.setter
-    def detection_uuid(self, detection_uuid):
-        """Sets the detection_uuid of this AllDetectionsForTarget.
+    @detection_relevance.setter
+    def detection_relevance(self, detection_relevance):
+        """Sets the detection_relevance of this AllDetectionsForTarget.
 
 
-        :param detection_uuid: The detection_uuid of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
+        :param detection_relevance: The detection_relevance of this AllDetectionsForTarget.  # noqa: E501
+        :type: int
         """
 
-        self._detection_uuid = detection_uuid
+        self._detection_relevance = detection_relevance
 
     @property
     def enumerability(self):
@@ -557,7 +581,7 @@ class AllDetectionsForTarget(object):
 
 
         :return: The first_seen of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._first_seen
 
@@ -567,7 +591,7 @@ class AllDetectionsForTarget(object):
 
 
         :param first_seen: The first_seen of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._first_seen = first_seen
@@ -754,7 +778,7 @@ class AllDetectionsForTarget(object):
 
 
         :return: The last_seen of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._last_seen
 
@@ -764,31 +788,52 @@ class AllDetectionsForTarget(object):
 
 
         :param last_seen: The last_seen of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._last_seen = last_seen
 
     @property
-    def max_confidence(self):
-        """Gets the max_confidence of this AllDetectionsForTarget.  # noqa: E501
+    def lens_id(self):
+        """Gets the lens_id of this AllDetectionsForTarget.  # noqa: E501
 
 
-        :return: The max_confidence of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: int
+        :return: The lens_id of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: str
         """
-        return self._max_confidence
+        return self._lens_id
 
-    @max_confidence.setter
-    def max_confidence(self, max_confidence):
-        """Sets the max_confidence of this AllDetectionsForTarget.
+    @lens_id.setter
+    def lens_id(self, lens_id):
+        """Sets the lens_id of this AllDetectionsForTarget.
 
 
-        :param max_confidence: The max_confidence of this AllDetectionsForTarget.  # noqa: E501
-        :type: int
+        :param lens_id: The lens_id of this AllDetectionsForTarget.  # noqa: E501
+        :type: str
         """
 
-        self._max_confidence = max_confidence
+        self._lens_id = lens_id
+
+    @property
+    def lens_view(self):
+        """Gets the lens_view of this AllDetectionsForTarget.  # noqa: E501
+
+
+        :return: The lens_view of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_view
+
+    @lens_view.setter
+    def lens_view(self, lens_view):
+        """Sets the lens_view of this AllDetectionsForTarget.
+
+
+        :param lens_view: The lens_view of this AllDetectionsForTarget.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_view = lens_view
 
     @property
     def name(self):
@@ -829,6 +874,8 @@ class AllDetectionsForTarget(object):
         :param org_id: The org_id of this AllDetectionsForTarget.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and org_id is None:  # noqa: E501
+            raise ValueError("Invalid value for `org_id`, must not be `None`")  # noqa: E501
 
         self._org_id = org_id
 
@@ -938,6 +985,90 @@ class AllDetectionsForTarget(object):
         self._post_exploit = post_exploit
 
     @property
+    def priority_impact_factor(self):
+        """Gets the priority_impact_factor of this AllDetectionsForTarget.  # noqa: E501
+
+
+        :return: The priority_impact_factor of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_impact_factor
+
+    @priority_impact_factor.setter
+    def priority_impact_factor(self, priority_impact_factor):
+        """Sets the priority_impact_factor of this AllDetectionsForTarget.
+
+
+        :param priority_impact_factor: The priority_impact_factor of this AllDetectionsForTarget.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_impact_factor = priority_impact_factor
+
+    @property
+    def priority_score(self):
+        """Gets the priority_score of this AllDetectionsForTarget.  # noqa: E501
+
+
+        :return: The priority_score of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_score
+
+    @priority_score.setter
+    def priority_score(self, priority_score):
+        """Sets the priority_score of this AllDetectionsForTarget.
+
+
+        :param priority_score: The priority_score of this AllDetectionsForTarget.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_score = priority_score
+
+    @property
+    def priority_status_factor(self):
+        """Gets the priority_status_factor of this AllDetectionsForTarget.  # noqa: E501
+
+
+        :return: The priority_status_factor of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_status_factor
+
+    @priority_status_factor.setter
+    def priority_status_factor(self, priority_status_factor):
+        """Sets the priority_status_factor of this AllDetectionsForTarget.
+
+
+        :param priority_status_factor: The priority_status_factor of this AllDetectionsForTarget.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_status_factor = priority_status_factor
+
+    @property
+    def priority_tags_factor(self):
+        """Gets the priority_tags_factor of this AllDetectionsForTarget.  # noqa: E501
+
+
+        :return: The priority_tags_factor of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_tags_factor
+
+    @priority_tags_factor.setter
+    def priority_tags_factor(self, priority_tags_factor):
+        """Sets the priority_tags_factor of this AllDetectionsForTarget.
+
+
+        :param priority_tags_factor: The priority_tags_factor of this AllDetectionsForTarget.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_tags_factor = priority_tags_factor
+
+    @property
     def private_weakness(self):
         """Gets the private_weakness of this AllDetectionsForTarget.  # noqa: E501
 
@@ -1043,27 +1174,6 @@ class AllDetectionsForTarget(object):
         self._reference = reference
 
     @property
-    def refreshed(self):
-        """Gets the refreshed of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The refreshed of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: bool
-        """
-        return self._refreshed
-
-    @refreshed.setter
-    def refreshed(self, refreshed):
-        """Sets the refreshed of this AllDetectionsForTarget.
-
-
-        :param refreshed: The refreshed of this AllDetectionsForTarget.  # noqa: E501
-        :type: bool
-        """
-
-        self._refreshed = refreshed
-
-    @property
     def research(self):
         """Gets the research of this AllDetectionsForTarget.  # noqa: E501
 
@@ -1144,7 +1254,7 @@ class AllDetectionsForTarget(object):
         :param status: The status of this AllDetectionsForTarget.  # noqa: E501
         :type: str
         """
-        allowed_values = ["None", "Needs Investigation", "Needs Resolution", "Needs Review", "Mitigated", "Accepted"]  # noqa: E501
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
@@ -1196,33 +1306,12 @@ class AllDetectionsForTarget(object):
         self._target_confidence = target_confidence
 
     @property
-    def target_detection_criteria(self):
-        """Gets the target_detection_criteria of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The target_detection_criteria of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: object
-        """
-        return self._target_detection_criteria
-
-    @target_detection_criteria.setter
-    def target_detection_criteria(self, target_detection_criteria):
-        """Sets the target_detection_criteria of this AllDetectionsForTarget.
-
-
-        :param target_detection_criteria: The target_detection_criteria of this AllDetectionsForTarget.  # noqa: E501
-        :type: object
-        """
-
-        self._target_detection_criteria = target_detection_criteria
-
-    @property
     def target_first_seen(self):
         """Gets the target_first_seen of this AllDetectionsForTarget.  # noqa: E501
 
 
         :return: The target_first_seen of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._target_first_seen
 
@@ -1232,52 +1321,10 @@ class AllDetectionsForTarget(object):
 
 
         :param target_first_seen: The target_first_seen of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._target_first_seen = target_first_seen
-
-    @property
-    def target_hostname(self):
-        """Gets the target_hostname of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The target_hostname of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_hostname
-
-    @target_hostname.setter
-    def target_hostname(self, target_hostname):
-        """Sets the target_hostname of this AllDetectionsForTarget.
-
-
-        :param target_hostname: The target_hostname of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
-        """
-
-        self._target_hostname = target_hostname
-
-    @property
-    def target_hostname_id(self):
-        """Gets the target_hostname_id of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The target_hostname_id of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_hostname_id
-
-    @target_hostname_id.setter
-    def target_hostname_id(self, target_hostname_id):
-        """Sets the target_hostname_id of this AllDetectionsForTarget.
-
-
-        :param target_hostname_id: The target_hostname_id of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
-        """
-
-        self._target_hostname_id = target_hostname_id
 
     @property
     def target_id(self):
@@ -1301,54 +1348,12 @@ class AllDetectionsForTarget(object):
         self._target_id = target_id
 
     @property
-    def target_ip(self):
-        """Gets the target_ip of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The target_ip of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_ip
-
-    @target_ip.setter
-    def target_ip(self, target_ip):
-        """Sets the target_ip of this AllDetectionsForTarget.
-
-
-        :param target_ip: The target_ip of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
-        """
-
-        self._target_ip = target_ip
-
-    @property
-    def target_ip_str(self):
-        """Gets the target_ip_str of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The target_ip_str of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_ip_str
-
-    @target_ip_str.setter
-    def target_ip_str(self, target_ip_str):
-        """Sets the target_ip_str of this AllDetectionsForTarget.
-
-
-        :param target_ip_str: The target_ip_str of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
-        """
-
-        self._target_ip_str = target_ip_str
-
-    @property
     def target_last_seen(self):
         """Gets the target_last_seen of this AllDetectionsForTarget.  # noqa: E501
 
 
         :return: The target_last_seen of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._target_last_seen
 
@@ -1358,73 +1363,10 @@ class AllDetectionsForTarget(object):
 
 
         :param target_last_seen: The target_last_seen of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._target_last_seen = target_last_seen
-
-    @property
-    def target_path(self):
-        """Gets the target_path of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The target_path of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_path
-
-    @target_path.setter
-    def target_path(self, target_path):
-        """Sets the target_path of this AllDetectionsForTarget.
-
-
-        :param target_path: The target_path of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
-        """
-
-        self._target_path = target_path
-
-    @property
-    def target_port(self):
-        """Gets the target_port of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The target_port of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: int
-        """
-        return self._target_port
-
-    @target_port.setter
-    def target_port(self, target_port):
-        """Sets the target_port of this AllDetectionsForTarget.
-
-
-        :param target_port: The target_port of this AllDetectionsForTarget.  # noqa: E501
-        :type: int
-        """
-
-        self._target_port = target_port
-
-    @property
-    def target_protocol(self):
-        """Gets the target_protocol of this AllDetectionsForTarget.  # noqa: E501
-
-
-        :return: The target_protocol of this AllDetectionsForTarget.  # noqa: E501
-        :rtype: str
-        """
-        return self._target_protocol
-
-    @target_protocol.setter
-    def target_protocol(self, target_protocol):
-        """Sets the target_protocol of this AllDetectionsForTarget.
-
-
-        :param target_protocol: The target_protocol of this AllDetectionsForTarget.  # noqa: E501
-        :type: str
-        """
-
-        self._target_protocol = target_protocol
 
     @property
     def target_temptation(self):

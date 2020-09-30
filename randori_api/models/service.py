@@ -39,14 +39,14 @@ class Service(object):
         'criticality': 'int',
         'deleted': 'bool',
         'description': 'str',
-        'detection_criteria': 'object',
         'enumerability': 'int',
-        'first_seen': 'str',
+        'first_seen': 'datetime',
         'id': 'str',
-        'instance_count': 'int',
-        'ip_count': 'int',
-        'last_seen': 'str',
-        'max_confidence': 'int',
+        'instance_count': 'float',
+        'ip_count': 'float',
+        'last_seen': 'datetime',
+        'lens_id': 'str',
+        'lens_view': 'str',
         'name': 'str',
         'org_id': 'str',
         'perspective': 'str',
@@ -56,10 +56,8 @@ class Service(object):
         'public_weakness': 'int',
         'randori_notes': 'str',
         'reference': 'str',
-        'refreshed': 'bool',
         'research': 'int',
         'service_id': 'str',
-        'tags': 'object',
         'target_temptation': 'int',
         'vendor': 'str',
         'version': 'str'
@@ -71,14 +69,14 @@ class Service(object):
         'criticality': 'criticality',
         'deleted': 'deleted',
         'description': 'description',
-        'detection_criteria': 'detection_criteria',
         'enumerability': 'enumerability',
         'first_seen': 'first_seen',
         'id': 'id',
         'instance_count': 'instance_count',
         'ip_count': 'ip_count',
         'last_seen': 'last_seen',
-        'max_confidence': 'max_confidence',
+        'lens_id': 'lens_id',
+        'lens_view': 'lens_view',
         'name': 'name',
         'org_id': 'org_id',
         'perspective': 'perspective',
@@ -88,16 +86,14 @@ class Service(object):
         'public_weakness': 'public_weakness',
         'randori_notes': 'randori_notes',
         'reference': 'reference',
-        'refreshed': 'refreshed',
         'research': 'research',
         'service_id': 'service_id',
-        'tags': 'tags',
         'target_temptation': 'target_temptation',
         'vendor': 'vendor',
         'version': 'version'
     }
 
-    def __init__(self, applicability=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, enumerability=None, first_seen=None, id=None, instance_count=None, ip_count=None, last_seen=None, max_confidence=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, refreshed=None, research=None, service_id=None, tags=None, target_temptation=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, applicability=None, confidence=None, criticality=None, deleted=None, description=None, enumerability=None, first_seen=None, id=None, instance_count=None, ip_count=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, research=None, service_id=None, target_temptation=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """Service - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -108,14 +104,14 @@ class Service(object):
         self._criticality = None
         self._deleted = None
         self._description = None
-        self._detection_criteria = None
         self._enumerability = None
         self._first_seen = None
         self._id = None
         self._instance_count = None
         self._ip_count = None
         self._last_seen = None
-        self._max_confidence = None
+        self._lens_id = None
+        self._lens_view = None
         self._name = None
         self._org_id = None
         self._perspective = None
@@ -125,49 +121,65 @@ class Service(object):
         self._public_weakness = None
         self._randori_notes = None
         self._reference = None
-        self._refreshed = None
         self._research = None
         self._service_id = None
-        self._tags = None
         self._target_temptation = None
         self._vendor = None
         self._version = None
         self.discriminator = None
 
-        self.applicability = applicability
-        self.confidence = confidence
-        self.criticality = criticality
+        if applicability is not None:
+            self.applicability = applicability
+        if confidence is not None:
+            self.confidence = confidence
+        if criticality is not None:
+            self.criticality = criticality
         if deleted is not None:
             self.deleted = deleted
-        self.description = description
-        self.detection_criteria = detection_criteria
-        self.enumerability = enumerability
+        if description is not None:
+            self.description = description
+        if enumerability is not None:
+            self.enumerability = enumerability
         if first_seen is not None:
             self.first_seen = first_seen
         self.id = id
-        self.instance_count = instance_count
-        self.ip_count = ip_count
+        if instance_count is not None:
+            self.instance_count = instance_count
+        if ip_count is not None:
+            self.ip_count = ip_count
         if last_seen is not None:
             self.last_seen = last_seen
-        self.max_confidence = max_confidence
-        self.name = name
+        if lens_id is not None:
+            self.lens_id = lens_id
+        if lens_view is not None:
+            self.lens_view = lens_view
+        if name is not None:
+            self.name = name
         self.org_id = org_id
-        self.perspective = perspective
-        self.perspective_name = perspective_name
-        self.post_exploit = post_exploit
-        self.private_weakness = private_weakness
-        self.public_weakness = public_weakness
-        self.randori_notes = randori_notes
-        self.reference = reference
-        if refreshed is not None:
-            self.refreshed = refreshed
-        self.research = research
-        self.service_id = service_id
-        if tags is not None:
-            self.tags = tags
-        self.target_temptation = target_temptation
-        self.vendor = vendor
-        self.version = version
+        if perspective is not None:
+            self.perspective = perspective
+        if perspective_name is not None:
+            self.perspective_name = perspective_name
+        if post_exploit is not None:
+            self.post_exploit = post_exploit
+        if private_weakness is not None:
+            self.private_weakness = private_weakness
+        if public_weakness is not None:
+            self.public_weakness = public_weakness
+        if randori_notes is not None:
+            self.randori_notes = randori_notes
+        if reference is not None:
+            self.reference = reference
+        if research is not None:
+            self.research = research
+        if service_id is not None:
+            self.service_id = service_id
+        if target_temptation is not None:
+            self.target_temptation = target_temptation
+        if vendor is not None:
+            self.vendor = vendor
+        if version is not None:
+            self.version = version
 
     @property
     def applicability(self):
@@ -275,27 +287,6 @@ class Service(object):
         self._description = description
 
     @property
-    def detection_criteria(self):
-        """Gets the detection_criteria of this Service.  # noqa: E501
-
-
-        :return: The detection_criteria of this Service.  # noqa: E501
-        :rtype: object
-        """
-        return self._detection_criteria
-
-    @detection_criteria.setter
-    def detection_criteria(self, detection_criteria):
-        """Sets the detection_criteria of this Service.
-
-
-        :param detection_criteria: The detection_criteria of this Service.  # noqa: E501
-        :type: object
-        """
-
-        self._detection_criteria = detection_criteria
-
-    @property
     def enumerability(self):
         """Gets the enumerability of this Service.  # noqa: E501
 
@@ -322,7 +313,7 @@ class Service(object):
 
 
         :return: The first_seen of this Service.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._first_seen
 
@@ -332,7 +323,7 @@ class Service(object):
 
 
         :param first_seen: The first_seen of this Service.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._first_seen = first_seen
@@ -366,7 +357,7 @@ class Service(object):
 
 
         :return: The instance_count of this Service.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._instance_count
 
@@ -376,7 +367,7 @@ class Service(object):
 
 
         :param instance_count: The instance_count of this Service.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._instance_count = instance_count
@@ -387,7 +378,7 @@ class Service(object):
 
 
         :return: The ip_count of this Service.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._ip_count
 
@@ -397,7 +388,7 @@ class Service(object):
 
 
         :param ip_count: The ip_count of this Service.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._ip_count = ip_count
@@ -408,7 +399,7 @@ class Service(object):
 
 
         :return: The last_seen of this Service.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._last_seen
 
@@ -418,31 +409,52 @@ class Service(object):
 
 
         :param last_seen: The last_seen of this Service.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._last_seen = last_seen
 
     @property
-    def max_confidence(self):
-        """Gets the max_confidence of this Service.  # noqa: E501
+    def lens_id(self):
+        """Gets the lens_id of this Service.  # noqa: E501
 
 
-        :return: The max_confidence of this Service.  # noqa: E501
-        :rtype: int
+        :return: The lens_id of this Service.  # noqa: E501
+        :rtype: str
         """
-        return self._max_confidence
+        return self._lens_id
 
-    @max_confidence.setter
-    def max_confidence(self, max_confidence):
-        """Sets the max_confidence of this Service.
+    @lens_id.setter
+    def lens_id(self, lens_id):
+        """Sets the lens_id of this Service.
 
 
-        :param max_confidence: The max_confidence of this Service.  # noqa: E501
-        :type: int
+        :param lens_id: The lens_id of this Service.  # noqa: E501
+        :type: str
         """
 
-        self._max_confidence = max_confidence
+        self._lens_id = lens_id
+
+    @property
+    def lens_view(self):
+        """Gets the lens_view of this Service.  # noqa: E501
+
+
+        :return: The lens_view of this Service.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_view
+
+    @lens_view.setter
+    def lens_view(self, lens_view):
+        """Sets the lens_view of this Service.
+
+
+        :param lens_view: The lens_view of this Service.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_view = lens_view
 
     @property
     def name(self):
@@ -636,27 +648,6 @@ class Service(object):
         self._reference = reference
 
     @property
-    def refreshed(self):
-        """Gets the refreshed of this Service.  # noqa: E501
-
-
-        :return: The refreshed of this Service.  # noqa: E501
-        :rtype: bool
-        """
-        return self._refreshed
-
-    @refreshed.setter
-    def refreshed(self, refreshed):
-        """Sets the refreshed of this Service.
-
-
-        :param refreshed: The refreshed of this Service.  # noqa: E501
-        :type: bool
-        """
-
-        self._refreshed = refreshed
-
-    @property
     def research(self):
         """Gets the research of this Service.  # noqa: E501
 
@@ -697,27 +688,6 @@ class Service(object):
         """
 
         self._service_id = service_id
-
-    @property
-    def tags(self):
-        """Gets the tags of this Service.  # noqa: E501
-
-
-        :return: The tags of this Service.  # noqa: E501
-        :rtype: object
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this Service.
-
-
-        :param tags: The tags of this Service.  # noqa: E501
-        :type: object
-        """
-
-        self._tags = tags
 
     @property
     def target_temptation(self):

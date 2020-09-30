@@ -37,23 +37,29 @@ class Network(object):
         'affiliation_state': 'str',
         'confidence': 'int',
         'deleted': 'bool',
-        'first_seen': 'str',
+        'first_seen': 'datetime',
         'id': 'str',
         'impact_score': 'str',
-        'ip_count': 'int',
-        'last_seen': 'str',
+        'ip_count': 'float',
+        'last_seen': 'datetime',
+        'lens_id': 'str',
+        'lens_view': 'str',
         'max_confidence': 'int',
         'network': 'str',
         'network_str': 'str',
+        'only_in_review_targets': 'bool',
         'open_port_count': 'int',
         'org_id': 'str',
         'perspective': 'str',
         'perspective_name': 'str',
-        'refreshed': 'bool',
-        'service_count': 'int',
+        'priority_impact_factor': 'float',
+        'priority_score': 'float',
+        'priority_status_factor': 'float',
+        'priority_tags_factor': 'float',
+        'service_count': 'float',
         'status': 'str',
         'tags': 'object',
-        'target_count': 'int',
+        'target_count': 'float',
         'target_temptation': 'int'
     }
 
@@ -66,14 +72,20 @@ class Network(object):
         'impact_score': 'impact_score',
         'ip_count': 'ip_count',
         'last_seen': 'last_seen',
+        'lens_id': 'lens_id',
+        'lens_view': 'lens_view',
         'max_confidence': 'max_confidence',
         'network': 'network',
         'network_str': 'network_str',
+        'only_in_review_targets': 'only_in_review_targets',
         'open_port_count': 'open_port_count',
         'org_id': 'org_id',
         'perspective': 'perspective',
         'perspective_name': 'perspective_name',
-        'refreshed': 'refreshed',
+        'priority_impact_factor': 'priority_impact_factor',
+        'priority_score': 'priority_score',
+        'priority_status_factor': 'priority_status_factor',
+        'priority_tags_factor': 'priority_tags_factor',
         'service_count': 'service_count',
         'status': 'status',
         'tags': 'tags',
@@ -81,7 +93,7 @@ class Network(object):
         'target_temptation': 'target_temptation'
     }
 
-    def __init__(self, affiliation_state=None, confidence=None, deleted=None, first_seen=None, id=None, impact_score=None, ip_count=None, last_seen=None, max_confidence=None, network=None, network_str=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, refreshed=None, service_count=None, status=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, confidence=None, deleted=None, first_seen=None, id=None, impact_score=None, ip_count=None, last_seen=None, lens_id=None, lens_view=None, max_confidence=None, network=None, network_str=None, only_in_review_targets=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, service_count=None, status=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
         """Network - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -95,14 +107,20 @@ class Network(object):
         self._impact_score = None
         self._ip_count = None
         self._last_seen = None
+        self._lens_id = None
+        self._lens_view = None
         self._max_confidence = None
         self._network = None
         self._network_str = None
+        self._only_in_review_targets = None
         self._open_port_count = None
         self._org_id = None
         self._perspective = None
         self._perspective_name = None
-        self._refreshed = None
+        self._priority_impact_factor = None
+        self._priority_score = None
+        self._priority_status_factor = None
+        self._priority_tags_factor = None
         self._service_count = None
         self._status = None
         self._tags = None
@@ -112,7 +130,8 @@ class Network(object):
 
         if affiliation_state is not None:
             self.affiliation_state = affiliation_state
-        self.confidence = confidence
+        if confidence is not None:
+            self.confidence = confidence
         if deleted is not None:
             self.deleted = deleted
         if first_seen is not None:
@@ -120,25 +139,47 @@ class Network(object):
         self.id = id
         if impact_score is not None:
             self.impact_score = impact_score
-        self.ip_count = ip_count
+        if ip_count is not None:
+            self.ip_count = ip_count
         if last_seen is not None:
             self.last_seen = last_seen
-        self.max_confidence = max_confidence
-        self.network = network
-        self.network_str = network_str
-        self.open_port_count = open_port_count
+        if lens_id is not None:
+            self.lens_id = lens_id
+        if lens_view is not None:
+            self.lens_view = lens_view
+        if max_confidence is not None:
+            self.max_confidence = max_confidence
+        if network is not None:
+            self.network = network
+        if network_str is not None:
+            self.network_str = network_str
+        if only_in_review_targets is not None:
+            self.only_in_review_targets = only_in_review_targets
+        if open_port_count is not None:
+            self.open_port_count = open_port_count
         self.org_id = org_id
-        self.perspective = perspective
-        self.perspective_name = perspective_name
-        if refreshed is not None:
-            self.refreshed = refreshed
-        self.service_count = service_count
+        if perspective is not None:
+            self.perspective = perspective
+        if perspective_name is not None:
+            self.perspective_name = perspective_name
+        if priority_impact_factor is not None:
+            self.priority_impact_factor = priority_impact_factor
+        if priority_score is not None:
+            self.priority_score = priority_score
+        if priority_status_factor is not None:
+            self.priority_status_factor = priority_status_factor
+        if priority_tags_factor is not None:
+            self.priority_tags_factor = priority_tags_factor
+        if service_count is not None:
+            self.service_count = service_count
         if status is not None:
             self.status = status
         if tags is not None:
             self.tags = tags
-        self.target_count = target_count
-        self.target_temptation = target_temptation
+        if target_count is not None:
+            self.target_count = target_count
+        if target_temptation is not None:
+            self.target_temptation = target_temptation
 
     @property
     def affiliation_state(self):
@@ -158,7 +199,7 @@ class Network(object):
         :param affiliation_state: The affiliation_state of this Network.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Affiliated", "Unaffiliated", "None"]  # noqa: E501
+        allowed_values = ["None", "Affiliated", "Unaffiliated"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
@@ -215,7 +256,7 @@ class Network(object):
 
 
         :return: The first_seen of this Network.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._first_seen
 
@@ -225,7 +266,7 @@ class Network(object):
 
 
         :param first_seen: The first_seen of this Network.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._first_seen = first_seen
@@ -286,7 +327,7 @@ class Network(object):
 
 
         :return: The ip_count of this Network.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._ip_count
 
@@ -296,7 +337,7 @@ class Network(object):
 
 
         :param ip_count: The ip_count of this Network.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._ip_count = ip_count
@@ -307,7 +348,7 @@ class Network(object):
 
 
         :return: The last_seen of this Network.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._last_seen
 
@@ -317,10 +358,52 @@ class Network(object):
 
 
         :param last_seen: The last_seen of this Network.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._last_seen = last_seen
+
+    @property
+    def lens_id(self):
+        """Gets the lens_id of this Network.  # noqa: E501
+
+
+        :return: The lens_id of this Network.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_id
+
+    @lens_id.setter
+    def lens_id(self, lens_id):
+        """Sets the lens_id of this Network.
+
+
+        :param lens_id: The lens_id of this Network.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_id = lens_id
+
+    @property
+    def lens_view(self):
+        """Gets the lens_view of this Network.  # noqa: E501
+
+
+        :return: The lens_view of this Network.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_view
+
+    @lens_view.setter
+    def lens_view(self, lens_view):
+        """Sets the lens_view of this Network.
+
+
+        :param lens_view: The lens_view of this Network.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_view = lens_view
 
     @property
     def max_confidence(self):
@@ -384,6 +467,27 @@ class Network(object):
         """
 
         self._network_str = network_str
+
+    @property
+    def only_in_review_targets(self):
+        """Gets the only_in_review_targets of this Network.  # noqa: E501
+
+
+        :return: The only_in_review_targets of this Network.  # noqa: E501
+        :rtype: bool
+        """
+        return self._only_in_review_targets
+
+    @only_in_review_targets.setter
+    def only_in_review_targets(self, only_in_review_targets):
+        """Sets the only_in_review_targets of this Network.
+
+
+        :param only_in_review_targets: The only_in_review_targets of this Network.  # noqa: E501
+        :type: bool
+        """
+
+        self._only_in_review_targets = only_in_review_targets
 
     @property
     def open_port_count(self):
@@ -472,25 +576,88 @@ class Network(object):
         self._perspective_name = perspective_name
 
     @property
-    def refreshed(self):
-        """Gets the refreshed of this Network.  # noqa: E501
+    def priority_impact_factor(self):
+        """Gets the priority_impact_factor of this Network.  # noqa: E501
 
 
-        :return: The refreshed of this Network.  # noqa: E501
-        :rtype: bool
+        :return: The priority_impact_factor of this Network.  # noqa: E501
+        :rtype: float
         """
-        return self._refreshed
+        return self._priority_impact_factor
 
-    @refreshed.setter
-    def refreshed(self, refreshed):
-        """Sets the refreshed of this Network.
+    @priority_impact_factor.setter
+    def priority_impact_factor(self, priority_impact_factor):
+        """Sets the priority_impact_factor of this Network.
 
 
-        :param refreshed: The refreshed of this Network.  # noqa: E501
-        :type: bool
+        :param priority_impact_factor: The priority_impact_factor of this Network.  # noqa: E501
+        :type: float
         """
 
-        self._refreshed = refreshed
+        self._priority_impact_factor = priority_impact_factor
+
+    @property
+    def priority_score(self):
+        """Gets the priority_score of this Network.  # noqa: E501
+
+
+        :return: The priority_score of this Network.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_score
+
+    @priority_score.setter
+    def priority_score(self, priority_score):
+        """Sets the priority_score of this Network.
+
+
+        :param priority_score: The priority_score of this Network.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_score = priority_score
+
+    @property
+    def priority_status_factor(self):
+        """Gets the priority_status_factor of this Network.  # noqa: E501
+
+
+        :return: The priority_status_factor of this Network.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_status_factor
+
+    @priority_status_factor.setter
+    def priority_status_factor(self, priority_status_factor):
+        """Sets the priority_status_factor of this Network.
+
+
+        :param priority_status_factor: The priority_status_factor of this Network.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_status_factor = priority_status_factor
+
+    @property
+    def priority_tags_factor(self):
+        """Gets the priority_tags_factor of this Network.  # noqa: E501
+
+
+        :return: The priority_tags_factor of this Network.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_tags_factor
+
+    @priority_tags_factor.setter
+    def priority_tags_factor(self, priority_tags_factor):
+        """Sets the priority_tags_factor of this Network.
+
+
+        :param priority_tags_factor: The priority_tags_factor of this Network.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_tags_factor = priority_tags_factor
 
     @property
     def service_count(self):
@@ -498,7 +665,7 @@ class Network(object):
 
 
         :return: The service_count of this Network.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._service_count
 
@@ -508,7 +675,7 @@ class Network(object):
 
 
         :param service_count: The service_count of this Network.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._service_count = service_count
@@ -531,7 +698,7 @@ class Network(object):
         :param status: The status of this Network.  # noqa: E501
         :type: str
         """
-        allowed_values = ["None", "Needs Investigation", "Needs Resolution", "Needs Review", "Mitigated", "Accepted"]  # noqa: E501
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
@@ -567,7 +734,7 @@ class Network(object):
 
 
         :return: The target_count of this Network.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._target_count
 
@@ -577,7 +744,7 @@ class Network(object):
 
 
         :param target_count: The target_count of this Network.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._target_count = target_count

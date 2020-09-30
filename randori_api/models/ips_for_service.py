@@ -38,27 +38,25 @@ class IpsForService(object):
         'confidence': 'int',
         'country': 'str',
         'deleted': 'bool',
-        'first_seen': 'str',
-        'hostname': 'str',
+        'first_seen': 'datetime',
         'id': 'str',
         'impact_score': 'str',
         'ip': 'str',
         'ip_id': 'str',
         'ip_str': 'str',
-        'last_seen': 'str',
+        'last_seen': 'datetime',
         'latitude': 'float',
+        'lens_id': 'str',
+        'lens_view': 'str',
         'longitude': 'float',
-        'max_confidence': 'int',
         'open_port_count': 'int',
         'org_id': 'str',
         'perspective': 'str',
         'perspective_name': 'str',
         'radius': 'float',
-        'refreshed': 'bool',
         'service_count': 'int',
         'service_id': 'str',
         'status': 'str',
-        'tags': 'object',
         'target_count': 'int',
         'target_temptation': 'int'
     }
@@ -69,7 +67,6 @@ class IpsForService(object):
         'country': 'country',
         'deleted': 'deleted',
         'first_seen': 'first_seen',
-        'hostname': 'hostname',
         'id': 'id',
         'impact_score': 'impact_score',
         'ip': 'ip',
@@ -77,23 +74,22 @@ class IpsForService(object):
         'ip_str': 'ip_str',
         'last_seen': 'last_seen',
         'latitude': 'latitude',
+        'lens_id': 'lens_id',
+        'lens_view': 'lens_view',
         'longitude': 'longitude',
-        'max_confidence': 'max_confidence',
         'open_port_count': 'open_port_count',
         'org_id': 'org_id',
         'perspective': 'perspective',
         'perspective_name': 'perspective_name',
         'radius': 'radius',
-        'refreshed': 'refreshed',
         'service_count': 'service_count',
         'service_id': 'service_id',
         'status': 'status',
-        'tags': 'tags',
         'target_count': 'target_count',
         'target_temptation': 'target_temptation'
     }
 
-    def __init__(self, affiliation_state=None, confidence=None, country=None, deleted=None, first_seen=None, hostname=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, latitude=None, longitude=None, max_confidence=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, radius=None, refreshed=None, service_count=None, service_id=None, status=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, confidence=None, country=None, deleted=None, first_seen=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, latitude=None, lens_id=None, lens_view=None, longitude=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, radius=None, service_count=None, service_id=None, status=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
         """IpsForService - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -104,7 +100,6 @@ class IpsForService(object):
         self._country = None
         self._deleted = None
         self._first_seen = None
-        self._hostname = None
         self._id = None
         self._impact_score = None
         self._ip = None
@@ -112,57 +107,69 @@ class IpsForService(object):
         self._ip_str = None
         self._last_seen = None
         self._latitude = None
+        self._lens_id = None
+        self._lens_view = None
         self._longitude = None
-        self._max_confidence = None
         self._open_port_count = None
         self._org_id = None
         self._perspective = None
         self._perspective_name = None
         self._radius = None
-        self._refreshed = None
         self._service_count = None
         self._service_id = None
         self._status = None
-        self._tags = None
         self._target_count = None
         self._target_temptation = None
         self.discriminator = None
 
         if affiliation_state is not None:
             self.affiliation_state = affiliation_state
-        self.confidence = confidence
-        self.country = country
+        if confidence is not None:
+            self.confidence = confidence
+        if country is not None:
+            self.country = country
         if deleted is not None:
             self.deleted = deleted
         if first_seen is not None:
             self.first_seen = first_seen
-        self.hostname = hostname
         self.id = id
         if impact_score is not None:
             self.impact_score = impact_score
-        self.ip = ip
-        self.ip_id = ip_id
-        self.ip_str = ip_str
+        if ip is not None:
+            self.ip = ip
+        if ip_id is not None:
+            self.ip_id = ip_id
+        if ip_str is not None:
+            self.ip_str = ip_str
         if last_seen is not None:
             self.last_seen = last_seen
-        self.latitude = latitude
-        self.longitude = longitude
-        self.max_confidence = max_confidence
-        self.open_port_count = open_port_count
+        if latitude is not None:
+            self.latitude = latitude
+        if lens_id is not None:
+            self.lens_id = lens_id
+        if lens_view is not None:
+            self.lens_view = lens_view
+        if longitude is not None:
+            self.longitude = longitude
+        if open_port_count is not None:
+            self.open_port_count = open_port_count
         self.org_id = org_id
-        self.perspective = perspective
-        self.perspective_name = perspective_name
-        self.radius = radius
-        if refreshed is not None:
-            self.refreshed = refreshed
-        self.service_count = service_count
-        self.service_id = service_id
+        if perspective is not None:
+            self.perspective = perspective
+        if perspective_name is not None:
+            self.perspective_name = perspective_name
+        if radius is not None:
+            self.radius = radius
+        if service_count is not None:
+            self.service_count = service_count
+        if service_id is not None:
+            self.service_id = service_id
         if status is not None:
             self.status = status
-        if tags is not None:
-            self.tags = tags
-        self.target_count = target_count
-        self.target_temptation = target_temptation
+        if target_count is not None:
+            self.target_count = target_count
+        if target_temptation is not None:
+            self.target_temptation = target_temptation
 
     @property
     def affiliation_state(self):
@@ -182,7 +189,7 @@ class IpsForService(object):
         :param affiliation_state: The affiliation_state of this IpsForService.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Affiliated", "Unaffiliated", "None"]  # noqa: E501
+        allowed_values = ["None", "Affiliated", "Unaffiliated"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
@@ -260,7 +267,7 @@ class IpsForService(object):
 
 
         :return: The first_seen of this IpsForService.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._first_seen
 
@@ -270,31 +277,10 @@ class IpsForService(object):
 
 
         :param first_seen: The first_seen of this IpsForService.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._first_seen = first_seen
-
-    @property
-    def hostname(self):
-        """Gets the hostname of this IpsForService.  # noqa: E501
-
-
-        :return: The hostname of this IpsForService.  # noqa: E501
-        :rtype: str
-        """
-        return self._hostname
-
-    @hostname.setter
-    def hostname(self, hostname):
-        """Sets the hostname of this IpsForService.
-
-
-        :param hostname: The hostname of this IpsForService.  # noqa: E501
-        :type: str
-        """
-
-        self._hostname = hostname
 
     @property
     def id(self):
@@ -415,7 +401,7 @@ class IpsForService(object):
 
 
         :return: The last_seen of this IpsForService.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._last_seen
 
@@ -425,7 +411,7 @@ class IpsForService(object):
 
 
         :param last_seen: The last_seen of this IpsForService.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._last_seen = last_seen
@@ -452,6 +438,48 @@ class IpsForService(object):
         self._latitude = latitude
 
     @property
+    def lens_id(self):
+        """Gets the lens_id of this IpsForService.  # noqa: E501
+
+
+        :return: The lens_id of this IpsForService.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_id
+
+    @lens_id.setter
+    def lens_id(self, lens_id):
+        """Sets the lens_id of this IpsForService.
+
+
+        :param lens_id: The lens_id of this IpsForService.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_id = lens_id
+
+    @property
+    def lens_view(self):
+        """Gets the lens_view of this IpsForService.  # noqa: E501
+
+
+        :return: The lens_view of this IpsForService.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_view
+
+    @lens_view.setter
+    def lens_view(self, lens_view):
+        """Sets the lens_view of this IpsForService.
+
+
+        :param lens_view: The lens_view of this IpsForService.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_view = lens_view
+
+    @property
     def longitude(self):
         """Gets the longitude of this IpsForService.  # noqa: E501
 
@@ -471,27 +499,6 @@ class IpsForService(object):
         """
 
         self._longitude = longitude
-
-    @property
-    def max_confidence(self):
-        """Gets the max_confidence of this IpsForService.  # noqa: E501
-
-
-        :return: The max_confidence of this IpsForService.  # noqa: E501
-        :rtype: int
-        """
-        return self._max_confidence
-
-    @max_confidence.setter
-    def max_confidence(self, max_confidence):
-        """Sets the max_confidence of this IpsForService.
-
-
-        :param max_confidence: The max_confidence of this IpsForService.  # noqa: E501
-        :type: int
-        """
-
-        self._max_confidence = max_confidence
 
     @property
     def open_port_count(self):
@@ -601,27 +608,6 @@ class IpsForService(object):
         self._radius = radius
 
     @property
-    def refreshed(self):
-        """Gets the refreshed of this IpsForService.  # noqa: E501
-
-
-        :return: The refreshed of this IpsForService.  # noqa: E501
-        :rtype: bool
-        """
-        return self._refreshed
-
-    @refreshed.setter
-    def refreshed(self, refreshed):
-        """Sets the refreshed of this IpsForService.
-
-
-        :param refreshed: The refreshed of this IpsForService.  # noqa: E501
-        :type: bool
-        """
-
-        self._refreshed = refreshed
-
-    @property
     def service_count(self):
         """Gets the service_count of this IpsForService.  # noqa: E501
 
@@ -681,7 +667,7 @@ class IpsForService(object):
         :param status: The status of this IpsForService.  # noqa: E501
         :type: str
         """
-        allowed_values = ["None", "Needs Investigation", "Needs Resolution", "Needs Review", "Mitigated", "Accepted"]  # noqa: E501
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
@@ -689,27 +675,6 @@ class IpsForService(object):
             )
 
         self._status = status
-
-    @property
-    def tags(self):
-        """Gets the tags of this IpsForService.  # noqa: E501
-
-
-        :return: The tags of this IpsForService.  # noqa: E501
-        :rtype: object
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this IpsForService.
-
-
-        :param tags: The tags of this IpsForService.  # noqa: E501
-        :type: object
-        """
-
-        self._tags = tags
 
     @property
     def target_count(self):

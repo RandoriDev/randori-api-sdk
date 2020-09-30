@@ -37,43 +37,39 @@ class HostnamesForIp(object):
         'affiliation_state': 'str',
         'confidence': 'int',
         'deleted': 'bool',
-        'first_seen': 'str',
         'hostname': 'str',
         'hostname_id': 'str',
         'id': 'str',
         'impact_score': 'str',
         'ip_id': 'str',
-        'last_seen': 'str',
-        'max_confidence': 'int',
+        'last_seen': 'datetime',
+        'lens_id': 'str',
+        'lens_view': 'str',
         'org_id': 'str',
         'perspective': 'str',
         'perspective_name': 'str',
-        'refreshed': 'bool',
-        'status': 'str',
-        'tags': 'object'
+        'status': 'str'
     }
 
     attribute_map = {
         'affiliation_state': 'affiliation_state',
         'confidence': 'confidence',
         'deleted': 'deleted',
-        'first_seen': 'first_seen',
         'hostname': 'hostname',
         'hostname_id': 'hostname_id',
         'id': 'id',
         'impact_score': 'impact_score',
         'ip_id': 'ip_id',
         'last_seen': 'last_seen',
-        'max_confidence': 'max_confidence',
+        'lens_id': 'lens_id',
+        'lens_view': 'lens_view',
         'org_id': 'org_id',
         'perspective': 'perspective',
         'perspective_name': 'perspective_name',
-        'refreshed': 'refreshed',
-        'status': 'status',
-        'tags': 'tags'
+        'status': 'status'
     }
 
-    def __init__(self, affiliation_state=None, confidence=None, deleted=None, first_seen=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip_id=None, last_seen=None, max_confidence=None, org_id=None, perspective=None, perspective_name=None, refreshed=None, status=None, tags=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, confidence=None, deleted=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip_id=None, last_seen=None, lens_id=None, lens_view=None, org_id=None, perspective=None, perspective_name=None, status=None, local_vars_configuration=None):  # noqa: E501
         """HostnamesForIp - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -82,47 +78,48 @@ class HostnamesForIp(object):
         self._affiliation_state = None
         self._confidence = None
         self._deleted = None
-        self._first_seen = None
         self._hostname = None
         self._hostname_id = None
         self._id = None
         self._impact_score = None
         self._ip_id = None
         self._last_seen = None
-        self._max_confidence = None
+        self._lens_id = None
+        self._lens_view = None
         self._org_id = None
         self._perspective = None
         self._perspective_name = None
-        self._refreshed = None
         self._status = None
-        self._tags = None
         self.discriminator = None
 
         if affiliation_state is not None:
             self.affiliation_state = affiliation_state
-        self.confidence = confidence
+        if confidence is not None:
+            self.confidence = confidence
         if deleted is not None:
             self.deleted = deleted
-        if first_seen is not None:
-            self.first_seen = first_seen
-        self.hostname = hostname
-        self.hostname_id = hostname_id
+        if hostname is not None:
+            self.hostname = hostname
+        if hostname_id is not None:
+            self.hostname_id = hostname_id
         self.id = id
         if impact_score is not None:
             self.impact_score = impact_score
-        self.ip_id = ip_id
+        if ip_id is not None:
+            self.ip_id = ip_id
         if last_seen is not None:
             self.last_seen = last_seen
-        self.max_confidence = max_confidence
+        if lens_id is not None:
+            self.lens_id = lens_id
+        if lens_view is not None:
+            self.lens_view = lens_view
         self.org_id = org_id
-        self.perspective = perspective
-        self.perspective_name = perspective_name
-        if refreshed is not None:
-            self.refreshed = refreshed
+        if perspective is not None:
+            self.perspective = perspective
+        if perspective_name is not None:
+            self.perspective_name = perspective_name
         if status is not None:
             self.status = status
-        if tags is not None:
-            self.tags = tags
 
     @property
     def affiliation_state(self):
@@ -142,7 +139,7 @@ class HostnamesForIp(object):
         :param affiliation_state: The affiliation_state of this HostnamesForIp.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Affiliated", "Unaffiliated", "None"]  # noqa: E501
+        allowed_values = ["None", "Affiliated", "Unaffiliated"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
@@ -192,27 +189,6 @@ class HostnamesForIp(object):
         """
 
         self._deleted = deleted
-
-    @property
-    def first_seen(self):
-        """Gets the first_seen of this HostnamesForIp.  # noqa: E501
-
-
-        :return: The first_seen of this HostnamesForIp.  # noqa: E501
-        :rtype: str
-        """
-        return self._first_seen
-
-    @first_seen.setter
-    def first_seen(self, first_seen):
-        """Sets the first_seen of this HostnamesForIp.
-
-
-        :param first_seen: The first_seen of this HostnamesForIp.  # noqa: E501
-        :type: str
-        """
-
-        self._first_seen = first_seen
 
     @property
     def hostname(self):
@@ -333,7 +309,7 @@ class HostnamesForIp(object):
 
 
         :return: The last_seen of this HostnamesForIp.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._last_seen
 
@@ -343,31 +319,52 @@ class HostnamesForIp(object):
 
 
         :param last_seen: The last_seen of this HostnamesForIp.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._last_seen = last_seen
 
     @property
-    def max_confidence(self):
-        """Gets the max_confidence of this HostnamesForIp.  # noqa: E501
+    def lens_id(self):
+        """Gets the lens_id of this HostnamesForIp.  # noqa: E501
 
 
-        :return: The max_confidence of this HostnamesForIp.  # noqa: E501
-        :rtype: int
+        :return: The lens_id of this HostnamesForIp.  # noqa: E501
+        :rtype: str
         """
-        return self._max_confidence
+        return self._lens_id
 
-    @max_confidence.setter
-    def max_confidence(self, max_confidence):
-        """Sets the max_confidence of this HostnamesForIp.
+    @lens_id.setter
+    def lens_id(self, lens_id):
+        """Sets the lens_id of this HostnamesForIp.
 
 
-        :param max_confidence: The max_confidence of this HostnamesForIp.  # noqa: E501
-        :type: int
+        :param lens_id: The lens_id of this HostnamesForIp.  # noqa: E501
+        :type: str
         """
 
-        self._max_confidence = max_confidence
+        self._lens_id = lens_id
+
+    @property
+    def lens_view(self):
+        """Gets the lens_view of this HostnamesForIp.  # noqa: E501
+
+
+        :return: The lens_view of this HostnamesForIp.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_view
+
+    @lens_view.setter
+    def lens_view(self, lens_view):
+        """Sets the lens_view of this HostnamesForIp.
+
+
+        :param lens_view: The lens_view of this HostnamesForIp.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_view = lens_view
 
     @property
     def org_id(self):
@@ -435,27 +432,6 @@ class HostnamesForIp(object):
         self._perspective_name = perspective_name
 
     @property
-    def refreshed(self):
-        """Gets the refreshed of this HostnamesForIp.  # noqa: E501
-
-
-        :return: The refreshed of this HostnamesForIp.  # noqa: E501
-        :rtype: bool
-        """
-        return self._refreshed
-
-    @refreshed.setter
-    def refreshed(self, refreshed):
-        """Sets the refreshed of this HostnamesForIp.
-
-
-        :param refreshed: The refreshed of this HostnamesForIp.  # noqa: E501
-        :type: bool
-        """
-
-        self._refreshed = refreshed
-
-    @property
     def status(self):
         """Gets the status of this HostnamesForIp.  # noqa: E501
 
@@ -473,7 +449,7 @@ class HostnamesForIp(object):
         :param status: The status of this HostnamesForIp.  # noqa: E501
         :type: str
         """
-        allowed_values = ["None", "Needs Investigation", "Needs Resolution", "Needs Review", "Mitigated", "Accepted"]  # noqa: E501
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
@@ -481,27 +457,6 @@ class HostnamesForIp(object):
             )
 
         self._status = status
-
-    @property
-    def tags(self):
-        """Gets the tags of this HostnamesForIp.  # noqa: E501
-
-
-        :return: The tags of this HostnamesForIp.  # noqa: E501
-        :rtype: object
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this HostnamesForIp.
-
-
-        :param tags: The tags of this HostnamesForIp.  # noqa: E501
-        :type: object
-        """
-
-        self._tags = tags
 
     def to_dict(self):
         """Returns the model properties as a dict"""

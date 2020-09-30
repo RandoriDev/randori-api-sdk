@@ -3,4 +3,4 @@ from __future__ import absolute_import
 # flake8: noqa
 
 # import apis into api package
-from randori_api.api.randori_api import RandoriApi
+from randori_api.api.default_api import DefaultApi

@@ -35,26 +35,31 @@ class Ip(object):
     """
     openapi_types = {
         'affiliation_state': 'str',
+        'all_ports': 'list[object]',
         'confidence': 'int',
         'country': 'str',
         'deleted': 'bool',
-        'first_seen': 'str',
-        'hostname': 'str',
+        'first_seen': 'datetime',
         'hostname_count': 'int',
         'id': 'str',
         'impact_score': 'str',
         'ip': 'str',
         'ip_str': 'str',
-        'last_seen': 'str',
+        'last_seen': 'datetime',
         'latitude': 'float',
+        'lens_id': 'str',
+        'lens_view': 'str',
         'longitude': 'float',
-        'max_confidence': 'int',
+        'only_in_review_targets': 'bool',
         'open_port_count': 'int',
         'org_id': 'str',
         'perspective': 'str',
         'perspective_name': 'str',
+        'priority_impact_factor': 'float',
+        'priority_score': 'float',
+        'priority_status_factor': 'float',
+        'priority_tags_factor': 'float',
         'radius': 'float',
-        'refreshed': 'bool',
         'service_count': 'int',
         'status': 'str',
         'tags': 'object',
@@ -64,11 +69,11 @@ class Ip(object):
 
     attribute_map = {
         'affiliation_state': 'affiliation_state',
+        'all_ports': 'all_ports',
         'confidence': 'confidence',
         'country': 'country',
         'deleted': 'deleted',
         'first_seen': 'first_seen',
-        'hostname': 'hostname',
         'hostname_count': 'hostname_count',
         'id': 'id',
         'impact_score': 'impact_score',
@@ -76,14 +81,19 @@ class Ip(object):
         'ip_str': 'ip_str',
         'last_seen': 'last_seen',
         'latitude': 'latitude',
+        'lens_id': 'lens_id',
+        'lens_view': 'lens_view',
         'longitude': 'longitude',
-        'max_confidence': 'max_confidence',
+        'only_in_review_targets': 'only_in_review_targets',
         'open_port_count': 'open_port_count',
         'org_id': 'org_id',
         'perspective': 'perspective',
         'perspective_name': 'perspective_name',
+        'priority_impact_factor': 'priority_impact_factor',
+        'priority_score': 'priority_score',
+        'priority_status_factor': 'priority_status_factor',
+        'priority_tags_factor': 'priority_tags_factor',
         'radius': 'radius',
-        'refreshed': 'refreshed',
         'service_count': 'service_count',
         'status': 'status',
         'tags': 'tags',
@@ -91,18 +101,18 @@ class Ip(object):
         'target_temptation': 'target_temptation'
     }
 
-    def __init__(self, affiliation_state=None, confidence=None, country=None, deleted=None, first_seen=None, hostname=None, hostname_count=None, id=None, impact_score=None, ip=None, ip_str=None, last_seen=None, latitude=None, longitude=None, max_confidence=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, radius=None, refreshed=None, service_count=None, status=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, all_ports=None, confidence=None, country=None, deleted=None, first_seen=None, hostname_count=None, id=None, impact_score=None, ip=None, ip_str=None, last_seen=None, latitude=None, lens_id=None, lens_view=None, longitude=None, only_in_review_targets=None, open_port_count=None, org_id=None, perspective=None, perspective_name=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, radius=None, service_count=None, status=None, tags=None, target_count=None, target_temptation=None, local_vars_configuration=None):  # noqa: E501
         """Ip - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._affiliation_state = None
+        self._all_ports = None
         self._confidence = None
         self._country = None
         self._deleted = None
         self._first_seen = None
-        self._hostname = None
         self._hostname_count = None
         self._id = None
         self._impact_score = None
@@ -110,14 +120,19 @@ class Ip(object):
         self._ip_str = None
         self._last_seen = None
         self._latitude = None
+        self._lens_id = None
+        self._lens_view = None
         self._longitude = None
-        self._max_confidence = None
+        self._only_in_review_targets = None
         self._open_port_count = None
         self._org_id = None
         self._perspective = None
         self._perspective_name = None
+        self._priority_impact_factor = None
+        self._priority_score = None
+        self._priority_status_factor = None
+        self._priority_tags_factor = None
         self._radius = None
-        self._refreshed = None
         self._service_count = None
         self._status = None
         self._tags = None
@@ -127,38 +142,64 @@ class Ip(object):
 
         if affiliation_state is not None:
             self.affiliation_state = affiliation_state
-        self.confidence = confidence
-        self.country = country
+        if all_ports is not None:
+            self.all_ports = all_ports
+        if confidence is not None:
+            self.confidence = confidence
+        if country is not None:
+            self.country = country
         if deleted is not None:
             self.deleted = deleted
         if first_seen is not None:
             self.first_seen = first_seen
-        self.hostname = hostname
-        self.hostname_count = hostname_count
+        if hostname_count is not None:
+            self.hostname_count = hostname_count
         self.id = id
         if impact_score is not None:
             self.impact_score = impact_score
-        self.ip = ip
-        self.ip_str = ip_str
+        if ip is not None:
+            self.ip = ip
+        if ip_str is not None:
+            self.ip_str = ip_str
         if last_seen is not None:
             self.last_seen = last_seen
-        self.latitude = latitude
-        self.longitude = longitude
-        self.max_confidence = max_confidence
-        self.open_port_count = open_port_count
+        if latitude is not None:
+            self.latitude = latitude
+        if lens_id is not None:
+            self.lens_id = lens_id
+        if lens_view is not None:
+            self.lens_view = lens_view
+        if longitude is not None:
+            self.longitude = longitude
+        if only_in_review_targets is not None:
+            self.only_in_review_targets = only_in_review_targets
+        if open_port_count is not None:
+            self.open_port_count = open_port_count
         self.org_id = org_id
-        self.perspective = perspective
-        self.perspective_name = perspective_name
-        self.radius = radius
-        if refreshed is not None:
-            self.refreshed = refreshed
-        self.service_count = service_count
+        if perspective is not None:
+            self.perspective = perspective
+        if perspective_name is not None:
+            self.perspective_name = perspective_name
+        if priority_impact_factor is not None:
+            self.priority_impact_factor = priority_impact_factor
+        if priority_score is not None:
+            self.priority_score = priority_score
+        if priority_status_factor is not None:
+            self.priority_status_factor = priority_status_factor
+        if priority_tags_factor is not None:
+            self.priority_tags_factor = priority_tags_factor
+        if radius is not None:
+            self.radius = radius
+        if service_count is not None:
+            self.service_count = service_count
         if status is not None:
             self.status = status
         if tags is not None:
             self.tags = tags
-        self.target_count = target_count
-        self.target_temptation = target_temptation
+        if target_count is not None:
+            self.target_count = target_count
+        if target_temptation is not None:
+            self.target_temptation = target_temptation
 
     @property
     def affiliation_state(self):
@@ -178,7 +219,7 @@ class Ip(object):
         :param affiliation_state: The affiliation_state of this Ip.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Affiliated", "Unaffiliated", "None"]  # noqa: E501
+        allowed_values = ["None", "Affiliated", "Unaffiliated"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
@@ -186,6 +227,27 @@ class Ip(object):
             )
 
         self._affiliation_state = affiliation_state
+
+    @property
+    def all_ports(self):
+        """Gets the all_ports of this Ip.  # noqa: E501
+
+
+        :return: The all_ports of this Ip.  # noqa: E501
+        :rtype: list[object]
+        """
+        return self._all_ports
+
+    @all_ports.setter
+    def all_ports(self, all_ports):
+        """Sets the all_ports of this Ip.
+
+
+        :param all_ports: The all_ports of this Ip.  # noqa: E501
+        :type: list[object]
+        """
+
+        self._all_ports = all_ports
 
     @property
     def confidence(self):
@@ -256,7 +318,7 @@ class Ip(object):
 
 
         :return: The first_seen of this Ip.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._first_seen
 
@@ -266,31 +328,10 @@ class Ip(object):
 
 
         :param first_seen: The first_seen of this Ip.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._first_seen = first_seen
-
-    @property
-    def hostname(self):
-        """Gets the hostname of this Ip.  # noqa: E501
-
-
-        :return: The hostname of this Ip.  # noqa: E501
-        :rtype: str
-        """
-        return self._hostname
-
-    @hostname.setter
-    def hostname(self, hostname):
-        """Sets the hostname of this Ip.
-
-
-        :param hostname: The hostname of this Ip.  # noqa: E501
-        :type: str
-        """
-
-        self._hostname = hostname
 
     @property
     def hostname_count(self):
@@ -411,7 +452,7 @@ class Ip(object):
 
 
         :return: The last_seen of this Ip.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._last_seen
 
@@ -421,7 +462,7 @@ class Ip(object):
 
 
         :param last_seen: The last_seen of this Ip.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._last_seen = last_seen
@@ -448,6 +489,48 @@ class Ip(object):
         self._latitude = latitude
 
     @property
+    def lens_id(self):
+        """Gets the lens_id of this Ip.  # noqa: E501
+
+
+        :return: The lens_id of this Ip.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_id
+
+    @lens_id.setter
+    def lens_id(self, lens_id):
+        """Sets the lens_id of this Ip.
+
+
+        :param lens_id: The lens_id of this Ip.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_id = lens_id
+
+    @property
+    def lens_view(self):
+        """Gets the lens_view of this Ip.  # noqa: E501
+
+
+        :return: The lens_view of this Ip.  # noqa: E501
+        :rtype: str
+        """
+        return self._lens_view
+
+    @lens_view.setter
+    def lens_view(self, lens_view):
+        """Sets the lens_view of this Ip.
+
+
+        :param lens_view: The lens_view of this Ip.  # noqa: E501
+        :type: str
+        """
+
+        self._lens_view = lens_view
+
+    @property
     def longitude(self):
         """Gets the longitude of this Ip.  # noqa: E501
 
@@ -469,25 +552,25 @@ class Ip(object):
         self._longitude = longitude
 
     @property
-    def max_confidence(self):
-        """Gets the max_confidence of this Ip.  # noqa: E501
+    def only_in_review_targets(self):
+        """Gets the only_in_review_targets of this Ip.  # noqa: E501
 
 
-        :return: The max_confidence of this Ip.  # noqa: E501
-        :rtype: int
+        :return: The only_in_review_targets of this Ip.  # noqa: E501
+        :rtype: bool
         """
-        return self._max_confidence
+        return self._only_in_review_targets
 
-    @max_confidence.setter
-    def max_confidence(self, max_confidence):
-        """Sets the max_confidence of this Ip.
+    @only_in_review_targets.setter
+    def only_in_review_targets(self, only_in_review_targets):
+        """Sets the only_in_review_targets of this Ip.
 
 
-        :param max_confidence: The max_confidence of this Ip.  # noqa: E501
-        :type: int
+        :param only_in_review_targets: The only_in_review_targets of this Ip.  # noqa: E501
+        :type: bool
         """
 
-        self._max_confidence = max_confidence
+        self._only_in_review_targets = only_in_review_targets
 
     @property
     def open_port_count(self):
@@ -576,6 +659,90 @@ class Ip(object):
         self._perspective_name = perspective_name
 
     @property
+    def priority_impact_factor(self):
+        """Gets the priority_impact_factor of this Ip.  # noqa: E501
+
+
+        :return: The priority_impact_factor of this Ip.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_impact_factor
+
+    @priority_impact_factor.setter
+    def priority_impact_factor(self, priority_impact_factor):
+        """Sets the priority_impact_factor of this Ip.
+
+
+        :param priority_impact_factor: The priority_impact_factor of this Ip.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_impact_factor = priority_impact_factor
+
+    @property
+    def priority_score(self):
+        """Gets the priority_score of this Ip.  # noqa: E501
+
+
+        :return: The priority_score of this Ip.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_score
+
+    @priority_score.setter
+    def priority_score(self, priority_score):
+        """Sets the priority_score of this Ip.
+
+
+        :param priority_score: The priority_score of this Ip.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_score = priority_score
+
+    @property
+    def priority_status_factor(self):
+        """Gets the priority_status_factor of this Ip.  # noqa: E501
+
+
+        :return: The priority_status_factor of this Ip.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_status_factor
+
+    @priority_status_factor.setter
+    def priority_status_factor(self, priority_status_factor):
+        """Sets the priority_status_factor of this Ip.
+
+
+        :param priority_status_factor: The priority_status_factor of this Ip.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_status_factor = priority_status_factor
+
+    @property
+    def priority_tags_factor(self):
+        """Gets the priority_tags_factor of this Ip.  # noqa: E501
+
+
+        :return: The priority_tags_factor of this Ip.  # noqa: E501
+        :rtype: float
+        """
+        return self._priority_tags_factor
+
+    @priority_tags_factor.setter
+    def priority_tags_factor(self, priority_tags_factor):
+        """Sets the priority_tags_factor of this Ip.
+
+
+        :param priority_tags_factor: The priority_tags_factor of this Ip.  # noqa: E501
+        :type: float
+        """
+
+        self._priority_tags_factor = priority_tags_factor
+
+    @property
     def radius(self):
         """Gets the radius of this Ip.  # noqa: E501
 
@@ -595,27 +762,6 @@ class Ip(object):
         """
 
         self._radius = radius
-
-    @property
-    def refreshed(self):
-        """Gets the refreshed of this Ip.  # noqa: E501
-
-
-        :return: The refreshed of this Ip.  # noqa: E501
-        :rtype: bool
-        """
-        return self._refreshed
-
-    @refreshed.setter
-    def refreshed(self, refreshed):
-        """Sets the refreshed of this Ip.
-
-
-        :param refreshed: The refreshed of this Ip.  # noqa: E501
-        :type: bool
-        """
-
-        self._refreshed = refreshed
 
     @property
     def service_count(self):
@@ -656,7 +802,7 @@ class Ip(object):
         :param status: The status of this Ip.  # noqa: E501
         :type: str
         """
-        allowed_values = ["None", "Needs Investigation", "Needs Resolution", "Needs Review", "Mitigated", "Accepted"]  # noqa: E501
+        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
