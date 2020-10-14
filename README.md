@@ -123,7 +123,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://alpha.randori.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
