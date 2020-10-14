@@ -1005,7 +1005,7 @@ class SocialEntity(object):
         :param status: The status of this SocialEntity.  # noqa: E501
         :type: str
         """
-        allowed_values = ["None", "Investigate", "In-progress", "Reviewed", "Resolved"]  # noqa: E501
+        allowed_values = ["None", "Needs Investigation", "Needs Resolution", "Needs Review", "Mitigated", "Accepted"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501

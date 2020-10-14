@@ -173,12 +173,6 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_tag(self):
-        """Test case for tag
-
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

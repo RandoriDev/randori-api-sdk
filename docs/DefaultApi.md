@@ -1,6 +1,6 @@
 # randori_api.DefaultApi
 
-All URIs are relative to *https://alpha.randori.io*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,6 @@ Method | HTTP request | Description
 [**get_social_entity**](DefaultApi.md#get_social_entity) | **GET** /recon/api/v1/social-entity | 
 [**get_statistics**](DefaultApi.md#get_statistics) | **GET** /recon/api/v1/statistics | 
 [**get_target**](DefaultApi.md#get_target) | **GET** /recon/api/v1/target | 
-[**tag**](DefaultApi.md#tag) | **GET** /recon/api/v1/tag | 
 
 
 # **get_all_detections_for_target**
@@ -51,8 +50,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -123,8 +122,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -195,8 +194,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -267,8 +266,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -339,8 +338,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -411,8 +410,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -483,8 +482,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -555,8 +554,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -627,8 +626,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -699,8 +698,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -771,8 +770,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -843,8 +842,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -907,8 +906,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -971,8 +970,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -1035,8 +1034,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -1099,8 +1098,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -1163,8 +1162,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -1227,8 +1226,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -1291,8 +1290,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -1355,8 +1354,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -1419,8 +1418,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 id = 'id_example' # str | 
@@ -1483,8 +1482,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -1555,8 +1554,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 interval = 56 # int | number of records to skip between responses (optional)
@@ -1629,8 +1628,8 @@ configuration = randori_api.Configuration()
 # Configure Bearer authorization (JWT): bearerAuth
 configuration.access_token = 'YOUR_BEARER_TOKEN'
 
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
+# Defining host is optional and default to https://localhost
+configuration.host = "https://localhost"
 # Create an instance of the API class
 api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
 offset = 56 # int | offset into avilable records after filtering (optional)
@@ -1659,66 +1658,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TargetGetOutput**](TargetGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **tag**
-> UserTagNameList tag()
-
-
-
-Return list of all tags present on system that belong belong to an entity alive in the last day
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-configuration = randori_api.Configuration()
-# Configure Bearer authorization (JWT): bearerAuth
-configuration.access_token = 'YOUR_BEARER_TOKEN'
-
-# Defining host is optional and default to https://alpha.randori.io
-configuration.host = "https://alpha.randori.io"
-# Create an instance of the API class
-api_instance = randori_api.DefaultApi(randori_api.ApiClient(configuration))
-
-try:
-    api_response = api_instance.tag()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->tag: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**UserTagNameList**](UserTagNameList.md)
 
 ### Authorization
 

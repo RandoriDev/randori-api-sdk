@@ -50,7 +50,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
     :param password: Password for HTTP basic authentication
     """
 
-    def __init__(self, host="https://alpha.randori.io",
+    def __init__(self, host="https://localhost",
                  api_key={}, api_key_prefix={},
                  username="", password=""):
         """Constructor
@@ -277,7 +277,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0\n"\
-               "SDK Package Version: 1.2.1".\
+               "SDK Package Version: 1.2.2".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
@@ -287,7 +287,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         """
         return [
             {
-                'url': "https://alpha.randori.io",
+                'url': "https://localhost",
                 'description': "No description provided",
             }
         ]
