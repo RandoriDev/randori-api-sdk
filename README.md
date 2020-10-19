@@ -27,11 +27,11 @@ sudo pip install git+https://github.com/RandoriDev/randori-api-sdk.git
 
 To upgrade and existing installation:
 ```sh
-pip install --upgradegit+https://github.com/RandoriDev/randori-api-sdk.git
+pip install --upgrade git+https://github.com/RandoriDev/randori-api-sdk.git
 ```
 or
 ```sh
-sudo pip install --upgradegit+https://github.com/RandoriDev/randori-api-sdk.git
+sudo pip install --upgrade git+https://github.com/RandoriDev/randori-api-sdk.git
 ```
 
 Then import the package:
