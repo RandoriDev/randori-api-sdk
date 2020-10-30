@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import randori_api
 from randori_api.models.social_entity import SocialEntity  # noqa: E501
 from randori_api.rest import ApiException
-
 
 class TestSocialEntity(unittest.TestCase):
     """SocialEntity unit test stubs"""
@@ -29,11 +29,66 @@ class TestSocialEntity(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test SocialEntity
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = randori_api.models.social_entity.SocialEntity()  # noqa: E501
+        if include_optional :
+            return SocialEntity(
+                address = '0', 
+                affiliation_state = 'None', 
+                authorization_state = 'Authorized', 
+                city = '0', 
+                company_name = '0', 
+                confidence = 56, 
+                country = '0', 
+                deleted = True, 
+                details = randori_api.models.details.details(), 
+                domain = '0', 
+                email = '0', 
+                email_type = '0', 
+                first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                id = '0', 
+                impact_score = 'None', 
+                last_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                lens_id = '0', 
+                lens_view = '0', 
+                org_id = '0', 
+                person_first_name = '0', 
+                person_last_name = '0', 
+                person_middle_name = '0', 
+                person_name = '0', 
+                perspective = '0', 
+                perspective_name = '0', 
+                phone = '0', 
+                postal_code = '0', 
+                priority_impact_factor = 1.337, 
+                priority_score = 1.337, 
+                priority_status_factor = 1.337, 
+                priority_tags_factor = 1.337, 
+                role = '0', 
+                seniority = '0', 
+                state = '0', 
+                status = 'None', 
+                sub_role = '0', 
+                tags = randori_api.models.tags.tags(), 
+                target_temptation = 56, 
+                title = '0', 
+                tld = '0', 
+                username = '0'
+            )
+        else :
+            return SocialEntity(
+                id = '0',
+                org_id = '0',
+        )
+
     def testSocialEntity(self):
         """Test SocialEntity"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = randori_api.models.social_entity.SocialEntity()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

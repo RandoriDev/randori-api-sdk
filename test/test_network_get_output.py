@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import randori_api
 from randori_api.models.network_get_output import NetworkGetOutput  # noqa: E501
 from randori_api.rest import ApiException
-
 
 class TestNetworkGetOutput(unittest.TestCase):
     """NetworkGetOutput unit test stubs"""
@@ -29,11 +29,56 @@ class TestNetworkGetOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test NetworkGetOutput
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = randori_api.models.network_get_output.NetworkGetOutput()  # noqa: E501
+        if include_optional :
+            return NetworkGetOutput(
+                count = 56, 
+                data = [
+                    randori_api.models.network.network(
+                        affiliation_state = 'None', 
+                        confidence = 56, 
+                        deleted = True, 
+                        first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        id = '0', 
+                        impact_score = 'None', 
+                        ip_count = 1.337, 
+                        last_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        lens_id = '0', 
+                        lens_view = '0', 
+                        max_confidence = 56, 
+                        network = '0', 
+                        network_str = '0', 
+                        only_in_review_targets = True, 
+                        open_port_count = 56, 
+                        org_id = '0', 
+                        perspective = '0', 
+                        perspective_name = '0', 
+                        priority_impact_factor = 1.337, 
+                        priority_score = 1.337, 
+                        priority_status_factor = 1.337, 
+                        priority_tags_factor = 1.337, 
+                        service_count = 1.337, 
+                        status = 'None', 
+                        tags = randori_api.models.tags.tags(), 
+                        target_count = 1.337, 
+                        target_temptation = 56, )
+                    ], 
+                offset = 56, 
+                total = 56
+            )
+        else :
+            return NetworkGetOutput(
+        )
+
     def testNetworkGetOutput(self):
         """Test NetworkGetOutput"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = randori_api.models.network_get_output.NetworkGetOutput()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

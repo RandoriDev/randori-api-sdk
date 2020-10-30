@@ -149,6 +149,12 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_single_tagcounts(self):
+        """Test case for get_single_tagcounts
+
+        """
+        pass
+
     def test_get_single_target(self):
         """Test case for get_single_target
 
@@ -167,8 +173,80 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_tagcounts(self):
+        """Test case for get_tagcounts
+
+        """
+        pass
+
     def test_get_target(self):
         """Test case for get_target
+
+        """
+        pass
+
+    def test_impact_score_groups(self):
+        """Test case for impact_score_groups
+
+        """
+        pass
+
+    def test_patch_hostname(self):
+        """Test case for patch_hostname
+
+        """
+        pass
+
+    def test_patch_ip(self):
+        """Test case for patch_ip
+
+        """
+        pass
+
+    def test_patch_network(self):
+        """Test case for patch_network
+
+        """
+        pass
+
+    def test_patch_social_entity(self):
+        """Test case for patch_social_entity
+
+        """
+        pass
+
+    def test_patch_target(self):
+        """Test case for patch_target
+
+        """
+        pass
+
+    def test_paths(self):
+        """Test case for paths
+
+        """
+        pass
+
+    def test_priority_groups(self):
+        """Test case for priority_groups
+
+        """
+        pass
+
+    def test_status_groups(self):
+        """Test case for status_groups
+
+        """
+        pass
+
+    def test_tag(self):
+        """Test case for tag
+
+        """
+        pass
+
+    def test_target_temptation_groups(self):
+        """Test case for target_temptation_groups
 
         """
         pass

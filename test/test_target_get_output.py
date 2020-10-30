@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import randori_api
 from randori_api.models.target_get_output import TargetGetOutput  # noqa: E501
 from randori_api.rest import ApiException
-
 
 class TestTargetGetOutput(unittest.TestCase):
     """TargetGetOutput unit test stubs"""
@@ -29,11 +29,63 @@ class TestTargetGetOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test TargetGetOutput
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = randori_api.models.target_get_output.TargetGetOutput()  # noqa: E501
+        if include_optional :
+            return TargetGetOutput(
+                count = 56, 
+                data = [
+                    randori_api.models.target.target(
+                        affiliation_state = 'None', 
+                        applicability = 56, 
+                        authorization_state = 'Authorized', 
+                        confidence = 56, 
+                        criticality = 56, 
+                        deleted = True, 
+                        description = '0', 
+                        enumerability = 56, 
+                        first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        id = '0', 
+                        impact_score = 'None', 
+                        last_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                        lens_id = '0', 
+                        lens_view = '0', 
+                        name = '0', 
+                        org_id = '0', 
+                        perspective = '0', 
+                        perspective_name = '0', 
+                        post_exploit = 56, 
+                        priority_impact_factor = 1.337, 
+                        priority_score = 1.337, 
+                        priority_status_factor = 1.337, 
+                        priority_tags_factor = 1.337, 
+                        private_weakness = 56, 
+                        public_weakness = 56, 
+                        randori_notes = '0', 
+                        reference = '0', 
+                        research = 56, 
+                        service_id = '0', 
+                        status = 'None', 
+                        tags = randori_api.models.tags.tags(), 
+                        target_temptation = 56, 
+                        vendor = '0', 
+                        version = '0', )
+                    ], 
+                offset = 56, 
+                total = 56
+            )
+        else :
+            return TargetGetOutput(
+        )
+
     def testTargetGetOutput(self):
         """Test TargetGetOutput"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = randori_api.models.target_get_output.TargetGetOutput()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

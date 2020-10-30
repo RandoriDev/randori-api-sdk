@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 import unittest
+import datetime
 
 import randori_api
 from randori_api.models.ports_for_ip import PortsForIp  # noqa: E501
 from randori_api.rest import ApiException
-
 
 class TestPortsForIp(unittest.TestCase):
     """PortsForIp unit test stubs"""
@@ -29,11 +29,39 @@ class TestPortsForIp(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def make_instance(self, include_optional):
+        """Test PortsForIp
+            include_option is a boolean, when False only required
+            params are included, when True both required and
+            optional params are included """
+        # model = randori_api.models.ports_for_ip.PortsForIp()  # noqa: E501
+        if include_optional :
+            return PortsForIp(
+                confidence = 56, 
+                deleted = True, 
+                id = '0', 
+                ip_id = '0', 
+                last_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                lens_id = '0', 
+                lens_view = '0', 
+                org_id = '0', 
+                perspective = '0', 
+                perspective_name = '0', 
+                port = 56, 
+                protocol = 56, 
+                seen_open = True, 
+                state = '0'
+            )
+        else :
+            return PortsForIp(
+                id = '0',
+                org_id = '0',
+        )
+
     def testPortsForIp(self):
         """Test PortsForIp"""
-        # FIXME: construct object with mandatory attributes with example values
-        # model = randori_api.models.ports_for_ip.PortsForIp()  # noqa: E501
-        pass
+        inst_req_only = self.make_instance(include_optional=False)
+        inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

@@ -36,36 +36,30 @@ class Tagcounts(object):
     openapi_types = {
         'all_count': 'int',
         'content': 'str',
-        'first_seen': 'str',
         'hostname_count': 'int',
         'id': 'str',
         'ip_count': 'int',
-        'last_seen': 'str',
         'network_count': 'int',
         'org_id': 'str',
         'poc_count': 'int',
         'service_count': 'int',
-        'tags': 'object',
         'target_count': 'int'
     }
 
     attribute_map = {
         'all_count': 'all_count',
         'content': 'content',
-        'first_seen': 'first_seen',
         'hostname_count': 'hostname_count',
         'id': 'id',
         'ip_count': 'ip_count',
-        'last_seen': 'last_seen',
         'network_count': 'network_count',
         'org_id': 'org_id',
         'poc_count': 'poc_count',
         'service_count': 'service_count',
-        'tags': 'tags',
         'target_count': 'target_count'
     }
 
-    def __init__(self, all_count=None, content=None, first_seen=None, hostname_count=None, id=None, ip_count=None, last_seen=None, network_count=None, org_id=None, poc_count=None, service_count=None, tags=None, target_count=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, all_count=None, content=None, hostname_count=None, id=None, ip_count=None, network_count=None, org_id=None, poc_count=None, service_count=None, target_count=None, local_vars_configuration=None):  # noqa: E501
         """Tagcounts - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,34 +67,25 @@ class Tagcounts(object):
 
         self._all_count = None
         self._content = None
-        self._first_seen = None
         self._hostname_count = None
         self._id = None
         self._ip_count = None
-        self._last_seen = None
         self._network_count = None
         self._org_id = None
         self._poc_count = None
         self._service_count = None
-        self._tags = None
         self._target_count = None
         self.discriminator = None
 
         self.all_count = all_count
         self.content = content
-        if first_seen is not None:
-            self.first_seen = first_seen
         self.hostname_count = hostname_count
         self.id = id
         self.ip_count = ip_count
-        if last_seen is not None:
-            self.last_seen = last_seen
         self.network_count = network_count
         self.org_id = org_id
         self.poc_count = poc_count
         self.service_count = service_count
-        if tags is not None:
-            self.tags = tags
         self.target_count = target_count
 
     @property
@@ -148,27 +133,6 @@ class Tagcounts(object):
             raise ValueError("Invalid value for `content`, must not be `None`")  # noqa: E501
 
         self._content = content
-
-    @property
-    def first_seen(self):
-        """Gets the first_seen of this Tagcounts.  # noqa: E501
-
-
-        :return: The first_seen of this Tagcounts.  # noqa: E501
-        :rtype: str
-        """
-        return self._first_seen
-
-    @first_seen.setter
-    def first_seen(self, first_seen):
-        """Sets the first_seen of this Tagcounts.
-
-
-        :param first_seen: The first_seen of this Tagcounts.  # noqa: E501
-        :type: str
-        """
-
-        self._first_seen = first_seen
 
     @property
     def hostname_count(self):
@@ -238,27 +202,6 @@ class Tagcounts(object):
             raise ValueError("Invalid value for `ip_count`, must not be `None`")  # noqa: E501
 
         self._ip_count = ip_count
-
-    @property
-    def last_seen(self):
-        """Gets the last_seen of this Tagcounts.  # noqa: E501
-
-
-        :return: The last_seen of this Tagcounts.  # noqa: E501
-        :rtype: str
-        """
-        return self._last_seen
-
-    @last_seen.setter
-    def last_seen(self, last_seen):
-        """Sets the last_seen of this Tagcounts.
-
-
-        :param last_seen: The last_seen of this Tagcounts.  # noqa: E501
-        :type: str
-        """
-
-        self._last_seen = last_seen
 
     @property
     def network_count(self):
@@ -351,27 +294,6 @@ class Tagcounts(object):
             raise ValueError("Invalid value for `service_count`, must not be `None`")  # noqa: E501
 
         self._service_count = service_count
-
-    @property
-    def tags(self):
-        """Gets the tags of this Tagcounts.  # noqa: E501
-
-
-        :return: The tags of this Tagcounts.  # noqa: E501
-        :rtype: object
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this Tagcounts.
-
-
-        :param tags: The tags of this Tagcounts.  # noqa: E501
-        :type: object
-        """
-
-        self._tags = tags
 
     @property
     def target_count(self):

@@ -1,0 +1,12 @@
+# IpPatchInput
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**data** | [**IpPatchIn**](IpPatchIn.md) | data fields to update on the object | [optional] 
+**operations** | [**list[JsonPatchOperation]**](JsonPatchOperation.md) |  | [optional] 
+**q** | [**QuerybuilderRuleGroupSchema**](QuerybuilderRuleGroupSchema.md) | Querybuilder object | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
