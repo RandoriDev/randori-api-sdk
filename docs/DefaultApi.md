@@ -77,11 +77,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_all_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -159,11 +159,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -241,11 +241,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_hostnames_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -323,11 +323,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -405,11 +405,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_ips_for_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -487,11 +487,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_ips_for_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -569,11 +569,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_ips_for_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -651,11 +651,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -733,11 +733,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_ports_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -815,11 +815,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -897,11 +897,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_single_detection_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -1793,11 +1793,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_social_entity(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -1876,11 +1876,11 @@ with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
     interval = 56 # int | number of records to skip between responses (optional)
-offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_statistics(interval=interval, offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -1959,11 +1959,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_tagcounts(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
@@ -2041,11 +2041,11 @@ configuration.access_token = 'YOUR_BEARER_TOKEN'
 with randori_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    offset = 0 # int | offset into avilable records after filtering (optional)
+    limit = 10 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
     try:
         api_response = api_instance.get_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
