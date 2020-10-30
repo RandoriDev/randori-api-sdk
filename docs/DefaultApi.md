@@ -71,9 +71,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -155,9 +153,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -239,9 +235,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -323,9 +317,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -407,9 +399,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -491,9 +481,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -575,9 +563,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -659,9 +645,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -743,9 +727,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -827,9 +809,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -911,9 +891,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -995,9 +973,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1071,9 +1047,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1147,9 +1121,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1223,9 +1195,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1299,9 +1269,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1375,9 +1343,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1451,9 +1417,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1527,9 +1491,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1603,9 +1565,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1679,9 +1639,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1755,9 +1713,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1831,9 +1787,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -1915,9 +1869,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2001,9 +1953,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2085,9 +2035,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2169,9 +2117,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2229,31 +2175,49 @@ bulk-patch hostname records
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
+  
+import json
 import time
 import randori_api
 from randori_api.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://alpha.randori.io
-# See configuration.py for a list of all supported configuration parameters.
+
 configuration = randori_api.Configuration(
     host = "https://alpha.randori.io"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_API_TOKEN_HERE'
 
-# Enter a context with an instance of the API client
+data_dict = json.loads('''{
+    "impact_score": "Medium",
+    "status": "Needs Investigation"
+}''')
+
+query = json.loads('''{
+    "condition": "OR",
+    "rules": [
+        {
+            "id": "table.id",
+            "field": "table.id",
+            "type": "object",
+            "input": "text",
+            "operator": "equal",
+            "value": "REPLACE_ME"
+        }
+    ]
+}''')
+
+assert configuration.access_token != 'YOUR_API_TOKEN_HERE', 'API Token is not set.'
+
+assert query['rules'][0]['value'] != 'REPLACE_ME', 'Value of hostname id is not set.'
+
+
 with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
+
     api_instance = randori_api.DefaultApi(api_client)
-    hostname_patch_input = randori_api.HostnamePatchInput() # HostnamePatchInput |  (optional)
+
+    hostname_patch_input = randori_api.HostnamePatchInput(data = data_dict, q = query)
 
     try:
         api_response = api_instance.patch_hostname(hostname_patch_input=hostname_patch_input)
@@ -2321,9 +2285,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2397,9 +2359,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2473,9 +2433,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2549,9 +2507,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2625,9 +2581,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2701,9 +2655,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2777,9 +2729,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2853,9 +2803,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
@@ -2925,9 +2873,7 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+configuration.access_token = 'YOUR_BEARER_TOKEN'
 
 # Enter a context with an instance of the API client
 with randori_api.ApiClient(configuration) as api_client:
