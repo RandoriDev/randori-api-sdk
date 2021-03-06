@@ -59,6 +59,7 @@ class Service(object):
         'research': 'int',
         'service_id': 'str',
         'target_temptation': 'int',
+        'temptation_last_modified': 'datetime',
         'vendor': 'str',
         'version': 'str'
     }
@@ -89,11 +90,12 @@ class Service(object):
         'research': 'research',
         'service_id': 'service_id',
         'target_temptation': 'target_temptation',
+        'temptation_last_modified': 'temptation_last_modified',
         'vendor': 'vendor',
         'version': 'version'
     }
 
-    def __init__(self, applicability=None, confidence=None, criticality=None, deleted=None, description=None, enumerability=None, first_seen=None, id=None, instance_count=None, ip_count=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, research=None, service_id=None, target_temptation=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, applicability=None, confidence=None, criticality=None, deleted=None, description=None, enumerability=None, first_seen=None, id=None, instance_count=None, ip_count=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, research=None, service_id=None, target_temptation=None, temptation_last_modified=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """Service - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -124,6 +126,7 @@ class Service(object):
         self._research = None
         self._service_id = None
         self._target_temptation = None
+        self._temptation_last_modified = None
         self._vendor = None
         self._version = None
         self.discriminator = None
@@ -176,6 +179,8 @@ class Service(object):
             self.service_id = service_id
         if target_temptation is not None:
             self.target_temptation = target_temptation
+        if temptation_last_modified is not None:
+            self.temptation_last_modified = temptation_last_modified
         if vendor is not None:
             self.vendor = vendor
         if version is not None:
@@ -709,6 +714,27 @@ class Service(object):
         """
 
         self._target_temptation = target_temptation
+
+    @property
+    def temptation_last_modified(self):
+        """Gets the temptation_last_modified of this Service.  # noqa: E501
+
+
+        :return: The temptation_last_modified of this Service.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._temptation_last_modified
+
+    @temptation_last_modified.setter
+    def temptation_last_modified(self, temptation_last_modified):
+        """Sets the temptation_last_modified of this Service.
+
+
+        :param temptation_last_modified: The temptation_last_modified of this Service.  # noqa: E501
+        :type: datetime
+        """
+
+        self._temptation_last_modified = temptation_last_modified
 
     @property
     def vendor(self):

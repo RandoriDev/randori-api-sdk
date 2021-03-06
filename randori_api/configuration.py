@@ -56,7 +56,7 @@ class Configuration(object):
 
     _default = None
 
-    def __init__(self, host="https://alpha.randori.io",
+    def __init__(self, host="https://app.randori.io",
                  api_key=None, api_key_prefix=None,
                  username=None, password=None,
                  discard_unknown_keys=False,
@@ -338,7 +338,7 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0\n"\
-               "SDK Package Version: 1.3.0".\
+               "SDK Package Version: 1.4.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
@@ -348,7 +348,7 @@ class Configuration(object):
         """
         return [
             {
-                'url': "https://alpha.randori.io",
+                'url': "https://app.randori.io",
                 'description': "No description provided",
             }
         ]

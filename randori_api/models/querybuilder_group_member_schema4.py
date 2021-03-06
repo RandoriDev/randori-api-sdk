@@ -191,7 +191,7 @@ class QuerybuilderGroupMemberSchema4(object):
         """
         if self.local_vars_configuration.client_side_validation and operator is None:  # noqa: E501
             raise ValueError("Invalid value for `operator`, must not be `None`")  # noqa: E501
-        allowed_values = ["not_contains_element", "not_icontains", "has_key", "matched_by", "icontains", "is_empty", "between", "not_has_key", "not_begins_with", "contained_by", "less_or_equal", "contains", "less_utc_seconds_ago", "contains_element", "greater_utc_seconds_ago", "greater_or_equal_utc_seconds_ago", "not_contains", "less", "not_equal", "in", "equal", "is_not_empty", "is_not_null", "not_contained_by", "not_in", "ends_with", "greater", "less_or_equal_utc_seconds_ago", "begins_with", "not_ends_with", "is_null", "matches", "greater_or_equal"]  # noqa: E501
+        allowed_values = ["not_in", "less", "not_contains_element", "less_or_equal_utc_seconds_ago", "is_null", "not_ends_with", "between", "has_key", "icontains", "not_contains", "is_empty", "matches", "not_begins_with", "in", "not_icontains", "greater", "less_utc_seconds_ago", "is_not_null", "greater_or_equal_utc_seconds_ago", "contains", "begins_with", "contains_element", "not_has_key", "greater_or_equal", "less_or_equal", "ends_with", "not_equal", "is_not_empty", "contained_by", "matched_by", "not_contained_by", "greater_utc_seconds_ago", "equal"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and operator not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `operator` ({0}), must be one of {1}"  # noqa: E501

@@ -1,0 +1,19 @@
+# AttackStatistics
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**current** | **bool** |  | 
+**id** | **str** |  | [optional] 
+**index** | **int** |  | 
+**latest** | **bool** |  | 
+**name** | **str** |  | 
+**org_id** | **str** |  | 
+**row_time** | **datetime** |  | 
+**time** | **datetime** |  | 
+**type** | **str** |  | 
+**value** | **int** |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

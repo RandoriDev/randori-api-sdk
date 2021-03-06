@@ -65,6 +65,7 @@ class TestServiceGetOutput(unittest.TestCase):
                         research = 56, 
                         service_id = '0', 
                         target_temptation = 56, 
+                        temptation_last_modified = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         vendor = '0', 
                         version = '0', )
                     ], 

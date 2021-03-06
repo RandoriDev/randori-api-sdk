@@ -61,7 +61,7 @@ class TestNetwork(unittest.TestCase):
                 priority_tags_factor = 1.337, 
                 service_count = 1.337, 
                 status = 'None', 
-                tags = None, 
+                tags = randori_api.models.tags.tags(), 
                 target_count = 1.337, 
                 target_temptation = 56
             )

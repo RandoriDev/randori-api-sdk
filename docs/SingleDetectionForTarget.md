@@ -32,6 +32,8 @@ Name | Type | Description | Notes
 **path** | **str** |  | [optional] 
 **perspective** | **str** |  | [optional] 
 **perspective_name** | **str** |  | [optional] 
+**poc_email** | **str** |  | [optional] 
+**poc_id** | **str** |  | [optional] 
 **port** | **int** |  | [optional] 
 **post_exploit** | **int** |  | [optional] 
 **priority_impact_factor** | **float** |  | [optional] 

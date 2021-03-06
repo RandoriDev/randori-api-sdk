@@ -46,7 +46,7 @@ class TestQuerybuilderGroupMemberSchema(unittest.TestCase):
                 field = '0', 
                 id = '0', 
                 input = '0', 
-                operator = 'not_contains_element', 
+                operator = 'not_in', 
                 type = '0', 
                 value = '0'
             )
@@ -57,7 +57,7 @@ class TestQuerybuilderGroupMemberSchema(unittest.TestCase):
                     null
                     ],
                 field = '0',
-                operator = 'not_contains_element',
+                operator = 'not_in',
                 value = '0',
         )
 

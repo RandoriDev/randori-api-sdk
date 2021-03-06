@@ -29,8 +29,68 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_delete_single_saved_views(self):
+        """Test case for delete_single_saved_views
+
+        """
+        pass
+
+    def test_get_action_metadata(self):
+        """Test case for get_action_metadata
+
+        """
+        pass
+
     def test_get_all_detections_for_target(self):
         """Test case for get_all_detections_for_target
+
+        """
+        pass
+
+    def test_get_artifact(self):
+        """Test case for get_artifact
+
+        """
+        pass
+
+    def test_get_attack_checkins_for_implant(self):
+        """Test case for get_attack_checkins_for_implant
+
+        """
+        pass
+
+    def test_get_attack_implants(self):
+        """Test case for get_attack_implants
+
+        """
+        pass
+
+    def test_get_attack_interfaces_for_implant(self):
+        """Test case for get_attack_interfaces_for_implant
+
+        """
+        pass
+
+    def test_get_attack_redirectors(self):
+        """Test case for get_attack_redirectors
+
+        """
+        pass
+
+    def test_get_attack_runbook(self):
+        """Test case for get_attack_runbook
+
+        """
+        pass
+
+    def test_get_attack_statistics(self):
+        """Test case for get_attack_statistics
+
+        """
+        pass
+
+    def test_get_detection(self):
+        """Test case for get_detection
 
         """
         pass
@@ -83,8 +143,26 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_saved_views(self):
+        """Test case for get_saved_views
+
+        """
+        pass
+
     def test_get_service(self):
         """Test case for get_service
+
+        """
+        pass
+
+    def test_get_single_action_metadata(self):
+        """Test case for get_single_action_metadata
+
+        """
+        pass
+
+    def test_get_single_attack_implants(self):
+        """Test case for get_single_attack_implants
 
         """
         pass
@@ -143,14 +221,14 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_get_single_service(self):
-        """Test case for get_single_service
+    def test_get_single_saved_views(self):
+        """Test case for get_single_saved_views
 
         """
         pass
 
-    def test_get_single_tagcounts(self):
-        """Test case for get_single_tagcounts
+    def test_get_single_service(self):
+        """Test case for get_single_service
 
         """
         pass
@@ -173,20 +251,8 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_get_tagcounts(self):
-        """Test case for get_tagcounts
-
-        """
-        pass
-
     def test_get_target(self):
         """Test case for get_target
-
-        """
-        pass
-
-    def test_impact_score_groups(self):
-        """Test case for impact_score_groups
 
         """
         pass
@@ -209,6 +275,12 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_patch_single_saved_views(self):
+        """Test case for patch_single_saved_views
+
+        """
+        pass
+
     def test_patch_social_entity(self):
         """Test case for patch_social_entity
 
@@ -227,26 +299,14 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_priority_groups(self):
-        """Test case for priority_groups
-
-        """
-        pass
-
-    def test_status_groups(self):
-        """Test case for status_groups
+    def test_post_saved_views(self):
+        """Test case for post_saved_views
 
         """
         pass
 
     def test_tag(self):
         """Test case for tag
-
-        """
-        pass
-
-    def test_target_temptation_groups(self):
-        """Test case for target_temptation_groups
 
         """
         pass

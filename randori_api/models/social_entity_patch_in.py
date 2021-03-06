@@ -86,7 +86,7 @@ class SocialEntityPatchIn(object):
         :param affiliation_state: The affiliation_state of this SocialEntityPatchIn.  # noqa: E501
         :type: str
         """
-        allowed_values = ["None", "Affiliated", "Unaffiliated"]  # noqa: E501
+        allowed_values = ["None", "Unaffiliated"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
@@ -113,7 +113,7 @@ class SocialEntityPatchIn(object):
         :param authorization_state: The authorization_state of this SocialEntityPatchIn.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Authorized", "Prohibited", "None"]  # noqa: E501
+        allowed_values = ["Authorized", "None"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and authorization_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `authorization_state` ({0}), must be one of {1}"  # noqa: E501

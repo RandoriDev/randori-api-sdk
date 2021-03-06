@@ -63,6 +63,8 @@ class AllDetectionsForTarget(object):
         'path': 'str',
         'perspective': 'str',
         'perspective_name': 'str',
+        'poc_email': 'str',
+        'poc_id': 'str',
         'port': 'int',
         'post_exploit': 'int',
         'priority_impact_factor': 'float',
@@ -119,6 +121,8 @@ class AllDetectionsForTarget(object):
         'path': 'path',
         'perspective': 'perspective',
         'perspective_name': 'perspective_name',
+        'poc_email': 'poc_email',
+        'poc_id': 'poc_id',
         'port': 'port',
         'post_exploit': 'post_exploit',
         'priority_impact_factor': 'priority_impact_factor',
@@ -145,7 +149,7 @@ class AllDetectionsForTarget(object):
         'version': 'version'
     }
 
-    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, banners_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, detection_relevance=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, port=None, post_exploit=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_confidence=None, target_first_seen=None, target_id=None, target_last_seen=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, banners_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, detection_relevance=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, poc_email=None, poc_id=None, port=None, post_exploit=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_confidence=None, target_first_seen=None, target_id=None, target_last_seen=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """AllDetectionsForTarget - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -180,6 +184,8 @@ class AllDetectionsForTarget(object):
         self._path = None
         self._perspective = None
         self._perspective_name = None
+        self._poc_email = None
+        self._poc_id = None
         self._port = None
         self._post_exploit = None
         self._priority_impact_factor = None
@@ -262,6 +268,10 @@ class AllDetectionsForTarget(object):
             self.perspective = perspective
         if perspective_name is not None:
             self.perspective_name = perspective_name
+        if poc_email is not None:
+            self.poc_email = poc_email
+        if poc_id is not None:
+            self.poc_id = poc_id
         if port is not None:
             self.port = port
         if post_exploit is not None:
@@ -329,7 +339,7 @@ class AllDetectionsForTarget(object):
         :param affiliation_state: The affiliation_state of this AllDetectionsForTarget.  # noqa: E501
         :type: str
         """
-        allowed_values = ["None", "Affiliated", "Unaffiliated"]  # noqa: E501
+        allowed_values = ["None", "Unaffiliated"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and affiliation_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `affiliation_state` ({0}), must be one of {1}"  # noqa: E501
@@ -377,7 +387,7 @@ class AllDetectionsForTarget(object):
         :param authorization_state: The authorization_state of this AllDetectionsForTarget.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Authorized", "Prohibited", "None"]  # noqa: E501
+        allowed_values = ["Authorized", "None"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and authorization_state not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `authorization_state` ({0}), must be one of {1}"  # noqa: E501
@@ -941,6 +951,48 @@ class AllDetectionsForTarget(object):
         """
 
         self._perspective_name = perspective_name
+
+    @property
+    def poc_email(self):
+        """Gets the poc_email of this AllDetectionsForTarget.  # noqa: E501
+
+
+        :return: The poc_email of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: str
+        """
+        return self._poc_email
+
+    @poc_email.setter
+    def poc_email(self, poc_email):
+        """Sets the poc_email of this AllDetectionsForTarget.
+
+
+        :param poc_email: The poc_email of this AllDetectionsForTarget.  # noqa: E501
+        :type: str
+        """
+
+        self._poc_email = poc_email
+
+    @property
+    def poc_id(self):
+        """Gets the poc_id of this AllDetectionsForTarget.  # noqa: E501
+
+
+        :return: The poc_id of this AllDetectionsForTarget.  # noqa: E501
+        :rtype: str
+        """
+        return self._poc_id
+
+    @poc_id.setter
+    def poc_id(self, poc_id):
+        """Sets the poc_id of this AllDetectionsForTarget.
+
+
+        :param poc_id: The poc_id of this AllDetectionsForTarget.  # noqa: E501
+        :type: str
+        """
+
+        self._poc_id = poc_id
 
     @property
     def port(self):

@@ -60,7 +60,7 @@ class TestHostname(unittest.TestCase):
                 priority_status_factor = 1.337, 
                 priority_tags_factor = 1.337, 
                 status = 'None', 
-                tags = None, 
+                tags = randori_api.models.tags.tags(), 
                 target_temptation = 56
             )
         else :

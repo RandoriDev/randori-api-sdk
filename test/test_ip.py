@@ -67,7 +67,7 @@ class TestIp(unittest.TestCase):
                 radius = 1.337, 
                 service_count = 56, 
                 status = 'None', 
-                tags = None, 
+                tags = randori_api.models.tags.tags(), 
                 target_count = 56, 
                 target_temptation = 56
             )

@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **research** | **int** |  | [optional] 
 **service_id** | **str** |  | [optional] 
 **target_temptation** | **int** |  | [optional] 
+**temptation_last_modified** | **datetime** |  | [optional] 
 **vendor** | **str** |  | [optional] 
 **version** | **str** |  | [optional] 
 

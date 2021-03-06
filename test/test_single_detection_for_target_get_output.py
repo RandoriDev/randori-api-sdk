@@ -69,6 +69,8 @@ class TestSingleDetectionForTargetGetOutput(unittest.TestCase):
                         path = '0', 
                         perspective = '0', 
                         perspective_name = '0', 
+                        poc_email = '0', 
+                        poc_id = '0', 
                         port = 56, 
                         post_exploit = 56, 
                         priority_impact_factor = 1.337, 
