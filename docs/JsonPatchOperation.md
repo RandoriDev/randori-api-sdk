@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**op** | **str** | operation, \&quot;add\&quot; or \&quot;remove\&quot; | [optional] 
+**op** | **str** | operation, 'add' or 'remove' | [optional] 
 **path** | **str** | target location | [optional] 
 **value** | **str** | new value for add/replace | [optional] 
 
