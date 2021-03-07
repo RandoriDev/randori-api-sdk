@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 
-##Examples
+## Examples
 
-###Applying a Tag a specific entity
+### Applying a Tag a specific entity
 ```json
 {
     "operations": [
@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 }
 ```
 
-###Applying Multiple Tags to an Entity
+### Applying Multiple Tags to an Entity
 ```json
 {
     "operations": [
@@ -69,7 +69,7 @@ Name | Type | Description | Notes
 }
 ```
 
-###Authorize a Target for Attack
+### Authorize a Target for Attack
 ```json
 {
     "data": {
@@ -91,7 +91,7 @@ Name | Type | Description | Notes
 }
 ```
 
-###Remove a Tag From an Entity
+### Remove a Tag From an Entity
 ```json
 {
     "operations": [
@@ -117,7 +117,7 @@ Name | Type | Description | Notes
 }
 ```
 
-###Set Status of an Entity
+### Set Status of an Entity
 ```json
 {
     "data": {
