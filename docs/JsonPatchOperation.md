@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ## Examples
 
-### Applying A Tag To A Specific Entity
+### Apply A Tag To An Entity
 ```json
 {
     "operations": [
@@ -64,7 +64,7 @@ Name | Type | Description | Notes
 }
 ```
 
-### Applying Multiple Tags To An Entity
+### Apply Multiple Tags To An Entity
 ```json
 {
     "operations": [
@@ -117,6 +117,28 @@ Name | Type | Description | Notes
 }
 ```
 
+### Set Impact Of An Entity
+```json
+{
+    "data": {
+        "impact_score": "Medium"
+    },
+    "q": {
+        "condition": "OR",
+        "rules": [
+            {
+                "id": "table.id",
+                "field": "table.id",
+                "type": "object",
+                "input": "text",
+                "operator": "equal",
+                "value": "REPLACE_ME_WITH_AN_ENTITY_ID"
+            }
+        ]
+    }
+}
+```
+
 ### Authorize A Target For Attack
 ```json
 {
@@ -139,3 +161,24 @@ Name | Type | Description | Notes
 }
 ```
 
+### Remove Authorization For Attack
+```json
+{
+    "data": {
+        "authorization_state": "None"
+    },
+    "q": {
+        "condition": "OR",
+        "rules": [
+            {
+                "id": "table.id",
+                "field": "table.id",
+                "type": "object",
+                "input": "text",
+                "operator": "equal",
+                "value": "REPLACE_ME_WITH_AN_ENTITY_ID"
+            }
+        ]
+    }
+}
+```
