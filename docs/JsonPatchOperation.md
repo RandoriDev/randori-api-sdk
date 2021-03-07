@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ## Examples
 
-### Applying a Tag a specific entity
+### Applying A Tag To A Specific Entity
 ```json
 {
     "operations": [
@@ -38,7 +38,33 @@ Name | Type | Description | Notes
 }
 ```
 
-### Applying Multiple Tags to an Entity
+### Remove A Tag From An Entity
+```json
+{
+    "operations": [
+        {
+            "op": "remove",
+            "path": "/tags/Atlanta Office",
+            "value": {}
+        }
+    ],
+    "q": {
+        "condition": "OR",
+        "rules": [
+            {
+                "id": "table.id",
+                "field": "table.id",
+                "type": "object",
+                "input": "text",
+                "operator": "equal",
+                "value": "REPLACE_ME_WITH_AN_ENTITY_ID"
+            }
+        ]
+    }
+}
+```
+
+### Applying Multiple Tags To An Entity
 ```json
 {
     "operations": [
@@ -69,7 +95,29 @@ Name | Type | Description | Notes
 }
 ```
 
-### Authorize a Target for Attack
+### Set Status Of An Entity
+```json
+{
+    "data": {
+        "status": "Needs Investigation"
+    },
+    "q": {
+        "condition": "OR",
+        "rules": [
+            {
+                "id": "table.id",
+                "field": "table.id",
+                "type": "object",
+                "input": "text",
+                "operator": "equal",
+                "value": "REPLACE_ME_WITH_AN_ENTITY_ID"
+            }
+        ]
+    }
+}
+```
+
+### Authorize A Target For Attack
 ```json
 {
     "data": {
@@ -91,50 +139,3 @@ Name | Type | Description | Notes
 }
 ```
 
-### Remove a Tag From an Entity
-```json
-{
-    "operations": [
-        {
-            "op": "remove",
-            "path": "/tags/Atlanta Office",
-            "value": {}
-        }
-    ],
-    "q": {
-        "condition": "OR",
-        "rules": [
-            {
-                "id": "table.id",
-                "field": "table.id",
-                "type": "object",
-                "input": "text",
-                "operator": "equal",
-                "value": "REPLACE_ME_WITH_AN_ENTITY_ID"
-            }
-        ]
-    }
-}
-```
-
-### Set Status of an Entity
-```json
-{
-    "data": {
-        "status": "Needs Investigation"
-    },
-    "q": {
-        "condition": "OR",
-        "rules": [
-            {
-                "id": "table.id",
-                "field": "table.id",
-                "type": "object",
-                "input": "text",
-                "operator": "equal",
-                "value": "REPLACE_ME_WITH_AN_ENTITY_ID"
-            }
-        ]
-    }
-}
-```
