@@ -44,7 +44,7 @@ Name | Type | Description | Notes
     "operations": [
         {
             "op": "remove",
-            "path": "/tags/Atlanta Office",
+            "path": "/tags/TAG TO REMOVE",
             "value": {}
         }
     ],
@@ -70,12 +70,12 @@ Name | Type | Description | Notes
     "operations": [
         {
             "op": "add",
-            "path": "/tags/Atlanta Office",
+            "path": "/tags/FIRST TAG HERE",
             "value": {}
         },
         {
             "op": "add",
-            "path": "/tags/Engineering",
+            "path": "/tags/SECOND TAG HERE",
             "value": {}
         }
     ],
