@@ -172,7 +172,7 @@ class SavedViews(object):
         """
         if self.local_vars_configuration.client_side_validation and entity_type is None:  # noqa: E501
             raise ValueError("Invalid value for `entity_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["target", "hostname", "service", "ip", "network", "social", "runbook", "implant", "redirector"]  # noqa: E501
+        allowed_values = ["target", "hostname", "service", "ip", "network", "social", "runbook", "implant", "redirector", "topLevelDetection"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and entity_type not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `entity_type` ({0}), must be one of {1}"  # noqa: E501

@@ -55,6 +55,7 @@ Name | Type | Description | Notes
 **target_id** | **str** |  | [optional] 
 **target_last_seen** | **datetime** |  | [optional] 
 **target_temptation** | **int** |  | [optional] 
+**temptation_last_modified** | **datetime** |  | [optional] 
 **thumbnail_uuid** | **str** |  | [optional] 
 **vendor** | **str** |  | [optional] 
 **version** | **str** |  | [optional] 

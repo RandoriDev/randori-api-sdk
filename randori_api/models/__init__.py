@@ -15,26 +15,10 @@
 from __future__ import absolute_import
 
 # import models into model package
-from randori_api.models.action_metadata import ActionMetadata
-from randori_api.models.action_metadata_get_output import ActionMetadataGetOutput
-from randori_api.models.action_metadata_single_output import ActionMetadataSingleOutput
 from randori_api.models.all_detections_for_target import AllDetectionsForTarget
 from randori_api.models.all_detections_for_target_get_output import AllDetectionsForTargetGetOutput
 from randori_api.models.artifact import Artifact
 from randori_api.models.artifact_get_output import ArtifactGetOutput
-from randori_api.models.attack_checkins_for_implant import AttackCheckinsForImplant
-from randori_api.models.attack_checkins_for_implant_get_output import AttackCheckinsForImplantGetOutput
-from randori_api.models.attack_implants import AttackImplants
-from randori_api.models.attack_implants_get_output import AttackImplantsGetOutput
-from randori_api.models.attack_implants_single_output import AttackImplantsSingleOutput
-from randori_api.models.attack_interfaces_for_implant import AttackInterfacesForImplant
-from randori_api.models.attack_interfaces_for_implant_get_output import AttackInterfacesForImplantGetOutput
-from randori_api.models.attack_redirectors import AttackRedirectors
-from randori_api.models.attack_redirectors_get_output import AttackRedirectorsGetOutput
-from randori_api.models.attack_runbook import AttackRunbook
-from randori_api.models.attack_runbook_get_output import AttackRunbookGetOutput
-from randori_api.models.attack_statistics import AttackStatistics
-from randori_api.models.attack_statistics_get_output import AttackStatisticsGetOutput
 from randori_api.models.detection import Detection
 from randori_api.models.detection_get_output import DetectionGetOutput
 from randori_api.models.edge_schema import EdgeSchema
@@ -107,6 +91,9 @@ from randori_api.models.social_entity_patch_input import SocialEntityPatchInput
 from randori_api.models.social_entity_patch_output import SocialEntityPatchOutput
 from randori_api.models.statistics import Statistics
 from randori_api.models.statistics_get_output import StatisticsGetOutput
+from randori_api.models.tagcounts import Tagcounts
+from randori_api.models.tagcounts_get_output import TagcountsGetOutput
+from randori_api.models.tagcounts_single_output import TagcountsSingleOutput
 from randori_api.models.target import Target
 from randori_api.models.target_get_output import TargetGetOutput
 from randori_api.models.target_patch_in import TargetPatchIn

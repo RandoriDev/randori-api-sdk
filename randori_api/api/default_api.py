@@ -151,137 +151,6 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_action_metadata(self, **kwargs):  # noqa: E501
-        """get_action_metadata  # noqa: E501
-
-        Search action-metadata objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_action_metadata(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: ActionMetadataGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_action_metadata_with_http_info(**kwargs)  # noqa: E501
-
-    def get_action_metadata_with_http_info(self, **kwargs):  # noqa: E501
-        """get_action_metadata  # noqa: E501
-
-        Search action-metadata objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_action_metadata_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(ActionMetadataGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_action_metadata" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/actions', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ActionMetadataGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def get_all_detections_for_target(self, **kwargs):  # noqa: E501
         """get_all_detections_for_target  # noqa: E501
 
@@ -537,792 +406,6 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ArtifactGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_attack_checkins_for_implant(self, **kwargs):  # noqa: E501
-        """get_attack_checkins_for_implant  # noqa: E501
-
-        Search attack-checkins-for-implant objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_checkins_for_implant(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: AttackCheckinsForImplantGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_attack_checkins_for_implant_with_http_info(**kwargs)  # noqa: E501
-
-    def get_attack_checkins_for_implant_with_http_info(self, **kwargs):  # noqa: E501
-        """get_attack_checkins_for_implant  # noqa: E501
-
-        Search attack-checkins-for-implant objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_checkins_for_implant_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(AttackCheckinsForImplantGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_attack_checkins_for_implant" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/checkins-for-implant', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AttackCheckinsForImplantGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_attack_implants(self, **kwargs):  # noqa: E501
-        """get_attack_implants  # noqa: E501
-
-        Search attack-implants objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_implants(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: AttackImplantsGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_attack_implants_with_http_info(**kwargs)  # noqa: E501
-
-    def get_attack_implants_with_http_info(self, **kwargs):  # noqa: E501
-        """get_attack_implants  # noqa: E501
-
-        Search attack-implants objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_implants_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(AttackImplantsGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_attack_implants" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/implants', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AttackImplantsGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_attack_interfaces_for_implant(self, **kwargs):  # noqa: E501
-        """get_attack_interfaces_for_implant  # noqa: E501
-
-        Search attack-interfaces-for-implant objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_interfaces_for_implant(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: AttackInterfacesForImplantGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_attack_interfaces_for_implant_with_http_info(**kwargs)  # noqa: E501
-
-    def get_attack_interfaces_for_implant_with_http_info(self, **kwargs):  # noqa: E501
-        """get_attack_interfaces_for_implant  # noqa: E501
-
-        Search attack-interfaces-for-implant objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_interfaces_for_implant_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(AttackInterfacesForImplantGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_attack_interfaces_for_implant" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/interfaces-for-implant', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AttackInterfacesForImplantGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_attack_redirectors(self, **kwargs):  # noqa: E501
-        """get_attack_redirectors  # noqa: E501
-
-        Search attack-redirectors objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_redirectors(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: AttackRedirectorsGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_attack_redirectors_with_http_info(**kwargs)  # noqa: E501
-
-    def get_attack_redirectors_with_http_info(self, **kwargs):  # noqa: E501
-        """get_attack_redirectors  # noqa: E501
-
-        Search attack-redirectors objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_redirectors_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(AttackRedirectorsGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_attack_redirectors" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/redirectors', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AttackRedirectorsGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_attack_runbook(self, **kwargs):  # noqa: E501
-        """get_attack_runbook  # noqa: E501
-
-        Search attack-runbook objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_runbook(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: AttackRunbookGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_attack_runbook_with_http_info(**kwargs)  # noqa: E501
-
-    def get_attack_runbook_with_http_info(self, **kwargs):  # noqa: E501
-        """get_attack_runbook  # noqa: E501
-
-        Search attack-runbook objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_runbook_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(AttackRunbookGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_attack_runbook" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/runbooks', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AttackRunbookGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_attack_statistics(self, **kwargs):  # noqa: E501
-        """get_attack_statistics  # noqa: E501
-
-        Search attack-statistics objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_statistics(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: AttackStatisticsGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_attack_statistics_with_http_info(**kwargs)  # noqa: E501
-
-    def get_attack_statistics_with_http_info(self, **kwargs):  # noqa: E501
-        """get_attack_statistics  # noqa: E501
-
-        Search attack-statistics objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_attack_statistics_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(AttackStatisticsGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_attack_statistics" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/statistics', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AttackStatisticsGetOutput',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -2771,234 +1854,6 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_single_action_metadata(self, id, **kwargs):  # noqa: E501
-        """get_single_action_metadata  # noqa: E501
-
-        Get one action-metadata object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_action_metadata(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: ActionMetadataSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_action_metadata_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_action_metadata_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_action_metadata  # noqa: E501
-
-        Get one action-metadata object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_action_metadata_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(ActionMetadataSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_action_metadata" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_action_metadata`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/actions/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ActionMetadataSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_attack_implants(self, id, **kwargs):  # noqa: E501
-        """get_single_attack_implants  # noqa: E501
-
-        Get one attack-implants object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_attack_implants(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: AttackImplantsSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_attack_implants_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_attack_implants_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_attack_implants  # noqa: E501
-
-        Get one attack-implants object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_attack_implants_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(AttackImplantsSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_attack_implants" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_attack_implants`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/attack/api/v1/user/implants/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AttackImplantsSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def get_single_detection_for_target(self, **kwargs):  # noqa: E501
         """get_single_detection_for_target  # noqa: E501
 
@@ -4270,6 +3125,120 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_single_tagcounts(self, id, **kwargs):  # noqa: E501
+        """get_single_tagcounts  # noqa: E501
+
+        Get one tagcounts object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_single_tagcounts(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str id: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: TagcountsSingleOutput
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_single_tagcounts_with_http_info(id, **kwargs)  # noqa: E501
+
+    def get_single_tagcounts_with_http_info(self, id, **kwargs):  # noqa: E501
+        """get_single_tagcounts  # noqa: E501
+
+        Get one tagcounts object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_single_tagcounts_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str id: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(TagcountsSingleOutput, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_single_tagcounts" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `get_single_tagcounts`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/recon/api/v1/tagcounts/{id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TagcountsSingleOutput',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_single_target(self, id, **kwargs):  # noqa: E501
         """get_single_target  # noqa: E501
 
@@ -4644,6 +3613,137 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='StatisticsGetOutput',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_tagcounts(self, **kwargs):  # noqa: E501
+        """get_tagcounts  # noqa: E501
+
+        Search tagcounts objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_tagcounts(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int offset: offset into avilable records after filtering
+        :param int limit: maximum number of records to return
+        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
+        :param str q: base64 encoded jquery querybuilder complex search field
+        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: TagcountsGetOutput
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_tagcounts_with_http_info(**kwargs)  # noqa: E501
+
+    def get_tagcounts_with_http_info(self, **kwargs):  # noqa: E501
+        """get_tagcounts  # noqa: E501
+
+        Search tagcounts objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_tagcounts_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int offset: offset into avilable records after filtering
+        :param int limit: maximum number of records to return
+        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
+        :param str q: base64 encoded jquery querybuilder complex search field
+        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(TagcountsGetOutput, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'offset',
+            'limit',
+            'sort',
+            'q',
+            'reversed_nulls'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_tagcounts" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
+        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
+            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
+        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
+            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
+            collection_formats['sort'] = 'multi'  # noqa: E501
+        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
+            query_params.append(('q', local_var_params['q']))  # noqa: E501
+        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
+            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/recon/api/v1/tagcounts', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TagcountsGetOutput',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

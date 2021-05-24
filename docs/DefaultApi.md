@@ -5,15 +5,8 @@ All URIs are relative to *https://app.randori.io*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_single_saved_views**](DefaultApi.md#delete_single_saved_views) | **DELETE** /recon/api/v1/saved-views/{id} | 
-[**get_action_metadata**](DefaultApi.md#get_action_metadata) | **GET** /attack/api/v1/user/actions | 
 [**get_all_detections_for_target**](DefaultApi.md#get_all_detections_for_target) | **GET** /recon/api/v1/all-detections-for-target | 
 [**get_artifact**](DefaultApi.md#get_artifact) | **GET** /recon/api/v1/artifact | 
-[**get_attack_checkins_for_implant**](DefaultApi.md#get_attack_checkins_for_implant) | **GET** /attack/api/v1/user/checkins-for-implant | 
-[**get_attack_implants**](DefaultApi.md#get_attack_implants) | **GET** /attack/api/v1/user/implants | 
-[**get_attack_interfaces_for_implant**](DefaultApi.md#get_attack_interfaces_for_implant) | **GET** /attack/api/v1/user/interfaces-for-implant | 
-[**get_attack_redirectors**](DefaultApi.md#get_attack_redirectors) | **GET** /attack/api/v1/user/redirectors | 
-[**get_attack_runbook**](DefaultApi.md#get_attack_runbook) | **GET** /attack/api/v1/user/runbooks | 
-[**get_attack_statistics**](DefaultApi.md#get_attack_statistics) | **GET** /attack/api/v1/user/statistics | 
 [**get_detection**](DefaultApi.md#get_detection) | **GET** /recon/api/v1/detection | 
 [**get_hostname**](DefaultApi.md#get_hostname) | **GET** /recon/api/v1/hostname | 
 [**get_hostnames_for_ip**](DefaultApi.md#get_hostnames_for_ip) | **GET** /recon/api/v1/hostnames-for-ip | 
@@ -25,8 +18,6 @@ Method | HTTP request | Description
 [**get_ports_for_ip**](DefaultApi.md#get_ports_for_ip) | **GET** /recon/api/v1/ports-for-ip | 
 [**get_saved_views**](DefaultApi.md#get_saved_views) | **GET** /recon/api/v1/saved-views | 
 [**get_service**](DefaultApi.md#get_service) | **GET** /recon/api/v1/service | 
-[**get_single_action_metadata**](DefaultApi.md#get_single_action_metadata) | **GET** /attack/api/v1/user/actions/{id} | 
-[**get_single_attack_implants**](DefaultApi.md#get_single_attack_implants) | **GET** /attack/api/v1/user/implants/{id} | 
 [**get_single_detection_for_target**](DefaultApi.md#get_single_detection_for_target) | **GET** /recon/api/v1/single-detection-for-target | 
 [**get_single_hostname**](DefaultApi.md#get_single_hostname) | **GET** /recon/api/v1/hostname/{id} | 
 [**get_single_hostnames_for_ip**](DefaultApi.md#get_single_hostnames_for_ip) | **GET** /recon/api/v1/hostnames-for-ip/{id} | 
@@ -38,9 +29,11 @@ Method | HTTP request | Description
 [**get_single_ports_for_ip**](DefaultApi.md#get_single_ports_for_ip) | **GET** /recon/api/v1/ports-for-ip/{id} | 
 [**get_single_saved_views**](DefaultApi.md#get_single_saved_views) | **GET** /recon/api/v1/saved-views/{id} | 
 [**get_single_service**](DefaultApi.md#get_single_service) | **GET** /recon/api/v1/service/{id} | 
+[**get_single_tagcounts**](DefaultApi.md#get_single_tagcounts) | **GET** /recon/api/v1/tagcounts/{id} | 
 [**get_single_target**](DefaultApi.md#get_single_target) | **GET** /recon/api/v1/target/{id} | 
 [**get_social_entity**](DefaultApi.md#get_social_entity) | **GET** /recon/api/v1/social-entity | 
 [**get_statistics**](DefaultApi.md#get_statistics) | **GET** /recon/api/v1/statistics | 
+[**get_tagcounts**](DefaultApi.md#get_tagcounts) | **GET** /recon/api/v1/tagcounts | 
 [**get_target**](DefaultApi.md#get_target) | **GET** /recon/api/v1/target | 
 [**patch_hostname**](DefaultApi.md#patch_hostname) | **PATCH** /recon/api/v1/hostname | 
 [**patch_ip**](DefaultApi.md#patch_ip) | **PATCH** /recon/api/v1/ip | 
@@ -125,90 +118,6 @@ void (empty response body)
 **403** |  |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_action_metadata**
-> ActionMetadataGetOutput get_action_metadata(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search action-metadata objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    try:
-        api_response = api_instance.get_action_metadata(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_action_metadata: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**ActionMetadataGetOutput**](ActionMetadataGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -358,510 +267,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ArtifactGetOutput**](ArtifactGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_attack_checkins_for_implant**
-> AttackCheckinsForImplantGetOutput get_attack_checkins_for_implant(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search attack-checkins-for-implant objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    try:
-        api_response = api_instance.get_attack_checkins_for_implant(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_checkins_for_implant: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**AttackCheckinsForImplantGetOutput**](AttackCheckinsForImplantGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_attack_implants**
-> AttackImplantsGetOutput get_attack_implants(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search attack-implants objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    try:
-        api_response = api_instance.get_attack_implants(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_implants: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**AttackImplantsGetOutput**](AttackImplantsGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_attack_interfaces_for_implant**
-> AttackInterfacesForImplantGetOutput get_attack_interfaces_for_implant(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search attack-interfaces-for-implant objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    try:
-        api_response = api_instance.get_attack_interfaces_for_implant(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_interfaces_for_implant: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**AttackInterfacesForImplantGetOutput**](AttackInterfacesForImplantGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_attack_redirectors**
-> AttackRedirectorsGetOutput get_attack_redirectors(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search attack-redirectors objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    try:
-        api_response = api_instance.get_attack_redirectors(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_redirectors: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**AttackRedirectorsGetOutput**](AttackRedirectorsGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_attack_runbook**
-> AttackRunbookGetOutput get_attack_runbook(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search attack-runbook objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    try:
-        api_response = api_instance.get_attack_runbook(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_runbook: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**AttackRunbookGetOutput**](AttackRunbookGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_attack_statistics**
-> AttackStatisticsGetOutput get_attack_statistics(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-
-
-
-Search attack-statistics objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    offset = 56 # int | offset into avilable records after filtering (optional)
-limit = 56 # int | maximum number of records to return (optional)
-sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
-reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    try:
-        api_response = api_instance.get_attack_statistics(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_statistics: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional] 
- **limit** | **int**| maximum number of records to return | [optional] 
- **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
-
-### Return type
-
-[**AttackStatisticsGetOutput**](AttackStatisticsGetOutput.md)
 
 ### Authorization
 
@@ -1808,158 +1213,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_single_action_metadata**
-> ActionMetadataSingleOutput get_single_action_metadata(id)
-
-
-
-Get one action-metadata object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    id = 'id_example' # str | 
-
-    try:
-        api_response = api_instance.get_single_action_metadata(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_single_action_metadata: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
-
-### Return type
-
-[**ActionMetadataSingleOutput**](ActionMetadataSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_single_attack_implants**
-> AttackImplantsSingleOutput get_single_attack_implants(id)
-
-
-
-Get one attack-implants object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-```python
-from __future__ import print_function
-import time
-import randori_api
-from randori_api.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = randori_api.DefaultApi(api_client)
-    id = 'id_example' # str | 
-
-    try:
-        api_response = api_instance.get_single_attack_implants(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->get_single_attack_implants: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  | 
-
-### Return type
-
-[**AttackImplantsSingleOutput**](AttackImplantsSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_single_detection_for_target**
 > SingleDetectionForTargetGetOutput get_single_detection_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
@@ -2804,6 +2057,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_single_tagcounts**
+> TagcountsSingleOutput get_single_tagcounts(id)
+
+
+
+Get one tagcounts object by id
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+```python
+from __future__ import print_function
+import time
+import randori_api
+from randori_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://app.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api.Configuration(
+    host = "https://app.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with randori_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api.DefaultApi(api_client)
+    id = 'id_example' # str | 
+
+    try:
+        api_response = api_instance.get_single_tagcounts(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->get_single_tagcounts: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+
+### Return type
+
+[**TagcountsSingleOutput**](TagcountsSingleOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_single_target**
 > TargetSingleOutput get_single_target(id)
 
@@ -3028,6 +2357,90 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StatisticsGetOutput**](StatisticsGetOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_tagcounts**
+> TagcountsGetOutput get_tagcounts(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+
+
+
+Search tagcounts objects with an optional filter
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+```python
+from __future__ import print_function
+import time
+import randori_api
+from randori_api.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://app.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api.Configuration(
+    host = "https://app.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with randori_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+limit = 56 # int | maximum number of records to return (optional)
+sort = ['sort_example'] # list[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+
+    try:
+        api_response = api_instance.get_tagcounts(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->get_tagcounts: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**list[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
+
+### Return type
+
+[**TagcountsGetOutput**](TagcountsGetOutput.md)
 
 ### Authorization
 

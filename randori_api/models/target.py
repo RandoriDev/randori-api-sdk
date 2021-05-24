@@ -66,6 +66,7 @@ class Target(object):
         'status': 'str',
         'tags': 'object',
         'target_temptation': 'int',
+        'temptation_last_modified': 'datetime',
         'vendor': 'str',
         'version': 'str'
     }
@@ -103,11 +104,12 @@ class Target(object):
         'status': 'status',
         'tags': 'tags',
         'target_temptation': 'target_temptation',
+        'temptation_last_modified': 'temptation_last_modified',
         'vendor': 'vendor',
         'version': 'version'
     }
 
-    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, confidence=None, criticality=None, deleted=None, description=None, enumerability=None, first_seen=None, id=None, impact_score=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, research=None, service_id=None, status=None, tags=None, target_temptation=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, confidence=None, criticality=None, deleted=None, description=None, enumerability=None, first_seen=None, id=None, impact_score=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, perspective=None, perspective_name=None, post_exploit=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, private_weakness=None, public_weakness=None, randori_notes=None, reference=None, research=None, service_id=None, status=None, tags=None, target_temptation=None, temptation_last_modified=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """Target - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -145,6 +147,7 @@ class Target(object):
         self._status = None
         self._tags = None
         self._target_temptation = None
+        self._temptation_last_modified = None
         self._vendor = None
         self._version = None
         self.discriminator = None
@@ -211,6 +214,8 @@ class Target(object):
             self.tags = tags
         if target_temptation is not None:
             self.target_temptation = target_temptation
+        if temptation_last_modified is not None:
+            self.temptation_last_modified = temptation_last_modified
         if vendor is not None:
             self.vendor = vendor
         if version is not None:
@@ -915,6 +920,27 @@ class Target(object):
         """
 
         self._target_temptation = target_temptation
+
+    @property
+    def temptation_last_modified(self):
+        """Gets the temptation_last_modified of this Target.  # noqa: E501
+
+
+        :return: The temptation_last_modified of this Target.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._temptation_last_modified
+
+    @temptation_last_modified.setter
+    def temptation_last_modified(self, temptation_last_modified):
+        """Sets the temptation_last_modified of this Target.
+
+
+        :param temptation_last_modified: The temptation_last_modified of this Target.  # noqa: E501
+        :type: datetime
+        """
+
+        self._temptation_last_modified = temptation_last_modified
 
     @property
     def vendor(self):

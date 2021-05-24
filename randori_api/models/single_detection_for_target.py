@@ -86,6 +86,7 @@ class SingleDetectionForTarget(object):
         'target_id': 'str',
         'target_last_seen': 'datetime',
         'target_temptation': 'int',
+        'temptation_last_modified': 'datetime',
         'thumbnail_uuid': 'str',
         'vendor': 'str',
         'version': 'str'
@@ -144,12 +145,13 @@ class SingleDetectionForTarget(object):
         'target_id': 'target_id',
         'target_last_seen': 'target_last_seen',
         'target_temptation': 'target_temptation',
+        'temptation_last_modified': 'temptation_last_modified',
         'thumbnail_uuid': 'thumbnail_uuid',
         'vendor': 'vendor',
         'version': 'version'
     }
 
-    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, banners_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, detection_relevance=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, poc_email=None, poc_id=None, port=None, post_exploit=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_confidence=None, target_first_seen=None, target_id=None, target_last_seen=None, target_temptation=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, affiliation_state=None, applicability=None, authorization_state=None, banners_uuid=None, cert_uuid=None, confidence=None, criticality=None, deleted=None, description=None, detection_criteria=None, detection_relevance=None, enumerability=None, first_seen=None, headers_uuid=None, hostname=None, hostname_id=None, id=None, impact_score=None, ip=None, ip_id=None, ip_str=None, last_seen=None, lens_id=None, lens_view=None, name=None, org_id=None, path=None, perspective=None, perspective_name=None, poc_email=None, poc_id=None, port=None, post_exploit=None, priority_impact_factor=None, priority_score=None, priority_status_factor=None, priority_tags_factor=None, private_weakness=None, protocol=None, public_weakness=None, randori_notes=None, reference=None, research=None, screenshot_uuid=None, service_id=None, status=None, tags=None, target_confidence=None, target_first_seen=None, target_id=None, target_last_seen=None, target_temptation=None, temptation_last_modified=None, thumbnail_uuid=None, vendor=None, version=None, local_vars_configuration=None):  # noqa: E501
         """SingleDetectionForTarget - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -207,6 +209,7 @@ class SingleDetectionForTarget(object):
         self._target_id = None
         self._target_last_seen = None
         self._target_temptation = None
+        self._temptation_last_modified = None
         self._thumbnail_uuid = None
         self._vendor = None
         self._version = None
@@ -314,6 +317,8 @@ class SingleDetectionForTarget(object):
             self.target_last_seen = target_last_seen
         if target_temptation is not None:
             self.target_temptation = target_temptation
+        if temptation_last_modified is not None:
+            self.temptation_last_modified = temptation_last_modified
         if thumbnail_uuid is not None:
             self.thumbnail_uuid = thumbnail_uuid
         if vendor is not None:
@@ -1440,6 +1445,27 @@ class SingleDetectionForTarget(object):
         """
 
         self._target_temptation = target_temptation
+
+    @property
+    def temptation_last_modified(self):
+        """Gets the temptation_last_modified of this SingleDetectionForTarget.  # noqa: E501
+
+
+        :return: The temptation_last_modified of this SingleDetectionForTarget.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._temptation_last_modified
+
+    @temptation_last_modified.setter
+    def temptation_last_modified(self, temptation_last_modified):
+        """Sets the temptation_last_modified of this SingleDetectionForTarget.
+
+
+        :param temptation_last_modified: The temptation_last_modified of this SingleDetectionForTarget.  # noqa: E501
+        :type: datetime
+        """
+
+        self._temptation_last_modified = temptation_last_modified
 
     @property
     def thumbnail_uuid(self):

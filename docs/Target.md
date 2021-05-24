@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **status** | **str** |  | [optional] 
 **tags** | [**object**](.md) |  | [optional] 
 **target_temptation** | **int** |  | [optional] 
+**temptation_last_modified** | **datetime** |  | [optional] 
 **vendor** | **str** |  | [optional] 
 **version** | **str** |  | [optional] 
 
