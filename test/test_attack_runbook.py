@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.attack_runbook import AttackRunbook  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.attack_runbook import AttackRunbook
+
 
 class TestAttackRunbook(unittest.TestCase):
     """AttackRunbook unit test stubs"""
@@ -29,96 +25,11 @@ class TestAttackRunbook(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AttackRunbook
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.attack_runbook.AttackRunbook()  # noqa: E501
-        if include_optional :
-            return AttackRunbook(
-                description = '0', 
-                dst_email = [
-                    '0'
-                    ], 
-                dst_host = [
-                    '0'
-                    ], 
-                dst_ip = [
-                    '0'
-                    ], 
-                dst_mac = [
-                    '0'
-                    ], 
-                dst_network = [
-                    '0'
-                    ], 
-                dst_path = [
-                    '0'
-                    ], 
-                dst_port = [
-                    '0'
-                    ], 
-                end_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                guidance = '0', 
-                id = '0', 
-                implant_ids = [
-                    '0'
-                    ], 
-                implant_nick = '0', 
-                implant_src_host = [
-                    '0'
-                    ], 
-                implant_src_ip = [
-                    '0'
-                    ], 
-                name = '0', 
-                objective = '0', 
-                org_id = '0', 
-                perspective_metadata = [
-                    None
-                    ], 
-                results = '0', 
-                runbook_id = '0', 
-                src_email = [
-                    '0'
-                    ], 
-                src_host = [
-                    '0'
-                    ], 
-                src_ip = [
-                    '0'
-                    ], 
-                src_mac = [
-                    '0'
-                    ], 
-                start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                status = '0', 
-                technique_ids = [
-                    '0'
-                    ], 
-                trigger = [
-                    None
-                    ], 
-                uid = '0'
-            )
-        else :
-            return AttackRunbook(
-                name = '0',
-                org_id = '0',
-                runbook_id = '0',
-                start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                status = '0',
-                technique_ids = [
-                    '0'
-                    ],
-                uid = '0',
-        )
-
     def testAttackRunbook(self):
         """Test AttackRunbook"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AttackRunbook()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.attack_checkins_for_implant import AttackCheckinsForImplant  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.attack_checkins_for_implant import AttackCheckinsForImplant
+
 
 class TestAttackCheckinsForImplant(unittest.TestCase):
     """AttackCheckinsForImplant unit test stubs"""
@@ -29,39 +25,11 @@ class TestAttackCheckinsForImplant(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AttackCheckinsForImplant
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.attack_checkins_for_implant.AttackCheckinsForImplant()  # noqa: E501
-        if include_optional :
-            return AttackCheckinsForImplant(
-                bart_id = '0', 
-                id = '0', 
-                implant_id = '0', 
-                last_checkin = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                method = randori_api.models.method.method(), 
-                org_id = '0', 
-                src_ip = '0', 
-                src_ip_str = '0'
-            )
-        else :
-            return AttackCheckinsForImplant(
-                bart_id = '0',
-                id = '0',
-                implant_id = '0',
-                last_checkin = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                method = randori_api.models.method.method(),
-                org_id = '0',
-                src_ip = '0',
-                src_ip_str = '0',
-        )
-
     def testAttackCheckinsForImplant(self):
         """Test AttackCheckinsForImplant"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AttackCheckinsForImplant()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

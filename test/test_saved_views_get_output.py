@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.saved_views_get_output import SavedViewsGetOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.saved_views import SavedViews
+globals()['SavedViews'] = SavedViews
+from randori_api.model.saved_views_get_output import SavedViewsGetOutput
+
 
 class TestSavedViewsGetOutput(unittest.TestCase):
     """SavedViewsGetOutput unit test stubs"""
@@ -29,38 +27,11 @@ class TestSavedViewsGetOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SavedViewsGetOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.saved_views_get_output.SavedViewsGetOutput()  # noqa: E501
-        if include_optional :
-            return SavedViewsGetOutput(
-                count = 56, 
-                data = [
-                    randori_api.models.saved_views.saved-views(
-                        created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        description = '0', 
-                        edited_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        entity_type = 'target', 
-                        filter_data = randori_api.models.filter_data.filter_data(), 
-                        id = '0', 
-                        name = '0', 
-                        org_id = '0', 
-                        sort_data = randori_api.models.sort_data.sort_data(), )
-                    ], 
-                offset = 56, 
-                total = 56
-            )
-        else :
-            return SavedViewsGetOutput(
-        )
-
     def testSavedViewsGetOutput(self):
         """Test SavedViewsGetOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SavedViewsGetOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

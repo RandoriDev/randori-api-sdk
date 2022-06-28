@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,18 +9,127 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from randori_api.api_client import ApiClient
-from randori_api.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
+from randori_api.api_client import ApiClient, Endpoint as _Endpoint
+from randori_api.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types
 )
+from randori_api.model.action_metadata_get_output import ActionMetadataGetOutput
+from randori_api.model.action_metadata_single_output import ActionMetadataSingleOutput
+from randori_api.model.all_detections_for_target_get_output import AllDetectionsForTargetGetOutput
+from randori_api.model.artifactsrc import Artifactsrc
+from randori_api.model.artifactsrc_many import ArtifactsrcMany
+from randori_api.model.attack_checkins_for_implant_get_output import AttackCheckinsForImplantGetOutput
+from randori_api.model.attack_implants_get_output import AttackImplantsGetOutput
+from randori_api.model.attack_implants_single_output import AttackImplantsSingleOutput
+from randori_api.model.attack_interfaces_for_implant_get_output import AttackInterfacesForImplantGetOutput
+from randori_api.model.attack_redirectors_get_output import AttackRedirectorsGetOutput
+from randori_api.model.attack_runbook_get_output import AttackRunbookGetOutput
+from randori_api.model.attack_statistics_get_output import AttackStatisticsGetOutput
+from randori_api.model.attack_user_action_descriptions_get_output import AttackUserActionDescriptionsGetOutput
+from randori_api.model.attack_user_action_descriptions_patch_single_input import AttackUserActionDescriptionsPatchSingleInput
+from randori_api.model.attack_user_action_descriptions_post_input import AttackUserActionDescriptionsPostInput
+from randori_api.model.attack_user_action_descriptions_post_output import AttackUserActionDescriptionsPostOutput
+from randori_api.model.attack_user_action_descriptions_single_output import AttackUserActionDescriptionsSingleOutput
+from randori_api.model.attack_user_autoapprove_get_output import AttackUserAutoapproveGetOutput
+from randori_api.model.attack_user_autoapprove_patch_single_input import AttackUserAutoapprovePatchSingleInput
+from randori_api.model.attack_user_autoapprove_post_input import AttackUserAutoapprovePostInput
+from randori_api.model.attack_user_autoapprove_post_output import AttackUserAutoapprovePostOutput
+from randori_api.model.attack_user_autoapprove_single_output import AttackUserAutoapproveSingleOutput
+from randori_api.model.attack_user_runbook_descriptions_get_output import AttackUserRunbookDescriptionsGetOutput
+from randori_api.model.attack_user_runbook_descriptions_patch_single_input import AttackUserRunbookDescriptionsPatchSingleInput
+from randori_api.model.attack_user_runbook_descriptions_post_input import AttackUserRunbookDescriptionsPostInput
+from randori_api.model.attack_user_runbook_descriptions_post_output import AttackUserRunbookDescriptionsPostOutput
+from randori_api.model.attack_user_runbook_descriptions_single_output import AttackUserRunbookDescriptionsSingleOutput
+from randori_api.model.comment_creation_schema import CommentCreationSchema
+from randori_api.model.comment_response_collection_schema import CommentResponseCollectionSchema
+from randori_api.model.comment_response_schema import CommentResponseSchema
+from randori_api.model.error_schema import ErrorSchema
+from randori_api.model.external_comment_creation_schema import ExternalCommentCreationSchema
+from randori_api.model.hostname_get_output import HostnameGetOutput
+from randori_api.model.hostname_patch_input import HostnamePatchInput
+from randori_api.model.hostname_patch_output import HostnamePatchOutput
+from randori_api.model.hostname_single_output import HostnameSingleOutput
+from randori_api.model.hostnames_for_ip_get_output import HostnamesForIpGetOutput
+from randori_api.model.hostnames_for_ip_single_output import HostnamesForIpSingleOutput
+from randori_api.model.impact_score_entity_req import ImpactScoreEntityReq
+from randori_api.model.impact_score_group_outer_result import ImpactScoreGroupOuterResult
+from randori_api.model.ip_get_output import IpGetOutput
+from randori_api.model.ip_patch_input import IpPatchInput
+from randori_api.model.ip_patch_output import IpPatchOutput
+from randori_api.model.ip_single_output import IpSingleOutput
+from randori_api.model.ips_for_hostname_get_output import IpsForHostnameGetOutput
+from randori_api.model.ips_for_hostname_single_output import IpsForHostnameSingleOutput
+from randori_api.model.ips_for_network_get_output import IpsForNetworkGetOutput
+from randori_api.model.ips_for_network_single_output import IpsForNetworkSingleOutput
+from randori_api.model.ips_for_service_get_output import IpsForServiceGetOutput
+from randori_api.model.ips_for_service_single_output import IpsForServiceSingleOutput
+from randori_api.model.network_get_output import NetworkGetOutput
+from randori_api.model.network_patch_input import NetworkPatchInput
+from randori_api.model.network_patch_output import NetworkPatchOutput
+from randori_api.model.network_single_output import NetworkSingleOutput
+from randori_api.model.paths_output_schema import PathsOutputSchema
+from randori_api.model.peer_get_output import PeerGetOutput
+from randori_api.model.peer_map_get_output import PeerMapGetOutput
+from randori_api.model.peer_map_patch_single_input import PeerMapPatchSingleInput
+from randori_api.model.peer_map_post_input import PeerMapPostInput
+from randori_api.model.peer_map_post_output import PeerMapPostOutput
+from randori_api.model.peer_map_single_output import PeerMapSingleOutput
+from randori_api.model.peer_post_input import PeerPostInput
+from randori_api.model.peer_post_output import PeerPostOutput
+from randori_api.model.peer_single_output import PeerSingleOutput
+from randori_api.model.policy_get_output import PolicyGetOutput
+from randori_api.model.policy_patch_single_input import PolicyPatchSingleInput
+from randori_api.model.policy_post_input import PolicyPostInput
+from randori_api.model.policy_post_output import PolicyPostOutput
+from randori_api.model.policy_single_input import PolicySingleInput
+from randori_api.model.policy_single_output import PolicySingleOutput
+from randori_api.model.ports_for_ip_get_output import PortsForIpGetOutput
+from randori_api.model.ports_for_ip_single_output import PortsForIpSingleOutput
+from randori_api.model.prime_get_output import PrimeGetOutput
+from randori_api.model.priority_entity_req import PriorityEntityReq
+from randori_api.model.priority_group_outer_result import PriorityGroupOuterResult
+from randori_api.model.recon_worker_node_ips import ReconWorkerNodeIps
+from randori_api.model.report_get_output import ReportGetOutput
+from randori_api.model.report_single_output import ReportSingleOutput
+from randori_api.model.saved_views_get_output import SavedViewsGetOutput
+from randori_api.model.saved_views_patch_single_input import SavedViewsPatchSingleInput
+from randori_api.model.saved_views_post_input import SavedViewsPostInput
+from randori_api.model.saved_views_post_output import SavedViewsPostOutput
+from randori_api.model.saved_views_single_input import SavedViewsSingleInput
+from randori_api.model.saved_views_single_output import SavedViewsSingleOutput
+from randori_api.model.service_get_output import ServiceGetOutput
+from randori_api.model.service_single_output import ServiceSingleOutput
+from randori_api.model.single_detection_for_target_get_output import SingleDetectionForTargetGetOutput
+from randori_api.model.social_entity_get_output import SocialEntityGetOutput
+from randori_api.model.social_entity_patch_input import SocialEntityPatchInput
+from randori_api.model.social_entity_patch_output import SocialEntityPatchOutput
+from randori_api.model.statistics_get_output import StatisticsGetOutput
+from randori_api.model.status_entity_req import StatusEntityReq
+from randori_api.model.status_group_outer_result import StatusGroupOuterResult
+from randori_api.model.tagcounts_get_output import TagcountsGetOutput
+from randori_api.model.tagcounts_single_output import TagcountsSingleOutput
+from randori_api.model.target_get_output import TargetGetOutput
+from randori_api.model.target_patch_input import TargetPatchInput
+from randori_api.model.target_patch_output import TargetPatchOutput
+from randori_api.model.target_single_output import TargetSingleOutput
+from randori_api.model.target_temptation_entity_req import TargetTemptationEntityReq
+from randori_api.model.target_temptation_group_outer_result import TargetTemptationGroupOuterResult
+from randori_api.model.user_ap_action_instances_get_output import UserApActionInstancesGetOutput
+from randori_api.model.user_ap_action_instances_patch_single_input import UserApActionInstancesPatchSingleInput
+from randori_api.model.user_ap_action_instances_post_input import UserApActionInstancesPostInput
+from randori_api.model.user_ap_action_instances_post_output import UserApActionInstancesPostOutput
+from randori_api.model.user_ap_action_instances_single_output import UserApActionInstancesSingleOutput
+from randori_api.model.user_artifact_query import UserArtifactQuery
+from randori_api.model.user_tag_name_list import UserTagNameList
 
 
 class DefaultApi(object):
@@ -36,4870 +143,15271 @@ class DefaultApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.add_affiliation_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/artifactstore/api/v1/add_affiliation',
+                'operation_id': 'add_affiliation',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.add_affiliation_file_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/artifactstore/api/v1/add_affiliation_file',
+                'operation_id': 'add_affiliation_file',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.artifact_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/artifactstore/api/v1/artifact/{artifact_uuid}',
+                'operation_id': 'artifact',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'artifact_uuid2',
+                    'artifact_uuid',
+                ],
+                'required': [
+                    'artifact_uuid2',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'artifact_uuid2':
+                        (str,),
+                    'artifact_uuid':
+                        (str,),
+                },
+                'attribute_map': {
+                    'artifact_uuid2': 'artifact_uuid',
+                    'artifact_uuid': 'artifact_uuid',
+                },
+                'location_map': {
+                    'artifact_uuid2': 'path',
+                    'artifact_uuid': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.artifact_raw_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/artifactstore/api/v1/artifact-raw/{shasum}',
+                'operation_id': 'artifact_raw',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'shasum2',
+                    'shasum',
+                ],
+                'required': [
+                    'shasum2',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'shasum2':
+                        (str,),
+                    'shasum':
+                        (str,),
+                },
+                'attribute_map': {
+                    'shasum2': 'shasum',
+                    'shasum': 'shasum',
+                },
+                'location_map': {
+                    'shasum2': 'path',
+                    'shasum': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.comment_endpoint = _Endpoint(
+            settings={
+                'response_type': (CommentResponseCollectionSchema,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment',
+                'operation_id': 'comment',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'entity_id',
+                    'offset',
+                    'limit',
+                ],
+                'required': [
+                    'entity_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'entity_id':
+                        (str,),
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                },
+                'attribute_map': {
+                    'entity_id': 'entity_id',
+                    'offset': 'offset',
+                    'limit': 'limit',
+                },
+                'location_map': {
+                    'entity_id': 'path',
+                    'offset': 'query',
+                    'limit': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.comment_0_endpoint = _Endpoint(
+            settings={
+                'response_type': (CommentResponseSchema,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment',
+                'operation_id': 'comment_0',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'entity_id',
+                    'comment_creation_schema',
+                ],
+                'required': [
+                    'entity_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'entity_id':
+                        (str,),
+                    'comment_creation_schema':
+                        (CommentCreationSchema,),
+                },
+                'attribute_map': {
+                    'entity_id': 'entity_id',
+                },
+                'location_map': {
+                    'entity_id': 'path',
+                    'comment_creation_schema': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.delete_single_attack_user_action_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-action-descriptions/{id}',
+                'operation_id': 'delete_single_attack_user_action_descriptions',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.delete_single_attack_user_runbook_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-runbook-descriptions/{id}',
+                'operation_id': 'delete_single_attack_user_runbook_descriptions',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.delete_single_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/policy/{id}',
+                'operation_id': 'delete_single_policy',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'policy_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'policy_single_input':
+                        (PolicySingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'policy_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.delete_single_saved_views_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/saved-views/{id}',
+                'operation_id': 'delete_single_saved_views',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'saved_views_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'saved_views_single_input':
+                        (SavedViewsSingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'saved_views_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.get_action_metadata_endpoint = _Endpoint(
+            settings={
+                'response_type': (ActionMetadataGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/actions',
+                'operation_id': 'get_action_metadata',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
 
-    def delete_single_saved_views(self, id, **kwargs):  # noqa: E501
+                        "-ACTION_ID": "-action_id",
+                        "-ARTIFACTS_STATUS": "-artifacts_status",
+                        "-BART_ID": "-bart_id",
+                        "-COMPLETED": "-completed",
+                        "-CONFIG_HASH": "-config_hash",
+                        "-CREATED": "-created",
+                        "-DELETED": "-deleted",
+                        "-DESCRIPTION": "-description",
+                        "-DESCRIPTION_ID": "-description_id",
+                        "-DISPLAY_NAME": "-display_name",
+                        "-DST_EMAIL": "-dst_email",
+                        "-DST_HOST": "-dst_host",
+                        "-DST_IP": "-dst_ip",
+                        "-DST_MAC": "-dst_mac",
+                        "-DST_MISC": "-dst_misc",
+                        "-DST_NETWORK": "-dst_network",
+                        "-DST_PATH": "-dst_path",
+                        "-DST_PORT": "-dst_port",
+                        "-ID": "-id",
+                        "-IMPLANT_ID": "-implant_id",
+                        "-IMPLANT_NICK": "-implant_nick",
+                        "-IMPLANT_UID": "-implant_uid",
+                        "-MITRE_TECHNIQUES": "-mitre_techniques",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE_METADATA": "-perspective_metadata",
+                        "-RANDORI_NOTES": "-randori_notes",
+                        "-RESULT": "-result",
+                        "-RESULT_HASH": "-result_hash",
+                        "-RUNBOOK_INSTANCE_ID": "-runbook_instance_id",
+                        "-SRC_EMAIL": "-src_email",
+                        "-SRC_HOST": "-src_host",
+                        "-SRC_IP": "-src_ip",
+                        "-SRC_MAC": "-src_mac",
+                        "-SRC_MISC": "-src_misc",
+                        "-STABILITY": "-stability",
+                        "-STARTED": "-started",
+                        "-STEALTH": "-stealth",
+                        "-SUMMARY_SHA": "-summary_sha",
+                        "-TEMPLATE": "-template",
+                        "-TRIGGER": "-trigger",
+                        "-UPDATED": "-updated",
+                        "ACTION_ID": "action_id",
+                        "ARTIFACTS_STATUS": "artifacts_status",
+                        "BART_ID": "bart_id",
+                        "COMPLETED": "completed",
+                        "CONFIG_HASH": "config_hash",
+                        "CREATED": "created",
+                        "DELETED": "deleted",
+                        "DESCRIPTION": "description",
+                        "DESCRIPTION_ID": "description_id",
+                        "DISPLAY_NAME": "display_name",
+                        "DST_EMAIL": "dst_email",
+                        "DST_HOST": "dst_host",
+                        "DST_IP": "dst_ip",
+                        "DST_MAC": "dst_mac",
+                        "DST_MISC": "dst_misc",
+                        "DST_NETWORK": "dst_network",
+                        "DST_PATH": "dst_path",
+                        "DST_PORT": "dst_port",
+                        "ID": "id",
+                        "IMPLANT_ID": "implant_id",
+                        "IMPLANT_NICK": "implant_nick",
+                        "IMPLANT_UID": "implant_uid",
+                        "MITRE_TECHNIQUES": "mitre_techniques",
+                        "NAME": "name",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE_METADATA": "perspective_metadata",
+                        "RANDORI_NOTES": "randori_notes",
+                        "RESULT": "result",
+                        "RESULT_HASH": "result_hash",
+                        "RUNBOOK_INSTANCE_ID": "runbook_instance_id",
+                        "SRC_EMAIL": "src_email",
+                        "SRC_HOST": "src_host",
+                        "SRC_IP": "src_ip",
+                        "SRC_MAC": "src_mac",
+                        "SRC_MISC": "src_misc",
+                        "STABILITY": "stability",
+                        "STARTED": "started",
+                        "STEALTH": "stealth",
+                        "SUMMARY_SHA": "summary_sha",
+                        "TEMPLATE": "template",
+                        "TRIGGER": "trigger",
+                        "UPDATED": "updated"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_all_detections_for_target_endpoint = _Endpoint(
+            settings={
+                'response_type': (AllDetectionsForTargetGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/all-detections-for-target',
+                'operation_id': 'get_all_detections_for_target',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-APPLICABILITY": "-applicability",
+                        "-ATTACK_NOTE": "-attack_note",
+                        "-AUTHORIZATION_STATE": "-authorization_state",
+                        "-BANNERS_UUID": "-banners_uuid",
+                        "-CERT_UUID": "-cert_uuid",
+                        "-CHARACTERISTICS_COUNT": "-characteristics_count",
+                        "-CONFIDENCE": "-confidence",
+                        "-CPE": "-cpe",
+                        "-CRITICALITY": "-criticality",
+                        "-DELETED": "-deleted",
+                        "-DESCRIPTION": "-description",
+                        "-DETECTION_CRITERIA": "-detection_criteria",
+                        "-DETECTION_RELEVANCE": "-detection_relevance",
+                        "-ENUMERABILITY": "-enumerability",
+                        "-EXPLOITABILITY": "-exploitability",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-HEADERS_UUID": "-headers_uuid",
+                        "-HOSTNAME": "-hostname",
+                        "-HOSTNAME_ID": "-hostname_id",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP": "-ip",
+                        "-IP_ID": "-ip_id",
+                        "-IP_STR": "-ip_str",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "-PATH": "-path",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-POC_EMAIL": "-poc_email",
+                        "-POC_ID": "-poc_id",
+                        "-PORT": "-port",
+                        "-POST_EXPLOIT": "-post_exploit",
+                        "-PRIORITY_IMPACT_FACTOR": "-priority_impact_factor",
+                        "-PRIORITY_SCORE": "-priority_score",
+                        "-PRIORITY_STATUS_FACTOR": "-priority_status_factor",
+                        "-PRIORITY_TAGS_FACTOR": "-priority_tags_factor",
+                        "-PRIVATE_WEAKNESS": "-private_weakness",
+                        "-PROTOCOL": "-protocol",
+                        "-PUBLIC_WEAKNESS": "-public_weakness",
+                        "-RANDORI_NOTES": "-randori_notes",
+                        "-REFERENCE": "-reference",
+                        "-RESEARCH": "-research",
+                        "-SCREENSHOT_UUID": "-screenshot_uuid",
+                        "-SERVICE_ID": "-service_id",
+                        "-STATUS": "-status",
+                        "-TAGS": "-tags",
+                        "-TARGET_CONFIDENCE": "-target_confidence",
+                        "-TARGET_FIRST_SEEN": "-target_first_seen",
+                        "-TARGET_ID": "-target_id",
+                        "-TARGET_LAST_SEEN": "-target_last_seen",
+                        "-TARGET_NUM_DETECTIONS": "-target_num_detections",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "-TECH_CATEGORY": "-tech_category",
+                        "-TEMPTATION_LAST_MODIFIED": "-temptation_last_modified",
+                        "-THUMBNAIL_UUID": "-thumbnail_uuid",
+                        "-VENDOR": "-vendor",
+                        "-VERSION": "-version",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "APPLICABILITY": "applicability",
+                        "ATTACK_NOTE": "attack_note",
+                        "AUTHORIZATION_STATE": "authorization_state",
+                        "BANNERS_UUID": "banners_uuid",
+                        "CERT_UUID": "cert_uuid",
+                        "CHARACTERISTICS_COUNT": "characteristics_count",
+                        "CONFIDENCE": "confidence",
+                        "CPE": "cpe",
+                        "CRITICALITY": "criticality",
+                        "DELETED": "deleted",
+                        "DESCRIPTION": "description",
+                        "DETECTION_CRITERIA": "detection_criteria",
+                        "DETECTION_RELEVANCE": "detection_relevance",
+                        "ENUMERABILITY": "enumerability",
+                        "EXPLOITABILITY": "exploitability",
+                        "FIRST_SEEN": "first_seen",
+                        "HEADERS_UUID": "headers_uuid",
+                        "HOSTNAME": "hostname",
+                        "HOSTNAME_ID": "hostname_id",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP": "ip",
+                        "IP_ID": "ip_id",
+                        "IP_STR": "ip_str",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "NAME": "name",
+                        "ORG_ID": "org_id",
+                        "PATH": "path",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "POC_EMAIL": "poc_email",
+                        "POC_ID": "poc_id",
+                        "PORT": "port",
+                        "POST_EXPLOIT": "post_exploit",
+                        "PRIORITY_IMPACT_FACTOR": "priority_impact_factor",
+                        "PRIORITY_SCORE": "priority_score",
+                        "PRIORITY_STATUS_FACTOR": "priority_status_factor",
+                        "PRIORITY_TAGS_FACTOR": "priority_tags_factor",
+                        "PRIVATE_WEAKNESS": "private_weakness",
+                        "PROTOCOL": "protocol",
+                        "PUBLIC_WEAKNESS": "public_weakness",
+                        "RANDORI_NOTES": "randori_notes",
+                        "REFERENCE": "reference",
+                        "RESEARCH": "research",
+                        "SCREENSHOT_UUID": "screenshot_uuid",
+                        "SERVICE_ID": "service_id",
+                        "STATUS": "status",
+                        "TAGS": "tags",
+                        "TARGET_CONFIDENCE": "target_confidence",
+                        "TARGET_FIRST_SEEN": "target_first_seen",
+                        "TARGET_ID": "target_id",
+                        "TARGET_LAST_SEEN": "target_last_seen",
+                        "TARGET_NUM_DETECTIONS": "target_num_detections",
+                        "TARGET_TEMPTATION": "target_temptation",
+                        "TECH_CATEGORY": "tech_category",
+                        "TEMPTATION_LAST_MODIFIED": "temptation_last_modified",
+                        "THUMBNAIL_UUID": "thumbnail_uuid",
+                        "VENDOR": "vendor",
+                        "VERSION": "version"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_checkins_for_implant_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackCheckinsForImplantGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/checkins-for-implant',
+                'operation_id': 'get_attack_checkins_for_implant',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-BART_ID": "-bart_id",
+                        "-ID": "-id",
+                        "-IMPLANT_ID": "-implant_id",
+                        "-LAST_CHECKIN": "-last_checkin",
+                        "-METHOD": "-method",
+                        "-ORG_ID": "-org_id",
+                        "-SRC_IP": "-src_ip",
+                        "-SRC_IP_STR": "-src_ip_str",
+                        "BART_ID": "bart_id",
+                        "ID": "id",
+                        "IMPLANT_ID": "implant_id",
+                        "LAST_CHECKIN": "last_checkin",
+                        "METHOD": "method",
+                        "ORG_ID": "org_id",
+                        "SRC_IP": "src_ip",
+                        "SRC_IP_STR": "src_ip_str"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_implants_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackImplantsGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/implants',
+                'operation_id': 'get_attack_implants',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ARCH": "-arch",
+                        "-BART_ID": "-bart_id",
+                        "-BITS": "-bits",
+                        "-CREATED_ON": "-created_on",
+                        "-HOST_IPS": "-host_ips",
+                        "-HOSTNAMES": "-hostnames",
+                        "-ID": "-id",
+                        "-LAST_CHECKIN": "-last_checkin",
+                        "-METHOD": "-method",
+                        "-NEXT_CHECKIN": "-next_checkin",
+                        "-NICK": "-nick",
+                        "-ORG_ID": "-org_id",
+                        "-OS": "-os",
+                        "-OSTYPE": "-ostype",
+                        "-OSVER": "-osver",
+                        "-STATUS": "-status",
+                        "-UID": "-uid",
+                        "ARCH": "arch",
+                        "BART_ID": "bart_id",
+                        "BITS": "bits",
+                        "CREATED_ON": "created_on",
+                        "HOST_IPS": "host_ips",
+                        "HOSTNAMES": "hostnames",
+                        "ID": "id",
+                        "LAST_CHECKIN": "last_checkin",
+                        "METHOD": "method",
+                        "NEXT_CHECKIN": "next_checkin",
+                        "NICK": "nick",
+                        "ORG_ID": "org_id",
+                        "OS": "os",
+                        "OSTYPE": "ostype",
+                        "OSVER": "osver",
+                        "STATUS": "status",
+                        "UID": "uid"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_interfaces_for_implant_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackInterfacesForImplantGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/interfaces-for-implant',
+                'operation_id': 'get_attack_interfaces_for_implant',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ADDRESS": "-address",
+                        "-BART_ID": "-bart_id",
+                        "-ID": "-id",
+                        "-IMPLANT_ID": "-implant_id",
+                        "-IP_STRS": "-ip_strs",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "ADDRESS": "address",
+                        "BART_ID": "bart_id",
+                        "ID": "id",
+                        "IMPLANT_ID": "implant_id",
+                        "IP_STRS": "ip_strs",
+                        "NAME": "name",
+                        "ORG_ID": "org_id"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_redirectors_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackRedirectorsGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/redirectors',
+                'operation_id': 'get_attack_redirectors',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-BART_ID": "-bart_id",
+                        "-CREATED_ON": "-created_on",
+                        "-DELETED": "-deleted",
+                        "-EXTERNAL_IP": "-external_ip",
+                        "-EXTERNAL_IP_STR": "-external_ip_str",
+                        "-ID": "-id",
+                        "-ORG_ID": "-org_id",
+                        "-REMOTE_ROW_ID": "-remote_row_id",
+                        "-RETIRED": "-retired",
+                        "-STATUS": "-status",
+                        "-UPDATED_ON": "-updated_on",
+                        "-USAGE": "-usage",
+                        "BART_ID": "bart_id",
+                        "CREATED_ON": "created_on",
+                        "DELETED": "deleted",
+                        "EXTERNAL_IP": "external_ip",
+                        "EXTERNAL_IP_STR": "external_ip_str",
+                        "ID": "id",
+                        "ORG_ID": "org_id",
+                        "REMOTE_ROW_ID": "remote_row_id",
+                        "RETIRED": "retired",
+                        "STATUS": "status",
+                        "UPDATED_ON": "updated_on",
+                        "USAGE": "usage"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_runbook_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackRunbookGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/runbooks',
+                'operation_id': 'get_attack_runbook',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-COMMENT": "-comment",
+                        "-DELETED": "-deleted",
+                        "-DESCRIPTION": "-description",
+                        "-DST_EMAIL": "-dst_email",
+                        "-DST_HOST": "-dst_host",
+                        "-DST_IP": "-dst_ip",
+                        "-DST_MAC": "-dst_mac",
+                        "-DST_MISC": "-dst_misc",
+                        "-DST_NETWORK": "-dst_network",
+                        "-DST_PATH": "-dst_path",
+                        "-DST_PORT": "-dst_port",
+                        "-DST_SEARCH": "-dst_search",
+                        "-END_TIME": "-end_time",
+                        "-GUIDANCE": "-guidance",
+                        "-ID": "-id",
+                        "-IMPLANT_IDS": "-implant_ids",
+                        "-IMPLANT_NICK": "-implant_nick",
+                        "-IMPLANT_SRC_HOST": "-implant_src_host",
+                        "-IMPLANT_SRC_IP": "-implant_src_ip",
+                        "-INSTANCE_LABEL": "-instance_label",
+                        "-NAME": "-name",
+                        "-OBJECTIVE": "-objective",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE_METADATA": "-perspective_metadata",
+                        "-RANDORI_NOTES": "-randori_notes",
+                        "-RESULTS": "-results",
+                        "-RUNBOOK_ID": "-runbook_id",
+                        "-SRC_EMAIL": "-src_email",
+                        "-SRC_HOST": "-src_host",
+                        "-SRC_IP": "-src_ip",
+                        "-SRC_MAC": "-src_mac",
+                        "-SRC_MISC": "-src_misc",
+                        "-SRC_SEARCH": "-src_search",
+                        "-START_TIME": "-start_time",
+                        "-STATUS": "-status",
+                        "-TECHNIQUE_IDS": "-technique_ids",
+                        "-TRIGGER": "-trigger",
+                        "-UID": "-uid",
+                        "COMMENT": "comment",
+                        "DELETED": "deleted",
+                        "DESCRIPTION": "description",
+                        "DST_EMAIL": "dst_email",
+                        "DST_HOST": "dst_host",
+                        "DST_IP": "dst_ip",
+                        "DST_MAC": "dst_mac",
+                        "DST_MISC": "dst_misc",
+                        "DST_NETWORK": "dst_network",
+                        "DST_PATH": "dst_path",
+                        "DST_PORT": "dst_port",
+                        "DST_SEARCH": "dst_search",
+                        "END_TIME": "end_time",
+                        "GUIDANCE": "guidance",
+                        "ID": "id",
+                        "IMPLANT_IDS": "implant_ids",
+                        "IMPLANT_NICK": "implant_nick",
+                        "IMPLANT_SRC_HOST": "implant_src_host",
+                        "IMPLANT_SRC_IP": "implant_src_ip",
+                        "INSTANCE_LABEL": "instance_label",
+                        "NAME": "name",
+                        "OBJECTIVE": "objective",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE_METADATA": "perspective_metadata",
+                        "RANDORI_NOTES": "randori_notes",
+                        "RESULTS": "results",
+                        "RUNBOOK_ID": "runbook_id",
+                        "SRC_EMAIL": "src_email",
+                        "SRC_HOST": "src_host",
+                        "SRC_IP": "src_ip",
+                        "SRC_MAC": "src_mac",
+                        "SRC_MISC": "src_misc",
+                        "SRC_SEARCH": "src_search",
+                        "START_TIME": "start_time",
+                        "STATUS": "status",
+                        "TECHNIQUE_IDS": "technique_ids",
+                        "TRIGGER": "trigger",
+                        "UID": "uid"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_statistics_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackStatisticsGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/statistics',
+                'operation_id': 'get_attack_statistics',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-CURRENT": "-current",
+                        "-ID": "-id",
+                        "-INDEX": "-index",
+                        "-LATEST": "-latest",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "-ROW_TIME": "-row_time",
+                        "-TIME": "-time",
+                        "-TYPE": "-type",
+                        "-VALUE": "-value",
+                        "CURRENT": "current",
+                        "ID": "id",
+                        "INDEX": "index",
+                        "LATEST": "latest",
+                        "NAME": "name",
+                        "ORG_ID": "org_id",
+                        "ROW_TIME": "row_time",
+                        "TIME": "time",
+                        "TYPE": "type",
+                        "VALUE": "value"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_user_action_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserActionDescriptionsGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-action-descriptions',
+                'operation_id': 'get_attack_user_action_descriptions',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ACTION_ID": "-action_id",
+                        "-DESCRIPTION": "-description",
+                        "-ID": "-id",
+                        "-NAME": "-name",
+                        "-TEMPLATE": "-template",
+                        "ACTION_ID": "action_id",
+                        "DESCRIPTION": "description",
+                        "ID": "id",
+                        "NAME": "name",
+                        "TEMPLATE": "template"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_user_autoapprove_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserAutoapproveGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-autoapprove',
+                'operation_id': 'get_attack_user_autoapprove',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-APPROVED": "-approved",
+                        "-APPROVER": "-approver",
+                        "-ID": "-id",
+                        "-ORG_ID": "-org_id",
+                        "-PROCESS_DEFINITION_ID": "-process_definition_id",
+                        "-TIME": "-time",
+                        "APPROVED": "approved",
+                        "APPROVER": "approver",
+                        "ID": "id",
+                        "ORG_ID": "org_id",
+                        "PROCESS_DEFINITION_ID": "process_definition_id",
+                        "TIME": "time"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_attack_user_runbook_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserRunbookDescriptionsGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-runbook-descriptions',
+                'operation_id': 'get_attack_user_runbook_descriptions',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-DESCRIPTION": "-description",
+                        "-GUIDANCE": "-guidance",
+                        "-ID": "-id",
+                        "-NAME": "-name",
+                        "-OBJECTIVE": "-objective",
+                        "-RUNBOOK_ID": "-runbook_id",
+                        "DESCRIPTION": "description",
+                        "GUIDANCE": "guidance",
+                        "ID": "id",
+                        "NAME": "name",
+                        "OBJECTIVE": "objective",
+                        "RUNBOOK_ID": "runbook_id"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_hostname_endpoint = _Endpoint(
+            settings={
+                'response_type': (HostnameGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/hostname',
+                'operation_id': 'get_hostname',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-CONFIDENCE": "-confidence",
+                        "-DELETED": "-deleted",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-HOSTNAME": "-hostname",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP_COUNT": "-ip_count",
+                        "-IS_PRIME": "-is_prime",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-MAX_CONFIDENCE": "-max_confidence",
+                        "-NAME_TYPE": "-name_type",
+                        "-ONLY_IN_REVIEW_TARGETS": "-only_in_review_targets",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-PRIORITY_IMPACT_FACTOR": "-priority_impact_factor",
+                        "-PRIORITY_SCORE": "-priority_score",
+                        "-PRIORITY_STATUS_FACTOR": "-priority_status_factor",
+                        "-PRIORITY_TAGS_FACTOR": "-priority_tags_factor",
+                        "-STATUS": "-status",
+                        "-TAGS": "-tags",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "CONFIDENCE": "confidence",
+                        "DELETED": "deleted",
+                        "FIRST_SEEN": "first_seen",
+                        "HOSTNAME": "hostname",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP_COUNT": "ip_count",
+                        "IS_PRIME": "is_prime",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "MAX_CONFIDENCE": "max_confidence",
+                        "NAME_TYPE": "name_type",
+                        "ONLY_IN_REVIEW_TARGETS": "only_in_review_targets",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "PRIORITY_IMPACT_FACTOR": "priority_impact_factor",
+                        "PRIORITY_SCORE": "priority_score",
+                        "PRIORITY_STATUS_FACTOR": "priority_status_factor",
+                        "PRIORITY_TAGS_FACTOR": "priority_tags_factor",
+                        "STATUS": "status",
+                        "TAGS": "tags",
+                        "TARGET_TEMPTATION": "target_temptation"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_hostnames_for_ip_endpoint = _Endpoint(
+            settings={
+                'response_type': (HostnamesForIpGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/hostnames-for-ip',
+                'operation_id': 'get_hostnames_for_ip',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-CONFIDENCE": "-confidence",
+                        "-DELETED": "-deleted",
+                        "-HOSTNAME": "-hostname",
+                        "-HOSTNAME_ID": "-hostname_id",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP_ID": "-ip_id",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-STATUS": "-status",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "CONFIDENCE": "confidence",
+                        "DELETED": "deleted",
+                        "HOSTNAME": "hostname",
+                        "HOSTNAME_ID": "hostname_id",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP_ID": "ip_id",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "STATUS": "status"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_ip_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ip',
+                'operation_id': 'get_ip',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-ALL_PORTS": "-all_ports",
+                        "-CONFIDENCE": "-confidence",
+                        "-COUNTRY": "-country",
+                        "-DELETED": "-deleted",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-HOSTNAME_COUNT": "-hostname_count",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP": "-ip",
+                        "-IP_STR": "-ip_str",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LATITUDE": "-latitude",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-LONGITUDE": "-longitude",
+                        "-ONLY_IN_REVIEW_TARGETS": "-only_in_review_targets",
+                        "-OPEN_PORT_COUNT": "-open_port_count",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-PRIORITY_IMPACT_FACTOR": "-priority_impact_factor",
+                        "-PRIORITY_SCORE": "-priority_score",
+                        "-PRIORITY_STATUS_FACTOR": "-priority_status_factor",
+                        "-PRIORITY_TAGS_FACTOR": "-priority_tags_factor",
+                        "-RADIUS": "-radius",
+                        "-SERVICE_COUNT": "-service_count",
+                        "-STATUS": "-status",
+                        "-TAGS": "-tags",
+                        "-TARGET_COUNT": "-target_count",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "ALL_PORTS": "all_ports",
+                        "CONFIDENCE": "confidence",
+                        "COUNTRY": "country",
+                        "DELETED": "deleted",
+                        "FIRST_SEEN": "first_seen",
+                        "HOSTNAME_COUNT": "hostname_count",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP": "ip",
+                        "IP_STR": "ip_str",
+                        "LAST_SEEN": "last_seen",
+                        "LATITUDE": "latitude",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "LONGITUDE": "longitude",
+                        "ONLY_IN_REVIEW_TARGETS": "only_in_review_targets",
+                        "OPEN_PORT_COUNT": "open_port_count",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "PRIORITY_IMPACT_FACTOR": "priority_impact_factor",
+                        "PRIORITY_SCORE": "priority_score",
+                        "PRIORITY_STATUS_FACTOR": "priority_status_factor",
+                        "PRIORITY_TAGS_FACTOR": "priority_tags_factor",
+                        "RADIUS": "radius",
+                        "SERVICE_COUNT": "service_count",
+                        "STATUS": "status",
+                        "TAGS": "tags",
+                        "TARGET_COUNT": "target_count",
+                        "TARGET_TEMPTATION": "target_temptation"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_ips_for_hostname_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpsForHostnameGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ips-for-hostname',
+                'operation_id': 'get_ips_for_hostname',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-CONFIDENCE": "-confidence",
+                        "-COUNTRY": "-country",
+                        "-DELETED": "-deleted",
+                        "-HOSTNAME_ID": "-hostname_id",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP": "-ip",
+                        "-IP_ID": "-ip_id",
+                        "-IP_STR": "-ip_str",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LATITUDE": "-latitude",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-LONGITUDE": "-longitude",
+                        "-OPEN_PORT_COUNT": "-open_port_count",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-RADIUS": "-radius",
+                        "-SERVICE_COUNT": "-service_count",
+                        "-STATUS": "-status",
+                        "-TARGET_COUNT": "-target_count",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "-TOP_HOSTNAME": "-top_hostname",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "CONFIDENCE": "confidence",
+                        "COUNTRY": "country",
+                        "DELETED": "deleted",
+                        "HOSTNAME_ID": "hostname_id",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP": "ip",
+                        "IP_ID": "ip_id",
+                        "IP_STR": "ip_str",
+                        "LAST_SEEN": "last_seen",
+                        "LATITUDE": "latitude",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "LONGITUDE": "longitude",
+                        "OPEN_PORT_COUNT": "open_port_count",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "RADIUS": "radius",
+                        "SERVICE_COUNT": "service_count",
+                        "STATUS": "status",
+                        "TARGET_COUNT": "target_count",
+                        "TARGET_TEMPTATION": "target_temptation",
+                        "TOP_HOSTNAME": "top_hostname"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_ips_for_network_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpsForNetworkGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ips-for-network',
+                'operation_id': 'get_ips_for_network',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-CONFIDENCE": "-confidence",
+                        "-COUNTRY": "-country",
+                        "-DELETED": "-deleted",
+                        "-HOSTNAME": "-hostname",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP": "-ip",
+                        "-IP_ID": "-ip_id",
+                        "-IP_STR": "-ip_str",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LATITUDE": "-latitude",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-LONGITUDE": "-longitude",
+                        "-NETWORK": "-network",
+                        "-NETWORK_ID": "-network_id",
+                        "-NETWORK_STR": "-network_str",
+                        "-OPEN_PORT_COUNT": "-open_port_count",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-RADIUS": "-radius",
+                        "-SERVICE_COUNT": "-service_count",
+                        "-STATUS": "-status",
+                        "-TAGS": "-tags",
+                        "-TARGET_COUNT": "-target_count",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "CONFIDENCE": "confidence",
+                        "COUNTRY": "country",
+                        "DELETED": "deleted",
+                        "HOSTNAME": "hostname",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP": "ip",
+                        "IP_ID": "ip_id",
+                        "IP_STR": "ip_str",
+                        "LAST_SEEN": "last_seen",
+                        "LATITUDE": "latitude",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "LONGITUDE": "longitude",
+                        "NETWORK": "network",
+                        "NETWORK_ID": "network_id",
+                        "NETWORK_STR": "network_str",
+                        "OPEN_PORT_COUNT": "open_port_count",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "RADIUS": "radius",
+                        "SERVICE_COUNT": "service_count",
+                        "STATUS": "status",
+                        "TAGS": "tags",
+                        "TARGET_COUNT": "target_count",
+                        "TARGET_TEMPTATION": "target_temptation"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_ips_for_service_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpsForServiceGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ips-for-service',
+                'operation_id': 'get_ips_for_service',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-CONFIDENCE": "-confidence",
+                        "-COUNTRY": "-country",
+                        "-DELETED": "-deleted",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP": "-ip",
+                        "-IP_ID": "-ip_id",
+                        "-IP_STR": "-ip_str",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LATITUDE": "-latitude",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-LONGITUDE": "-longitude",
+                        "-OPEN_PORT_COUNT": "-open_port_count",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-RADIUS": "-radius",
+                        "-SERVICE_COUNT": "-service_count",
+                        "-SERVICE_ID": "-service_id",
+                        "-STATUS": "-status",
+                        "-TARGET_COUNT": "-target_count",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "CONFIDENCE": "confidence",
+                        "COUNTRY": "country",
+                        "DELETED": "deleted",
+                        "FIRST_SEEN": "first_seen",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP": "ip",
+                        "IP_ID": "ip_id",
+                        "IP_STR": "ip_str",
+                        "LAST_SEEN": "last_seen",
+                        "LATITUDE": "latitude",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "LONGITUDE": "longitude",
+                        "OPEN_PORT_COUNT": "open_port_count",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "RADIUS": "radius",
+                        "SERVICE_COUNT": "service_count",
+                        "SERVICE_ID": "service_id",
+                        "STATUS": "status",
+                        "TARGET_COUNT": "target_count",
+                        "TARGET_TEMPTATION": "target_temptation"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_network_endpoint = _Endpoint(
+            settings={
+                'response_type': (NetworkGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/network',
+                'operation_id': 'get_network',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-CONFIDENCE": "-confidence",
+                        "-DELETED": "-deleted",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP_COUNT": "-ip_count",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-MAX_CONFIDENCE": "-max_confidence",
+                        "-NETWORK": "-network",
+                        "-NETWORK_STR": "-network_str",
+                        "-ONLY_IN_REVIEW_TARGETS": "-only_in_review_targets",
+                        "-OPEN_PORT_COUNT": "-open_port_count",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-PRIORITY_IMPACT_FACTOR": "-priority_impact_factor",
+                        "-PRIORITY_SCORE": "-priority_score",
+                        "-PRIORITY_STATUS_FACTOR": "-priority_status_factor",
+                        "-PRIORITY_TAGS_FACTOR": "-priority_tags_factor",
+                        "-SERVICE_COUNT": "-service_count",
+                        "-STATUS": "-status",
+                        "-TAGS": "-tags",
+                        "-TARGET_COUNT": "-target_count",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "CONFIDENCE": "confidence",
+                        "DELETED": "deleted",
+                        "FIRST_SEEN": "first_seen",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP_COUNT": "ip_count",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "MAX_CONFIDENCE": "max_confidence",
+                        "NETWORK": "network",
+                        "NETWORK_STR": "network_str",
+                        "ONLY_IN_REVIEW_TARGETS": "only_in_review_targets",
+                        "OPEN_PORT_COUNT": "open_port_count",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "PRIORITY_IMPACT_FACTOR": "priority_impact_factor",
+                        "PRIORITY_SCORE": "priority_score",
+                        "PRIORITY_STATUS_FACTOR": "priority_status_factor",
+                        "PRIORITY_TAGS_FACTOR": "priority_tags_factor",
+                        "SERVICE_COUNT": "service_count",
+                        "STATUS": "status",
+                        "TAGS": "tags",
+                        "TARGET_COUNT": "target_count",
+                        "TARGET_TEMPTATION": "target_temptation"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_peer_endpoint = _Endpoint(
+            settings={
+                'response_type': (PeerGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/peer',
+                'operation_id': 'get_peer',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ID": "-id",
+                        "-TYPE": "-type",
+                        "-VALUE": "-value",
+                        "ID": "id",
+                        "TYPE": "type",
+                        "VALUE": "value"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_peer_map_endpoint = _Endpoint(
+            settings={
+                'response_type': (PeerMapGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/peer-map',
+                'operation_id': 'get_peer_map',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ID": "-id",
+                        "-ORG_ID": "-org_id",
+                        "-ORG_PEER_INDUSTRY": "-org_peer_industry",
+                        "-ORG_PEER_SIZE": "-org_peer_size",
+                        "ID": "id",
+                        "ORG_ID": "org_id",
+                        "ORG_PEER_INDUSTRY": "org_peer_industry",
+                        "ORG_PEER_SIZE": "org_peer_size"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (PolicyGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/policy',
+                'operation_id': 'get_policy',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ACTIONS": "-actions",
+                        "-CREATED_AT": "-created_at",
+                        "-EDITED_AT": "-edited_at",
+                        "-ENTITY_TYPES": "-entity_types",
+                        "-EXPIRES_AT": "-expires_at",
+                        "-FILTER_DATA": "-filter_data",
+                        "-ID": "-id",
+                        "-IS_ACTIVE": "-is_active",
+                        "-NAME": "-name",
+                        "-NOTES": "-notes",
+                        "-ORG_ID": "-org_id",
+                        "-VERSION": "-version",
+                        "ACTIONS": "actions",
+                        "CREATED_AT": "created_at",
+                        "EDITED_AT": "edited_at",
+                        "ENTITY_TYPES": "entity_types",
+                        "EXPIRES_AT": "expires_at",
+                        "FILTER_DATA": "filter_data",
+                        "ID": "id",
+                        "IS_ACTIVE": "is_active",
+                        "NAME": "name",
+                        "NOTES": "notes",
+                        "ORG_ID": "org_id",
+                        "VERSION": "version"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_ports_for_ip_endpoint = _Endpoint(
+            settings={
+                'response_type': (PortsForIpGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ports-for-ip',
+                'operation_id': 'get_ports_for_ip',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-CONFIDENCE": "-confidence",
+                        "-DELETED": "-deleted",
+                        "-ID": "-id",
+                        "-IP_ID": "-ip_id",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-PORT": "-port",
+                        "-PROTOCOL": "-protocol",
+                        "-SEEN_OPEN": "-seen_open",
+                        "-STATE": "-state",
+                        "CONFIDENCE": "confidence",
+                        "DELETED": "deleted",
+                        "ID": "id",
+                        "IP_ID": "ip_id",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "PORT": "port",
+                        "PROTOCOL": "protocol",
+                        "SEEN_OPEN": "seen_open",
+                        "STATE": "state"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_prime_endpoint = _Endpoint(
+            settings={
+                'response_type': (PrimeGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/prime',
+                'operation_id': 'get_prime',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-FIRST_SEEN": "-first_seen",
+                        "-ID": "-id",
+                        "-LABEL": "-label",
+                        "-LAST_SEEN": "-last_seen",
+                        "-NUM_EDGES": "-num_edges",
+                        "-ORG_ID": "-org_id",
+                        "-TYPE": "-type",
+                        "FIRST_SEEN": "first_seen",
+                        "ID": "id",
+                        "LABEL": "label",
+                        "LAST_SEEN": "last_seen",
+                        "NUM_EDGES": "num_edges",
+                        "ORG_ID": "org_id",
+                        "TYPE": "type"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_report_endpoint = _Endpoint(
+            settings={
+                'response_type': (ReportGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/report',
+                'operation_id': 'get_report',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-CREATED": "-created",
+                        "-ID": "-id",
+                        "-ORG_ID": "-org_id",
+                        "-REPORT_DATA": "-report_data",
+                        "-TYPE": "-type",
+                        "-VERSION": "-version",
+                        "CREATED": "created",
+                        "ID": "id",
+                        "ORG_ID": "org_id",
+                        "REPORT_DATA": "report_data",
+                        "TYPE": "type",
+                        "VERSION": "version"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_saved_views_endpoint = _Endpoint(
+            settings={
+                'response_type': (SavedViewsGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/saved-views',
+                'operation_id': 'get_saved_views',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-CREATED_AT": "-created_at",
+                        "-DESCRIPTION": "-description",
+                        "-EDITED_AT": "-edited_at",
+                        "-ENTITY_TYPE": "-entity_type",
+                        "-FILTER_DATA": "-filter_data",
+                        "-ID": "-id",
+                        "-IS_FAVORITE": "-is_favorite",
+                        "-IS_GLOBAL": "-is_global",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "-SORT_DATA": "-sort_data",
+                        "CREATED_AT": "created_at",
+                        "DESCRIPTION": "description",
+                        "EDITED_AT": "edited_at",
+                        "ENTITY_TYPE": "entity_type",
+                        "FILTER_DATA": "filter_data",
+                        "ID": "id",
+                        "IS_FAVORITE": "is_favorite",
+                        "IS_GLOBAL": "is_global",
+                        "NAME": "name",
+                        "ORG_ID": "org_id",
+                        "SORT_DATA": "sort_data"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_service_endpoint = _Endpoint(
+            settings={
+                'response_type': (ServiceGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/service',
+                'operation_id': 'get_service',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-APPLICABILITY": "-applicability",
+                        "-ATTACK_NOTE": "-attack_note",
+                        "-CONFIDENCE": "-confidence",
+                        "-CPE": "-cpe",
+                        "-CRITICALITY": "-criticality",
+                        "-DELETED": "-deleted",
+                        "-DESCRIPTION": "-description",
+                        "-ENUMERABILITY": "-enumerability",
+                        "-EXPLOITABILITY": "-exploitability",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-ID": "-id",
+                        "-INSTANCE_COUNT": "-instance_count",
+                        "-IP_COUNT": "-ip_count",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-POST_EXPLOIT": "-post_exploit",
+                        "-PRIVATE_WEAKNESS": "-private_weakness",
+                        "-PUBLIC_WEAKNESS": "-public_weakness",
+                        "-RANDORI_NOTES": "-randori_notes",
+                        "-REFERENCE": "-reference",
+                        "-RESEARCH": "-research",
+                        "-SERVICE_ID": "-service_id",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "-TECH_CATEGORY": "-tech_category",
+                        "-TEMPTATION_LAST_MODIFIED": "-temptation_last_modified",
+                        "-VENDOR": "-vendor",
+                        "-VERSION": "-version",
+                        "APPLICABILITY": "applicability",
+                        "ATTACK_NOTE": "attack_note",
+                        "CONFIDENCE": "confidence",
+                        "CPE": "cpe",
+                        "CRITICALITY": "criticality",
+                        "DELETED": "deleted",
+                        "DESCRIPTION": "description",
+                        "ENUMERABILITY": "enumerability",
+                        "EXPLOITABILITY": "exploitability",
+                        "FIRST_SEEN": "first_seen",
+                        "ID": "id",
+                        "INSTANCE_COUNT": "instance_count",
+                        "IP_COUNT": "ip_count",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "NAME": "name",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "POST_EXPLOIT": "post_exploit",
+                        "PRIVATE_WEAKNESS": "private_weakness",
+                        "PUBLIC_WEAKNESS": "public_weakness",
+                        "RANDORI_NOTES": "randori_notes",
+                        "REFERENCE": "reference",
+                        "RESEARCH": "research",
+                        "SERVICE_ID": "service_id",
+                        "TARGET_TEMPTATION": "target_temptation",
+                        "TECH_CATEGORY": "tech_category",
+                        "TEMPTATION_LAST_MODIFIED": "temptation_last_modified",
+                        "VENDOR": "vendor",
+                        "VERSION": "version"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_action_metadata_endpoint = _Endpoint(
+            settings={
+                'response_type': (ActionMetadataSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/actions/{id}',
+                'operation_id': 'get_single_action_metadata',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_attack_implants_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackImplantsSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/implants/{id}',
+                'operation_id': 'get_single_attack_implants',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_attack_user_action_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserActionDescriptionsSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-action-descriptions/{id}',
+                'operation_id': 'get_single_attack_user_action_descriptions',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_attack_user_autoapprove_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserAutoapproveSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-autoapprove/{id}',
+                'operation_id': 'get_single_attack_user_autoapprove',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_attack_user_runbook_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserRunbookDescriptionsSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-runbook-descriptions/{id}',
+                'operation_id': 'get_single_attack_user_runbook_descriptions',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_detection_for_target_endpoint = _Endpoint(
+            settings={
+                'response_type': (SingleDetectionForTargetGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/single-detection-for-target',
+                'operation_id': 'get_single_detection_for_target',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-APPLICABILITY": "-applicability",
+                        "-ATTACK_NOTE": "-attack_note",
+                        "-AUTHORIZATION_STATE": "-authorization_state",
+                        "-BANNERS_UUID": "-banners_uuid",
+                        "-CERT_UUID": "-cert_uuid",
+                        "-CHARACTERISTICS_COUNT": "-characteristics_count",
+                        "-CONFIDENCE": "-confidence",
+                        "-CPE": "-cpe",
+                        "-CRITICALITY": "-criticality",
+                        "-DELETED": "-deleted",
+                        "-DESCRIPTION": "-description",
+                        "-DETECTION_CRITERIA": "-detection_criteria",
+                        "-DETECTION_RELEVANCE": "-detection_relevance",
+                        "-ENUMERABILITY": "-enumerability",
+                        "-EXPLOITABILITY": "-exploitability",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-HEADERS_UUID": "-headers_uuid",
+                        "-HOSTNAME": "-hostname",
+                        "-HOSTNAME_ID": "-hostname_id",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-IP": "-ip",
+                        "-IP_ID": "-ip_id",
+                        "-IP_STR": "-ip_str",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "-PATH": "-path",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-POC_EMAIL": "-poc_email",
+                        "-POC_ID": "-poc_id",
+                        "-PORT": "-port",
+                        "-POST_EXPLOIT": "-post_exploit",
+                        "-PRIORITY_IMPACT_FACTOR": "-priority_impact_factor",
+                        "-PRIORITY_SCORE": "-priority_score",
+                        "-PRIORITY_STATUS_FACTOR": "-priority_status_factor",
+                        "-PRIORITY_TAGS_FACTOR": "-priority_tags_factor",
+                        "-PRIVATE_WEAKNESS": "-private_weakness",
+                        "-PROTOCOL": "-protocol",
+                        "-PUBLIC_WEAKNESS": "-public_weakness",
+                        "-RANDORI_NOTES": "-randori_notes",
+                        "-REFERENCE": "-reference",
+                        "-RESEARCH": "-research",
+                        "-SCREENSHOT_UUID": "-screenshot_uuid",
+                        "-SERVICE_ID": "-service_id",
+                        "-STATUS": "-status",
+                        "-TAGS": "-tags",
+                        "-TARGET_CONFIDENCE": "-target_confidence",
+                        "-TARGET_FIRST_SEEN": "-target_first_seen",
+                        "-TARGET_ID": "-target_id",
+                        "-TARGET_LAST_SEEN": "-target_last_seen",
+                        "-TARGET_NUM_DETECTIONS": "-target_num_detections",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "-TECH_CATEGORY": "-tech_category",
+                        "-TEMPTATION_LAST_MODIFIED": "-temptation_last_modified",
+                        "-THUMBNAIL_UUID": "-thumbnail_uuid",
+                        "-VENDOR": "-vendor",
+                        "-VERSION": "-version",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "APPLICABILITY": "applicability",
+                        "ATTACK_NOTE": "attack_note",
+                        "AUTHORIZATION_STATE": "authorization_state",
+                        "BANNERS_UUID": "banners_uuid",
+                        "CERT_UUID": "cert_uuid",
+                        "CHARACTERISTICS_COUNT": "characteristics_count",
+                        "CONFIDENCE": "confidence",
+                        "CPE": "cpe",
+                        "CRITICALITY": "criticality",
+                        "DELETED": "deleted",
+                        "DESCRIPTION": "description",
+                        "DETECTION_CRITERIA": "detection_criteria",
+                        "DETECTION_RELEVANCE": "detection_relevance",
+                        "ENUMERABILITY": "enumerability",
+                        "EXPLOITABILITY": "exploitability",
+                        "FIRST_SEEN": "first_seen",
+                        "HEADERS_UUID": "headers_uuid",
+                        "HOSTNAME": "hostname",
+                        "HOSTNAME_ID": "hostname_id",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "IP": "ip",
+                        "IP_ID": "ip_id",
+                        "IP_STR": "ip_str",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "NAME": "name",
+                        "ORG_ID": "org_id",
+                        "PATH": "path",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "POC_EMAIL": "poc_email",
+                        "POC_ID": "poc_id",
+                        "PORT": "port",
+                        "POST_EXPLOIT": "post_exploit",
+                        "PRIORITY_IMPACT_FACTOR": "priority_impact_factor",
+                        "PRIORITY_SCORE": "priority_score",
+                        "PRIORITY_STATUS_FACTOR": "priority_status_factor",
+                        "PRIORITY_TAGS_FACTOR": "priority_tags_factor",
+                        "PRIVATE_WEAKNESS": "private_weakness",
+                        "PROTOCOL": "protocol",
+                        "PUBLIC_WEAKNESS": "public_weakness",
+                        "RANDORI_NOTES": "randori_notes",
+                        "REFERENCE": "reference",
+                        "RESEARCH": "research",
+                        "SCREENSHOT_UUID": "screenshot_uuid",
+                        "SERVICE_ID": "service_id",
+                        "STATUS": "status",
+                        "TAGS": "tags",
+                        "TARGET_CONFIDENCE": "target_confidence",
+                        "TARGET_FIRST_SEEN": "target_first_seen",
+                        "TARGET_ID": "target_id",
+                        "TARGET_LAST_SEEN": "target_last_seen",
+                        "TARGET_NUM_DETECTIONS": "target_num_detections",
+                        "TARGET_TEMPTATION": "target_temptation",
+                        "TECH_CATEGORY": "tech_category",
+                        "TEMPTATION_LAST_MODIFIED": "temptation_last_modified",
+                        "THUMBNAIL_UUID": "thumbnail_uuid",
+                        "VENDOR": "vendor",
+                        "VERSION": "version"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_hostname_endpoint = _Endpoint(
+            settings={
+                'response_type': (HostnameSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/hostname/{id}',
+                'operation_id': 'get_single_hostname',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_hostnames_for_ip_endpoint = _Endpoint(
+            settings={
+                'response_type': (HostnamesForIpSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/hostnames-for-ip/{id}',
+                'operation_id': 'get_single_hostnames_for_ip',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_ip_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ip/{id}',
+                'operation_id': 'get_single_ip',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_ips_for_hostname_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpsForHostnameSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ips-for-hostname/{id}',
+                'operation_id': 'get_single_ips_for_hostname',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_ips_for_network_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpsForNetworkSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ips-for-network/{id}',
+                'operation_id': 'get_single_ips_for_network',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_ips_for_service_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpsForServiceSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ips-for-service/{id}',
+                'operation_id': 'get_single_ips_for_service',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_network_endpoint = _Endpoint(
+            settings={
+                'response_type': (NetworkSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/network/{id}',
+                'operation_id': 'get_single_network',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_peer_endpoint = _Endpoint(
+            settings={
+                'response_type': (PeerSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/peer/{id}',
+                'operation_id': 'get_single_peer',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_peer_map_endpoint = _Endpoint(
+            settings={
+                'response_type': (PeerMapSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/peer-map/{id}',
+                'operation_id': 'get_single_peer_map',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_ports_for_ip_endpoint = _Endpoint(
+            settings={
+                'response_type': (PortsForIpSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ports-for-ip/{id}',
+                'operation_id': 'get_single_ports_for_ip',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_report_endpoint = _Endpoint(
+            settings={
+                'response_type': (ReportSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/report/{id}',
+                'operation_id': 'get_single_report',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_saved_views_endpoint = _Endpoint(
+            settings={
+                'response_type': (SavedViewsSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/saved-views/{id}',
+                'operation_id': 'get_single_saved_views',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_service_endpoint = _Endpoint(
+            settings={
+                'response_type': (ServiceSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/service/{id}',
+                'operation_id': 'get_single_service',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_tagcounts_endpoint = _Endpoint(
+            settings={
+                'response_type': (TagcountsSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/tagcounts/{id}',
+                'operation_id': 'get_single_tagcounts',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_target_endpoint = _Endpoint(
+            settings={
+                'response_type': (TargetSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/target/{id}',
+                'operation_id': 'get_single_target',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_single_user_ap_action_instances_endpoint = _Endpoint(
+            settings={
+                'response_type': (UserApActionInstancesSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/ap-action-instance/{id}',
+                'operation_id': 'get_single_user_ap_action_instances',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'org_id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_social_entity_endpoint = _Endpoint(
+            settings={
+                'response_type': (SocialEntityGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/social-entity',
+                'operation_id': 'get_social_entity',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ADDRESS": "-address",
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-AUTHORIZATION_STATE": "-authorization_state",
+                        "-CITY": "-city",
+                        "-COMPANY_NAME": "-company_name",
+                        "-CONFIDENCE": "-confidence",
+                        "-COUNTRY": "-country",
+                        "-DELETED": "-deleted",
+                        "-DETAILS": "-details",
+                        "-DOMAIN": "-domain",
+                        "-EMAIL": "-email",
+                        "-EMAIL_TYPE": "-email_type",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-ONLY_IN_REVIEW_TARGETS": "-only_in_review_targets",
+                        "-ORG_ID": "-org_id",
+                        "-PERSON_FIRST_NAME": "-person_first_name",
+                        "-PERSON_LAST_NAME": "-person_last_name",
+                        "-PERSON_MIDDLE_NAME": "-person_middle_name",
+                        "-PERSON_NAME": "-person_name",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-PHONE": "-phone",
+                        "-POSTAL_CODE": "-postal_code",
+                        "-PRIORITY_IMPACT_FACTOR": "-priority_impact_factor",
+                        "-PRIORITY_SCORE": "-priority_score",
+                        "-PRIORITY_STATUS_FACTOR": "-priority_status_factor",
+                        "-PRIORITY_TAGS_FACTOR": "-priority_tags_factor",
+                        "-ROLE": "-role",
+                        "-SENIORITY": "-seniority",
+                        "-STATE": "-state",
+                        "-STATUS": "-status",
+                        "-SUB_ROLE": "-sub_role",
+                        "-TAGS": "-tags",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "-TITLE": "-title",
+                        "-TLD": "-tld",
+                        "-USERNAME": "-username",
+                        "ADDRESS": "address",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "AUTHORIZATION_STATE": "authorization_state",
+                        "CITY": "city",
+                        "COMPANY_NAME": "company_name",
+                        "CONFIDENCE": "confidence",
+                        "COUNTRY": "country",
+                        "DELETED": "deleted",
+                        "DETAILS": "details",
+                        "DOMAIN": "domain",
+                        "EMAIL": "email",
+                        "EMAIL_TYPE": "email_type",
+                        "FIRST_SEEN": "first_seen",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "ONLY_IN_REVIEW_TARGETS": "only_in_review_targets",
+                        "ORG_ID": "org_id",
+                        "PERSON_FIRST_NAME": "person_first_name",
+                        "PERSON_LAST_NAME": "person_last_name",
+                        "PERSON_MIDDLE_NAME": "person_middle_name",
+                        "PERSON_NAME": "person_name",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "PHONE": "phone",
+                        "POSTAL_CODE": "postal_code",
+                        "PRIORITY_IMPACT_FACTOR": "priority_impact_factor",
+                        "PRIORITY_SCORE": "priority_score",
+                        "PRIORITY_STATUS_FACTOR": "priority_status_factor",
+                        "PRIORITY_TAGS_FACTOR": "priority_tags_factor",
+                        "ROLE": "role",
+                        "SENIORITY": "seniority",
+                        "STATE": "state",
+                        "STATUS": "status",
+                        "SUB_ROLE": "sub_role",
+                        "TAGS": "tags",
+                        "TARGET_TEMPTATION": "target_temptation",
+                        "TITLE": "title",
+                        "TLD": "tld",
+                        "USERNAME": "username"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_statistics_endpoint = _Endpoint(
+            settings={
+                'response_type': (StatisticsGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/statistics',
+                'operation_id': 'get_statistics',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'interval',
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                    'interval',
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ID": "-id",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "-TIME": "-time",
+                        "-TYPE": "-type",
+                        "-VALUE": "-value",
+                        "ID": "id",
+                        "NAME": "name",
+                        "ORG_ID": "org_id",
+                        "TIME": "time",
+                        "TYPE": "type",
+                        "VALUE": "value"
+                    },
+                },
+                'openapi_types': {
+                    'interval':
+                        (int, none_type,),
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'interval': 'interval',
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'interval': 'query',
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_tagcounts_endpoint = _Endpoint(
+            settings={
+                'response_type': (TagcountsGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/tagcounts',
+                'operation_id': 'get_tagcounts',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-ALL_COUNT": "-all_count",
+                        "-CONTENT": "-content",
+                        "-HOSTNAME_COUNT": "-hostname_count",
+                        "-ID": "-id",
+                        "-IP_COUNT": "-ip_count",
+                        "-NETWORK_COUNT": "-network_count",
+                        "-ORG_ID": "-org_id",
+                        "-POC_COUNT": "-poc_count",
+                        "-SERVICE_COUNT": "-service_count",
+                        "-TARGET_COUNT": "-target_count",
+                        "ALL_COUNT": "all_count",
+                        "CONTENT": "content",
+                        "HOSTNAME_COUNT": "hostname_count",
+                        "ID": "id",
+                        "IP_COUNT": "ip_count",
+                        "NETWORK_COUNT": "network_count",
+                        "ORG_ID": "org_id",
+                        "POC_COUNT": "poc_count",
+                        "SERVICE_COUNT": "service_count",
+                        "TARGET_COUNT": "target_count"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_target_endpoint = _Endpoint(
+            settings={
+                'response_type': (TargetGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/target',
+                'operation_id': 'get_target',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-AFFILIATION_STATE": "-affiliation_state",
+                        "-APPLICABILITY": "-applicability",
+                        "-ATTACK_NOTE": "-attack_note",
+                        "-AUTHORIZATION_STATE": "-authorization_state",
+                        "-CONFIDENCE": "-confidence",
+                        "-CPE": "-cpe",
+                        "-CRITICALITY": "-criticality",
+                        "-DELETED": "-deleted",
+                        "-DESCRIPTION": "-description",
+                        "-ENUMERABILITY": "-enumerability",
+                        "-FIRST_SEEN": "-first_seen",
+                        "-ID": "-id",
+                        "-IMPACT_SCORE": "-impact_score",
+                        "-LAST_SEEN": "-last_seen",
+                        "-LENS_ID": "-lens_id",
+                        "-LENS_VIEW": "-lens_view",
+                        "-NAME": "-name",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE": "-perspective",
+                        "-PERSPECTIVE_NAME": "-perspective_name",
+                        "-POST_EXPLOIT": "-post_exploit",
+                        "-PRIORITY_IMPACT_FACTOR": "-priority_impact_factor",
+                        "-PRIORITY_SCORE": "-priority_score",
+                        "-PRIORITY_STATUS_FACTOR": "-priority_status_factor",
+                        "-PRIORITY_TAGS_FACTOR": "-priority_tags_factor",
+                        "-PRIVATE_WEAKNESS": "-private_weakness",
+                        "-PUBLIC_WEAKNESS": "-public_weakness",
+                        "-RANDORI_NOTES": "-randori_notes",
+                        "-REFERENCE": "-reference",
+                        "-RESEARCH": "-research",
+                        "-SERVICE_ID": "-service_id",
+                        "-STATUS": "-status",
+                        "-TAGS": "-tags",
+                        "-TARGET_TEMPTATION": "-target_temptation",
+                        "-TECH_CATEGORY": "-tech_category",
+                        "-TEMPTATION_LAST_MODIFIED": "-temptation_last_modified",
+                        "-VENDOR": "-vendor",
+                        "-VERSION": "-version",
+                        "AFFILIATION_STATE": "affiliation_state",
+                        "APPLICABILITY": "applicability",
+                        "ATTACK_NOTE": "attack_note",
+                        "AUTHORIZATION_STATE": "authorization_state",
+                        "CONFIDENCE": "confidence",
+                        "CPE": "cpe",
+                        "CRITICALITY": "criticality",
+                        "DELETED": "deleted",
+                        "DESCRIPTION": "description",
+                        "ENUMERABILITY": "enumerability",
+                        "FIRST_SEEN": "first_seen",
+                        "ID": "id",
+                        "IMPACT_SCORE": "impact_score",
+                        "LAST_SEEN": "last_seen",
+                        "LENS_ID": "lens_id",
+                        "LENS_VIEW": "lens_view",
+                        "NAME": "name",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE": "perspective",
+                        "PERSPECTIVE_NAME": "perspective_name",
+                        "POST_EXPLOIT": "post_exploit",
+                        "PRIORITY_IMPACT_FACTOR": "priority_impact_factor",
+                        "PRIORITY_SCORE": "priority_score",
+                        "PRIORITY_STATUS_FACTOR": "priority_status_factor",
+                        "PRIORITY_TAGS_FACTOR": "priority_tags_factor",
+                        "PRIVATE_WEAKNESS": "private_weakness",
+                        "PUBLIC_WEAKNESS": "public_weakness",
+                        "RANDORI_NOTES": "randori_notes",
+                        "REFERENCE": "reference",
+                        "RESEARCH": "research",
+                        "SERVICE_ID": "service_id",
+                        "STATUS": "status",
+                        "TAGS": "tags",
+                        "TARGET_TEMPTATION": "target_temptation",
+                        "TECH_CATEGORY": "tech_category",
+                        "TEMPTATION_LAST_MODIFIED": "temptation_last_modified",
+                        "VENDOR": "vendor",
+                        "VERSION": "version"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_user_ap_action_instances_endpoint = _Endpoint(
+            settings={
+                'response_type': (UserApActionInstancesGetOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/ap-action-instance',
+                'operation_id': 'get_user_ap_action_instances',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'offset',
+                    'limit',
+                    'sort',
+                    'q',
+                    'reversed_nulls',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'sort',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('sort',): {
+
+                        "-_DST_IP": "-_dst_ip",
+                        "-_DST_NETWORK": "-_dst_network",
+                        "-_SRC_IP": "-_src_ip",
+                        "-ACTION_ID": "-action_id",
+                        "-ARTIFACTS_STATUS": "-artifacts_status",
+                        "-BART_ID": "-bart_id",
+                        "-COMPLETED": "-completed",
+                        "-CONFIG": "-config",
+                        "-CONFIG_HASH": "-config_hash",
+                        "-DELETED": "-deleted",
+                        "-DST_EMAIL": "-dst_email",
+                        "-DST_HOST": "-dst_host",
+                        "-DST_MAC": "-dst_mac",
+                        "-DST_MISC": "-dst_misc",
+                        "-DST_PATH": "-dst_path",
+                        "-DST_PORT": "-dst_port",
+                        "-ID": "-id",
+                        "-IMPLANT_ID": "-implant_id",
+                        "-IMPLANT_UID": "-implant_uid",
+                        "-ORG_ID": "-org_id",
+                        "-PERSPECTIVE_METADATA": "-perspective_metadata",
+                        "-PLATFORM_STATE": "-platform_state",
+                        "-RANDORI_NOTES": "-randori_notes",
+                        "-RESULT": "-result",
+                        "-RESULT_HASH": "-result_hash",
+                        "-RUNBOOK_INSTANCE_ID": "-runbook_instance_id",
+                        "-SRC_EMAIL": "-src_email",
+                        "-SRC_HOST": "-src_host",
+                        "-SRC_MAC": "-src_mac",
+                        "-SRC_MISC": "-src_misc",
+                        "-STARTED": "-started",
+                        "-SUMMARY_SHA": "-summary_sha",
+                        "-TRIGGER": "-trigger",
+                        "-UPDATED": "-updated",
+                        "_DST_IP": "_dst_ip",
+                        "_DST_NETWORK": "_dst_network",
+                        "_SRC_IP": "_src_ip",
+                        "ACTION_ID": "action_id",
+                        "ARTIFACTS_STATUS": "artifacts_status",
+                        "BART_ID": "bart_id",
+                        "COMPLETED": "completed",
+                        "CONFIG": "config",
+                        "CONFIG_HASH": "config_hash",
+                        "DELETED": "deleted",
+                        "DST_EMAIL": "dst_email",
+                        "DST_HOST": "dst_host",
+                        "DST_MAC": "dst_mac",
+                        "DST_MISC": "dst_misc",
+                        "DST_PATH": "dst_path",
+                        "DST_PORT": "dst_port",
+                        "ID": "id",
+                        "IMPLANT_ID": "implant_id",
+                        "IMPLANT_UID": "implant_uid",
+                        "ORG_ID": "org_id",
+                        "PERSPECTIVE_METADATA": "perspective_metadata",
+                        "PLATFORM_STATE": "platform_state",
+                        "RANDORI_NOTES": "randori_notes",
+                        "RESULT": "result",
+                        "RESULT_HASH": "result_hash",
+                        "RUNBOOK_INSTANCE_ID": "runbook_instance_id",
+                        "SRC_EMAIL": "src_email",
+                        "SRC_HOST": "src_host",
+                        "SRC_MAC": "src_mac",
+                        "SRC_MISC": "src_misc",
+                        "STARTED": "started",
+                        "SUMMARY_SHA": "summary_sha",
+                        "TRIGGER": "trigger",
+                        "UPDATED": "updated"
+                    },
+                },
+                'openapi_types': {
+                    'offset':
+                        (int,),
+                    'limit':
+                        (int,),
+                    'sort':
+                        ([str],),
+                    'q':
+                        (str,),
+                    'reversed_nulls':
+                        (bool,),
+                },
+                'attribute_map': {
+                    'offset': 'offset',
+                    'limit': 'limit',
+                    'sort': 'sort',
+                    'q': 'q',
+                    'reversed_nulls': 'reversed_nulls',
+                },
+                'location_map': {
+                    'offset': 'query',
+                    'limit': 'query',
+                    'sort': 'query',
+                    'q': 'query',
+                    'reversed_nulls': 'query',
+                },
+                'collection_format_map': {
+                    'sort': 'multi',
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.hoc_submit_endpoint = _Endpoint(
+            settings={
+                'response_type': (Artifactsrc,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/artifactstore/api/v1/hoc/submit',
+                'operation_id': 'hoc_submit',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'filename',
+                    'source',
+                    'org_id',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'filename':
+                        (str,),
+                    'source':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'filename': 'filename',
+                    'source': 'source',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'filename': 'query',
+                    'source': 'query',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.hoc_submit_cpio_endpoint = _Endpoint(
+            settings={
+                'response_type': (ArtifactsrcMany,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/artifactstore/api/v1/hoc/submit-cpio',
+                'operation_id': 'hoc_submit_cpio',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'source',
+                    'org_id',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'source':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'source': 'source',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'source': 'query',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.impact_score_groups_endpoint = _Endpoint(
+            settings={
+                'response_type': (ImpactScoreGroupOuterResult,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/impact_score_groups',
+                'operation_id': 'impact_score_groups',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'impact_score_entity_req',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'impact_score_entity_req':
+                        (ImpactScoreEntityReq,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'impact_score_entity_req': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_hostname_endpoint = _Endpoint(
+            settings={
+                'response_type': (HostnamePatchOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/hostname',
+                'operation_id': 'patch_hostname',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'hostname_patch_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'hostname_patch_input':
+                        (HostnamePatchInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'hostname_patch_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_ip_endpoint = _Endpoint(
+            settings={
+                'response_type': (IpPatchOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/ip',
+                'operation_id': 'patch_ip',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'ip_patch_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'ip_patch_input':
+                        (IpPatchInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'ip_patch_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_network_endpoint = _Endpoint(
+            settings={
+                'response_type': (NetworkPatchOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/network',
+                'operation_id': 'patch_network',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'network_patch_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'network_patch_input':
+                        (NetworkPatchInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'network_patch_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_single_attack_user_action_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserActionDescriptionsSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-action-descriptions/{id}',
+                'operation_id': 'patch_single_attack_user_action_descriptions',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'attack_user_action_descriptions_patch_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'attack_user_action_descriptions_patch_single_input':
+                        (AttackUserActionDescriptionsPatchSingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'attack_user_action_descriptions_patch_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_single_attack_user_autoapprove_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserAutoapproveSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-autoapprove/{id}',
+                'operation_id': 'patch_single_attack_user_autoapprove',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'attack_user_autoapprove_patch_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'attack_user_autoapprove_patch_single_input':
+                        (AttackUserAutoapprovePatchSingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'attack_user_autoapprove_patch_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_single_attack_user_runbook_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserRunbookDescriptionsSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-runbook-descriptions/{id}',
+                'operation_id': 'patch_single_attack_user_runbook_descriptions',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'attack_user_runbook_descriptions_patch_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'attack_user_runbook_descriptions_patch_single_input':
+                        (AttackUserRunbookDescriptionsPatchSingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'attack_user_runbook_descriptions_patch_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_single_peer_map_endpoint = _Endpoint(
+            settings={
+                'response_type': (PeerMapSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/peer-map/{id}',
+                'operation_id': 'patch_single_peer_map',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'peer_map_patch_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'peer_map_patch_single_input':
+                        (PeerMapPatchSingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'peer_map_patch_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_single_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (PolicySingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/policy/{id}',
+                'operation_id': 'patch_single_policy',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'policy_patch_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'policy_patch_single_input':
+                        (PolicyPatchSingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'policy_patch_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_single_saved_views_endpoint = _Endpoint(
+            settings={
+                'response_type': (SavedViewsSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/saved-views/{id}',
+                'operation_id': 'patch_single_saved_views',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'saved_views_patch_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'saved_views_patch_single_input':
+                        (SavedViewsPatchSingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'saved_views_patch_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_single_user_ap_action_instances_endpoint = _Endpoint(
+            settings={
+                'response_type': (UserApActionInstancesSingleOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/ap-action-instance/{id}',
+                'operation_id': 'patch_single_user_ap_action_instances',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'user_ap_action_instances_patch_single_input',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'user_ap_action_instances_patch_single_input':
+                        (UserApActionInstancesPatchSingleInput,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'user_ap_action_instances_patch_single_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_social_entity_endpoint = _Endpoint(
+            settings={
+                'response_type': (SocialEntityPatchOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/social-entity',
+                'operation_id': 'patch_social_entity',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'social_entity_patch_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'social_entity_patch_input':
+                        (SocialEntityPatchInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'social_entity_patch_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.patch_target_endpoint = _Endpoint(
+            settings={
+                'response_type': (TargetPatchOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/target',
+                'operation_id': 'patch_target',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'target_patch_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'target_patch_input':
+                        (TargetPatchInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'target_patch_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.paths_endpoint = _Endpoint(
+            settings={
+                'response_type': (PathsOutputSchema,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/paths',
+                'operation_id': 'paths',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'terminal',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'terminal':
+                        (str,),
+                },
+                'attribute_map': {
+                    'terminal': 'terminal',
+                },
+                'location_map': {
+                    'terminal': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.post_attack_user_action_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserActionDescriptionsPostOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-action-descriptions',
+                'operation_id': 'post_attack_user_action_descriptions',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'attack_user_action_descriptions_post_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'attack_user_action_descriptions_post_input':
+                        (AttackUserActionDescriptionsPostInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'attack_user_action_descriptions_post_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.post_attack_user_autoapprove_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserAutoapprovePostOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-autoapprove',
+                'operation_id': 'post_attack_user_autoapprove',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'attack_user_autoapprove_post_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'attack_user_autoapprove_post_input':
+                        (AttackUserAutoapprovePostInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'attack_user_autoapprove_post_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.post_attack_user_runbook_descriptions_endpoint = _Endpoint(
+            settings={
+                'response_type': (AttackUserRunbookDescriptionsPostOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/attack-runbook-descriptions',
+                'operation_id': 'post_attack_user_runbook_descriptions',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'attack_user_runbook_descriptions_post_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'attack_user_runbook_descriptions_post_input':
+                        (AttackUserRunbookDescriptionsPostInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'attack_user_runbook_descriptions_post_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.post_comment_multi_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/comment',
+                'operation_id': 'post_comment_multi',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'external_comment_creation_schema',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'external_comment_creation_schema':
+                        (ExternalCommentCreationSchema,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'external_comment_creation_schema': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.post_peer_endpoint = _Endpoint(
+            settings={
+                'response_type': (PeerPostOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/peer',
+                'operation_id': 'post_peer',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'peer_post_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'peer_post_input':
+                        (PeerPostInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'peer_post_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.post_peer_map_endpoint = _Endpoint(
+            settings={
+                'response_type': (PeerMapPostOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/peer-map',
+                'operation_id': 'post_peer_map',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'peer_map_post_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'peer_map_post_input':
+                        (PeerMapPostInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'peer_map_post_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.post_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (PolicyPostOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/policy',
+                'operation_id': 'post_policy',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'policy_post_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'policy_post_input':
+                        (PolicyPostInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'policy_post_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.post_saved_views_endpoint = _Endpoint(
+            settings={
+                'response_type': (SavedViewsPostOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/saved-views',
+                'operation_id': 'post_saved_views',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'saved_views_post_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'saved_views_post_input':
+                        (SavedViewsPostInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'saved_views_post_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.post_user_ap_action_instances_endpoint = _Endpoint(
+            settings={
+                'response_type': (UserApActionInstancesPostOutput,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/attack/api/v1/user/ap-action-instance',
+                'operation_id': 'post_user_ap_action_instances',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'user_ap_action_instances_post_input',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'user_ap_action_instances_post_input':
+                        (UserApActionInstancesPostInput,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'user_ap_action_instances_post_input': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.priority_groups_endpoint = _Endpoint(
+            settings={
+                'response_type': (PriorityGroupOuterResult,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/priority_groups',
+                'operation_id': 'priority_groups',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'priority_entity_req',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'priority_entity_req':
+                        (PriorityEntityReq,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'priority_entity_req': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.recon_worker_node_ips_endpoint = _Endpoint(
+            settings={
+                'response_type': (ReconWorkerNodeIps,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/recon-worker-node-ips',
+                'operation_id': 'recon_worker_node_ips',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'ips',
+                    'lookbackdays',
+                ],
+                'required': [
+                    'ips',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'ips':
+                        (str,),
+                    'lookbackdays':
+                        (int,),
+                },
+                'attribute_map': {
+                    'ips': 'ips',
+                    'lookbackdays': 'lookbackdays',
+                },
+                'location_map': {
+                    'ips': 'query',
+                    'lookbackdays': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.status_groups_endpoint = _Endpoint(
+            settings={
+                'response_type': (StatusGroupOuterResult,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/status_groups',
+                'operation_id': 'status_groups',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'status_entity_req',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'status_entity_req':
+                        (StatusEntityReq,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'status_entity_req': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.tag_endpoint = _Endpoint(
+            settings={
+                'response_type': (UserTagNameList,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/tag',
+                'operation_id': 'tag',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.target_temptation_groups_endpoint = _Endpoint(
+            settings={
+                'response_type': (TargetTemptationGroupOuterResult,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/target_temptation_groups',
+                'operation_id': 'target_temptation_groups',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'target_temptation_entity_req',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'target_temptation_entity_req':
+                        (TargetTemptationEntityReq,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'target_temptation_entity_req': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.user_query_endpoint = _Endpoint(
+            settings={
+                'response_type': (UserArtifactQuery,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/artifactstore/api/v1/user/query',
+                'operation_id': 'user_query',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'created',
+                    'updated',
+                    'org_id',
+                    'source',
+                    'filename',
+                    'shasum',
+                    'ingests',
+                    'size',
+                    'created_start',
+                    'created_end',
+                    'updated_start',
+                    'updated_end',
+                    'max_count',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'created':
+                        (str,),
+                    'updated':
+                        (str,),
+                    'org_id':
+                        (str,),
+                    'source':
+                        (str,),
+                    'filename':
+                        (str,),
+                    'shasum':
+                        (str,),
+                    'ingests':
+                        (int,),
+                    'size':
+                        (int,),
+                    'created_start':
+                        (int,),
+                    'created_end':
+                        (int,),
+                    'updated_start':
+                        (int,),
+                    'updated_end':
+                        (int,),
+                    'max_count':
+                        (int,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'created': 'created',
+                    'updated': 'updated',
+                    'org_id': 'org_id',
+                    'source': 'source',
+                    'filename': 'filename',
+                    'shasum': 'shasum',
+                    'ingests': 'ingests',
+                    'size': 'size',
+                    'created_start': 'created_start',
+                    'created_end': 'created_end',
+                    'updated_start': 'updated_start',
+                    'updated_end': 'updated_end',
+                    'max_count': 'max_count',
+                },
+                'location_map': {
+                    'id': 'query',
+                    'created': 'query',
+                    'updated': 'query',
+                    'org_id': 'query',
+                    'source': 'query',
+                    'filename': 'query',
+                    'shasum': 'query',
+                    'ingests': 'query',
+                    'size': 'query',
+                    'created_start': 'query',
+                    'created_end': 'query',
+                    'updated_start': 'query',
+                    'updated_end': 'query',
+                    'max_count': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.user_retrieve_endpoint = _Endpoint(
+            settings={
+                'response_type': None,
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/artifactstore/api/v1/user/retrieve/{shasum}',
+                'operation_id': 'user_retrieve',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'shasum2',
+                    'shasum',
+                    'org_id',
+                ],
+                'required': [
+                    'shasum2',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'shasum2':
+                        (str,),
+                    'shasum':
+                        (str,),
+                    'org_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'shasum2': 'shasum',
+                    'shasum': 'shasum',
+                    'org_id': 'org_id',
+                },
+                'location_map': {
+                    'shasum2': 'path',
+                    'shasum': 'query',
+                    'org_id': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.uuid_comment_id_endpoint = _Endpoint(
+            settings={
+                'response_type': (CommentResponseSchema,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment/{comment_id}',
+                'operation_id': 'uuid_comment_id',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'entity_id',
+                    'comment_id',
+                ],
+                'required': [
+                    'entity_id',
+                    'comment_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'entity_id':
+                        (str,),
+                    'comment_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'entity_id': 'entity_id',
+                    'comment_id': 'comment_id',
+                },
+                'location_map': {
+                    'entity_id': 'path',
+                    'comment_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.uuid_comment_id_0_endpoint = _Endpoint(
+            settings={
+                'response_type': (CommentResponseSchema,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment/{comment_id}',
+                'operation_id': 'uuid_comment_id_0',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'entity_id',
+                    'comment_id',
+                ],
+                'required': [
+                    'entity_id',
+                    'comment_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'entity_id':
+                        (str,),
+                    'comment_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'entity_id': 'entity_id',
+                    'comment_id': 'comment_id',
+                },
+                'location_map': {
+                    'entity_id': 'path',
+                    'comment_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+
+    def add_affiliation(
+        self,
+        **kwargs
+    ):
+        """add_affiliation  # noqa: E501
+
+        Add missing affiliations for an organization  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.add_affiliation(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.add_affiliation_endpoint.call_with_http_info(**kwargs)
+
+    def add_affiliation_file(
+        self,
+        **kwargs
+    ):
+        """add_affiliation_file  # noqa: E501
+
+        Add a file of missing affiliations for an organization  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.add_affiliation_file(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.add_affiliation_file_endpoint.call_with_http_info(**kwargs)
+
+    def artifact(
+        self,
+        artifact_uuid2,
+        **kwargs
+    ):
+        """artifact  # noqa: E501
+
+        Get Artifact by UUID  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.artifact(artifact_uuid2, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            artifact_uuid2 (str):
+
+        Keyword Args:
+            artifact_uuid (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['artifact_uuid2'] = \
+            artifact_uuid2
+        return self.artifact_endpoint.call_with_http_info(**kwargs)
+
+    def artifact_raw(
+        self,
+        shasum2,
+        **kwargs
+    ):
+        """artifact_raw  # noqa: E501
+
+        Get raw Artifact by shasum  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.artifact_raw(shasum2, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            shasum2 (str):
+
+        Keyword Args:
+            shasum (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['shasum2'] = \
+            shasum2
+        return self.artifact_raw_endpoint.call_with_http_info(**kwargs)
+
+    def comment(
+        self,
+        entity_id,
+        **kwargs
+    ):
+        """comment  # noqa: E501
+
+        Retrieves a page of comments for a provided entity ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.comment(entity_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            entity_id (str):
+
+        Keyword Args:
+            offset (int): [optional]
+            limit (int): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CommentResponseCollectionSchema
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['entity_id'] = \
+            entity_id
+        return self.comment_endpoint.call_with_http_info(**kwargs)
+
+    def comment_0(
+        self,
+        entity_id,
+        **kwargs
+    ):
+        """comment_0  # noqa: E501
+
+        Creates a single comment for a provided entity ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.comment_0(entity_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            entity_id (str):
+
+        Keyword Args:
+            comment_creation_schema (CommentCreationSchema): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CommentResponseSchema
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['entity_id'] = \
+            entity_id
+        return self.comment_0_endpoint.call_with_http_info(**kwargs)
+
+    def delete_single_attack_user_action_descriptions(
+        self,
+        id,
+        **kwargs
+    ):
+        """delete_single_attack_user_action_descriptions  # noqa: E501
+
+        Remove the attack-user-action-descriptions object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_single_attack_user_action_descriptions(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.delete_single_attack_user_action_descriptions_endpoint.call_with_http_info(**kwargs)
+
+    def delete_single_attack_user_runbook_descriptions(
+        self,
+        id,
+        **kwargs
+    ):
+        """delete_single_attack_user_runbook_descriptions  # noqa: E501
+
+        Remove the attack-user-runbook-descriptions object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_single_attack_user_runbook_descriptions(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.delete_single_attack_user_runbook_descriptions_endpoint.call_with_http_info(**kwargs)
+
+    def delete_single_policy(
+        self,
+        id,
+        **kwargs
+    ):
+        """delete_single_policy  # noqa: E501
+
+        Remove the policy object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_single_policy(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            policy_single_input (PolicySingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.delete_single_policy_endpoint.call_with_http_info(**kwargs)
+
+    def delete_single_saved_views(
+        self,
+        id,
+        **kwargs
+    ):
         """delete_single_saved_views  # noqa: E501
 
         Remove the saved-views object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.delete_single_saved_views(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            saved_views_single_input (SavedViewsSingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.delete_single_saved_views_with_http_info(id, **kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.delete_single_saved_views_endpoint.call_with_http_info(**kwargs)
 
-    def delete_single_saved_views_with_http_info(self, id, **kwargs):  # noqa: E501
-        """delete_single_saved_views  # noqa: E501
+    def get_action_metadata(
+        self,
+        **kwargs
+    ):
+        """get_action_metadata  # noqa: E501
 
-        Remove the saved-views object by id  # noqa: E501
+        Search action-metadata objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_single_saved_views_with_http_info(id, async_req=True)
+
+        >>> thread = api.get_action_metadata(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ActionMetadataGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_action_metadata_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_single_saved_views" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `delete_single_saved_views`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/saved-views/{id}', 'DELETE',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type=None,  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_all_detections_for_target(self, **kwargs):  # noqa: E501
+    def get_all_detections_for_target(
+        self,
+        **kwargs
+    ):
         """get_all_detections_for_target  # noqa: E501
 
         Search all-detections-for-target objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_all_detections_for_target(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: AllDetectionsForTargetGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AllDetectionsForTargetGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_all_detections_for_target_with_http_info(**kwargs)  # noqa: E501
-
-    def get_all_detections_for_target_with_http_info(self, **kwargs):  # noqa: E501
-        """get_all_detections_for_target  # noqa: E501
-
-        Search all-detections-for-target objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_all_detections_for_target_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(AllDetectionsForTargetGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_all_detections_for_target" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/all-detections-for-target', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AllDetectionsForTargetGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_artifact(self, **kwargs):  # noqa: E501
-        """get_artifact  # noqa: E501
-
-        Search artifact objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_artifact(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: ArtifactGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_artifact_with_http_info(**kwargs)  # noqa: E501
-
-    def get_artifact_with_http_info(self, **kwargs):  # noqa: E501
-        """get_artifact  # noqa: E501
-
-        Search artifact objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_artifact_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(ArtifactGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
         )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_artifact" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/artifact', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ArtifactGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_detection(self, **kwargs):  # noqa: E501
-        """get_detection  # noqa: E501
-
-        Search detection objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_detection(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: DetectionGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_detection_with_http_info(**kwargs)  # noqa: E501
-
-    def get_detection_with_http_info(self, **kwargs):  # noqa: E501
-        """get_detection  # noqa: E501
-
-        Search detection objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_detection_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(DetectionGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
         )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_all_detections_for_target_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_detection" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def get_attack_checkins_for_implant(
+        self,
+        **kwargs
+    ):
+        """get_attack_checkins_for_implant  # noqa: E501
 
-        collection_formats = {}
+        Search attack-checkins-for-implant objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.get_attack_checkins_for_implant(async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
 
-        header_params = {}
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            AttackCheckinsForImplantGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_checkins_for_implant_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+    def get_attack_implants(
+        self,
+        **kwargs
+    ):
+        """get_attack_implants  # noqa: E501
 
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
+        Search attack-implants objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        return self.api_client.call_api(
-            '/recon/api/v1/detection', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='DetectionGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        >>> thread = api.get_attack_implants(async_req=True)
+        >>> result = thread.get()
 
-    def get_hostname(self, **kwargs):  # noqa: E501
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackImplantsGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_implants_endpoint.call_with_http_info(**kwargs)
+
+    def get_attack_interfaces_for_implant(
+        self,
+        **kwargs
+    ):
+        """get_attack_interfaces_for_implant  # noqa: E501
+
+        Search attack-interfaces-for-implant objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_attack_interfaces_for_implant(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackInterfacesForImplantGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_interfaces_for_implant_endpoint.call_with_http_info(**kwargs)
+
+    def get_attack_redirectors(
+        self,
+        **kwargs
+    ):
+        """get_attack_redirectors  # noqa: E501
+
+        Search attack-redirectors objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_attack_redirectors(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackRedirectorsGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_redirectors_endpoint.call_with_http_info(**kwargs)
+
+    def get_attack_runbook(
+        self,
+        **kwargs
+    ):
+        """get_attack_runbook  # noqa: E501
+
+        Search attack-runbook objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_attack_runbook(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackRunbookGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_runbook_endpoint.call_with_http_info(**kwargs)
+
+    def get_attack_statistics(
+        self,
+        **kwargs
+    ):
+        """get_attack_statistics  # noqa: E501
+
+        Search attack-statistics objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_attack_statistics(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackStatisticsGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_statistics_endpoint.call_with_http_info(**kwargs)
+
+    def get_attack_user_action_descriptions(
+        self,
+        **kwargs
+    ):
+        """get_attack_user_action_descriptions  # noqa: E501
+
+        Search attack-user-action-descriptions objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_attack_user_action_descriptions(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserActionDescriptionsGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_user_action_descriptions_endpoint.call_with_http_info(**kwargs)
+
+    def get_attack_user_autoapprove(
+        self,
+        **kwargs
+    ):
+        """get_attack_user_autoapprove  # noqa: E501
+
+        Search attack-user-autoapprove objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_attack_user_autoapprove(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserAutoapproveGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_user_autoapprove_endpoint.call_with_http_info(**kwargs)
+
+    def get_attack_user_runbook_descriptions(
+        self,
+        **kwargs
+    ):
+        """get_attack_user_runbook_descriptions  # noqa: E501
+
+        Search attack-user-runbook-descriptions objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_attack_user_runbook_descriptions(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserRunbookDescriptionsGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_attack_user_runbook_descriptions_endpoint.call_with_http_info(**kwargs)
+
+    def get_hostname(
+        self,
+        **kwargs
+    ):
         """get_hostname  # noqa: E501
 
         Search hostname objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_hostname(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: HostnameGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            HostnameGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_hostname_with_http_info(**kwargs)  # noqa: E501
-
-    def get_hostname_with_http_info(self, **kwargs):  # noqa: E501
-        """get_hostname  # noqa: E501
-
-        Search hostname objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_hostname_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(HostnameGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_hostname_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_hostname" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/hostname', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='HostnameGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_hostnames_for_ip(self, **kwargs):  # noqa: E501
+    def get_hostnames_for_ip(
+        self,
+        **kwargs
+    ):
         """get_hostnames_for_ip  # noqa: E501
 
         Search hostnames-for-ip objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_hostnames_for_ip(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: HostnamesForIpGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            HostnamesForIpGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_hostnames_for_ip_with_http_info(**kwargs)  # noqa: E501
-
-    def get_hostnames_for_ip_with_http_info(self, **kwargs):  # noqa: E501
-        """get_hostnames_for_ip  # noqa: E501
-
-        Search hostnames-for-ip objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_hostnames_for_ip_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(HostnamesForIpGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_hostnames_for_ip_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_hostnames_for_ip" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/hostnames-for-ip', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='HostnamesForIpGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_ip(self, **kwargs):  # noqa: E501
+    def get_ip(
+        self,
+        **kwargs
+    ):
         """get_ip  # noqa: E501
 
         Search ip objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_ip(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ip_with_http_info(**kwargs)  # noqa: E501
-
-    def get_ip_with_http_info(self, **kwargs):  # noqa: E501
-        """get_ip  # noqa: E501
-
-        Search ip objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ip_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_ip_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ip" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ip', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_ips_for_hostname(self, **kwargs):  # noqa: E501
+    def get_ips_for_hostname(
+        self,
+        **kwargs
+    ):
         """get_ips_for_hostname  # noqa: E501
 
         Search ips-for-hostname objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_ips_for_hostname(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpsForHostnameGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpsForHostnameGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ips_for_hostname_with_http_info(**kwargs)  # noqa: E501
-
-    def get_ips_for_hostname_with_http_info(self, **kwargs):  # noqa: E501
-        """get_ips_for_hostname  # noqa: E501
-
-        Search ips-for-hostname objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ips_for_hostname_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpsForHostnameGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_ips_for_hostname_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ips_for_hostname" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ips-for-hostname', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpsForHostnameGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_ips_for_network(self, **kwargs):  # noqa: E501
+    def get_ips_for_network(
+        self,
+        **kwargs
+    ):
         """get_ips_for_network  # noqa: E501
 
         Search ips-for-network objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_ips_for_network(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpsForNetworkGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpsForNetworkGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ips_for_network_with_http_info(**kwargs)  # noqa: E501
-
-    def get_ips_for_network_with_http_info(self, **kwargs):  # noqa: E501
-        """get_ips_for_network  # noqa: E501
-
-        Search ips-for-network objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ips_for_network_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpsForNetworkGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_ips_for_network_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ips_for_network" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ips-for-network', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpsForNetworkGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_ips_for_service(self, **kwargs):  # noqa: E501
+    def get_ips_for_service(
+        self,
+        **kwargs
+    ):
         """get_ips_for_service  # noqa: E501
 
         Search ips-for-service objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_ips_for_service(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpsForServiceGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpsForServiceGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ips_for_service_with_http_info(**kwargs)  # noqa: E501
-
-    def get_ips_for_service_with_http_info(self, **kwargs):  # noqa: E501
-        """get_ips_for_service  # noqa: E501
-
-        Search ips-for-service objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ips_for_service_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpsForServiceGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_ips_for_service_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ips_for_service" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ips-for-service', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpsForServiceGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_network(self, **kwargs):  # noqa: E501
+    def get_network(
+        self,
+        **kwargs
+    ):
         """get_network  # noqa: E501
 
         Search network objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_network(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: NetworkGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NetworkGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_network_with_http_info(**kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_network_endpoint.call_with_http_info(**kwargs)
 
-    def get_network_with_http_info(self, **kwargs):  # noqa: E501
-        """get_network  # noqa: E501
+    def get_peer(
+        self,
+        **kwargs
+    ):
+        """get_peer  # noqa: E501
 
-        Search network objects with an optional filter  # noqa: E501
+        Search peer objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_network_with_http_info(async_req=True)
+
+        >>> thread = api.get_peer(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(NetworkGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PeerGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_peer_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_network" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def get_peer_map(
+        self,
+        **kwargs
+    ):
+        """get_peer_map  # noqa: E501
 
-        collection_formats = {}
+        Search peer-map objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.get_peer_map(async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
 
-        header_params = {}
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            PeerMapGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_peer_map_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+    def get_policy(
+        self,
+        **kwargs
+    ):
+        """get_policy  # noqa: E501
 
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
+        Search policy objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        return self.api_client.call_api(
-            '/recon/api/v1/network', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='NetworkGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        >>> thread = api.get_policy(async_req=True)
+        >>> result = thread.get()
 
-    def get_ports_for_ip(self, **kwargs):  # noqa: E501
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PolicyGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_policy_endpoint.call_with_http_info(**kwargs)
+
+    def get_ports_for_ip(
+        self,
+        **kwargs
+    ):
         """get_ports_for_ip  # noqa: E501
 
         Search ports-for-ip objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_ports_for_ip(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: PortsForIpGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PortsForIpGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_ports_for_ip_with_http_info(**kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_ports_for_ip_endpoint.call_with_http_info(**kwargs)
 
-    def get_ports_for_ip_with_http_info(self, **kwargs):  # noqa: E501
-        """get_ports_for_ip  # noqa: E501
+    def get_prime(
+        self,
+        **kwargs
+    ):
+        """get_prime  # noqa: E501
 
-        Search ports-for-ip objects with an optional filter  # noqa: E501
+        Search prime objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_ports_for_ip_with_http_info(async_req=True)
+
+        >>> thread = api.get_prime(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(PortsForIpGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PrimeGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_prime_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_ports_for_ip" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def get_report(
+        self,
+        **kwargs
+    ):
+        """get_report  # noqa: E501
 
-        collection_formats = {}
+        Search report objects with an optional filter  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.get_report(async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
 
-        header_params = {}
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            ReportGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_report_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ports-for-ip', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='PortsForIpGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_saved_views(self, **kwargs):  # noqa: E501
+    def get_saved_views(
+        self,
+        **kwargs
+    ):
         """get_saved_views  # noqa: E501
 
         Search saved-views objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_saved_views(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SavedViewsGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SavedViewsGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_saved_views_with_http_info(**kwargs)  # noqa: E501
-
-    def get_saved_views_with_http_info(self, **kwargs):  # noqa: E501
-        """get_saved_views  # noqa: E501
-
-        Search saved-views objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_saved_views_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SavedViewsGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_saved_views_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_saved_views" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/saved-views', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SavedViewsGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_service(self, **kwargs):  # noqa: E501
+    def get_service(
+        self,
+        **kwargs
+    ):
         """get_service  # noqa: E501
 
         Search service objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_service(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: ServiceGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ServiceGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_service_with_http_info(**kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_service_endpoint.call_with_http_info(**kwargs)
 
-    def get_service_with_http_info(self, **kwargs):  # noqa: E501
-        """get_service  # noqa: E501
+    def get_single_action_metadata(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_action_metadata  # noqa: E501
 
-        Search service objects with an optional filter  # noqa: E501
+        Get one action-metadata object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_service_with_http_info(async_req=True)
+
+        >>> thread = api.get_single_action_metadata(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(ServiceGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ActionMetadataSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_action_metadata_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_service" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def get_single_attack_implants(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_attack_implants  # noqa: E501
 
-        collection_formats = {}
+        Get one attack-implants object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.get_single_attack_implants(id, async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
+        Args:
+            id (str):
 
-        header_params = {}
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            AttackImplantsSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_attack_implants_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+    def get_single_attack_user_action_descriptions(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_attack_user_action_descriptions  # noqa: E501
 
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
+        Get one attack-user-action-descriptions object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        return self.api_client.call_api(
-            '/recon/api/v1/service', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ServiceGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        >>> thread = api.get_single_attack_user_action_descriptions(id, async_req=True)
+        >>> result = thread.get()
 
-    def get_single_detection_for_target(self, **kwargs):  # noqa: E501
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserActionDescriptionsSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_attack_user_action_descriptions_endpoint.call_with_http_info(**kwargs)
+
+    def get_single_attack_user_autoapprove(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_attack_user_autoapprove  # noqa: E501
+
+        Get one attack-user-autoapprove object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_single_attack_user_autoapprove(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserAutoapproveSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_attack_user_autoapprove_endpoint.call_with_http_info(**kwargs)
+
+    def get_single_attack_user_runbook_descriptions(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_attack_user_runbook_descriptions  # noqa: E501
+
+        Get one attack-user-runbook-descriptions object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_single_attack_user_runbook_descriptions(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserRunbookDescriptionsSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_attack_user_runbook_descriptions_endpoint.call_with_http_info(**kwargs)
+
+    def get_single_detection_for_target(
+        self,
+        **kwargs
+    ):
         """get_single_detection_for_target  # noqa: E501
 
         Search single-detection-for-target objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_detection_for_target(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SingleDetectionForTargetGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SingleDetectionForTargetGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_detection_for_target_with_http_info(**kwargs)  # noqa: E501
-
-    def get_single_detection_for_target_with_http_info(self, **kwargs):  # noqa: E501
-        """get_single_detection_for_target  # noqa: E501
-
-        Search single-detection-for-target objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_detection_for_target_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SingleDetectionForTargetGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_single_detection_for_target_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_detection_for_target" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/single-detection-for-target', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SingleDetectionForTargetGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_hostname(self, id, **kwargs):  # noqa: E501
+    def get_single_hostname(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_hostname  # noqa: E501
 
         Get one hostname object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_hostname(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: HostnameSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            HostnameSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_hostname_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_hostname_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_hostname  # noqa: E501
-
-        Get one hostname object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_hostname_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(HostnameSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_hostname_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_hostname" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_hostname`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/hostname/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='HostnameSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_hostnames_for_ip(self, id, **kwargs):  # noqa: E501
+    def get_single_hostnames_for_ip(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_hostnames_for_ip  # noqa: E501
 
         Get one hostnames-for-ip object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_hostnames_for_ip(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: HostnamesForIpSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            HostnamesForIpSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_hostnames_for_ip_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_hostnames_for_ip_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_hostnames_for_ip  # noqa: E501
-
-        Get one hostnames-for-ip object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_hostnames_for_ip_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(HostnamesForIpSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_hostnames_for_ip_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_hostnames_for_ip" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_hostnames_for_ip`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/hostnames-for-ip/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='HostnamesForIpSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_ip(self, id, **kwargs):  # noqa: E501
+    def get_single_ip(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_ip  # noqa: E501
 
         Get one ip object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_ip(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_ip_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_ip_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_ip  # noqa: E501
-
-        Get one ip object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_ip_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_ip_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_ip" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_ip`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ip/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_ips_for_hostname(self, id, **kwargs):  # noqa: E501
+    def get_single_ips_for_hostname(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_ips_for_hostname  # noqa: E501
 
         Get one ips-for-hostname object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_ips_for_hostname(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpsForHostnameSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpsForHostnameSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_ips_for_hostname_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_ips_for_hostname_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_ips_for_hostname  # noqa: E501
-
-        Get one ips-for-hostname object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_ips_for_hostname_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpsForHostnameSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_ips_for_hostname_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_ips_for_hostname" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_ips_for_hostname`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ips-for-hostname/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpsForHostnameSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_ips_for_network(self, id, **kwargs):  # noqa: E501
+    def get_single_ips_for_network(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_ips_for_network  # noqa: E501
 
         Get one ips-for-network object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_ips_for_network(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpsForNetworkSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpsForNetworkSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_ips_for_network_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_ips_for_network_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_ips_for_network  # noqa: E501
-
-        Get one ips-for-network object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_ips_for_network_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpsForNetworkSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_ips_for_network_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_ips_for_network" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_ips_for_network`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ips-for-network/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpsForNetworkSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_ips_for_service(self, id, **kwargs):  # noqa: E501
+    def get_single_ips_for_service(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_ips_for_service  # noqa: E501
 
         Get one ips-for-service object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_ips_for_service(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpsForServiceSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpsForServiceSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_ips_for_service_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_ips_for_service_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_ips_for_service  # noqa: E501
-
-        Get one ips-for-service object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_ips_for_service_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpsForServiceSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_ips_for_service_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_ips_for_service" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_ips_for_service`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ips-for-service/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpsForServiceSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_network(self, id, **kwargs):  # noqa: E501
+    def get_single_network(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_network  # noqa: E501
 
         Get one network object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_network(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: NetworkSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NetworkSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_network_with_http_info(id, **kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_network_endpoint.call_with_http_info(**kwargs)
 
-    def get_single_network_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_network  # noqa: E501
+    def get_single_peer(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_peer  # noqa: E501
 
-        Get one network object by id  # noqa: E501
+        Get one peer object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_network_with_http_info(id, async_req=True)
+
+        >>> thread = api.get_single_peer(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(NetworkSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PeerSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_peer_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_network" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_network`")  # noqa: E501
+    def get_single_peer_map(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_peer_map  # noqa: E501
 
-        collection_formats = {}
+        Get one peer-map object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+        >>> thread = api.get_single_peer_map(id, async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
+        Args:
+            id (str):
 
-        header_params = {}
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            PeerMapSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_peer_map_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/network/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='NetworkSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_ports_for_ip(self, id, **kwargs):  # noqa: E501
+    def get_single_ports_for_ip(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_ports_for_ip  # noqa: E501
 
         Get one ports-for-ip object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_ports_for_ip(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: PortsForIpSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PortsForIpSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_ports_for_ip_with_http_info(id, **kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_ports_for_ip_endpoint.call_with_http_info(**kwargs)
 
-    def get_single_ports_for_ip_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_ports_for_ip  # noqa: E501
+    def get_single_report(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_report  # noqa: E501
 
-        Get one ports-for-ip object by id  # noqa: E501
+        Get one report object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_ports_for_ip_with_http_info(id, async_req=True)
+
+        >>> thread = api.get_single_report(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(PortsForIpSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ReportSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_report_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_ports_for_ip" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_ports_for_ip`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ports-for-ip/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='PortsForIpSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_saved_views(self, id, **kwargs):  # noqa: E501
+    def get_single_saved_views(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_saved_views  # noqa: E501
 
         Get one saved-views object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_saved_views(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SavedViewsSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SavedViewsSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_saved_views_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_saved_views_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_saved_views  # noqa: E501
-
-        Get one saved-views object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_saved_views_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SavedViewsSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_saved_views_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_saved_views" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_saved_views`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/saved-views/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SavedViewsSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_service(self, id, **kwargs):  # noqa: E501
+    def get_single_service(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_service  # noqa: E501
 
         Get one service object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_service(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: ServiceSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ServiceSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_service_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_service_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_service  # noqa: E501
-
-        Get one service object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_service_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(ServiceSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_service_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_service" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_service`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/service/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='ServiceSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_tagcounts(self, id, **kwargs):  # noqa: E501
+    def get_single_tagcounts(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_tagcounts  # noqa: E501
 
         Get one tagcounts object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_tagcounts(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: TagcountsSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            TagcountsSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_tagcounts_with_http_info(id, **kwargs)  # noqa: E501
-
-    def get_single_tagcounts_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_tagcounts  # noqa: E501
-
-        Get one tagcounts object by id  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_tagcounts_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(TagcountsSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_tagcounts_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_tagcounts" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_tagcounts`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/tagcounts/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='TagcountsSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_single_target(self, id, **kwargs):  # noqa: E501
+    def get_single_target(
+        self,
+        id,
+        **kwargs
+    ):
         """get_single_target  # noqa: E501
 
         Get one target object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_single_target(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: TargetSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            TargetSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_single_target_with_http_info(id, **kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_target_endpoint.call_with_http_info(**kwargs)
 
-    def get_single_target_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_single_target  # noqa: E501
+    def get_single_user_ap_action_instances(
+        self,
+        id,
+        **kwargs
+    ):
+        """get_single_user_ap_action_instances  # noqa: E501
 
-        Get one target object by id  # noqa: E501
+        Get one user-ap-action-instances object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_single_target_with_http_info(id, async_req=True)
+
+        >>> thread = api.get_single_user_ap_action_instances(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(TargetSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            UserApActionInstancesSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.get_single_user_ap_action_instances_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_single_target" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `get_single_target`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/target/{id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='TargetSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_social_entity(self, **kwargs):  # noqa: E501
+    def get_social_entity(
+        self,
+        **kwargs
+    ):
         """get_social_entity  # noqa: E501
 
         Search social-entity objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_social_entity(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SocialEntityGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SocialEntityGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_social_entity_with_http_info(**kwargs)  # noqa: E501
-
-    def get_social_entity_with_http_info(self, **kwargs):  # noqa: E501
-        """get_social_entity  # noqa: E501
-
-        Search social-entity objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_social_entity_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SocialEntityGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_social_entity_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_social_entity" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/social-entity', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SocialEntityGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_statistics(self, **kwargs):  # noqa: E501
+    def get_statistics(
+        self,
+        **kwargs
+    ):
         """get_statistics  # noqa: E501
 
         Search statistics objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_statistics(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int interval: number of records to skip between responses
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: StatisticsGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            interval (int, none_type): number of records to skip between responses. [optional]
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            StatisticsGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_statistics_with_http_info(**kwargs)  # noqa: E501
-
-    def get_statistics_with_http_info(self, **kwargs):  # noqa: E501
-        """get_statistics  # noqa: E501
-
-        Search statistics objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_statistics_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int interval: number of records to skip between responses
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(StatisticsGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'interval',
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_statistics_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_statistics" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'interval' in local_var_params and local_var_params['interval'] is not None:  # noqa: E501
-            query_params.append(('interval', local_var_params['interval']))  # noqa: E501
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/statistics', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='StatisticsGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_tagcounts(self, **kwargs):  # noqa: E501
+    def get_tagcounts(
+        self,
+        **kwargs
+    ):
         """get_tagcounts  # noqa: E501
 
         Search tagcounts objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_tagcounts(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: TagcountsGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            TagcountsGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_tagcounts_with_http_info(**kwargs)  # noqa: E501
-
-    def get_tagcounts_with_http_info(self, **kwargs):  # noqa: E501
-        """get_tagcounts  # noqa: E501
-
-        Search tagcounts objects with an optional filter  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_tagcounts_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(TagcountsGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_tagcounts_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_tagcounts" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/tagcounts', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='TagcountsGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def get_target(self, **kwargs):  # noqa: E501
+    def get_target(
+        self,
+        **kwargs
+    ):
         """get_target  # noqa: E501
 
         Search target objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.get_target(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: TargetGetOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            TargetGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.get_target_with_http_info(**kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_target_endpoint.call_with_http_info(**kwargs)
 
-    def get_target_with_http_info(self, **kwargs):  # noqa: E501
-        """get_target  # noqa: E501
+    def get_user_ap_action_instances(
+        self,
+        **kwargs
+    ):
+        """get_user_ap_action_instances  # noqa: E501
 
-        Search target objects with an optional filter  # noqa: E501
+        Search user-ap-action-instances objects with an optional filter  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_target_with_http_info(async_req=True)
+
+        >>> thread = api.get_user_ap_action_instances(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param int offset: offset into avilable records after filtering
-        :param int limit: maximum number of records to return
-        :param list[str] sort: fields in the object to sort by, in order of precedence, minus indicates descending
-        :param str q: base64 encoded jquery querybuilder complex search field
-        :param bool reversed_nulls: if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(TargetGetOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            offset (int): offset into avilable records after filtering. [optional]
+            limit (int): maximum number of records to return. [optional]
+            sort ([str]): fields in the object to sort by, in order of precedence, minus indicates descending. [optional]
+            q (str): base64 encoded jquery querybuilder complex search field. [optional]
+            reversed_nulls (bool): if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            UserApActionInstancesGetOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'offset',
-            'limit',
-            'sort',
-            'q',
-            'reversed_nulls'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.get_user_ap_action_instances_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_target" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def hoc_submit(
+        self,
+        **kwargs
+    ):
+        """hoc_submit  # noqa: E501
 
-        collection_formats = {}
+        Manually upload an artifact  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.hoc_submit(async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
-        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
-            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
-        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
-            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
-        if 'sort' in local_var_params and local_var_params['sort'] is not None:  # noqa: E501
-            query_params.append(('sort', local_var_params['sort']))  # noqa: E501
-            collection_formats['sort'] = 'multi'  # noqa: E501
-        if 'q' in local_var_params and local_var_params['q'] is not None:  # noqa: E501
-            query_params.append(('q', local_var_params['q']))  # noqa: E501
-        if 'reversed_nulls' in local_var_params and local_var_params['reversed_nulls'] is not None:  # noqa: E501
-            query_params.append(('reversed_nulls', local_var_params['reversed_nulls']))  # noqa: E501
 
-        header_params = {}
+        Keyword Args:
+            filename (str): [optional]
+            source (str): [optional]
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            Artifactsrc
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.hoc_submit_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+    def hoc_submit_cpio(
+        self,
+        **kwargs
+    ):
+        """hoc_submit_cpio  # noqa: E501
 
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
+        Manually upload multiple artifacts via cpio archive  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        return self.api_client.call_api(
-            '/recon/api/v1/target', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='TargetGetOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        >>> thread = api.hoc_submit_cpio(async_req=True)
+        >>> result = thread.get()
 
-    def patch_hostname(self, **kwargs):  # noqa: E501
+
+        Keyword Args:
+            source (str): [optional]
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ArtifactsrcMany
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.hoc_submit_cpio_endpoint.call_with_http_info(**kwargs)
+
+    def impact_score_groups(
+        self,
+        **kwargs
+    ):
+        """impact_score_groups  # noqa: E501
+
+        Return counts of a given entity type grouped by impact score.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.impact_score_groups(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            impact_score_entity_req (ImpactScoreEntityReq): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ImpactScoreGroupOuterResult
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.impact_score_groups_endpoint.call_with_http_info(**kwargs)
+
+    def patch_hostname(
+        self,
+        **kwargs
+    ):
         """patch_hostname  # noqa: E501
 
         bulk-patch hostname records  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.patch_hostname(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param HostnamePatchInput hostname_patch_input:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: HostnamePatchOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            hostname_patch_input (HostnamePatchInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            HostnamePatchOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.patch_hostname_with_http_info(**kwargs)  # noqa: E501
-
-    def patch_hostname_with_http_info(self, **kwargs):  # noqa: E501
-        """patch_hostname  # noqa: E501
-
-        bulk-patch hostname records  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.patch_hostname_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param HostnamePatchInput hostname_patch_input:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(HostnamePatchOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'hostname_patch_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.patch_hostname_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_hostname" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'hostname_patch_input' in local_var_params:
-            body_params = local_var_params['hostname_patch_input']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/hostname', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='HostnamePatchOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def patch_ip(self, **kwargs):  # noqa: E501
+    def patch_ip(
+        self,
+        **kwargs
+    ):
         """patch_ip  # noqa: E501
 
         bulk-patch ip records  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.patch_ip(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param IpPatchInput ip_patch_input:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: IpPatchOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            ip_patch_input (IpPatchInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            IpPatchOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.patch_ip_with_http_info(**kwargs)  # noqa: E501
-
-    def patch_ip_with_http_info(self, **kwargs):  # noqa: E501
-        """patch_ip  # noqa: E501
-
-        bulk-patch ip records  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.patch_ip_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param IpPatchInput ip_patch_input:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(IpPatchOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'ip_patch_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.patch_ip_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_ip" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'ip_patch_input' in local_var_params:
-            body_params = local_var_params['ip_patch_input']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/ip', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='IpPatchOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def patch_network(self, **kwargs):  # noqa: E501
+    def patch_network(
+        self,
+        **kwargs
+    ):
         """patch_network  # noqa: E501
 
         bulk-patch network records  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.patch_network(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param NetworkPatchInput network_patch_input:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: NetworkPatchOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            network_patch_input (NetworkPatchInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            NetworkPatchOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.patch_network_with_http_info(**kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.patch_network_endpoint.call_with_http_info(**kwargs)
 
-    def patch_network_with_http_info(self, **kwargs):  # noqa: E501
-        """patch_network  # noqa: E501
+    def patch_single_attack_user_action_descriptions(
+        self,
+        id,
+        **kwargs
+    ):
+        """patch_single_attack_user_action_descriptions  # noqa: E501
 
-        bulk-patch network records  # noqa: E501
+        Update fields for the attack-user-action-descriptions object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.patch_network_with_http_info(async_req=True)
+
+        >>> thread = api.patch_single_attack_user_action_descriptions(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param NetworkPatchInput network_patch_input:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(NetworkPatchOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            attack_user_action_descriptions_patch_single_input (AttackUserActionDescriptionsPatchSingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserActionDescriptionsSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'network_patch_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.patch_single_attack_user_action_descriptions_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_network" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def patch_single_attack_user_autoapprove(
+        self,
+        id,
+        **kwargs
+    ):
+        """patch_single_attack_user_autoapprove  # noqa: E501
 
-        collection_formats = {}
+        Update fields for the attack-user-autoapprove object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.patch_single_attack_user_autoapprove(id, async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
+        Args:
+            id (str):
 
-        header_params = {}
+        Keyword Args:
+            attack_user_autoapprove_patch_single_input (AttackUserAutoapprovePatchSingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            AttackUserAutoapproveSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.patch_single_attack_user_autoapprove_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        if 'network_patch_input' in local_var_params:
-            body_params = local_var_params['network_patch_input']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+    def patch_single_attack_user_runbook_descriptions(
+        self,
+        id,
+        **kwargs
+    ):
+        """patch_single_attack_user_runbook_descriptions  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        Update fields for the attack-user-runbook-descriptions object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
+        >>> thread = api.patch_single_attack_user_runbook_descriptions(id, async_req=True)
+        >>> result = thread.get()
 
-        return self.api_client.call_api(
-            '/recon/api/v1/network', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='NetworkPatchOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        Args:
+            id (str):
 
-    def patch_single_saved_views(self, id, **kwargs):  # noqa: E501
+        Keyword Args:
+            attack_user_runbook_descriptions_patch_single_input (AttackUserRunbookDescriptionsPatchSingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserRunbookDescriptionsSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.patch_single_attack_user_runbook_descriptions_endpoint.call_with_http_info(**kwargs)
+
+    def patch_single_peer_map(
+        self,
+        id,
+        **kwargs
+    ):
+        """patch_single_peer_map  # noqa: E501
+
+        Update fields for the peer-map object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.patch_single_peer_map(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            peer_map_patch_single_input (PeerMapPatchSingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PeerMapSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.patch_single_peer_map_endpoint.call_with_http_info(**kwargs)
+
+    def patch_single_policy(
+        self,
+        id,
+        **kwargs
+    ):
+        """patch_single_policy  # noqa: E501
+
+        Update fields for the policy object by id  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.patch_single_policy(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            policy_patch_single_input (PolicyPatchSingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PolicySingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.patch_single_policy_endpoint.call_with_http_info(**kwargs)
+
+    def patch_single_saved_views(
+        self,
+        id,
+        **kwargs
+    ):
         """patch_single_saved_views  # noqa: E501
 
         Update fields for the saved-views object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.patch_single_saved_views(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param SavedViewsPatchSingleInput saved_views_patch_single_input:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SavedViewsSingleOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            saved_views_patch_single_input (SavedViewsPatchSingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SavedViewsSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.patch_single_saved_views_with_http_info(id, **kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.patch_single_saved_views_endpoint.call_with_http_info(**kwargs)
 
-    def patch_single_saved_views_with_http_info(self, id, **kwargs):  # noqa: E501
-        """patch_single_saved_views  # noqa: E501
+    def patch_single_user_ap_action_instances(
+        self,
+        id,
+        **kwargs
+    ):
+        """patch_single_user_ap_action_instances  # noqa: E501
 
-        Update fields for the saved-views object by id  # noqa: E501
+        Update fields for the user-ap-action-instances object by id  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.patch_single_saved_views_with_http_info(id, async_req=True)
+
+        >>> thread = api.patch_single_user_ap_action_instances(id, async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str id: (required)
-        :param SavedViewsPatchSingleInput saved_views_patch_single_input:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SavedViewsSingleOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+        Args:
+            id (str):
+
+        Keyword Args:
+            user_ap_action_instances_patch_single_input (UserApActionInstancesPatchSingleInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            UserApActionInstancesSingleOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'id',
-            'saved_views_patch_single_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['id'] = \
+            id
+        return self.patch_single_user_ap_action_instances_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_single_saved_views" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `patch_single_saved_views`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'saved_views_patch_single_input' in local_var_params:
-            body_params = local_var_params['saved_views_patch_single_input']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/saved-views/{id}', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SavedViewsSingleOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def patch_social_entity(self, **kwargs):  # noqa: E501
+    def patch_social_entity(
+        self,
+        **kwargs
+    ):
         """patch_social_entity  # noqa: E501
 
         bulk-patch social-entity records  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.patch_social_entity(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param SocialEntityPatchInput social_entity_patch_input:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SocialEntityPatchOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            social_entity_patch_input (SocialEntityPatchInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SocialEntityPatchOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.patch_social_entity_with_http_info(**kwargs)  # noqa: E501
-
-    def patch_social_entity_with_http_info(self, **kwargs):  # noqa: E501
-        """patch_social_entity  # noqa: E501
-
-        bulk-patch social-entity records  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.patch_social_entity_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param SocialEntityPatchInput social_entity_patch_input:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SocialEntityPatchOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'social_entity_patch_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.patch_social_entity_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_social_entity" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'social_entity_patch_input' in local_var_params:
-            body_params = local_var_params['social_entity_patch_input']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/social-entity', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SocialEntityPatchOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def patch_target(self, **kwargs):  # noqa: E501
+    def patch_target(
+        self,
+        **kwargs
+    ):
         """patch_target  # noqa: E501
 
         bulk-patch target records  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.patch_target(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param TargetPatchInput target_patch_input:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: TargetPatchOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            target_patch_input (TargetPatchInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            TargetPatchOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.patch_target_with_http_info(**kwargs)  # noqa: E501
-
-    def patch_target_with_http_info(self, **kwargs):  # noqa: E501
-        """patch_target  # noqa: E501
-
-        bulk-patch target records  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.patch_target_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param TargetPatchInput target_patch_input:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(TargetPatchOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'target_patch_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.patch_target_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_target" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'target_patch_input' in local_var_params:
-            body_params = local_var_params['target_patch_input']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/recon/api/v1/target', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='TargetPatchOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def paths(self, **kwargs):  # noqa: E501
+    def paths(
+        self,
+        **kwargs
+    ):
         """paths  # noqa: E501
 
         Returns paths from query param to nearest prime entity(s)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.paths(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str terminal:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: PathsOutputSchema
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            terminal (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PathsOutputSchema
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.paths_with_http_info(**kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.paths_endpoint.call_with_http_info(**kwargs)
 
-    def paths_with_http_info(self, **kwargs):  # noqa: E501
-        """paths  # noqa: E501
+    def post_attack_user_action_descriptions(
+        self,
+        **kwargs
+    ):
+        """post_attack_user_action_descriptions  # noqa: E501
 
-        Returns paths from query param to nearest prime entity(s)  # noqa: E501
+        Add new attack-user-action-descriptions objects  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.paths_with_http_info(async_req=True)
+
+        >>> thread = api.post_attack_user_action_descriptions(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param str terminal:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(PathsOutputSchema, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            attack_user_action_descriptions_post_input (AttackUserActionDescriptionsPostInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserActionDescriptionsPostOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'terminal'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_attack_user_action_descriptions_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method paths" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def post_attack_user_autoapprove(
+        self,
+        **kwargs
+    ):
+        """post_attack_user_autoapprove  # noqa: E501
 
-        collection_formats = {}
+        Add new attack-user-autoapprove objects  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.post_attack_user_autoapprove(async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
-        if 'terminal' in local_var_params and local_var_params['terminal'] is not None:  # noqa: E501
-            query_params.append(('terminal', local_var_params['terminal']))  # noqa: E501
 
-        header_params = {}
+        Keyword Args:
+            attack_user_autoapprove_post_input (AttackUserAutoapprovePostInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            AttackUserAutoapprovePostOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_attack_user_autoapprove_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+    def post_attack_user_runbook_descriptions(
+        self,
+        **kwargs
+    ):
+        """post_attack_user_runbook_descriptions  # noqa: E501
 
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
+        Add new attack-user-runbook-descriptions objects  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        return self.api_client.call_api(
-            '/recon/api/v1/paths', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='PathsOutputSchema',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        >>> thread = api.post_attack_user_runbook_descriptions(async_req=True)
+        >>> result = thread.get()
 
-    def post_saved_views(self, **kwargs):  # noqa: E501
+
+        Keyword Args:
+            attack_user_runbook_descriptions_post_input (AttackUserRunbookDescriptionsPostInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AttackUserRunbookDescriptionsPostOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_attack_user_runbook_descriptions_endpoint.call_with_http_info(**kwargs)
+
+    def post_comment_multi(
+        self,
+        **kwargs
+    ):
+        """post_comment_multi  # noqa: E501
+
+        Creates a single comment for multiple entity IDs  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_comment_multi(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            external_comment_creation_schema (ExternalCommentCreationSchema): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_comment_multi_endpoint.call_with_http_info(**kwargs)
+
+    def post_peer(
+        self,
+        **kwargs
+    ):
+        """post_peer  # noqa: E501
+
+        Add new peer objects  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_peer(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            peer_post_input (PeerPostInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PeerPostOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_peer_endpoint.call_with_http_info(**kwargs)
+
+    def post_peer_map(
+        self,
+        **kwargs
+    ):
+        """post_peer_map  # noqa: E501
+
+        Add new peer-map objects  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_peer_map(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            peer_map_post_input (PeerMapPostInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PeerMapPostOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_peer_map_endpoint.call_with_http_info(**kwargs)
+
+    def post_policy(
+        self,
+        **kwargs
+    ):
+        """post_policy  # noqa: E501
+
+        Add new policy objects  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_policy(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            policy_post_input (PolicyPostInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            PolicyPostOutput
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_policy_endpoint.call_with_http_info(**kwargs)
+
+    def post_saved_views(
+        self,
+        **kwargs
+    ):
         """post_saved_views  # noqa: E501
 
         Add new saved-views objects  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.post_saved_views(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param SavedViewsPostInput saved_views_post_input:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: SavedViewsPostOutput
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            saved_views_post_input (SavedViewsPostInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            SavedViewsPostOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.post_saved_views_with_http_info(**kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_saved_views_endpoint.call_with_http_info(**kwargs)
 
-    def post_saved_views_with_http_info(self, **kwargs):  # noqa: E501
-        """post_saved_views  # noqa: E501
+    def post_user_ap_action_instances(
+        self,
+        **kwargs
+    ):
+        """post_user_ap_action_instances  # noqa: E501
 
-        Add new saved-views objects  # noqa: E501
+        Add new user-ap-action-instances objects  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.post_saved_views_with_http_info(async_req=True)
+
+        >>> thread = api.post_user_ap_action_instances(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param SavedViewsPostInput saved_views_post_input:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(SavedViewsPostOutput, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            user_ap_action_instances_post_input (UserApActionInstancesPostInput): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            UserApActionInstancesPostOutput
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-            'saved_views_post_input'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.post_user_ap_action_instances_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method post_saved_views" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def priority_groups(
+        self,
+        **kwargs
+    ):
+        """priority_groups  # noqa: E501
 
-        collection_formats = {}
+        Return counts of a given entity type grouped by priority score ranges. This depends on the requestor to provide sane ranges; ranges are evaluated in order so overlaps wont yield duplicate results.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.priority_groups(async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
 
-        header_params = {}
+        Keyword Args:
+            priority_entity_req (PriorityEntityReq): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            PriorityGroupOuterResult
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.priority_groups_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        if 'saved_views_post_input' in local_var_params:
-            body_params = local_var_params['saved_views_post_input']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+    def recon_worker_node_ips(
+        self,
+        ips,
+        **kwargs
+    ):
+        """recon_worker_node_ips  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        Return IP addresses supplied, with a boolean value key indicating whether the IP was used by Randori in reconnaissance in (up to) the last 30 days. Note: the IP addresses must be a list of strings that is base64 encoded.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
+        >>> thread = api.recon_worker_node_ips(ips, async_req=True)
+        >>> result = thread.get()
 
-        return self.api_client.call_api(
-            '/recon/api/v1/saved-views', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='SavedViewsPostOutput',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        Args:
+            ips (str):
 
-    def tag(self, **kwargs):  # noqa: E501
+        Keyword Args:
+            lookbackdays (int): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ReconWorkerNodeIps
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['ips'] = \
+            ips
+        return self.recon_worker_node_ips_endpoint.call_with_http_info(**kwargs)
+
+    def status_groups(
+        self,
+        **kwargs
+    ):
+        """status_groups  # noqa: E501
+
+        Return counts of a given entity type grouped by status.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.status_groups(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            status_entity_req (StatusEntityReq): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            StatusGroupOuterResult
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.status_groups_endpoint.call_with_http_info(**kwargs)
+
+    def tag(
+        self,
+        **kwargs
+    ):
         """tag  # noqa: E501
 
         Return list of all tags present on system that belong belong to an entity alive in the last day  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
+
         >>> thread = api.tag(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: UserTagNameList
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            UserTagNameList
+                If the method is called asynchronously, returns the request
+                thread.
         """
-        kwargs['_return_http_data_only'] = True
-        return self.tag_with_http_info(**kwargs)  # noqa: E501
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.tag_endpoint.call_with_http_info(**kwargs)
 
-    def tag_with_http_info(self, **kwargs):  # noqa: E501
-        """tag  # noqa: E501
+    def target_temptation_groups(
+        self,
+        **kwargs
+    ):
+        """target_temptation_groups  # noqa: E501
 
-        Return list of all tags present on system that belong belong to an entity alive in the last day  # noqa: E501
+        Return counts of a given entity type grouped by target temptation score ranges. This depends on the requestor to provide sane ranges; ranges are evaluated in order so overlaps wont yield duplicate results.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.tag_with_http_info(async_req=True)
+
+        >>> thread = api.target_temptation_groups(async_req=True)
         >>> result = thread.get()
 
-        :param async_req bool: execute request asynchronously
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(UserTagNameList, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
+
+        Keyword Args:
+            target_temptation_entity_req (TargetTemptationEntityReq): . [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            TargetTemptationGroupOuterResult
+                If the method is called asynchronously, returns the request
+                thread.
         """
-
-        local_var_params = locals()
-
-        all_params = [
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
         )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.target_temptation_groups_endpoint.call_with_http_info(**kwargs)
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method tag" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+    def user_query(
+        self,
+        **kwargs
+    ):
+        """user_query  # noqa: E501
 
-        collection_formats = {}
+        UserQuery  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+        >>> thread = api.user_query(async_req=True)
+        >>> result = thread.get()
 
-        query_params = []
 
-        header_params = {}
+        Keyword Args:
+            id (str): [optional]
+            created (str): [optional]
+            updated (str): [optional]
+            org_id (str): [optional]
+            source (str): [optional]
+            filename (str): [optional]
+            shasum (str): [optional]
+            ingests (int): [optional]
+            size (int): [optional]
+            created_start (int): [optional]
+            created_end (int): [optional]
+            updated_start (int): [optional]
+            updated_end (int): [optional]
+            max_count (int): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+        Returns:
+            UserArtifactQuery
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        return self.user_query_endpoint.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+    def user_retrieve(
+        self,
+        shasum2,
+        **kwargs
+    ):
+        """user_retrieve  # noqa: E501
 
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
+        Retrieve  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
 
-        return self.api_client.call_api(
-            '/recon/api/v1/tag', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='UserTagNameList',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        >>> thread = api.user_retrieve(shasum2, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            shasum2 (str):
+
+        Keyword Args:
+            shasum (str): [optional]
+            org_id (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            None
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['shasum2'] = \
+            shasum2
+        return self.user_retrieve_endpoint.call_with_http_info(**kwargs)
+
+    def uuid_comment_id(
+        self,
+        entity_id,
+        comment_id,
+        **kwargs
+    ):
+        """uuid_comment_id  # noqa: E501
+
+        Deletes an existing comment  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.uuid_comment_id(entity_id, comment_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            entity_id (str):
+            comment_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CommentResponseSchema
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['entity_id'] = \
+            entity_id
+        kwargs['comment_id'] = \
+            comment_id
+        return self.uuid_comment_id_endpoint.call_with_http_info(**kwargs)
+
+    def uuid_comment_id_0(
+        self,
+        entity_id,
+        comment_id,
+        **kwargs
+    ):
+        """uuid_comment_id_0  # noqa: E501
+
+        Updates an existing comment  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.uuid_comment_id_0(entity_id, comment_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            entity_id (str):
+            comment_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            _request_auths (list): set to override the auth_settings for an a single
+                request; this effectively ignores the authentication
+                in the spec for a single request.
+                Default is None
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CommentResponseSchema
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['_request_auths'] = kwargs.get('_request_auths', None)
+        kwargs['entity_id'] = \
+            entity_id
+        kwargs['comment_id'] = \
+            comment_id
+        return self.uuid_comment_id_0_endpoint.call_with_http_info(**kwargs)
+

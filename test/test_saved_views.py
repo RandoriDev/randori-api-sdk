@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.saved_views import SavedViews  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.saved_views import SavedViews
+
 
 class TestSavedViews(unittest.TestCase):
     """SavedViews unit test stubs"""
@@ -29,38 +25,11 @@ class TestSavedViews(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SavedViews
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.saved_views.SavedViews()  # noqa: E501
-        if include_optional :
-            return SavedViews(
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                description = '0', 
-                edited_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                entity_type = 'target', 
-                filter_data = randori_api.models.filter_data.filter_data(), 
-                id = '0', 
-                name = '0', 
-                org_id = '0', 
-                sort_data = randori_api.models.sort_data.sort_data()
-            )
-        else :
-            return SavedViews(
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                edited_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                entity_type = 'target',
-                filter_data = randori_api.models.filter_data.filter_data(),
-                org_id = '0',
-                sort_data = randori_api.models.sort_data.sort_data(),
-        )
-
     def testSavedViews(self):
         """Test SavedViews"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SavedViews()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

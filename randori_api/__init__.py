@@ -1,5 +1,3 @@
-# coding: utf-8
-
 # flake8: noqa
 
 """
@@ -13,106 +11,18 @@
 """
 
 
-from __future__ import absolute_import
-
-__version__ = "1.4.1"
-
-# import apis into sdk package
-from randori_api.api.default_api import DefaultApi
+__version__ = "1.5.0"
 
 # import ApiClient
 from randori_api.api_client import ApiClient
+
+# import Configuration
 from randori_api.configuration import Configuration
+
+# import exceptions
 from randori_api.exceptions import OpenApiException
+from randori_api.exceptions import ApiAttributeError
 from randori_api.exceptions import ApiTypeError
 from randori_api.exceptions import ApiValueError
 from randori_api.exceptions import ApiKeyError
 from randori_api.exceptions import ApiException
-# import models into sdk package
-from randori_api.models.all_detections_for_target import AllDetectionsForTarget
-from randori_api.models.all_detections_for_target_get_output import AllDetectionsForTargetGetOutput
-from randori_api.models.artifact import Artifact
-from randori_api.models.artifact_get_output import ArtifactGetOutput
-from randori_api.models.detection import Detection
-from randori_api.models.detection_get_output import DetectionGetOutput
-from randori_api.models.edge_schema import EdgeSchema
-from randori_api.models.error_schema import ErrorSchema
-from randori_api.models.hostname import Hostname
-from randori_api.models.hostname_get_output import HostnameGetOutput
-from randori_api.models.hostname_patch_in import HostnamePatchIn
-from randori_api.models.hostname_patch_input import HostnamePatchInput
-from randori_api.models.hostname_patch_output import HostnamePatchOutput
-from randori_api.models.hostname_single_output import HostnameSingleOutput
-from randori_api.models.hostnames_for_ip import HostnamesForIp
-from randori_api.models.hostnames_for_ip_get_output import HostnamesForIpGetOutput
-from randori_api.models.hostnames_for_ip_single_output import HostnamesForIpSingleOutput
-from randori_api.models.ip import Ip
-from randori_api.models.ip_get_output import IpGetOutput
-from randori_api.models.ip_patch_in import IpPatchIn
-from randori_api.models.ip_patch_input import IpPatchInput
-from randori_api.models.ip_patch_output import IpPatchOutput
-from randori_api.models.ip_single_output import IpSingleOutput
-from randori_api.models.ips_for_hostname import IpsForHostname
-from randori_api.models.ips_for_hostname_get_output import IpsForHostnameGetOutput
-from randori_api.models.ips_for_hostname_single_output import IpsForHostnameSingleOutput
-from randori_api.models.ips_for_network import IpsForNetwork
-from randori_api.models.ips_for_network_get_output import IpsForNetworkGetOutput
-from randori_api.models.ips_for_network_single_output import IpsForNetworkSingleOutput
-from randori_api.models.ips_for_service import IpsForService
-from randori_api.models.ips_for_service_get_output import IpsForServiceGetOutput
-from randori_api.models.ips_for_service_single_output import IpsForServiceSingleOutput
-from randori_api.models.json_patch_operation import JsonPatchOperation
-from randori_api.models.network import Network
-from randori_api.models.network_get_output import NetworkGetOutput
-from randori_api.models.network_patch_in import NetworkPatchIn
-from randori_api.models.network_patch_input import NetworkPatchInput
-from randori_api.models.network_patch_output import NetworkPatchOutput
-from randori_api.models.network_single_output import NetworkSingleOutput
-from randori_api.models.node_schema import NodeSchema
-from randori_api.models.paths_data_schema import PathsDataSchema
-from randori_api.models.paths_output_schema import PathsOutputSchema
-from randori_api.models.ports_for_ip import PortsForIp
-from randori_api.models.ports_for_ip_get_output import PortsForIpGetOutput
-from randori_api.models.ports_for_ip_single_output import PortsForIpSingleOutput
-from randori_api.models.querybuilder_group_member_schema import QuerybuilderGroupMemberSchema
-from randori_api.models.querybuilder_group_member_schema2 import QuerybuilderGroupMemberSchema2
-from randori_api.models.querybuilder_group_member_schema3 import QuerybuilderGroupMemberSchema3
-from randori_api.models.querybuilder_group_member_schema4 import QuerybuilderGroupMemberSchema4
-from randori_api.models.querybuilder_group_member_schema5 import QuerybuilderGroupMemberSchema5
-from randori_api.models.querybuilder_group_member_schema6 import QuerybuilderGroupMemberSchema6
-from randori_api.models.querybuilder_rule_group_schema import QuerybuilderRuleGroupSchema
-from randori_api.models.querybuilder_rule_group_schema2 import QuerybuilderRuleGroupSchema2
-from randori_api.models.querybuilder_rule_group_schema3 import QuerybuilderRuleGroupSchema3
-from randori_api.models.querybuilder_rule_group_schema4 import QuerybuilderRuleGroupSchema4
-from randori_api.models.querybuilder_rule_schema import QuerybuilderRuleSchema
-from randori_api.models.saved_views import SavedViews
-from randori_api.models.saved_views_get_output import SavedViewsGetOutput
-from randori_api.models.saved_views_model_custom_in import SavedViewsModelCustomIn
-from randori_api.models.saved_views_patch_in import SavedViewsPatchIn
-from randori_api.models.saved_views_patch_single_input import SavedViewsPatchSingleInput
-from randori_api.models.saved_views_post_input import SavedViewsPostInput
-from randori_api.models.saved_views_post_output import SavedViewsPostOutput
-from randori_api.models.saved_views_single_output import SavedViewsSingleOutput
-from randori_api.models.service import Service
-from randori_api.models.service_get_output import ServiceGetOutput
-from randori_api.models.service_single_output import ServiceSingleOutput
-from randori_api.models.single_detection_for_target import SingleDetectionForTarget
-from randori_api.models.single_detection_for_target_get_output import SingleDetectionForTargetGetOutput
-from randori_api.models.social_entity import SocialEntity
-from randori_api.models.social_entity_get_output import SocialEntityGetOutput
-from randori_api.models.social_entity_patch_in import SocialEntityPatchIn
-from randori_api.models.social_entity_patch_input import SocialEntityPatchInput
-from randori_api.models.social_entity_patch_output import SocialEntityPatchOutput
-from randori_api.models.statistics import Statistics
-from randori_api.models.statistics_get_output import StatisticsGetOutput
-from randori_api.models.tagcounts import Tagcounts
-from randori_api.models.tagcounts_get_output import TagcountsGetOutput
-from randori_api.models.tagcounts_single_output import TagcountsSingleOutput
-from randori_api.models.target import Target
-from randori_api.models.target_get_output import TargetGetOutput
-from randori_api.models.target_patch_in import TargetPatchIn
-from randori_api.models.target_patch_input import TargetPatchInput
-from randori_api.models.target_patch_output import TargetPatchOutput
-from randori_api.models.target_single_output import TargetSingleOutput
-from randori_api.models.user_tag_name_list import UserTagNameList
-

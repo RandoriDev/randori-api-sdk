@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,18 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.ip_patch_input import IpPatchInput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.hostname_patch_input_operations_inner import HostnamePatchInputOperationsInner
+from randori_api.model.hostname_patch_input_q import HostnamePatchInputQ
+from randori_api.model.ip_patch_input_data import IpPatchInputData
+globals()['HostnamePatchInputOperationsInner'] = HostnamePatchInputOperationsInner
+globals()['HostnamePatchInputQ'] = HostnamePatchInputQ
+globals()['IpPatchInputData'] = IpPatchInputData
+from randori_api.model.ip_patch_input import IpPatchInput
+
 
 class TestIpPatchInput(unittest.TestCase):
     """IpPatchInput unit test stubs"""
@@ -29,28 +31,11 @@ class TestIpPatchInput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test IpPatchInput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.ip_patch_input.IpPatchInput()  # noqa: E501
-        if include_optional :
-            return IpPatchInput(
-                data = null, 
-                operations = [
-                    null
-                    ], 
-                q = null
-            )
-        else :
-            return IpPatchInput(
-        )
-
     def testIpPatchInput(self):
         """Test IpPatchInput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = IpPatchInput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

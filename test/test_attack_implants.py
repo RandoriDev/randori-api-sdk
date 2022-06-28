@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.attack_implants import AttackImplants  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.attack_implants import AttackImplants
+
 
 class TestAttackImplants(unittest.TestCase):
     """AttackImplants unit test stubs"""
@@ -29,56 +25,11 @@ class TestAttackImplants(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AttackImplants
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.attack_implants.AttackImplants()  # noqa: E501
-        if include_optional :
-            return AttackImplants(
-                arch = '0', 
-                bart_id = '0', 
-                bits = 56, 
-                created_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                host_ips = [
-                    '0'
-                    ], 
-                hostnames = [
-                    '0'
-                    ], 
-                id = '0', 
-                last_checkin = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                method = randori_api.models.method.method(), 
-                next_checkin = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                nick = '0', 
-                org_id = '0', 
-                os = '0', 
-                ostype = '0', 
-                osver = '0', 
-                status = '0', 
-                uid = '0'
-            )
-        else :
-            return AttackImplants(
-                arch = '0',
-                bart_id = '0',
-                created_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                hostnames = [
-                    '0'
-                    ],
-                last_checkin = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                method = randori_api.models.method.method(),
-                next_checkin = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                org_id = '0',
-                status = '0',
-                uid = '0',
-        )
-
     def testAttackImplants(self):
         """Test AttackImplants"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AttackImplants()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

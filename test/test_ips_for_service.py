@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.ips_for_service import IpsForService  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.ips_for_service import IpsForService
+
 
 class TestIpsForService(unittest.TestCase):
     """IpsForService unit test stubs"""
@@ -29,50 +25,11 @@ class TestIpsForService(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test IpsForService
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.ips_for_service.IpsForService()  # noqa: E501
-        if include_optional :
-            return IpsForService(
-                affiliation_state = 'None', 
-                confidence = 56, 
-                country = '0', 
-                deleted = True, 
-                first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                id = '0', 
-                impact_score = 'None', 
-                ip = '0', 
-                ip_id = '0', 
-                ip_str = '0', 
-                last_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                latitude = 1.337, 
-                lens_id = '0', 
-                lens_view = '0', 
-                longitude = 1.337, 
-                open_port_count = 56, 
-                org_id = '0', 
-                perspective = '0', 
-                perspective_name = '0', 
-                radius = 1.337, 
-                service_count = 56, 
-                service_id = '0', 
-                status = 'None', 
-                target_count = 56, 
-                target_temptation = 56
-            )
-        else :
-            return IpsForService(
-                id = '0',
-                org_id = '0',
-        )
-
     def testIpsForService(self):
         """Test IpsForService"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = IpsForService()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

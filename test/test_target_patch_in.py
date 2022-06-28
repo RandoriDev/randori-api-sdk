@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.target_patch_in import TargetPatchIn  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.target_patch_in import TargetPatchIn
+
 
 class TestTargetPatchIn(unittest.TestCase):
     """TargetPatchIn unit test stubs"""
@@ -29,27 +25,11 @@ class TestTargetPatchIn(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test TargetPatchIn
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.target_patch_in.TargetPatchIn()  # noqa: E501
-        if include_optional :
-            return TargetPatchIn(
-                affiliation_state = 'None', 
-                authorization_state = 'Authorized', 
-                impact_score = 'None', 
-                status = 'None'
-            )
-        else :
-            return TargetPatchIn(
-        )
-
     def testTargetPatchIn(self):
         """Test TargetPatchIn"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = TargetPatchIn()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

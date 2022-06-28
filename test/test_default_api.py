@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,22 +9,73 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import randori_api
 from randori_api.api.default_api import DefaultApi  # noqa: E501
-from randori_api.rest import ApiException
 
 
 class TestDefaultApi(unittest.TestCase):
     """DefaultApi unit test stubs"""
 
     def setUp(self):
-        self.api = randori_api.api.default_api.DefaultApi()  # noqa: E501
+        self.api = DefaultApi()  # noqa: E501
 
     def tearDown(self):
+        pass
+
+    def test_add_affiliation(self):
+        """Test case for add_affiliation
+
+        """
+        pass
+
+    def test_add_affiliation_file(self):
+        """Test case for add_affiliation_file
+
+        """
+        pass
+
+    def test_artifact(self):
+        """Test case for artifact
+
+        """
+        pass
+
+    def test_artifact_raw(self):
+        """Test case for artifact_raw
+
+        """
+        pass
+
+    def test_comment(self):
+        """Test case for comment
+
+        """
+        pass
+
+    def test_comment_0(self):
+        """Test case for comment_0
+
+        """
+        pass
+
+    def test_delete_single_attack_user_action_descriptions(self):
+        """Test case for delete_single_attack_user_action_descriptions
+
+        """
+        pass
+
+    def test_delete_single_attack_user_runbook_descriptions(self):
+        """Test case for delete_single_attack_user_runbook_descriptions
+
+        """
+        pass
+
+    def test_delete_single_policy(self):
+        """Test case for delete_single_policy
+
+        """
         pass
 
     def test_delete_single_saved_views(self):
@@ -43,12 +92,6 @@ class TestDefaultApi(unittest.TestCase):
 
     def test_get_all_detections_for_target(self):
         """Test case for get_all_detections_for_target
-
-        """
-        pass
-
-    def test_get_artifact(self):
-        """Test case for get_artifact
 
         """
         pass
@@ -89,8 +132,20 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_get_detection(self):
-        """Test case for get_detection
+    def test_get_attack_user_action_descriptions(self):
+        """Test case for get_attack_user_action_descriptions
+
+        """
+        pass
+
+    def test_get_attack_user_autoapprove(self):
+        """Test case for get_attack_user_autoapprove
+
+        """
+        pass
+
+    def test_get_attack_user_runbook_descriptions(self):
+        """Test case for get_attack_user_runbook_descriptions
 
         """
         pass
@@ -137,8 +192,38 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_peer(self):
+        """Test case for get_peer
+
+        """
+        pass
+
+    def test_get_peer_map(self):
+        """Test case for get_peer_map
+
+        """
+        pass
+
+    def test_get_policy(self):
+        """Test case for get_policy
+
+        """
+        pass
+
     def test_get_ports_for_ip(self):
         """Test case for get_ports_for_ip
+
+        """
+        pass
+
+    def test_get_prime(self):
+        """Test case for get_prime
+
+        """
+        pass
+
+    def test_get_report(self):
+        """Test case for get_report
 
         """
         pass
@@ -163,6 +248,24 @@ class TestDefaultApi(unittest.TestCase):
 
     def test_get_single_attack_implants(self):
         """Test case for get_single_attack_implants
+
+        """
+        pass
+
+    def test_get_single_attack_user_action_descriptions(self):
+        """Test case for get_single_attack_user_action_descriptions
+
+        """
+        pass
+
+    def test_get_single_attack_user_autoapprove(self):
+        """Test case for get_single_attack_user_autoapprove
+
+        """
+        pass
+
+    def test_get_single_attack_user_runbook_descriptions(self):
+        """Test case for get_single_attack_user_runbook_descriptions
 
         """
         pass
@@ -215,8 +318,26 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_single_peer(self):
+        """Test case for get_single_peer
+
+        """
+        pass
+
+    def test_get_single_peer_map(self):
+        """Test case for get_single_peer_map
+
+        """
+        pass
+
     def test_get_single_ports_for_ip(self):
         """Test case for get_single_ports_for_ip
+
+        """
+        pass
+
+    def test_get_single_report(self):
+        """Test case for get_single_report
 
         """
         pass
@@ -233,8 +354,20 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_single_tagcounts(self):
+        """Test case for get_single_tagcounts
+
+        """
+        pass
+
     def test_get_single_target(self):
         """Test case for get_single_target
+
+        """
+        pass
+
+    def test_get_single_user_ap_action_instances(self):
+        """Test case for get_single_user_ap_action_instances
 
         """
         pass
@@ -251,8 +384,38 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_tagcounts(self):
+        """Test case for get_tagcounts
+
+        """
+        pass
+
     def test_get_target(self):
         """Test case for get_target
+
+        """
+        pass
+
+    def test_get_user_ap_action_instances(self):
+        """Test case for get_user_ap_action_instances
+
+        """
+        pass
+
+    def test_hoc_submit(self):
+        """Test case for hoc_submit
+
+        """
+        pass
+
+    def test_hoc_submit_cpio(self):
+        """Test case for hoc_submit_cpio
+
+        """
+        pass
+
+    def test_impact_score_groups(self):
+        """Test case for impact_score_groups
 
         """
         pass
@@ -275,8 +438,44 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_patch_single_attack_user_action_descriptions(self):
+        """Test case for patch_single_attack_user_action_descriptions
+
+        """
+        pass
+
+    def test_patch_single_attack_user_autoapprove(self):
+        """Test case for patch_single_attack_user_autoapprove
+
+        """
+        pass
+
+    def test_patch_single_attack_user_runbook_descriptions(self):
+        """Test case for patch_single_attack_user_runbook_descriptions
+
+        """
+        pass
+
+    def test_patch_single_peer_map(self):
+        """Test case for patch_single_peer_map
+
+        """
+        pass
+
+    def test_patch_single_policy(self):
+        """Test case for patch_single_policy
+
+        """
+        pass
+
     def test_patch_single_saved_views(self):
         """Test case for patch_single_saved_views
+
+        """
+        pass
+
+    def test_patch_single_user_ap_action_instances(self):
+        """Test case for patch_single_user_ap_action_instances
 
         """
         pass
@@ -299,14 +498,110 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_post_attack_user_action_descriptions(self):
+        """Test case for post_attack_user_action_descriptions
+
+        """
+        pass
+
+    def test_post_attack_user_autoapprove(self):
+        """Test case for post_attack_user_autoapprove
+
+        """
+        pass
+
+    def test_post_attack_user_runbook_descriptions(self):
+        """Test case for post_attack_user_runbook_descriptions
+
+        """
+        pass
+
+    def test_post_comment_multi(self):
+        """Test case for post_comment_multi
+
+        """
+        pass
+
+    def test_post_peer(self):
+        """Test case for post_peer
+
+        """
+        pass
+
+    def test_post_peer_map(self):
+        """Test case for post_peer_map
+
+        """
+        pass
+
+    def test_post_policy(self):
+        """Test case for post_policy
+
+        """
+        pass
+
     def test_post_saved_views(self):
         """Test case for post_saved_views
 
         """
         pass
 
+    def test_post_user_ap_action_instances(self):
+        """Test case for post_user_ap_action_instances
+
+        """
+        pass
+
+    def test_priority_groups(self):
+        """Test case for priority_groups
+
+        """
+        pass
+
+    def test_recon_worker_node_ips(self):
+        """Test case for recon_worker_node_ips
+
+        """
+        pass
+
+    def test_status_groups(self):
+        """Test case for status_groups
+
+        """
+        pass
+
     def test_tag(self):
         """Test case for tag
+
+        """
+        pass
+
+    def test_target_temptation_groups(self):
+        """Test case for target_temptation_groups
+
+        """
+        pass
+
+    def test_user_query(self):
+        """Test case for user_query
+
+        """
+        pass
+
+    def test_user_retrieve(self):
+        """Test case for user_retrieve
+
+        """
+        pass
+
+    def test_uuid_comment_id(self):
+        """Test case for uuid_comment_id
+
+        """
+        pass
+
+    def test_uuid_comment_id_0(self):
+        """Test case for uuid_comment_id_0
 
         """
         pass

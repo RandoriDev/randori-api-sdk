@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.priority_entity_req import PriorityEntityReq  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.priority_range import PriorityRange
+globals()['PriorityRange'] = PriorityRange
+from randori_api.model.priority_entity_req import PriorityEntityReq
+
 
 class TestPriorityEntityReq(unittest.TestCase):
     """PriorityEntityReq unit test stubs"""
@@ -29,39 +27,11 @@ class TestPriorityEntityReq(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test PriorityEntityReq
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.priority_entity_req.PriorityEntityReq()  # noqa: E501
-        if include_optional :
-            return PriorityEntityReq(
-                entity_type = 'ip', 
-                min_first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                prio_ranges = [
-                    randori_api.models.priority_range.priority_range(
-                        prio_max = 0, 
-                        prio_min = 0, 
-                        prio_range_name = 'medium', )
-                    ]
-            )
-        else :
-            return PriorityEntityReq(
-                entity_type = 'ip',
-                min_first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                prio_ranges = [
-                    randori_api.models.priority_range.priority_range(
-                        prio_max = 0, 
-                        prio_min = 0, 
-                        prio_range_name = 'medium', )
-                    ],
-        )
-
     def testPriorityEntityReq(self):
         """Test PriorityEntityReq"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = PriorityEntityReq()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

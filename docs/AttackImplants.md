@@ -1,25 +1,27 @@
 # AttackImplants
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **arch** | **str** |  | 
 **bart_id** | **str** |  | 
-**bits** | **int** |  | [optional] 
 **created_on** | **datetime** |  | 
-**host_ips** | **list[str]** |  | [optional] 
-**hostnames** | **list[str]** |  | 
-**id** | **str** |  | [optional] 
+**hostnames** | **[str]** |  | 
 **last_checkin** | **datetime** |  | 
-**method** | [**object**](.md) |  | 
+**method** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
 **next_checkin** | **datetime** |  | 
-**nick** | **str** |  | [optional] 
 **org_id** | **str** |  | 
-**os** | **str** |  | [optional] 
-**ostype** | **str** |  | [optional] 
-**osver** | **str** |  | [optional] 
 **status** | **str** |  | 
 **uid** | **str** |  | 
+**bits** | **int, none_type** |  | [optional] 
+**host_ips** | **[str]** |  | [optional] 
+**id** | **str** |  | [optional] 
+**nick** | **str, none_type** |  | [optional] 
+**os** | **str, none_type** |  | [optional] 
+**ostype** | **str, none_type** |  | [optional] 
+**osver** | **str, none_type** |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

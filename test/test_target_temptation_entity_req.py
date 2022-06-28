@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.target_temptation_entity_req import TargetTemptationEntityReq  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.target_temptation_range import TargetTemptationRange
+globals()['TargetTemptationRange'] = TargetTemptationRange
+from randori_api.model.target_temptation_entity_req import TargetTemptationEntityReq
+
 
 class TestTargetTemptationEntityReq(unittest.TestCase):
     """TargetTemptationEntityReq unit test stubs"""
@@ -29,39 +27,11 @@ class TestTargetTemptationEntityReq(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test TargetTemptationEntityReq
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.target_temptation_entity_req.TargetTemptationEntityReq()  # noqa: E501
-        if include_optional :
-            return TargetTemptationEntityReq(
-                entity_type = 'ip', 
-                min_first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                tt_ranges = [
-                    randori_api.models.target_temptation_range.target_temptation_range(
-                        tt_max = 0, 
-                        tt_min = 0, 
-                        tt_range_name = 'critical', )
-                    ]
-            )
-        else :
-            return TargetTemptationEntityReq(
-                entity_type = 'ip',
-                min_first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                tt_ranges = [
-                    randori_api.models.target_temptation_range.target_temptation_range(
-                        tt_max = 0, 
-                        tt_min = 0, 
-                        tt_range_name = 'critical', )
-                    ],
-        )
-
     def testTargetTemptationEntityReq(self):
         """Test TargetTemptationEntityReq"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = TargetTemptationEntityReq()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.target_temptation_range import TargetTemptationRange  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.target_temptation_range import TargetTemptationRange
+
 
 class TestTargetTemptationRange(unittest.TestCase):
     """TargetTemptationRange unit test stubs"""
@@ -29,29 +25,11 @@ class TestTargetTemptationRange(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test TargetTemptationRange
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.target_temptation_range.TargetTemptationRange()  # noqa: E501
-        if include_optional :
-            return TargetTemptationRange(
-                tt_max = 0, 
-                tt_min = 0, 
-                tt_range_name = 'critical'
-            )
-        else :
-            return TargetTemptationRange(
-                tt_max = 0,
-                tt_min = 0,
-                tt_range_name = 'critical',
-        )
-
     def testTargetTemptationRange(self):
         """Test TargetTemptationRange"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = TargetTemptationRange()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

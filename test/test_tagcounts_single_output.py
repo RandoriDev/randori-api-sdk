@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.tagcounts_single_output import TagcountsSingleOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.tagcounts_single_output_data import TagcountsSingleOutputData
+globals()['TagcountsSingleOutputData'] = TagcountsSingleOutputData
+from randori_api.model.tagcounts_single_output import TagcountsSingleOutput
+
 
 class TestTagcountsSingleOutput(unittest.TestCase):
     """TagcountsSingleOutput unit test stubs"""
@@ -29,24 +27,11 @@ class TestTagcountsSingleOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test TagcountsSingleOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.tagcounts_single_output.TagcountsSingleOutput()  # noqa: E501
-        if include_optional :
-            return TagcountsSingleOutput(
-                data = null
-            )
-        else :
-            return TagcountsSingleOutput(
-        )
-
     def testTagcountsSingleOutput(self):
         """Test TagcountsSingleOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = TagcountsSingleOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

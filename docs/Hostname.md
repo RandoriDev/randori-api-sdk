@@ -1,14 +1,16 @@
 # Hostname
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **str** |  | 
+**org_id** | **str** |  | 
 **affiliation_state** | **str** |  | [optional] 
 **confidence** | **int** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
 **first_seen** | **datetime** |  | [optional] 
 **hostname** | **str** |  | [optional] 
-**id** | **str** |  | 
 **impact_score** | **str** |  | [optional] 
 **ip_count** | **int** |  | [optional] 
 **is_prime** | **bool** |  | [optional] 
@@ -18,7 +20,6 @@ Name | Type | Description | Notes
 **max_confidence** | **int** |  | [optional] 
 **name_type** | **int** |  | [optional] 
 **only_in_review_targets** | **bool** |  | [optional] 
-**org_id** | **str** |  | 
 **perspective** | **str** |  | [optional] 
 **perspective_name** | **str** |  | [optional] 
 **priority_impact_factor** | **float** |  | [optional] 
@@ -26,8 +27,9 @@ Name | Type | Description | Notes
 **priority_status_factor** | **float** |  | [optional] 
 **priority_tags_factor** | **float** |  | [optional] 
 **status** | **str** |  | [optional] 
-**tags** | [**object**](.md) |  | [optional] 
-**target_temptation** | **int** |  | [optional] 
+**tags** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
+**target_temptation** | **int, none_type** |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

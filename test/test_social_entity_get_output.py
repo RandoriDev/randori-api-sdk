@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.social_entity_get_output import SocialEntityGetOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.social_entity import SocialEntity
+globals()['SocialEntity'] = SocialEntity
+from randori_api.model.social_entity_get_output import SocialEntityGetOutput
+
 
 class TestSocialEntityGetOutput(unittest.TestCase):
     """SocialEntityGetOutput unit test stubs"""
@@ -29,70 +27,11 @@ class TestSocialEntityGetOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SocialEntityGetOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.social_entity_get_output.SocialEntityGetOutput()  # noqa: E501
-        if include_optional :
-            return SocialEntityGetOutput(
-                count = 56, 
-                data = [
-                    randori_api.models.social_entity.social-entity(
-                        address = '0', 
-                        affiliation_state = 'None', 
-                        authorization_state = 'Authorized', 
-                        city = '0', 
-                        company_name = '0', 
-                        confidence = 56, 
-                        country = '0', 
-                        deleted = True, 
-                        details = randori_api.models.details.details(), 
-                        domain = '0', 
-                        email = '0', 
-                        email_type = '0', 
-                        first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        id = '0', 
-                        impact_score = 'None', 
-                        last_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        lens_id = '0', 
-                        lens_view = '0', 
-                        org_id = '0', 
-                        person_first_name = '0', 
-                        person_last_name = '0', 
-                        person_middle_name = '0', 
-                        person_name = '0', 
-                        perspective = '0', 
-                        perspective_name = '0', 
-                        phone = '0', 
-                        postal_code = '0', 
-                        priority_impact_factor = 1.337, 
-                        priority_score = 1.337, 
-                        priority_status_factor = 1.337, 
-                        priority_tags_factor = 1.337, 
-                        role = '0', 
-                        seniority = '0', 
-                        state = '0', 
-                        status = 'None', 
-                        sub_role = '0', 
-                        tags = randori_api.models.tags.tags(), 
-                        target_temptation = 56, 
-                        title = '0', 
-                        tld = '0', 
-                        username = '0', )
-                    ], 
-                offset = 56, 
-                total = 56
-            )
-        else :
-            return SocialEntityGetOutput(
-        )
-
     def testSocialEntityGetOutput(self):
         """Test SocialEntityGetOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SocialEntityGetOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.ports_for_ip_get_output import PortsForIpGetOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.ports_for_ip import PortsForIp
+globals()['PortsForIp'] = PortsForIp
+from randori_api.model.ports_for_ip_get_output import PortsForIpGetOutput
+
 
 class TestPortsForIpGetOutput(unittest.TestCase):
     """PortsForIpGetOutput unit test stubs"""
@@ -29,43 +27,11 @@ class TestPortsForIpGetOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test PortsForIpGetOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.ports_for_ip_get_output.PortsForIpGetOutput()  # noqa: E501
-        if include_optional :
-            return PortsForIpGetOutput(
-                count = 56, 
-                data = [
-                    randori_api.models.ports_for_ip.ports-for-ip(
-                        confidence = 56, 
-                        deleted = True, 
-                        id = '0', 
-                        ip_id = '0', 
-                        last_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        lens_id = '0', 
-                        lens_view = '0', 
-                        org_id = '0', 
-                        perspective = '0', 
-                        perspective_name = '0', 
-                        port = 56, 
-                        protocol = 56, 
-                        seen_open = True, 
-                        state = '0', )
-                    ], 
-                offset = 56, 
-                total = 56
-            )
-        else :
-            return PortsForIpGetOutput(
-        )
-
     def testPortsForIpGetOutput(self):
         """Test PortsForIpGetOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = PortsForIpGetOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

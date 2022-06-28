@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.action_metadata import ActionMetadata  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.action_metadata import ActionMetadata
+
 
 class TestActionMetadata(unittest.TestCase):
     """ActionMetadata unit test stubs"""
@@ -29,91 +25,11 @@ class TestActionMetadata(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ActionMetadata
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.action_metadata.ActionMetadata()  # noqa: E501
-        if include_optional :
-            return ActionMetadata(
-                action_id = '0', 
-                artifacts_status = '0', 
-                bart_id = '0', 
-                completed = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                config_hash = '0', 
-                created = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                description = '0', 
-                description_id = '0', 
-                display_name = '0', 
-                dst_email = [
-                    '0'
-                    ], 
-                dst_host = [
-                    '0'
-                    ], 
-                dst_ip = [
-                    '0'
-                    ], 
-                dst_mac = [
-                    '0'
-                    ], 
-                dst_network = [
-                    '0'
-                    ], 
-                dst_path = [
-                    '0'
-                    ], 
-                dst_port = [
-                    '0'
-                    ], 
-                id = '0', 
-                implant_id = '0', 
-                implant_nick = '0', 
-                implant_uid = '0', 
-                mitre_techniques = [
-                    '0'
-                    ], 
-                name = '0', 
-                org_id = '0', 
-                perspective_metadata = randori_api.models.perspective_metadata.perspective_metadata(), 
-                result = '0', 
-                result_hash = '0', 
-                runbook_instance_id = '0', 
-                src_email = [
-                    '0'
-                    ], 
-                src_host = [
-                    '0'
-                    ], 
-                src_ip = [
-                    '0'
-                    ], 
-                src_mac = [
-                    '0'
-                    ], 
-                stability = 56, 
-                started = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                stealth = 56, 
-                summary_sha = '0', 
-                template = '0', 
-                trigger = randori_api.models.trigger.trigger(), 
-                updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
-            )
-        else :
-            return ActionMetadata(
-                action_id = '0',
-                bart_id = '0',
-                id = '0',
-                org_id = '0',
-                result = '0',
-                runbook_instance_id = '0',
-        )
-
     def testActionMetadata(self):
         """Test ActionMetadata"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = ActionMetadata()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

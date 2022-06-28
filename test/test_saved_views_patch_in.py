@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.saved_views_patch_in import SavedViewsPatchIn  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.saved_views_patch_in import SavedViewsPatchIn
+
 
 class TestSavedViewsPatchIn(unittest.TestCase):
     """SavedViewsPatchIn unit test stubs"""
@@ -29,29 +25,11 @@ class TestSavedViewsPatchIn(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SavedViewsPatchIn
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.saved_views_patch_in.SavedViewsPatchIn()  # noqa: E501
-        if include_optional :
-            return SavedViewsPatchIn(
-                description = '0', 
-                filter_data = None, 
-                name = '0', 
-                sort_data = None
-            )
-        else :
-            return SavedViewsPatchIn(
-                filter_data = None,
-                sort_data = None,
-        )
-
     def testSavedViewsPatchIn(self):
         """Test SavedViewsPatchIn"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SavedViewsPatchIn()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':
