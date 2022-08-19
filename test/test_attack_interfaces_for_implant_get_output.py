@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.attack_interfaces_for_implant_get_output import AttackInterfacesForImplantGetOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.attack_interfaces_for_implant import AttackInterfacesForImplant
+globals()['AttackInterfacesForImplant'] = AttackInterfacesForImplant
+from randori_api.model.attack_interfaces_for_implant_get_output import AttackInterfacesForImplantGetOutput
+
 
 class TestAttackInterfacesForImplantGetOutput(unittest.TestCase):
     """AttackInterfacesForImplantGetOutput unit test stubs"""
@@ -29,36 +27,11 @@ class TestAttackInterfacesForImplantGetOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AttackInterfacesForImplantGetOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.attack_interfaces_for_implant_get_output.AttackInterfacesForImplantGetOutput()  # noqa: E501
-        if include_optional :
-            return AttackInterfacesForImplantGetOutput(
-                count = 56, 
-                data = [
-                    randori_api.models.attack_interfaces_for_implant.attack-interfaces-for-implant(
-                        address = '0', 
-                        bart_id = '0', 
-                        id = '0', 
-                        implant_id = '0', 
-                        ip_strs = randori_api.models.ip_strs.ip_strs(), 
-                        name = '0', 
-                        org_id = '0', )
-                    ], 
-                offset = 56, 
-                total = 56
-            )
-        else :
-            return AttackInterfacesForImplantGetOutput(
-        )
-
     def testAttackInterfacesForImplantGetOutput(self):
         """Test AttackInterfacesForImplantGetOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AttackInterfacesForImplantGetOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

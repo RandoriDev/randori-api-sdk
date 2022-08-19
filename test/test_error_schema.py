@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.error_schema import ErrorSchema  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.error_schema import ErrorSchema
+
 
 class TestErrorSchema(unittest.TestCase):
     """ErrorSchema unit test stubs"""
@@ -29,25 +25,11 @@ class TestErrorSchema(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ErrorSchema
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.error_schema.ErrorSchema()  # noqa: E501
-        if include_optional :
-            return ErrorSchema(
-                reason = '0', 
-                ref = '0'
-            )
-        else :
-            return ErrorSchema(
-        )
-
     def testErrorSchema(self):
         """Test ErrorSchema"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = ErrorSchema()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

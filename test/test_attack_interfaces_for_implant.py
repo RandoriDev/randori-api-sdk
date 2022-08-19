@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.attack_interfaces_for_implant import AttackInterfacesForImplant  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.attack_interfaces_for_implant import AttackInterfacesForImplant
+
 
 class TestAttackInterfacesForImplant(unittest.TestCase):
     """AttackInterfacesForImplant unit test stubs"""
@@ -29,36 +25,11 @@ class TestAttackInterfacesForImplant(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AttackInterfacesForImplant
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.attack_interfaces_for_implant.AttackInterfacesForImplant()  # noqa: E501
-        if include_optional :
-            return AttackInterfacesForImplant(
-                address = '0', 
-                bart_id = '0', 
-                id = '0', 
-                implant_id = '0', 
-                ip_strs = randori_api.models.ip_strs.ip_strs(), 
-                name = '0', 
-                org_id = '0'
-            )
-        else :
-            return AttackInterfacesForImplant(
-                bart_id = '0',
-                id = '0',
-                implant_id = '0',
-                ip_strs = randori_api.models.ip_strs.ip_strs(),
-                name = '0',
-                org_id = '0',
-        )
-
     def testAttackInterfacesForImplant(self):
         """Test AttackInterfacesForImplant"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AttackInterfacesForImplant()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

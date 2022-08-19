@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.impact_score_group_outer_result import ImpactScoreGroupOuterResult  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.impact_score_group_inner_result import ImpactScoreGroupInnerResult
+globals()['ImpactScoreGroupInnerResult'] = ImpactScoreGroupInnerResult
+from randori_api.model.impact_score_group_outer_result import ImpactScoreGroupOuterResult
+
 
 class TestImpactScoreGroupOuterResult(unittest.TestCase):
     """ImpactScoreGroupOuterResult unit test stubs"""
@@ -29,29 +27,11 @@ class TestImpactScoreGroupOuterResult(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test ImpactScoreGroupOuterResult
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.impact_score_group_outer_result.ImpactScoreGroupOuterResult()  # noqa: E501
-        if include_optional :
-            return ImpactScoreGroupOuterResult(
-                impact_score_counts = [
-                    randori_api.models.impact_score_group_inner_result.impact_score_group_inner_result(
-                        impact_score = 'None', 
-                        total = 56, )
-                    ], 
-                total = 56
-            )
-        else :
-            return ImpactScoreGroupOuterResult(
-        )
-
     def testImpactScoreGroupOuterResult(self):
         """Test ImpactScoreGroupOuterResult"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = ImpactScoreGroupOuterResult()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

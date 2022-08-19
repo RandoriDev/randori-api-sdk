@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.querybuilder_rule_group_schema import QuerybuilderRuleGroupSchema  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.querybuilder_rule_group_schema import QuerybuilderRuleGroupSchema
+
 
 class TestQuerybuilderRuleGroupSchema(unittest.TestCase):
     """QuerybuilderRuleGroupSchema unit test stubs"""
@@ -29,33 +25,11 @@ class TestQuerybuilderRuleGroupSchema(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test QuerybuilderRuleGroupSchema
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.querybuilder_rule_group_schema.QuerybuilderRuleGroupSchema()  # noqa: E501
-        if include_optional :
-            return QuerybuilderRuleGroupSchema(
-                condition = 'AND', 
-                label = '0', 
-                rules = [
-                    null
-                    ], 
-                ui_id = '0'
-            )
-        else :
-            return QuerybuilderRuleGroupSchema(
-                condition = 'AND',
-                rules = [
-                    null
-                    ],
-        )
-
     def testQuerybuilderRuleGroupSchema(self):
         """Test QuerybuilderRuleGroupSchema"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = QuerybuilderRuleGroupSchema()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

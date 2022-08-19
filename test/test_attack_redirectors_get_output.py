@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.attack_redirectors_get_output import AttackRedirectorsGetOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.attack_redirectors import AttackRedirectors
+globals()['AttackRedirectors'] = AttackRedirectors
+from randori_api.model.attack_redirectors_get_output import AttackRedirectorsGetOutput
+
 
 class TestAttackRedirectorsGetOutput(unittest.TestCase):
     """AttackRedirectorsGetOutput unit test stubs"""
@@ -29,43 +27,11 @@ class TestAttackRedirectorsGetOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AttackRedirectorsGetOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.attack_redirectors_get_output.AttackRedirectorsGetOutput()  # noqa: E501
-        if include_optional :
-            return AttackRedirectorsGetOutput(
-                count = 56, 
-                data = [
-                    randori_api.models.attack_redirectors.attack-redirectors(
-                        bart_id = '0', 
-                        created_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        deleted = True, 
-                        external_ip = '0', 
-                        external_ip_str = '0', 
-                        id = '0', 
-                        org_id = '0', 
-                        remote_row_id = 56, 
-                        retired = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        status = '0', 
-                        updated_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        usage = [
-                            '0'
-                            ], )
-                    ], 
-                offset = 56, 
-                total = 56
-            )
-        else :
-            return AttackRedirectorsGetOutput(
-        )
-
     def testAttackRedirectorsGetOutput(self):
         """Test AttackRedirectorsGetOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AttackRedirectorsGetOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

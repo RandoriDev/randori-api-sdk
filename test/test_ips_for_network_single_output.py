@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.ips_for_network_single_output import IpsForNetworkSingleOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.ips_for_network_single_output_data import IpsForNetworkSingleOutputData
+globals()['IpsForNetworkSingleOutputData'] = IpsForNetworkSingleOutputData
+from randori_api.model.ips_for_network_single_output import IpsForNetworkSingleOutput
+
 
 class TestIpsForNetworkSingleOutput(unittest.TestCase):
     """IpsForNetworkSingleOutput unit test stubs"""
@@ -29,24 +27,11 @@ class TestIpsForNetworkSingleOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test IpsForNetworkSingleOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.ips_for_network_single_output.IpsForNetworkSingleOutput()  # noqa: E501
-        if include_optional :
-            return IpsForNetworkSingleOutput(
-                data = null
-            )
-        else :
-            return IpsForNetworkSingleOutput(
-        )
-
     def testIpsForNetworkSingleOutput(self):
         """Test IpsForNetworkSingleOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = IpsForNetworkSingleOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

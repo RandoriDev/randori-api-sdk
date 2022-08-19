@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.saved_views_patch_single_input import SavedViewsPatchSingleInput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.saved_views_patch_single_input_data import SavedViewsPatchSingleInputData
+globals()['SavedViewsPatchSingleInputData'] = SavedViewsPatchSingleInputData
+from randori_api.model.saved_views_patch_single_input import SavedViewsPatchSingleInput
+
 
 class TestSavedViewsPatchSingleInput(unittest.TestCase):
     """SavedViewsPatchSingleInput unit test stubs"""
@@ -29,24 +27,11 @@ class TestSavedViewsPatchSingleInput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SavedViewsPatchSingleInput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.saved_views_patch_single_input.SavedViewsPatchSingleInput()  # noqa: E501
-        if include_optional :
-            return SavedViewsPatchSingleInput(
-                data = null
-            )
-        else :
-            return SavedViewsPatchSingleInput(
-        )
-
     def testSavedViewsPatchSingleInput(self):
         """Test SavedViewsPatchSingleInput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SavedViewsPatchSingleInput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

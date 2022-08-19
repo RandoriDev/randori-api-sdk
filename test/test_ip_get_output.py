@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.ip_get_output import IpGetOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.ip import Ip
+globals()['Ip'] = Ip
+from randori_api.model.ip_get_output import IpGetOutput
+
 
 class TestIpGetOutput(unittest.TestCase):
     """IpGetOutput unit test stubs"""
@@ -29,62 +27,11 @@ class TestIpGetOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test IpGetOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.ip_get_output.IpGetOutput()  # noqa: E501
-        if include_optional :
-            return IpGetOutput(
-                count = 56, 
-                data = [
-                    randori_api.models.ip.ip(
-                        affiliation_state = 'None', 
-                        all_ports = [
-                            None
-                            ], 
-                        confidence = 56, 
-                        country = '0', 
-                        deleted = True, 
-                        first_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        hostname_count = 56, 
-                        id = '0', 
-                        impact_score = 'None', 
-                        ip = '0', 
-                        ip_str = '0', 
-                        last_seen = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        latitude = 1.337, 
-                        lens_id = '0', 
-                        lens_view = '0', 
-                        longitude = 1.337, 
-                        only_in_review_targets = True, 
-                        open_port_count = 56, 
-                        org_id = '0', 
-                        perspective = '0', 
-                        perspective_name = '0', 
-                        priority_impact_factor = 1.337, 
-                        priority_score = 1.337, 
-                        priority_status_factor = 1.337, 
-                        priority_tags_factor = 1.337, 
-                        radius = 1.337, 
-                        service_count = 56, 
-                        status = 'None', 
-                        tags = randori_api.models.tags.tags(), 
-                        target_count = 56, 
-                        target_temptation = 56, )
-                    ], 
-                offset = 56, 
-                total = 56
-            )
-        else :
-            return IpGetOutput(
-        )
-
     def testIpGetOutput(self):
         """Test IpGetOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = IpGetOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

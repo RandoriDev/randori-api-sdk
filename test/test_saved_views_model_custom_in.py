@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.saved_views_model_custom_in import SavedViewsModelCustomIn  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.saved_views_model_custom_in import SavedViewsModelCustomIn
+
 
 class TestSavedViewsModelCustomIn(unittest.TestCase):
     """SavedViewsModelCustomIn unit test stubs"""
@@ -29,31 +25,11 @@ class TestSavedViewsModelCustomIn(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SavedViewsModelCustomIn
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.saved_views_model_custom_in.SavedViewsModelCustomIn()  # noqa: E501
-        if include_optional :
-            return SavedViewsModelCustomIn(
-                description = '0', 
-                entity_type = 'target', 
-                filter_data = randori_api.models.filter_data.filter_data(), 
-                name = '0', 
-                sort_data = randori_api.models.sort_data.sort_data()
-            )
-        else :
-            return SavedViewsModelCustomIn(
-                entity_type = 'target',
-                filter_data = randori_api.models.filter_data.filter_data(),
-                sort_data = randori_api.models.sort_data.sort_data(),
-        )
-
     def testSavedViewsModelCustomIn(self):
         """Test SavedViewsModelCustomIn"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SavedViewsModelCustomIn()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

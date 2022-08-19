@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,18 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.target_patch_input import TargetPatchInput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.hostname_patch_input_operations_inner import HostnamePatchInputOperationsInner
+from randori_api.model.hostname_patch_input_q import HostnamePatchInputQ
+from randori_api.model.target_patch_input_data import TargetPatchInputData
+globals()['HostnamePatchInputOperationsInner'] = HostnamePatchInputOperationsInner
+globals()['HostnamePatchInputQ'] = HostnamePatchInputQ
+globals()['TargetPatchInputData'] = TargetPatchInputData
+from randori_api.model.target_patch_input import TargetPatchInput
+
 
 class TestTargetPatchInput(unittest.TestCase):
     """TargetPatchInput unit test stubs"""
@@ -29,28 +31,11 @@ class TestTargetPatchInput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test TargetPatchInput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.target_patch_input.TargetPatchInput()  # noqa: E501
-        if include_optional :
-            return TargetPatchInput(
-                data = null, 
-                operations = [
-                    null
-                    ], 
-                q = null
-            )
-        else :
-            return TargetPatchInput(
-        )
-
     def testTargetPatchInput(self):
         """Test TargetPatchInput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = TargetPatchInput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

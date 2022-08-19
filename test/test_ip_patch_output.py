@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.ip_patch_output import IpPatchOutput  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.ip_patch_output import IpPatchOutput
+
 
 class TestIpPatchOutput(unittest.TestCase):
     """IpPatchOutput unit test stubs"""
@@ -29,24 +25,11 @@ class TestIpPatchOutput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test IpPatchOutput
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.ip_patch_output.IpPatchOutput()  # noqa: E501
-        if include_optional :
-            return IpPatchOutput(
-                count = 56
-            )
-        else :
-            return IpPatchOutput(
-        )
-
     def testIpPatchOutput(self):
         """Test IpPatchOutput"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = IpPatchOutput()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

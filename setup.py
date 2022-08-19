@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -14,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "Randori-API"
-VERSION = "1.4.1"
+VERSION = "1.5.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -22,7 +20,10 @@ VERSION = "1.4.1"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
+REQUIRES = [
+  "urllib3 >= 1.25.3",
+  "python-dateutil",
+]
 
 setup(
     name=NAME,
@@ -30,8 +31,9 @@ setup(
     description="Randori API",
     author="API Support",
     author_email="support@randori.com",
-    url="https://github.com/RandoriDev/randori-api-sdk.git",
+    url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Randori API"],
+    python_requires=">=3.6",
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,

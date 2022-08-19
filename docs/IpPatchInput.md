@@ -1,11 +1,13 @@
 # IpPatchInput
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**IpPatchIn**](IpPatchIn.md) | data fields to update on the object | [optional] 
-**operations** | [**list[JsonPatchOperation]**](JsonPatchOperation.md) |  | [optional] 
-**q** | [**QuerybuilderRuleGroupSchema**](QuerybuilderRuleGroupSchema.md) | Querybuilder object | [optional] 
+**data** | [**IpPatchInputData**](IpPatchInputData.md) |  | [optional] 
+**operations** | [**[HostnamePatchInputOperationsInner]**](HostnamePatchInputOperationsInner.md) |  | [optional] 
+**q** | [**HostnamePatchInputQ**](HostnamePatchInputQ.md) |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

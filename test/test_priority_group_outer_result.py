@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Randori API
 
@@ -11,14 +9,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import randori_api
-from randori_api.models.priority_group_outer_result import PriorityGroupOuterResult  # noqa: E501
-from randori_api.rest import ApiException
+from randori_api.model.priority_group_inner_result import PriorityGroupInnerResult
+globals()['PriorityGroupInnerResult'] = PriorityGroupInnerResult
+from randori_api.model.priority_group_outer_result import PriorityGroupOuterResult
+
 
 class TestPriorityGroupOuterResult(unittest.TestCase):
     """PriorityGroupOuterResult unit test stubs"""
@@ -29,30 +27,11 @@ class TestPriorityGroupOuterResult(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test PriorityGroupOuterResult
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = randori_api.models.priority_group_outer_result.PriorityGroupOuterResult()  # noqa: E501
-        if include_optional :
-            return PriorityGroupOuterResult(
-                prio_counts = [
-                    randori_api.models.priority_group_inner_result.priority_group_inner_result(
-                        prio_range_name = '0', 
-                        total = 56, )
-                    ], 
-                total_in_ranges = 56, 
-                total_other = 56
-            )
-        else :
-            return PriorityGroupOuterResult(
-        )
-
     def testPriorityGroupOuterResult(self):
         """Test PriorityGroupOuterResult"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = PriorityGroupOuterResult()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':
