@@ -1,4 +1,8 @@
 """
+Copyright © 2022 Randori https://randori.com - All Rights Reserved.
+"""
+
+"""
     Randori API
 
     Endpoints accessible using API tokens  # noqa: E501
