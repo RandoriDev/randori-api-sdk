@@ -1,0 +1,22 @@
+name: Trigger Mend
+
+on:
+  push:
+    branches:
+    - master
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  trigger:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Trigger Mend
+      uses: peter-evans/repository-dispatch@v2
+      with:
+        token: ${{ secrets.ACTIONS_PAT }}
+        event-type: run-mend
+        repository: ${{ github.repository }}
+        client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
