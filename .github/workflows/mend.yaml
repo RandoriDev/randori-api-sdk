@@ -16,6 +16,7 @@ jobs:
     - name: Setup CI
       uses: RandoriDev/ci-actions/setup-ci@setup-ci-v1
       with:
+        ACCESS_TOKEN: ${{ secrets.ACTIONS_PAT }}
         python_key: ${{ secrets.REGISTRY_PYPI_WRITE_KEY_B64 }}
         python_version: "3.9"
         poetry_version: "1.1.15"
@@ -23,6 +24,7 @@ jobs:
     - name: Run Mend
       uses: RandoriDev/ci-actions/run-mend@run-mend-v1
       with:
+        ACCESS_TOKEN: ${{ secrets.ACTIONS_PAT }}
         apikey: ${{ secrets.WS_APIKEY }}
         userkey: ${{ secrets.WS_USERKEY }}
         productname: ${{ secrets.WS_PRODUCTNAME }}
