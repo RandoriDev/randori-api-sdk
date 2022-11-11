@@ -1,22 +1,25 @@
 name: Run Mend
 
 on:
-  push:
-    branches:
-    - master
+  repository_dispatch:
+    types: 
+      - run-mend
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  mend:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.client_payload.sha }}
+
     - name: Setup CI
       uses: RandoriDev/ci-actions/setup-ci@setup-ci-v1
       with:
-        ACCESS_TOKEN: ${{ secrets.ACTIONS_PAT }}
         python_key: ${{ secrets.REGISTRY_PYPI_WRITE_KEY_B64 }}
         python_version: "3.9"
         poetry_version: "1.1.15"
@@ -24,7 +27,6 @@ jobs:
     - name: Run Mend
       uses: RandoriDev/ci-actions/run-mend@run-mend-v1
       with:
-        ACCESS_TOKEN: ${{ secrets.ACTIONS_PAT }}
         apikey: ${{ secrets.WS_APIKEY }}
         userkey: ${{ secrets.WS_USERKEY }}
         productname: ${{ secrets.WS_PRODUCTNAME }}
