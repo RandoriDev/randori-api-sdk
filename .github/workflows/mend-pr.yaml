@@ -16,6 +16,6 @@ jobs:
     - name: Add PR Comment
       uses: mshick/add-pr-comment@v1
       with:
-		issue: ${{ github.event.client_payload.issue }}
-		message: ${{ github.event.client_payload.message }}
+        issue: ${{ github.event.client_payload.issue }}
+        message: ${{ github.event.client_payload.message }}
         allow-repeats: true
