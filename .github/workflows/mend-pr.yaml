@@ -14,7 +14,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Add PR Comment
-      uses: mshick/add-pr-comment@v1
+      uses: mshick/add-pr-comment@v2
       with:
         issue: ${{ github.event.client_payload.issue }}
         message: ${{ github.event.client_payload.message }}
