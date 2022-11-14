@@ -1,0 +1,21 @@
+name: Post Mend to PR
+
+on:
+  repository_dispatch:
+    types:
+      - post-mend
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  mend:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Add PR Comment
+      uses: mshick/add-pr-comment@v1
+      with:
+		issue: ${{ github.event.client_payload.issue }}
+		message: ${{ github.event.client_payload.message }}
+        allow-repeats: true
