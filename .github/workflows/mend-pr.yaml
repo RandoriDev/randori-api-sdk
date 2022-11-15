@@ -13,6 +13,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.client_payload.sha }}
+
     - id: pr
       run: |
         issue=$(gh pr list --search "${{ github.event.client_payload.sha }}" --state merged --json number --jq ".[0].number")
