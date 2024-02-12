@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**action** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
+**action** | **object** |  | [optional] 
 **comment** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **id** | **str** |  | [optional] 
@@ -13,8 +14,24 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **rel_id** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from randori_api_sdk.models.comment_response_schema import CommentResponseSchema
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of CommentResponseSchema from a JSON string
+comment_response_schema_instance = CommentResponseSchema.from_json(json)
+# print the JSON string representation of the object
+print CommentResponseSchema.to_json()
+
+# convert the object into a dict
+comment_response_schema_dict = comment_response_schema_instance.to_dict()
+# create an instance of CommentResponseSchema from a dict
+comment_response_schema_form_dict = comment_response_schema.from_dict(comment_response_schema_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

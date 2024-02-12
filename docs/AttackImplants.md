@@ -2,27 +2,44 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **arch** | **str** |  | 
 **bart_id** | **str** |  | 
+**bits** | **int** |  | [optional] 
 **created_on** | **datetime** |  | 
-**hostnames** | **[str]** |  | 
+**host_ips** | **List[str]** |  | [optional] 
+**hostnames** | **List[str]** |  | 
+**id** | **str** |  | [optional] 
 **last_checkin** | **datetime** |  | 
-**method** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
+**method** | **object** |  | 
 **next_checkin** | **datetime** |  | 
+**nick** | **str** |  | [optional] 
 **org_id** | **str** |  | 
+**os** | **str** |  | [optional] 
+**ostype** | **str** |  | [optional] 
+**osver** | **str** |  | [optional] 
 **status** | **str** |  | 
 **uid** | **str** |  | 
-**bits** | **int, none_type** |  | [optional] 
-**host_ips** | **[str]** |  | [optional] 
-**id** | **str** |  | [optional] 
-**nick** | **str, none_type** |  | [optional] 
-**os** | **str, none_type** |  | [optional] 
-**ostype** | **str, none_type** |  | [optional] 
-**osver** | **str, none_type** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from randori_api_sdk.models.attack_implants import AttackImplants
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of AttackImplants from a JSON string
+attack_implants_instance = AttackImplants.from_json(json)
+# print the JSON string representation of the object
+print AttackImplants.to_json()
+
+# convert the object into a dict
+attack_implants_dict = attack_implants_instance.to_dict()
+# create an instance of AttackImplants from a dict
+attack_implants_form_dict = attack_implants.from_dict(attack_implants_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

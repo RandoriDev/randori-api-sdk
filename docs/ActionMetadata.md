@@ -2,52 +2,69 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action_id** | **str** |  | 
+**artifacts_status** | **str** |  | [optional] 
 **bart_id** | **str** |  | 
+**completed** | **datetime** |  | [optional] 
+**config_hash** | **str** |  | [optional] 
+**created** | **datetime** |  | [optional] 
+**deleted** | **bool** |  | [optional] 
+**description** | **str** |  | [optional] 
+**description_id** | **str** |  | [optional] 
+**display_name** | **str** |  | [optional] 
+**dst_email** | **List[str]** |  | [optional] 
+**dst_host** | **List[str]** |  | [optional] 
+**dst_ip** | **List[str]** |  | [optional] 
+**dst_mac** | **List[str]** |  | [optional] 
+**dst_misc** | **List[str]** |  | [optional] 
+**dst_network** | **List[str]** |  | [optional] 
+**dst_path** | **List[str]** |  | [optional] 
+**dst_port** | **List[int]** |  | [optional] 
 **id** | **str** |  | 
+**implant_id** | **str** |  | [optional] 
+**implant_nick** | **str** |  | [optional] 
+**implant_uid** | **str** |  | [optional] 
+**mitre_techniques** | **List[str]** |  | [optional] 
+**name** | **str** |  | [optional] 
 **org_id** | **str** |  | 
+**perspective_metadata** | **object** |  | [optional] 
+**randori_notes** | **str** |  | [optional] 
 **result** | **str** |  | 
+**result_hash** | **str** |  | [optional] 
 **runbook_instance_id** | **str** |  | 
-**artifacts_status** | **str, none_type** |  | [optional] 
-**completed** | **datetime, none_type** |  | [optional] 
-**config_hash** | **str, none_type** |  | [optional] 
-**created** | **datetime, none_type** |  | [optional] 
-**deleted** | **bool, none_type** |  | [optional] 
-**description** | **str, none_type** |  | [optional] 
-**description_id** | **str, none_type** |  | [optional] 
-**display_name** | **str, none_type** |  | [optional] 
-**dst_email** | **[str], none_type** |  | [optional] 
-**dst_host** | **[str], none_type** |  | [optional] 
-**dst_ip** | **[str], none_type** |  | [optional] 
-**dst_mac** | **[str], none_type** |  | [optional] 
-**dst_misc** | **[str], none_type** |  | [optional] 
-**dst_network** | **[str], none_type** |  | [optional] 
-**dst_path** | **[str], none_type** |  | [optional] 
-**dst_port** | **[int], none_type** |  | [optional] 
-**implant_id** | **str, none_type** |  | [optional] 
-**implant_nick** | **str, none_type** |  | [optional] 
-**implant_uid** | **str, none_type** |  | [optional] 
-**mitre_techniques** | **[str], none_type** |  | [optional] 
-**name** | **str, none_type** |  | [optional] 
-**perspective_metadata** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
-**randori_notes** | **str, none_type** |  | [optional] 
-**result_hash** | **str, none_type** |  | [optional] 
-**src_email** | **[str], none_type** |  | [optional] 
-**src_host** | **[str], none_type** |  | [optional] 
-**src_ip** | **[str], none_type** |  | [optional] 
-**src_mac** | **[str], none_type** |  | [optional] 
-**src_misc** | **[str], none_type** |  | [optional] 
-**stability** | **int, none_type** |  | [optional] 
-**started** | **datetime, none_type** |  | [optional] 
-**stealth** | **int, none_type** |  | [optional] 
-**summary_sha** | **str, none_type** |  | [optional] 
-**template** | **str, none_type** |  | [optional] 
-**trigger** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
-**updated** | **datetime, none_type** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**src_email** | **List[str]** |  | [optional] 
+**src_host** | **List[str]** |  | [optional] 
+**src_ip** | **List[str]** |  | [optional] 
+**src_mac** | **List[str]** |  | [optional] 
+**src_misc** | **List[str]** |  | [optional] 
+**stability** | **int** |  | [optional] 
+**started** | **datetime** |  | [optional] 
+**stealth** | **int** |  | [optional] 
+**summary_sha** | **str** |  | [optional] 
+**template** | **str** |  | [optional] 
+**trigger** | **object** |  | [optional] 
+**updated** | **datetime** |  | [optional] 
 
+## Example
+
+```python
+from randori_api_sdk.models.action_metadata import ActionMetadata
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ActionMetadata from a JSON string
+action_metadata_instance = ActionMetadata.from_json(json)
+# print the JSON string representation of the object
+print ActionMetadata.to_json()
+
+# convert the object into a dict
+action_metadata_dict = action_metadata_instance.to_dict()
+# create an instance of ActionMetadata from a dict
+action_metadata_form_dict = action_metadata.from_dict(action_metadata_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

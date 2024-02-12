@@ -1,20 +1,19 @@
-# randori_api.DefaultApi
+# randori_api_sdk.DefaultApi
 
-All URIs are relative to *https://app.randori.io*
+All URIs are relative to *https://app3.randori.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_affiliation**](DefaultApi.md#add_affiliation) | **POST** /artifactstore/api/v1/add_affiliation | 
 [**add_affiliation_file**](DefaultApi.md#add_affiliation_file) | **POST** /artifactstore/api/v1/add_affiliation_file | 
-[**artifact**](DefaultApi.md#artifact) | **GET** /artifactstore/api/v1/artifact/{artifact_uuid} | 
-[**artifact_raw**](DefaultApi.md#artifact_raw) | **GET** /artifactstore/api/v1/artifact-raw/{shasum} | 
+[**artifacts**](DefaultApi.md#artifacts) | **GET** /artifactstore/api/v1/activity-log/{activity_instance_id}/artifacts | 
+[**change_password**](DefaultApi.md#change_password) | **POST** /auth/api/v1/change-password | 
 [**comment**](DefaultApi.md#comment) | **GET** /recon/api/v1/entity/{entity_id}/comment | 
 [**comment_0**](DefaultApi.md#comment_0) | **POST** /recon/api/v1/entity/{entity_id}/comment | 
-[**delete_single_attack_user_action_descriptions**](DefaultApi.md#delete_single_attack_user_action_descriptions) | **DELETE** /attack/api/v1/user/attack-action-descriptions/{id} | 
-[**delete_single_attack_user_runbook_descriptions**](DefaultApi.md#delete_single_attack_user_runbook_descriptions) | **DELETE** /attack/api/v1/user/attack-runbook-descriptions/{id} | 
-[**delete_single_policy**](DefaultApi.md#delete_single_policy) | **DELETE** /recon/api/v1/policy/{id} | 
 [**delete_single_saved_views**](DefaultApi.md#delete_single_saved_views) | **DELETE** /recon/api/v1/saved-views/{id} | 
+[**features**](DefaultApi.md#features) | **GET** /auth/api/v1/features | 
+[**features_org**](DefaultApi.md#features_org) | **GET** /auth/api/v1/features-org | 
 [**get_action_metadata**](DefaultApi.md#get_action_metadata) | **GET** /attack/api/v1/user/actions | 
+[**get_activity_log**](DefaultApi.md#get_activity_log) | **GET** /recon/api/v1/activity-log | 
 [**get_all_detections_for_target**](DefaultApi.md#get_all_detections_for_target) | **GET** /recon/api/v1/all-detections-for-target | 
 [**get_attack_checkins_for_implant**](DefaultApi.md#get_attack_checkins_for_implant) | **GET** /attack/api/v1/user/checkins-for-implant | 
 [**get_attack_implants**](DefaultApi.md#get_attack_implants) | **GET** /attack/api/v1/user/implants | 
@@ -22,9 +21,8 @@ Method | HTTP request | Description
 [**get_attack_redirectors**](DefaultApi.md#get_attack_redirectors) | **GET** /attack/api/v1/user/redirectors | 
 [**get_attack_runbook**](DefaultApi.md#get_attack_runbook) | **GET** /attack/api/v1/user/runbooks | 
 [**get_attack_statistics**](DefaultApi.md#get_attack_statistics) | **GET** /attack/api/v1/user/statistics | 
-[**get_attack_user_action_descriptions**](DefaultApi.md#get_attack_user_action_descriptions) | **GET** /attack/api/v1/user/attack-action-descriptions | 
-[**get_attack_user_autoapprove**](DefaultApi.md#get_attack_user_autoapprove) | **GET** /attack/api/v1/user/attack-autoapprove | 
-[**get_attack_user_runbook_descriptions**](DefaultApi.md#get_attack_user_runbook_descriptions) | **GET** /attack/api/v1/user/attack-runbook-descriptions | 
+[**get_authorization_policy**](DefaultApi.md#get_authorization_policy) | **GET** /recon/api/v1/authorization-policy | 
+[**get_guidance_file**](DefaultApi.md#get_guidance_file) | **GET** /guidance-articles/api/v1/{tag}.md | 
 [**get_hostname**](DefaultApi.md#get_hostname) | **GET** /recon/api/v1/hostname | 
 [**get_hostnames_for_ip**](DefaultApi.md#get_hostnames_for_ip) | **GET** /recon/api/v1/hostnames-for-ip | 
 [**get_ip**](DefaultApi.md#get_ip) | **GET** /recon/api/v1/ip | 
@@ -32,19 +30,15 @@ Method | HTTP request | Description
 [**get_ips_for_network**](DefaultApi.md#get_ips_for_network) | **GET** /recon/api/v1/ips-for-network | 
 [**get_ips_for_service**](DefaultApi.md#get_ips_for_service) | **GET** /recon/api/v1/ips-for-service | 
 [**get_network**](DefaultApi.md#get_network) | **GET** /recon/api/v1/network | 
-[**get_peer**](DefaultApi.md#get_peer) | **GET** /recon/api/v1/peer | 
-[**get_peer_map**](DefaultApi.md#get_peer_map) | **GET** /recon/api/v1/peer-map | 
+[**get_organization**](DefaultApi.md#get_organization) | **GET** /auth/api/v1/organization | 
 [**get_policy**](DefaultApi.md#get_policy) | **GET** /recon/api/v1/policy | 
 [**get_ports_for_ip**](DefaultApi.md#get_ports_for_ip) | **GET** /recon/api/v1/ports-for-ip | 
-[**get_prime**](DefaultApi.md#get_prime) | **GET** /recon/api/v1/prime | 
-[**get_report**](DefaultApi.md#get_report) | **GET** /recon/api/v1/report | 
+[**get_preferences**](DefaultApi.md#get_preferences) | **GET** /auth/api/v1/preferences | 
 [**get_saved_views**](DefaultApi.md#get_saved_views) | **GET** /recon/api/v1/saved-views | 
 [**get_service**](DefaultApi.md#get_service) | **GET** /recon/api/v1/service | 
 [**get_single_action_metadata**](DefaultApi.md#get_single_action_metadata) | **GET** /attack/api/v1/user/actions/{id} | 
+[**get_single_activity_log**](DefaultApi.md#get_single_activity_log) | **GET** /recon/api/v1/activity-log/{id} | 
 [**get_single_attack_implants**](DefaultApi.md#get_single_attack_implants) | **GET** /attack/api/v1/user/implants/{id} | 
-[**get_single_attack_user_action_descriptions**](DefaultApi.md#get_single_attack_user_action_descriptions) | **GET** /attack/api/v1/user/attack-action-descriptions/{id} | 
-[**get_single_attack_user_autoapprove**](DefaultApi.md#get_single_attack_user_autoapprove) | **GET** /attack/api/v1/user/attack-autoapprove/{id} | 
-[**get_single_attack_user_runbook_descriptions**](DefaultApi.md#get_single_attack_user_runbook_descriptions) | **GET** /attack/api/v1/user/attack-runbook-descriptions/{id} | 
 [**get_single_detection_for_target**](DefaultApi.md#get_single_detection_for_target) | **GET** /recon/api/v1/single-detection-for-target | 
 [**get_single_hostname**](DefaultApi.md#get_single_hostname) | **GET** /recon/api/v1/hostname/{id} | 
 [**get_single_hostnames_for_ip**](DefaultApi.md#get_single_hostnames_for_ip) | **GET** /recon/api/v1/hostnames-for-ip/{id} | 
@@ -53,130 +47,48 @@ Method | HTTP request | Description
 [**get_single_ips_for_network**](DefaultApi.md#get_single_ips_for_network) | **GET** /recon/api/v1/ips-for-network/{id} | 
 [**get_single_ips_for_service**](DefaultApi.md#get_single_ips_for_service) | **GET** /recon/api/v1/ips-for-service/{id} | 
 [**get_single_network**](DefaultApi.md#get_single_network) | **GET** /recon/api/v1/network/{id} | 
-[**get_single_peer**](DefaultApi.md#get_single_peer) | **GET** /recon/api/v1/peer/{id} | 
-[**get_single_peer_map**](DefaultApi.md#get_single_peer_map) | **GET** /recon/api/v1/peer-map/{id} | 
+[**get_single_organization**](DefaultApi.md#get_single_organization) | **GET** /auth/api/v1/organization/{id} | 
 [**get_single_ports_for_ip**](DefaultApi.md#get_single_ports_for_ip) | **GET** /recon/api/v1/ports-for-ip/{id} | 
-[**get_single_report**](DefaultApi.md#get_single_report) | **GET** /recon/api/v1/report/{id} | 
 [**get_single_saved_views**](DefaultApi.md#get_single_saved_views) | **GET** /recon/api/v1/saved-views/{id} | 
 [**get_single_service**](DefaultApi.md#get_single_service) | **GET** /recon/api/v1/service/{id} | 
 [**get_single_tagcounts**](DefaultApi.md#get_single_tagcounts) | **GET** /recon/api/v1/tagcounts/{id} | 
 [**get_single_target**](DefaultApi.md#get_single_target) | **GET** /recon/api/v1/target/{id} | 
-[**get_single_user_ap_action_instances**](DefaultApi.md#get_single_user_ap_action_instances) | **GET** /attack/api/v1/user/ap-action-instance/{id} | 
+[**get_single_user**](DefaultApi.md#get_single_user) | **GET** /auth/api/v1/user/{id} | 
 [**get_social_entity**](DefaultApi.md#get_social_entity) | **GET** /recon/api/v1/social-entity | 
 [**get_statistics**](DefaultApi.md#get_statistics) | **GET** /recon/api/v1/statistics | 
 [**get_tagcounts**](DefaultApi.md#get_tagcounts) | **GET** /recon/api/v1/tagcounts | 
 [**get_target**](DefaultApi.md#get_target) | **GET** /recon/api/v1/target | 
-[**get_user_ap_action_instances**](DefaultApi.md#get_user_ap_action_instances) | **GET** /attack/api/v1/user/ap-action-instance | 
-[**hoc_submit**](DefaultApi.md#hoc_submit) | **POST** /artifactstore/api/v1/hoc/submit | 
-[**hoc_submit_cpio**](DefaultApi.md#hoc_submit_cpio) | **POST** /artifactstore/api/v1/hoc/submit-cpio | 
-[**impact_score_groups**](DefaultApi.md#impact_score_groups) | **POST** /recon/api/v1/impact_score_groups | 
+[**get_user**](DefaultApi.md#get_user) | **GET** /auth/api/v1/user | 
+[**login**](DefaultApi.md#login) | **POST** /auth/api/v1/login | 
+[**login_otp**](DefaultApi.md#login_otp) | **POST** /auth/api/v1/login-otp | 
+[**logout**](DefaultApi.md#logout) | **POST** /auth/api/v1/logout | 
+[**manual_authorization**](DefaultApi.md#manual_authorization) | **POST** /recon/api/v1/manual-authorization | 
+[**mitre_mitigation**](DefaultApi.md#mitre_mitigation) | **GET** /recon/api/v1/mitre/mitigation/{mitre_code} | 
+[**mitre_tactic**](DefaultApi.md#mitre_tactic) | **GET** /recon/api/v1/mitre/tactic/{mitre_code} | 
+[**mitre_technique**](DefaultApi.md#mitre_technique) | **GET** /recon/api/v1/mitre/technique/{mitre_code} | 
+[**org_with_feature**](DefaultApi.md#org_with_feature) | **GET** /auth/api/v1/org_with_feature | 
 [**patch_hostname**](DefaultApi.md#patch_hostname) | **PATCH** /recon/api/v1/hostname | 
 [**patch_ip**](DefaultApi.md#patch_ip) | **PATCH** /recon/api/v1/ip | 
 [**patch_network**](DefaultApi.md#patch_network) | **PATCH** /recon/api/v1/network | 
-[**patch_single_attack_user_action_descriptions**](DefaultApi.md#patch_single_attack_user_action_descriptions) | **PATCH** /attack/api/v1/user/attack-action-descriptions/{id} | 
-[**patch_single_attack_user_autoapprove**](DefaultApi.md#patch_single_attack_user_autoapprove) | **PATCH** /attack/api/v1/user/attack-autoapprove/{id} | 
-[**patch_single_attack_user_runbook_descriptions**](DefaultApi.md#patch_single_attack_user_runbook_descriptions) | **PATCH** /attack/api/v1/user/attack-runbook-descriptions/{id} | 
-[**patch_single_peer_map**](DefaultApi.md#patch_single_peer_map) | **PATCH** /recon/api/v1/peer-map/{id} | 
-[**patch_single_policy**](DefaultApi.md#patch_single_policy) | **PATCH** /recon/api/v1/policy/{id} | 
 [**patch_single_saved_views**](DefaultApi.md#patch_single_saved_views) | **PATCH** /recon/api/v1/saved-views/{id} | 
-[**patch_single_user_ap_action_instances**](DefaultApi.md#patch_single_user_ap_action_instances) | **PATCH** /attack/api/v1/user/ap-action-instance/{id} | 
+[**patch_single_user**](DefaultApi.md#patch_single_user) | **PATCH** /auth/api/v1/user/{id} | 
 [**patch_social_entity**](DefaultApi.md#patch_social_entity) | **PATCH** /recon/api/v1/social-entity | 
 [**patch_target**](DefaultApi.md#patch_target) | **PATCH** /recon/api/v1/target | 
 [**paths**](DefaultApi.md#paths) | **GET** /recon/api/v1/paths | 
-[**post_attack_user_action_descriptions**](DefaultApi.md#post_attack_user_action_descriptions) | **POST** /attack/api/v1/user/attack-action-descriptions | 
-[**post_attack_user_autoapprove**](DefaultApi.md#post_attack_user_autoapprove) | **POST** /attack/api/v1/user/attack-autoapprove | 
-[**post_attack_user_runbook_descriptions**](DefaultApi.md#post_attack_user_runbook_descriptions) | **POST** /attack/api/v1/user/attack-runbook-descriptions | 
+[**permission_group_types**](DefaultApi.md#permission_group_types) | **GET** /auth/api/v1/permission-group-types | 
+[**permission_groups_read**](DefaultApi.md#permission_groups_read) | **GET** /auth/api/v1/permission-groups | 
 [**post_comment_multi**](DefaultApi.md#post_comment_multi) | **POST** /recon/api/v1/comment | 
-[**post_peer**](DefaultApi.md#post_peer) | **POST** /recon/api/v1/peer | 
-[**post_peer_map**](DefaultApi.md#post_peer_map) | **POST** /recon/api/v1/peer-map | 
-[**post_policy**](DefaultApi.md#post_policy) | **POST** /recon/api/v1/policy | 
 [**post_saved_views**](DefaultApi.md#post_saved_views) | **POST** /recon/api/v1/saved-views | 
-[**post_user_ap_action_instances**](DefaultApi.md#post_user_ap_action_instances) | **POST** /attack/api/v1/user/ap-action-instance | 
-[**priority_groups**](DefaultApi.md#priority_groups) | **POST** /recon/api/v1/priority_groups | 
 [**recon_worker_node_ips**](DefaultApi.md#recon_worker_node_ips) | **GET** /recon/api/v1/recon-worker-node-ips | 
-[**status_groups**](DefaultApi.md#status_groups) | **POST** /recon/api/v1/status_groups | 
+[**renew**](DefaultApi.md#renew) | **POST** /auth/api/v1/renew | 
+[**renew_api_token**](DefaultApi.md#renew_api_token) | **POST** /auth/api/v1/renew-api-token | 
 [**tag**](DefaultApi.md#tag) | **GET** /recon/api/v1/tag | 
-[**target_temptation_groups**](DefaultApi.md#target_temptation_groups) | **POST** /recon/api/v1/target_temptation_groups | 
-[**user_query**](DefaultApi.md#user_query) | **GET** /artifactstore/api/v1/user/query | 
-[**user_retrieve**](DefaultApi.md#user_retrieve) | **GET** /artifactstore/api/v1/user/retrieve/{shasum} | 
+[**uuid_artifactsource_uuid**](DefaultApi.md#uuid_artifactsource_uuid) | **GET** /artifactstore/api/v1/retrieve-artifact/{artifactsource_uuid} | 
 [**uuid_comment_id**](DefaultApi.md#uuid_comment_id) | **DELETE** /recon/api/v1/entity/{entity_id}/comment/{comment_id} | 
 [**uuid_comment_id_0**](DefaultApi.md#uuid_comment_id_0) | **PATCH** /recon/api/v1/entity/{entity_id}/comment/{comment_id} | 
+[**validate**](DefaultApi.md#validate) | **POST** /auth/api/v1/validate | 
+[**validate_user_jwt**](DefaultApi.md#validate_user_jwt) | **GET** /auth/api/v1/validate | 
 
-
-# **add_affiliation**
-> add_affiliation()
-
-
-
-Add missing affiliations for an organization
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-
-    # example, this endpoint has no required or optional parameters
-    try:
-        api_instance.add_affiliation()
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->add_affiliation: %s\n" % e)
-```
-
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_affiliation_file**
 > add_affiliation_file()
@@ -191,14 +103,15 @@ Add a file of missing affiliations for an organization
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -207,24 +120,25 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         api_instance.add_affiliation_file()
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->add_affiliation_file: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -240,7 +154,6 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -253,12 +166,12 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **artifact**
-> artifact(artifact_uuid2)
+# **artifacts**
+> ArtifactForActivityResponseCollectionSchema artifacts(activity_instance_id, offset=offset, limit=limit)
 
 
 
-Get Artifact by UUID
+This returns all renderable artifacts for an activity instance
 
 ### Example
 
@@ -266,14 +179,16 @@ Get Artifact by UUID
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.artifact_for_activity_response_collection_schema import ArtifactForActivityResponseCollectionSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -282,42 +197,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    artifact_uuid2 = "artifact_uuid_example" # str | 
-    artifact_uuid = "artifact_uuid_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    activity_instance_id = 'activity_instance_id_example' # str | 
+    offset = 56 # int |  (optional)
+    limit = 56 # int |  (optional)
 
-    # example passing only required values which don't have defaults set
     try:
-        api_instance.artifact(artifact_uuid2)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->artifact: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_instance.artifact(artifact_uuid2, artifact_uuid=artifact_uuid)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->artifact: %s\n" % e)
+        api_response = api_instance.artifacts(activity_instance_id, offset=offset, limit=limit)
+        print("The response of DefaultApi->artifacts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->artifacts: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **artifact_uuid2** | **str**|  |
- **artifact_uuid** | **str**|  | [optional]
+ **activity_instance_id** | **str**|  | 
+ **offset** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**ArtifactForActivityResponseCollectionSchema**](ArtifactForActivityResponseCollectionSchema.md)
 
 ### Authorization
 
@@ -328,7 +241,6 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -338,15 +250,16 @@ void (empty response body)
 **403** |  |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
+**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **artifact_raw**
-> artifact_raw(shasum2)
+# **change_password**
+> DefaultOutputSchema change_password(password_change_schema=password_change_schema)
 
 
 
-Get raw Artifact by shasum
+Change the password for the jwt user.
 
 ### Example
 
@@ -354,14 +267,17 @@ Get raw Artifact by shasum
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.default_output_schema import DefaultOutputSchema
+from randori_api_sdk.models.password_change_schema import PasswordChangeSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -370,42 +286,36 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    shasum2 = "shasum_example" # str | 
-    shasum = "shasum_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    password_change_schema = randori_api_sdk.PasswordChangeSchema() # PasswordChangeSchema |  (optional)
 
-    # example passing only required values which don't have defaults set
     try:
-        api_instance.artifact_raw(shasum2)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->artifact_raw: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_instance.artifact_raw(shasum2, shasum=shasum)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->artifact_raw: %s\n" % e)
+        api_response = api_instance.change_password(password_change_schema=password_change_schema)
+        print("The response of DefaultApi->change_password:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->change_password: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shasum2** | **str**|  |
- **shasum** | **str**|  | [optional]
+ **password_change_schema** | [**PasswordChangeSchema**](PasswordChangeSchema.md)|  | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**DefaultOutputSchema**](DefaultOutputSchema.md)
 
 ### Authorization
 
@@ -413,9 +323,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -426,11 +335,12 @@ void (empty response body)
 **403** |  |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
+**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **comment**
-> CommentResponseCollectionSchema comment(entity_id)
+> CommentResponseCollectionSchema comment(entity_id, offset=offset, limit=limit)
 
 
 
@@ -442,15 +352,16 @@ Retrieves a page of comments for a provided entity ID.
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.comment_response_collection_schema import CommentResponseCollectionSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.comment_response_collection_schema import CommentResponseCollectionSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -459,42 +370,36 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    entity_id = "entity_id_example" # str | 
-    offset = 1 # int |  (optional)
-    limit = 1 # int |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    entity_id = 'entity_id_example' # str | 
+    offset = 56 # int |  (optional)
+    limit = 56 # int |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.comment(entity_id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->comment: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.comment(entity_id, offset=offset, limit=limit)
+        print("The response of DefaultApi->comment:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->comment: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entity_id** | **str**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **entity_id** | **str**|  | 
+ **offset** | **int**|  | [optional] 
+ **limit** | **int**|  | [optional] 
 
 ### Return type
 
@@ -508,7 +413,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -524,7 +428,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **comment_0**
-> CommentResponseSchema comment_0(entity_id)
+> CommentResponseSchema comment_0(entity_id, comment_creation_schema=comment_creation_schema)
 
 
 
@@ -536,16 +440,17 @@ Creates a single comment for a provided entity ID.
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.comment_creation_schema import CommentCreationSchema
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.comment_response_schema import CommentResponseSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.comment_creation_schema import CommentCreationSchema
+from randori_api_sdk.models.comment_response_schema import CommentResponseSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -554,42 +459,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    entity_id = "entity_id_example" # str | 
-    comment_creation_schema = CommentCreationSchema(
-        comment="comment_example",
-    ) # CommentCreationSchema |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    entity_id = 'entity_id_example' # str | 
+    comment_creation_schema = randori_api_sdk.CommentCreationSchema() # CommentCreationSchema |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.comment_0(entity_id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->comment_0: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.comment_0(entity_id, comment_creation_schema=comment_creation_schema)
+        print("The response of DefaultApi->comment_0:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->comment_0: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entity_id** | **str**|  |
- **comment_creation_schema** | [**CommentCreationSchema**](CommentCreationSchema.md)|  | [optional]
+ **entity_id** | **str**|  | 
+ **comment_creation_schema** | [**CommentCreationSchema**](CommentCreationSchema.md)|  | [optional] 
 
 ### Return type
 
@@ -604,6 +501,177 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_single_saved_views**
+> delete_single_saved_views(id, saved_views_single_input=saved_views_single_input)
+
+
+
+Remove the saved-views object by id
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.saved_views_single_input import SavedViewsSingleInput
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    saved_views_single_input = randori_api_sdk.SavedViewsSingleInput() # SavedViewsSingleInput |  (optional)
+
+    try:
+        api_instance.delete_single_saved_views(id, saved_views_single_input=saved_views_single_input)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_single_saved_views: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **saved_views_single_input** | [**SavedViewsSingleInput**](SavedViewsSingleInput.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **features**
+> FeatureResponseCollection features(feature_names=feature_names, feature_types=feature_types, active_only=active_only)
+
+
+
+Retrieve defined features.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.feature_response_collection import FeatureResponseCollection
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    feature_names = ['feature_names_example'] # List[str] |  (optional)
+    feature_types = ['feature_types_example'] # List[str] |  (optional)
+    active_only = True # bool |  (optional)
+
+    try:
+        api_response = api_instance.features(feature_names=feature_names, feature_types=feature_types, active_only=active_only)
+        print("The response of DefaultApi->features:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->features: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **feature_names** | [**List[str]**](str.md)|  | [optional] 
+ **feature_types** | [**List[str]**](str.md)|  | [optional] 
+ **active_only** | **bool**|  | [optional] 
+
+### Return type
+
+[**FeatureResponseCollection**](FeatureResponseCollection.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -618,12 +686,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_single_attack_user_action_descriptions**
-> delete_single_attack_user_action_descriptions(id)
+# **features_org**
+> OrgFeatureResponseCollection features_org(names=names, org_uuid=org_uuid, active_only=active_only, return_all=return_all)
 
 
 
-Remove the attack-user-action-descriptions object by id
+Retrieve an organization's features.
 
 ### Example
 
@@ -631,14 +699,16 @@ Remove the attack-user-action-descriptions object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.org_feature_response_collection import OrgFeatureResponseCollection
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -647,33 +717,42 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    names = ['names_example'] # List[str] |  (optional)
+    org_uuid = 'org_uuid_example' # str |  (optional)
+    active_only = True # bool |  (optional)
+    return_all = True # bool |  (optional)
 
-    # example passing only required values which don't have defaults set
     try:
-        api_instance.delete_single_attack_user_action_descriptions(id)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->delete_single_attack_user_action_descriptions: %s\n" % e)
+        api_response = api_instance.features_org(names=names, org_uuid=org_uuid, active_only=active_only, return_all=return_all)
+        print("The response of DefaultApi->features_org:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->features_org: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
+ **names** | [**List[str]**](str.md)|  | [optional] 
+ **org_uuid** | **str**|  | [optional] 
+ **active_only** | **bool**|  | [optional] 
+ **return_all** | **bool**|  | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**OrgFeatureResponseCollection**](OrgFeatureResponseCollection.md)
 
 ### Authorization
 
@@ -684,286 +763,21 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** |  |  -  |
 **400** |  |  -  |
 **401** |  |  -  |
 **403** |  |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_single_attack_user_runbook_descriptions**
-> delete_single_attack_user_runbook_descriptions(id)
-
-
-
-Remove the attack-user-runbook-descriptions object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_instance.delete_single_attack_user_runbook_descriptions(id)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->delete_single_attack_user_runbook_descriptions: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_single_policy**
-> delete_single_policy(id)
-
-
-
-Remove the policy object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.policy_single_input import PolicySingleInput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    policy_single_input = PolicySingleInput(
-        org_id="org_id_example",
-    ) # PolicySingleInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_instance.delete_single_policy(id)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->delete_single_policy: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_instance.delete_single_policy(id, policy_single_input=policy_single_input)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->delete_single_policy: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **policy_single_input** | [**PolicySingleInput**](PolicySingleInput.md)|  | [optional]
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_single_saved_views**
-> delete_single_saved_views(id)
-
-
-
-Remove the saved-views object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.saved_views_single_input import SavedViewsSingleInput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    saved_views_single_input = SavedViewsSingleInput(
-        org_id="org_id_example",
-    ) # SavedViewsSingleInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_instance.delete_single_saved_views(id)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->delete_single_saved_views: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_instance.delete_single_saved_views(id, saved_views_single_input=saved_views_single_input)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->delete_single_saved_views: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **saved_views_single_input** | [**SavedViewsSingleInput**](SavedViewsSingleInput.md)|  | [optional]
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
+**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_action_metadata**
-> ActionMetadataGetOutput get_action_metadata()
+> ActionMetadataGetOutput get_action_metadata(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -975,15 +789,16 @@ Search action-metadata objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.action_metadata_get_output import ActionMetadataGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.action_metadata_get_output import ActionMetadataGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -992,41 +807,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-action_id",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_action_metadata(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_action_metadata:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_action_metadata: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1041,6 +855,97 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_activity_log**
+> ActivityLogGetOutput get_activity_log(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+
+
+
+Search activity-log objects with an optional filter
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.activity_log_get_output import ActivityLogGetOutput
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+
+    try:
+        api_response = api_instance.get_activity_log(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_activity_log:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_activity_log: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
+
+### Return type
+
+[**ActivityLogGetOutput**](ActivityLogGetOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -1056,7 +961,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_all_detections_for_target**
-> AllDetectionsForTargetGetOutput get_all_detections_for_target()
+> AllDetectionsForTargetGetOutput get_all_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1068,15 +973,16 @@ Search all-detections-for-target objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.all_detections_for_target_get_output import AllDetectionsForTargetGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.all_detections_for_target_get_output import AllDetectionsForTargetGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1085,41 +991,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_all_detections_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_all_detections_for_target:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_all_detections_for_target: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1133,7 +1038,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1149,7 +1053,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_attack_checkins_for_implant**
-> AttackCheckinsForImplantGetOutput get_attack_checkins_for_implant()
+> AttackCheckinsForImplantGetOutput get_attack_checkins_for_implant(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1161,15 +1065,16 @@ Search attack-checkins-for-implant objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_checkins_for_implant_get_output import AttackCheckinsForImplantGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.attack_checkins_for_implant_get_output import AttackCheckinsForImplantGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1178,41 +1083,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-bart_id",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_attack_checkins_for_implant(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_attack_checkins_for_implant:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_attack_checkins_for_implant: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1226,7 +1130,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1242,7 +1145,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_attack_implants**
-> AttackImplantsGetOutput get_attack_implants()
+> AttackImplantsGetOutput get_attack_implants(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1254,15 +1157,16 @@ Search attack-implants objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_implants_get_output import AttackImplantsGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.attack_implants_get_output import AttackImplantsGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1271,41 +1175,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-arch",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_attack_implants(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_attack_implants:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_attack_implants: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1319,7 +1222,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1335,7 +1237,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_attack_interfaces_for_implant**
-> AttackInterfacesForImplantGetOutput get_attack_interfaces_for_implant()
+> AttackInterfacesForImplantGetOutput get_attack_interfaces_for_implant(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1347,15 +1249,16 @@ Search attack-interfaces-for-implant objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_interfaces_for_implant_get_output import AttackInterfacesForImplantGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.attack_interfaces_for_implant_get_output import AttackInterfacesForImplantGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1364,41 +1267,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-address",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_attack_interfaces_for_implant(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_attack_interfaces_for_implant:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_attack_interfaces_for_implant: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1412,7 +1314,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1428,7 +1329,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_attack_redirectors**
-> AttackRedirectorsGetOutput get_attack_redirectors()
+> AttackRedirectorsGetOutput get_attack_redirectors(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1440,15 +1341,16 @@ Search attack-redirectors objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_redirectors_get_output import AttackRedirectorsGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.attack_redirectors_get_output import AttackRedirectorsGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1457,41 +1359,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-bart_id",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_attack_redirectors(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_attack_redirectors:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_attack_redirectors: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1505,7 +1406,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1521,7 +1421,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_attack_runbook**
-> AttackRunbookGetOutput get_attack_runbook()
+> AttackRunbookGetOutput get_attack_runbook(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1533,15 +1433,16 @@ Search attack-runbook objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_runbook_get_output import AttackRunbookGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.attack_runbook_get_output import AttackRunbookGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1550,41 +1451,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-comment",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_attack_runbook(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_attack_runbook:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_attack_runbook: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1598,7 +1498,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -1614,7 +1513,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_attack_statistics**
-> AttackStatisticsGetOutput get_attack_statistics()
+> AttackStatisticsGetOutput get_attack_statistics(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1626,15 +1525,16 @@ Search attack-statistics objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_statistics_get_output import AttackStatisticsGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.attack_statistics_get_output import AttackStatisticsGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1643,41 +1543,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-current",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_attack_statistics(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_attack_statistics:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_attack_statistics: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -1692,6 +1591,97 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_authorization_policy**
+> AuthorizationPolicyGetOutput get_authorization_policy(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+
+
+
+Search authorization-policy objects with an optional filter
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.authorization_policy_get_output import AuthorizationPolicyGetOutput
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
+    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+
+    try:
+        api_response = api_instance.get_authorization_policy(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_authorization_policy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_authorization_policy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
+
+### Return type
+
+[**AuthorizationPolicyGetOutput**](AuthorizationPolicyGetOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -1706,12 +1696,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_attack_user_action_descriptions**
-> AttackUserActionDescriptionsGetOutput get_attack_user_action_descriptions()
+# **get_guidance_file**
+> get_guidance_file(tag)
 
 
 
-Search attack-user-action-descriptions objects with an optional filter
+Retrieve Randori guidance as markdown by tag
 
 ### Example
 
@@ -1719,15 +1709,15 @@ Search attack-user-action-descriptions objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_user_action_descriptions_get_output import AttackUserActionDescriptionsGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1736,45 +1726,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-action_id",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
-    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    tag = 'tag_example' # str | 
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        api_response = api_instance.get_attack_user_action_descriptions(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_user_action_descriptions: %s\n" % e)
+        api_instance.get_guidance_file(tag)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_guidance_file: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **tag** | **str**|  | 
 
 ### Return type
 
-[**AttackUserActionDescriptionsGetOutput**](AttackUserActionDescriptionsGetOutput.md)
+void (empty response body)
 
 ### Authorization
 
@@ -1783,210 +1762,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_attack_user_autoapprove**
-> AttackUserAutoapproveGetOutput get_attack_user_autoapprove()
-
-
-
-Search attack-user-autoapprove objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_user_autoapprove_get_output import AttackUserAutoapproveGetOutput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-approved",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
-    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_attack_user_autoapprove(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_user_autoapprove: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
-
-### Return type
-
-[**AttackUserAutoapproveGetOutput**](AttackUserAutoapproveGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_attack_user_runbook_descriptions**
-> AttackUserRunbookDescriptionsGetOutput get_attack_user_runbook_descriptions()
-
-
-
-Search attack-user-runbook-descriptions objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_user_runbook_descriptions_get_output import AttackUserRunbookDescriptionsGetOutput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-description",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
-    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_attack_user_runbook_descriptions(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_attack_user_runbook_descriptions: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
-
-### Return type
-
-[**AttackUserRunbookDescriptionsGetOutput**](AttackUserRunbookDescriptionsGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hostname**
-> HostnameGetOutput get_hostname()
+> HostnameGetOutput get_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -1998,15 +1780,16 @@ Search hostname objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.hostname_get_output import HostnameGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.hostname_get_output import HostnameGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2015,41 +1798,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_hostname:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_hostname: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2063,7 +1845,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -2079,7 +1860,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hostnames_for_ip**
-> HostnamesForIpGetOutput get_hostnames_for_ip()
+> HostnamesForIpGetOutput get_hostnames_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -2091,15 +1872,16 @@ Search hostnames-for-ip objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.hostnames_for_ip_get_output import HostnamesForIpGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.hostnames_for_ip_get_output import HostnamesForIpGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2108,41 +1890,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_hostnames_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_hostnames_for_ip:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_hostnames_for_ip: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2156,7 +1937,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -2172,7 +1952,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ip**
-> IpGetOutput get_ip()
+> IpGetOutput get_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -2184,15 +1964,16 @@ Search ip objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.ip_get_output import IpGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ip_get_output import IpGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2201,41 +1982,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_ip:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_ip: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2249,7 +2029,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -2265,7 +2044,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ips_for_hostname**
-> IpsForHostnameGetOutput get_ips_for_hostname()
+> IpsForHostnameGetOutput get_ips_for_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -2277,15 +2056,16 @@ Search ips-for-hostname objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.ips_for_hostname_get_output import IpsForHostnameGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ips_for_hostname_get_output import IpsForHostnameGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2294,41 +2074,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_ips_for_hostname(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_ips_for_hostname:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_ips_for_hostname: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2342,7 +2121,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -2358,7 +2136,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ips_for_network**
-> IpsForNetworkGetOutput get_ips_for_network()
+> IpsForNetworkGetOutput get_ips_for_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -2370,15 +2148,16 @@ Search ips-for-network objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.ips_for_network_get_output import IpsForNetworkGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ips_for_network_get_output import IpsForNetworkGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2387,41 +2166,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_ips_for_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_ips_for_network:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_ips_for_network: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2435,7 +2213,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -2451,7 +2228,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ips_for_service**
-> IpsForServiceGetOutput get_ips_for_service()
+> IpsForServiceGetOutput get_ips_for_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -2463,15 +2240,16 @@ Search ips-for-service objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.ips_for_service_get_output import IpsForServiceGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ips_for_service_get_output import IpsForServiceGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2480,41 +2258,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_ips_for_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_ips_for_service:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_ips_for_service: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2528,7 +2305,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -2544,7 +2320,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_network**
-> NetworkGetOutput get_network()
+> NetworkGetOutput get_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -2556,15 +2332,16 @@ Search network objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.network_get_output import NetworkGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.network_get_output import NetworkGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2573,41 +2350,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_network(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_network:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_network: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2622,7 +2398,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -2636,12 +2411,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_peer**
-> PeerGetOutput get_peer()
+# **get_organization**
+> OrganizationGetOutput get_organization(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
-Search peer objects with an optional filter
+Search organization objects with an optional filter
 
 ### Example
 
@@ -2649,15 +2424,16 @@ Search peer objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.peer_get_output import PeerGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.organization_get_output import OrganizationGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2666,45 +2442,44 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-id",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        api_response = api_instance.get_peer(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        api_response = api_instance.get_organization(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_organization:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_peer: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_organization: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
-[**PeerGetOutput**](PeerGetOutput.md)
+[**OrganizationGetOutput**](OrganizationGetOutput.md)
 
 ### Authorization
 
@@ -2714,100 +2489,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_peer_map**
-> PeerMapGetOutput get_peer_map()
-
-
-
-Search peer-map objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.peer_map_get_output import PeerMapGetOutput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-id",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
-    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_peer_map(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_peer_map: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
-
-### Return type
-
-[**PeerMapGetOutput**](PeerMapGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -2823,7 +2504,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_policy**
-> PolicyGetOutput get_policy()
+> PolicyGetOutput get_policy(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -2835,15 +2516,16 @@ Search policy objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.policy_get_output import PolicyGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.policy_get_output import PolicyGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2852,41 +2534,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-actions",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_policy(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_policy:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_policy: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2900,7 +2581,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -2916,7 +2596,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ports_for_ip**
-> PortsForIpGetOutput get_ports_for_ip()
+> PortsForIpGetOutput get_ports_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -2928,15 +2608,16 @@ Search ports-for-ip objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.ports_for_ip_get_output import PortsForIpGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ports_for_ip_get_output import PortsForIpGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -2945,41 +2626,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-confidence",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_ports_for_ip(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_ports_for_ip:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_ports_for_ip: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -2994,7 +2674,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -3008,12 +2687,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_prime**
-> PrimeGetOutput get_prime()
+# **get_preferences**
+> PreferenceOutCollection get_preferences(names=names, group_names=group_names)
 
 
 
-Search prime objects with an optional filter
+Retrieve preferences for a user.
 
 ### Example
 
@@ -3021,15 +2700,16 @@ Search prime objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.prime_get_output import PrimeGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.preference_out_collection import PreferenceOutCollection
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3038,45 +2718,38 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-first_seen",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
-    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    names = ['names_example'] # List[str] |  (optional)
+    group_names = ['group_names_example'] # List[str] |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        api_response = api_instance.get_prime(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        api_response = api_instance.get_preferences(names=names, group_names=group_names)
+        print("The response of DefaultApi->get_preferences:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_prime: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_preferences: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **names** | [**List[str]**](str.md)|  | [optional] 
+ **group_names** | [**List[str]**](str.md)|  | [optional] 
 
 ### Return type
 
-[**PrimeGetOutput**](PrimeGetOutput.md)
+[**PreferenceOutCollection**](PreferenceOutCollection.md)
 
 ### Authorization
 
@@ -3086,100 +2759,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_report**
-> ReportGetOutput get_report()
-
-
-
-Search report objects with an optional filter
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.report_get_output import ReportGetOutput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-created",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
-    reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_report(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_report: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
-
-### Return type
-
-[**ReportGetOutput**](ReportGetOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -3195,7 +2774,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_saved_views**
-> SavedViewsGetOutput get_saved_views()
+> SavedViewsGetOutput get_saved_views(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -3207,15 +2786,16 @@ Search saved-views objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.saved_views_get_output import SavedViewsGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.saved_views_get_output import SavedViewsGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3224,41 +2804,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-created_at",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_saved_views(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_saved_views:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_saved_views: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -3272,7 +2851,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -3288,7 +2866,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_service**
-> ServiceGetOutput get_service()
+> ServiceGetOutput get_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -3300,15 +2878,16 @@ Search service objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.service_get_output import ServiceGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.service_get_output import ServiceGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3317,41 +2896,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-applicability",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_service(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_service:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_service: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -3365,7 +2943,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -3381,7 +2958,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_action_metadata**
-> ActionMetadataSingleOutput get_single_action_metadata(id)
+> ActionMetadataSingleOutput get_single_action_metadata(id, org_id=org_id)
 
 
 
@@ -3393,15 +2970,16 @@ Get one action-metadata object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.action_metadata_single_output import ActionMetadataSingleOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.action_metadata_single_output import ActionMetadataSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3410,40 +2988,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_action_metadata(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_action_metadata: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_action_metadata(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_action_metadata:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_action_metadata: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -3458,6 +3030,91 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_single_activity_log**
+> ActivityLogSingleOutput get_single_activity_log(id, org_id=org_id)
+
+
+
+Get one activity-log object by id
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.activity_log_single_output import ActivityLogSingleOutput
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
+
+    try:
+        api_response = api_instance.get_single_activity_log(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_activity_log:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_single_activity_log: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
+
+### Return type
+
+[**ActivityLogSingleOutput**](ActivityLogSingleOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -3473,7 +3130,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_attack_implants**
-> AttackImplantsSingleOutput get_single_attack_implants(id)
+> AttackImplantsSingleOutput get_single_attack_implants(id, org_id=org_id)
 
 
 
@@ -3485,15 +3142,16 @@ Get one attack-implants object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_implants_single_output import AttackImplantsSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.attack_implants_single_output import AttackImplantsSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3502,40 +3160,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_attack_implants(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_attack_implants: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_attack_implants(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_attack_implants:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_attack_implants: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -3549,263 +3201,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_single_attack_user_action_descriptions**
-> AttackUserActionDescriptionsSingleOutput get_single_attack_user_action_descriptions(id)
-
-
-
-Get one attack-user-action-descriptions object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_user_action_descriptions_single_output import AttackUserActionDescriptionsSingleOutput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_attack_user_action_descriptions(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_attack_user_action_descriptions: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
-
-### Return type
-
-[**AttackUserActionDescriptionsSingleOutput**](AttackUserActionDescriptionsSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_single_attack_user_autoapprove**
-> AttackUserAutoapproveSingleOutput get_single_attack_user_autoapprove(id)
-
-
-
-Get one attack-user-autoapprove object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_user_autoapprove_single_output import AttackUserAutoapproveSingleOutput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_attack_user_autoapprove(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_attack_user_autoapprove: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_single_attack_user_autoapprove(id, org_id=org_id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_attack_user_autoapprove: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
-
-### Return type
-
-[**AttackUserAutoapproveSingleOutput**](AttackUserAutoapproveSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_single_attack_user_runbook_descriptions**
-> AttackUserRunbookDescriptionsSingleOutput get_single_attack_user_runbook_descriptions(id)
-
-
-
-Get one attack-user-runbook-descriptions object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_user_runbook_descriptions_single_output import AttackUserRunbookDescriptionsSingleOutput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_attack_user_runbook_descriptions(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_attack_user_runbook_descriptions: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
-
-### Return type
-
-[**AttackUserRunbookDescriptionsSingleOutput**](AttackUserRunbookDescriptionsSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -3821,7 +3216,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_detection_for_target**
-> SingleDetectionForTargetGetOutput get_single_detection_for_target()
+> SingleDetectionForTargetGetOutput get_single_detection_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -3833,15 +3228,16 @@ Search single-detection-for-target objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.single_detection_for_target_get_output import SingleDetectionForTargetGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.single_detection_for_target_get_output import SingleDetectionForTargetGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3850,41 +3246,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_detection_for_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_single_detection_for_target:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_detection_for_target: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -3898,7 +3293,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -3914,7 +3308,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_hostname**
-> HostnameSingleOutput get_single_hostname(id)
+> HostnameSingleOutput get_single_hostname(id, org_id=org_id)
 
 
 
@@ -3926,15 +3320,16 @@ Get one hostname object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.hostname_single_output import HostnameSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.hostname_single_output import HostnameSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -3943,40 +3338,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_hostname(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_hostname: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_hostname(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_hostname:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_hostname: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -3990,7 +3379,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -4006,7 +3394,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_hostnames_for_ip**
-> HostnamesForIpSingleOutput get_single_hostnames_for_ip(id)
+> HostnamesForIpSingleOutput get_single_hostnames_for_ip(id, org_id=org_id)
 
 
 
@@ -4018,15 +3406,16 @@ Get one hostnames-for-ip object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.hostnames_for_ip_single_output import HostnamesForIpSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.hostnames_for_ip_single_output import HostnamesForIpSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4035,40 +3424,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_hostnames_for_ip(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_hostnames_for_ip: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_hostnames_for_ip(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_hostnames_for_ip:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_hostnames_for_ip: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4082,7 +3465,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -4098,7 +3480,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_ip**
-> IpSingleOutput get_single_ip(id)
+> IpSingleOutput get_single_ip(id, org_id=org_id)
 
 
 
@@ -4110,15 +3492,16 @@ Get one ip object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.ip_single_output import IpSingleOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ip_single_output import IpSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4127,40 +3510,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_ip(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_ip: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_ip(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_ip:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_ip: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4174,7 +3551,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -4190,7 +3566,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_ips_for_hostname**
-> IpsForHostnameSingleOutput get_single_ips_for_hostname(id)
+> IpsForHostnameSingleOutput get_single_ips_for_hostname(id, org_id=org_id)
 
 
 
@@ -4202,15 +3578,16 @@ Get one ips-for-hostname object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.ips_for_hostname_single_output import IpsForHostnameSingleOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ips_for_hostname_single_output import IpsForHostnameSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4219,40 +3596,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_ips_for_hostname(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_ips_for_hostname: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_ips_for_hostname(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_ips_for_hostname:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_ips_for_hostname: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4266,7 +3637,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -4282,7 +3652,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_ips_for_network**
-> IpsForNetworkSingleOutput get_single_ips_for_network(id)
+> IpsForNetworkSingleOutput get_single_ips_for_network(id, org_id=org_id)
 
 
 
@@ -4294,15 +3664,16 @@ Get one ips-for-network object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.ips_for_network_single_output import IpsForNetworkSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ips_for_network_single_output import IpsForNetworkSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4311,40 +3682,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_ips_for_network(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_ips_for_network: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_ips_for_network(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_ips_for_network:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_ips_for_network: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4358,7 +3723,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -4374,7 +3738,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_ips_for_service**
-> IpsForServiceSingleOutput get_single_ips_for_service(id)
+> IpsForServiceSingleOutput get_single_ips_for_service(id, org_id=org_id)
 
 
 
@@ -4386,15 +3750,16 @@ Get one ips-for-service object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.ips_for_service_single_output import IpsForServiceSingleOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ips_for_service_single_output import IpsForServiceSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4403,40 +3768,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_ips_for_service(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_ips_for_service: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_ips_for_service(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_ips_for_service:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_ips_for_service: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4450,7 +3809,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -4466,7 +3824,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_network**
-> NetworkSingleOutput get_single_network(id)
+> NetworkSingleOutput get_single_network(id, org_id=org_id)
 
 
 
@@ -4478,15 +3836,16 @@ Get one network object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.network_single_output import NetworkSingleOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.network_single_output import NetworkSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4495,40 +3854,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_network(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_network: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_network(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_network:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_network: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4543,7 +3896,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -4557,12 +3909,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_single_peer**
-> PeerSingleOutput get_single_peer(id)
+# **get_single_organization**
+> OrganizationSingleOutput get_single_organization(id)
 
 
 
-Get one peer object by id
+Get one organization object by id
 
 ### Example
 
@@ -4570,15 +3922,16 @@ Get one peer object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.peer_single_output import PeerSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.organization_single_output import OrganizationSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4587,34 +3940,36 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.get_single_peer(id)
+        api_response = api_instance.get_single_organization(id)
+        print("The response of DefaultApi->get_single_organization:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_peer: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_single_organization: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
+ **id** | **str**|  | 
 
 ### Return type
 
-[**PeerSingleOutput**](PeerSingleOutput.md)
+[**OrganizationSingleOutput**](OrganizationSingleOutput.md)
 
 ### Authorization
 
@@ -4624,99 +3979,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_single_peer_map**
-> PeerMapSingleOutput get_single_peer_map(id)
-
-
-
-Get one peer-map object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.peer_map_single_output import PeerMapSingleOutput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_peer_map(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_peer_map: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_single_peer_map(id, org_id=org_id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_peer_map: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
-
-### Return type
-
-[**PeerMapSingleOutput**](PeerMapSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -4732,7 +3994,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_ports_for_ip**
-> PortsForIpSingleOutput get_single_ports_for_ip(id)
+> PortsForIpSingleOutput get_single_ports_for_ip(id, org_id=org_id)
 
 
 
@@ -4744,15 +4006,16 @@ Get one ports-for-ip object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.ports_for_ip_single_output import PortsForIpSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ports_for_ip_single_output import PortsForIpSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4761,40 +4024,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_ports_for_ip(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_ports_for_ip: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_ports_for_ip(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_ports_for_ip:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_ports_for_ip: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4808,99 +4065,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_single_report**
-> ReportSingleOutput get_single_report(id)
-
-
-
-Get one report object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.report_single_output import ReportSingleOutput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_report(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_report: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_single_report(id, org_id=org_id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_report: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
-
-### Return type
-
-[**ReportSingleOutput**](ReportSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -4916,7 +4080,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_saved_views**
-> SavedViewsSingleOutput get_single_saved_views(id)
+> SavedViewsSingleOutput get_single_saved_views(id, org_id=org_id)
 
 
 
@@ -4928,15 +4092,16 @@ Get one saved-views object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.saved_views_single_output import SavedViewsSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.saved_views_single_output import SavedViewsSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -4945,40 +4110,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_saved_views(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_saved_views: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_saved_views(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_saved_views:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_saved_views: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4992,7 +4151,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -5008,7 +4166,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_service**
-> ServiceSingleOutput get_single_service(id)
+> ServiceSingleOutput get_single_service(id, org_id=org_id)
 
 
 
@@ -5020,15 +4178,16 @@ Get one service object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.service_single_output import ServiceSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.service_single_output import ServiceSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5037,40 +4196,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_service(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_service: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_service(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_service:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_service: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -5084,7 +4237,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -5100,7 +4252,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_tagcounts**
-> TagcountsSingleOutput get_single_tagcounts(id)
+> TagcountsSingleOutput get_single_tagcounts(id, org_id=org_id)
 
 
 
@@ -5112,15 +4264,16 @@ Get one tagcounts object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.tagcounts_single_output import TagcountsSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.tagcounts_single_output import TagcountsSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5129,40 +4282,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_tagcounts(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_tagcounts: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_tagcounts(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_tagcounts:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_tagcounts: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -5176,7 +4323,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -5192,7 +4338,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_single_target**
-> TargetSingleOutput get_single_target(id)
+> TargetSingleOutput get_single_target(id, org_id=org_id)
 
 
 
@@ -5204,15 +4350,16 @@ Get one target object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.target_single_output import TargetSingleOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.target_single_output import TargetSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5221,40 +4368,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    org_id = 'org_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.get_single_target(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_target: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_single_target(id, org_id=org_id)
+        print("The response of DefaultApi->get_single_target:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_single_target: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
+ **org_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -5269,7 +4410,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -5283,12 +4423,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_single_user_ap_action_instances**
-> UserApActionInstancesSingleOutput get_single_user_ap_action_instances(id)
+# **get_single_user**
+> UserSingleOutput get_single_user(id)
 
 
 
-Get one user-ap-action-instances object by id
+Get one user object by id
 
 ### Example
 
@@ -5296,15 +4436,16 @@ Get one user-ap-action-instances object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.user_ap_action_instances_single_output import UserApActionInstancesSingleOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.user_single_output import UserSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5313,44 +4454,36 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.get_single_user_ap_action_instances(id)
+        api_response = api_instance.get_single_user(id)
+        print("The response of DefaultApi->get_single_user:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_user_ap_action_instances: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.get_single_user_ap_action_instances(id, org_id=org_id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_single_user_ap_action_instances: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_single_user: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **org_id** | **str**|  | [optional]
+ **id** | **str**|  | 
 
 ### Return type
 
-[**UserApActionInstancesSingleOutput**](UserApActionInstancesSingleOutput.md)
+[**UserSingleOutput**](UserSingleOutput.md)
 
 ### Authorization
 
@@ -5360,7 +4493,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -5376,7 +4508,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_social_entity**
-> SocialEntityGetOutput get_social_entity()
+> SocialEntityGetOutput get_social_entity(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -5388,15 +4520,16 @@ Search social-entity objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.social_entity_get_output import SocialEntityGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.social_entity_get_output import SocialEntityGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5405,41 +4538,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-address",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_social_entity(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_social_entity:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_social_entity: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -5453,7 +4585,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -5469,7 +4600,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_statistics**
-> StatisticsGetOutput get_statistics()
+> StatisticsGetOutput get_statistics(interval=interval, offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -5481,15 +4612,16 @@ Search statistics objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.statistics_get_output import StatisticsGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.statistics_get_output import StatisticsGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5498,43 +4630,42 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    interval = 1 # int, none_type | number of records to skip between responses (optional)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-id",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    interval = 56 # int | number of records to skip between responses (optional)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_statistics(interval=interval, offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_statistics:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_statistics: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **interval** | **int, none_type**| number of records to skip between responses | [optional]
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **interval** | **int**| number of records to skip between responses | [optional] 
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -5548,7 +4679,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -5564,7 +4694,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tagcounts**
-> TagcountsGetOutput get_tagcounts()
+> TagcountsGetOutput get_tagcounts(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -5576,15 +4706,16 @@ Search tagcounts objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.tagcounts_get_output import TagcountsGetOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.tagcounts_get_output import TagcountsGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5593,41 +4724,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-all_count",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_tagcounts(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_tagcounts:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_tagcounts: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -5641,7 +4771,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -5657,7 +4786,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_target**
-> TargetGetOutput get_target()
+> TargetGetOutput get_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
@@ -5669,15 +4798,16 @@ Search target objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.target_get_output import TargetGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.target_get_output import TargetGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5686,41 +4816,40 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-affiliation_state",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.get_target(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_target:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->get_target: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
@@ -5735,7 +4864,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -5749,12 +4877,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_user_ap_action_instances**
-> UserApActionInstancesGetOutput get_user_ap_action_instances()
+# **get_user**
+> UserGetOutput get_user(current_org_only=current_org_only, offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
 
 
 
-Search user-ap-action-instances objects with an optional filter
+Search user objects with an optional filter
 
 ### Example
 
@@ -5762,15 +4890,16 @@ Search user-ap-action-instances objects with an optional filter
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.user_ap_action_instances_get_output import UserApActionInstancesGetOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.user_get_output import UserGetOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5779,45 +4908,46 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    offset = 1 # int | offset into avilable records after filtering (optional)
-    limit = 1 # int | maximum number of records to return (optional)
-    sort = [
-        "-_dst_ip",
-    ] # [str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
-    q = "q_example" # str | base64 encoded jquery querybuilder complex search field (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    current_org_only = False # bool |  (optional) (default to False)
+    offset = 56 # int | offset into avilable records after filtering (optional)
+    limit = 56 # int | maximum number of records to return (optional)
+    sort = ['sort_example'] # List[str] | fields in the object to sort by, in order of precedence, minus indicates descending (optional)
+    q = 'q_example' # str | base64 encoded jquery querybuilder complex search field (optional)
     reversed_nulls = True # bool | if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        api_response = api_instance.get_user_ap_action_instances(offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        api_response = api_instance.get_user(current_org_only=current_org_only, offset=offset, limit=limit, sort=sort, q=q, reversed_nulls=reversed_nulls)
+        print("The response of DefaultApi->get_user:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->get_user_ap_action_instances: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_user: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**| offset into avilable records after filtering | [optional]
- **limit** | **int**| maximum number of records to return | [optional]
- **sort** | **[str]**| fields in the object to sort by, in order of precedence, minus indicates descending | [optional]
- **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional]
- **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional]
+ **current_org_only** | **bool**|  | [optional] [default to False]
+ **offset** | **int**| offset into avilable records after filtering | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+ **sort** | [**List[str]**](str.md)| fields in the object to sort by, in order of precedence, minus indicates descending | [optional] 
+ **q** | **str**| base64 encoded jquery querybuilder complex search field | [optional] 
+ **reversed_nulls** | **bool**| if true, sorts nulls as if smaller than any nonnull value for all sort parameters. otherwise (default) treats as if larger | [optional] 
 
 ### Return type
 
-[**UserApActionInstancesGetOutput**](UserApActionInstancesGetOutput.md)
+[**UserGetOutput**](UserGetOutput.md)
 
 ### Authorization
 
@@ -5827,7 +4957,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -5842,12 +4971,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **hoc_submit**
-> Artifactsrc hoc_submit()
+# **login**
+> DefaultOutputSchema login(username_password_input_schema=username_password_input_schema)
 
 
 
-Manually upload an artifact
+Login with credentials.
 
 ### Example
 
@@ -5855,15 +4984,17 @@ Manually upload an artifact
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.artifactsrc import Artifactsrc
+import os
+import randori_api_sdk
+from randori_api_sdk.models.default_output_schema import DefaultOutputSchema
+from randori_api_sdk.models.username_password_input_schema import UsernamePasswordInputSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -5872,211 +5003,36 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    filename = "filename_example" # str |  (optional)
-    source = "source_example" # str |  (optional)
-    org_id = "org_id_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    username_password_input_schema = randori_api_sdk.UsernamePasswordInputSchema() # UsernamePasswordInputSchema |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        api_response = api_instance.hoc_submit(filename=filename, source=source, org_id=org_id)
+        api_response = api_instance.login(username_password_input_schema=username_password_input_schema)
+        print("The response of DefaultApi->login:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->hoc_submit: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->login: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filename** | **str**|  | [optional]
- **source** | **str**|  | [optional]
- **org_id** | **str**|  | [optional]
-
-### Return type
-
-[**Artifactsrc**](Artifactsrc.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **hoc_submit_cpio**
-> ArtifactsrcMany hoc_submit_cpio()
-
-
-
-Manually upload multiple artifacts via cpio archive
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.artifactsrc_many import ArtifactsrcMany
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    source = "source_example" # str |  (optional)
-    org_id = "org_id_example" # str |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.hoc_submit_cpio(source=source, org_id=org_id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->hoc_submit_cpio: %s\n" % e)
-```
-
-
-### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | **str**|  | [optional]
- **org_id** | **str**|  | [optional]
+ **username_password_input_schema** | [**UsernamePasswordInputSchema**](UsernamePasswordInputSchema.md)|  | [optional] 
 
 ### Return type
 
-[**ArtifactsrcMany**](ArtifactsrcMany.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **impact_score_groups**
-> ImpactScoreGroupOuterResult impact_score_groups()
-
-
-
-Return counts of a given entity type grouped by impact score. 
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.impact_score_group_outer_result import ImpactScoreGroupOuterResult
-from randori_api.model.impact_score_entity_req import ImpactScoreEntityReq
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    impact_score_entity_req = ImpactScoreEntityReq(
-        entity_type="ip",
-        min_first_seen=dateutil_parser('1970-01-01T00:00:00.00Z'),
-    ) # ImpactScoreEntityReq |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.impact_score_groups(impact_score_entity_req=impact_score_entity_req)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->impact_score_groups: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **impact_score_entity_req** | [**ImpactScoreEntityReq**](ImpactScoreEntityReq.md)|  | [optional]
-
-### Return type
-
-[**ImpactScoreGroupOuterResult**](ImpactScoreGroupOuterResult.md)
+[**DefaultOutputSchema**](DefaultOutputSchema.md)
 
 ### Authorization
 
@@ -6087,6 +5043,594 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **login_otp**
+> DefaultOutputSchema login_otp(otp_token_input_schema=otp_token_input_schema)
+
+
+
+Complete login with the current OTP.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.default_output_schema import DefaultOutputSchema
+from randori_api_sdk.models.otp_token_input_schema import OtpTokenInputSchema
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    otp_token_input_schema = randori_api_sdk.OtpTokenInputSchema() # OtpTokenInputSchema |  (optional)
+
+    try:
+        api_response = api_instance.login_otp(otp_token_input_schema=otp_token_input_schema)
+        print("The response of DefaultApi->login_otp:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->login_otp: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **otp_token_input_schema** | [**OtpTokenInputSchema**](OtpTokenInputSchema.md)|  | [optional] 
+
+### Return type
+
+[**DefaultOutputSchema**](DefaultOutputSchema.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **logout**
+> DefaultOutputSchema logout(logout_input_schema=logout_input_schema)
+
+
+
+Logout the current JWT or another JWT owned by the user.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.default_output_schema import DefaultOutputSchema
+from randori_api_sdk.models.logout_input_schema import LogoutInputSchema
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    logout_input_schema = randori_api_sdk.LogoutInputSchema() # LogoutInputSchema |  (optional)
+
+    try:
+        api_response = api_instance.logout(logout_input_schema=logout_input_schema)
+        print("The response of DefaultApi->logout:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->logout: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **logout_input_schema** | [**LogoutInputSchema**](LogoutInputSchema.md)|  | [optional] 
+
+### Return type
+
+[**DefaultOutputSchema**](DefaultOutputSchema.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **manual_authorization**
+> manual_authorization(manual_authorization_request=manual_authorization_request)
+
+
+
+Given a list of detection uuids and an action, will apply that action to those dections
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.manual_authorization_request import ManualAuthorizationRequest
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    manual_authorization_request = randori_api_sdk.ManualAuthorizationRequest() # ManualAuthorizationRequest |  (optional)
+
+    try:
+        api_instance.manual_authorization(manual_authorization_request=manual_authorization_request)
+    except Exception as e:
+        print("Exception when calling DefaultApi->manual_authorization: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **manual_authorization_request** | [**ManualAuthorizationRequest**](ManualAuthorizationRequest.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **mitre_mitigation**
+> MitreMitigation mitre_mitigation(mitre_code)
+
+
+
+Given a valid mitre mitigation code, will return details about that mitigation
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.mitre_mitigation import MitreMitigation
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    mitre_code = 'mitre_code_example' # str | 
+
+    try:
+        api_response = api_instance.mitre_mitigation(mitre_code)
+        print("The response of DefaultApi->mitre_mitigation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->mitre_mitigation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mitre_code** | **str**|  | 
+
+### Return type
+
+[**MitreMitigation**](MitreMitigation.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **mitre_tactic**
+> MitreTactic mitre_tactic(mitre_code)
+
+
+
+Given a valid mitre tactic code, will return details about that tactic
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.mitre_tactic import MitreTactic
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    mitre_code = 'mitre_code_example' # str | 
+
+    try:
+        api_response = api_instance.mitre_tactic(mitre_code)
+        print("The response of DefaultApi->mitre_tactic:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->mitre_tactic: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mitre_code** | **str**|  | 
+
+### Return type
+
+[**MitreTactic**](MitreTactic.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **mitre_technique**
+> MitreTechnique mitre_technique(mitre_code)
+
+
+
+Given a valid mitre technique code, will return details about that technique
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.mitre_technique import MitreTechnique
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    mitre_code = 'mitre_code_example' # str | 
+
+    try:
+        api_response = api_instance.mitre_technique(mitre_code)
+        print("The response of DefaultApi->mitre_technique:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->mitre_technique: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mitre_code** | **str**|  | 
+
+### Return type
+
+[**MitreTechnique**](MitreTechnique.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **org_with_feature**
+> OrgWithFeatureResponseCollection org_with_feature(feature_name, org_list=org_list)
+
+
+
+Retrieve organization with active features.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.org_with_feature_response_collection import OrgWithFeatureResponseCollection
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    feature_name = 'feature_name_example' # str | 
+    org_list = ['org_list_example'] # List[str] |  (optional)
+
+    try:
+        api_response = api_instance.org_with_feature(feature_name, org_list=org_list)
+        print("The response of DefaultApi->org_with_feature:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->org_with_feature: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **feature_name** | **str**|  | 
+ **org_list** | [**List[str]**](str.md)|  | [optional] 
+
+### Return type
+
+[**OrgWithFeatureResponseCollection**](OrgWithFeatureResponseCollection.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -6102,7 +5646,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_hostname**
-> HostnamePatchOutput patch_hostname()
+> HostnamePatchOutput patch_hostname(hostname_patch_input=hostname_patch_input)
 
 
 
@@ -6114,16 +5658,17 @@ bulk-patch hostname records
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.hostname_patch_output import HostnamePatchOutput
-from randori_api.model.hostname_patch_input import HostnamePatchInput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.hostname_patch_input import HostnamePatchInput
+from randori_api_sdk.models.hostname_patch_output import HostnamePatchOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -6132,37 +5677,32 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    hostname_patch_input = HostnamePatchInput(
-        data=HostnamePatchInputData(None),
-        operations=[
-            HostnamePatchInputOperationsInner(None),
-        ],
-        q=HostnamePatchInputQ(None),
-    ) # HostnamePatchInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    hostname_patch_input = randori_api_sdk.HostnamePatchInput() # HostnamePatchInput |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.patch_hostname(hostname_patch_input=hostname_patch_input)
+        print("The response of DefaultApi->patch_hostname:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->patch_hostname: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **hostname_patch_input** | [**HostnamePatchInput**](HostnamePatchInput.md)|  | [optional]
+ **hostname_patch_input** | [**HostnamePatchInput**](HostnamePatchInput.md)|  | [optional] 
 
 ### Return type
 
@@ -6176,7 +5716,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -6192,7 +5731,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_ip**
-> IpPatchOutput patch_ip()
+> IpPatchOutput patch_ip(ip_patch_input=ip_patch_input)
 
 
 
@@ -6204,16 +5743,17 @@ bulk-patch ip records
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.ip_patch_output import IpPatchOutput
-from randori_api.model.ip_patch_input import IpPatchInput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.ip_patch_input import IpPatchInput
+from randori_api_sdk.models.ip_patch_output import IpPatchOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -6222,37 +5762,32 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    ip_patch_input = IpPatchInput(
-        data=IpPatchInputData(None),
-        operations=[
-            HostnamePatchInputOperationsInner(None),
-        ],
-        q=HostnamePatchInputQ(None),
-    ) # IpPatchInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    ip_patch_input = randori_api_sdk.IpPatchInput() # IpPatchInput |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.patch_ip(ip_patch_input=ip_patch_input)
+        print("The response of DefaultApi->patch_ip:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->patch_ip: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ip_patch_input** | [**IpPatchInput**](IpPatchInput.md)|  | [optional]
+ **ip_patch_input** | [**IpPatchInput**](IpPatchInput.md)|  | [optional] 
 
 ### Return type
 
@@ -6266,7 +5801,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -6282,7 +5816,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_network**
-> NetworkPatchOutput patch_network()
+> NetworkPatchOutput patch_network(network_patch_input=network_patch_input)
 
 
 
@@ -6294,16 +5828,17 @@ bulk-patch network records
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.network_patch_input import NetworkPatchInput
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.network_patch_output import NetworkPatchOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.network_patch_input import NetworkPatchInput
+from randori_api_sdk.models.network_patch_output import NetworkPatchOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -6312,37 +5847,32 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    network_patch_input = NetworkPatchInput(
-        data=NetworkPatchInputData(None),
-        operations=[
-            HostnamePatchInputOperationsInner(None),
-        ],
-        q=HostnamePatchInputQ(None),
-    ) # NetworkPatchInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    network_patch_input = randori_api_sdk.NetworkPatchInput() # NetworkPatchInput |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.patch_network(network_patch_input=network_patch_input)
+        print("The response of DefaultApi->patch_network:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->patch_network: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **network_patch_input** | [**NetworkPatchInput**](NetworkPatchInput.md)|  | [optional]
+ **network_patch_input** | [**NetworkPatchInput**](NetworkPatchInput.md)|  | [optional] 
 
 ### Return type
 
@@ -6356,485 +5886,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch_single_attack_user_action_descriptions**
-> AttackUserActionDescriptionsSingleOutput patch_single_attack_user_action_descriptions(id)
-
-
-
-Update fields for the attack-user-action-descriptions object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_user_action_descriptions_single_output import AttackUserActionDescriptionsSingleOutput
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_user_action_descriptions_patch_single_input import AttackUserActionDescriptionsPatchSingleInput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    attack_user_action_descriptions_patch_single_input = AttackUserActionDescriptionsPatchSingleInput(
-        data=AttackUserActionDescriptionsPatchSingleInputData(None),
-    ) # AttackUserActionDescriptionsPatchSingleInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.patch_single_attack_user_action_descriptions(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_attack_user_action_descriptions: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.patch_single_attack_user_action_descriptions(id, attack_user_action_descriptions_patch_single_input=attack_user_action_descriptions_patch_single_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_attack_user_action_descriptions: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **attack_user_action_descriptions_patch_single_input** | [**AttackUserActionDescriptionsPatchSingleInput**](AttackUserActionDescriptionsPatchSingleInput.md)|  | [optional]
-
-### Return type
-
-[**AttackUserActionDescriptionsSingleOutput**](AttackUserActionDescriptionsSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch_single_attack_user_autoapprove**
-> AttackUserAutoapproveSingleOutput patch_single_attack_user_autoapprove(id)
-
-
-
-Update fields for the attack-user-autoapprove object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_user_autoapprove_patch_single_input import AttackUserAutoapprovePatchSingleInput
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_user_autoapprove_single_output import AttackUserAutoapproveSingleOutput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    attack_user_autoapprove_patch_single_input = AttackUserAutoapprovePatchSingleInput(
-        data=AttackUserAutoapprovePatchSingleInputData(None),
-        org_id="org_id_example",
-    ) # AttackUserAutoapprovePatchSingleInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.patch_single_attack_user_autoapprove(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_attack_user_autoapprove: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.patch_single_attack_user_autoapprove(id, attack_user_autoapprove_patch_single_input=attack_user_autoapprove_patch_single_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_attack_user_autoapprove: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **attack_user_autoapprove_patch_single_input** | [**AttackUserAutoapprovePatchSingleInput**](AttackUserAutoapprovePatchSingleInput.md)|  | [optional]
-
-### Return type
-
-[**AttackUserAutoapproveSingleOutput**](AttackUserAutoapproveSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch_single_attack_user_runbook_descriptions**
-> AttackUserRunbookDescriptionsSingleOutput patch_single_attack_user_runbook_descriptions(id)
-
-
-
-Update fields for the attack-user-runbook-descriptions object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.attack_user_runbook_descriptions_patch_single_input import AttackUserRunbookDescriptionsPatchSingleInput
-from randori_api.model.attack_user_runbook_descriptions_single_output import AttackUserRunbookDescriptionsSingleOutput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    attack_user_runbook_descriptions_patch_single_input = AttackUserRunbookDescriptionsPatchSingleInput(
-        data=AttackUserRunbookDescriptionsPatchSingleInputData(None),
-    ) # AttackUserRunbookDescriptionsPatchSingleInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.patch_single_attack_user_runbook_descriptions(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_attack_user_runbook_descriptions: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.patch_single_attack_user_runbook_descriptions(id, attack_user_runbook_descriptions_patch_single_input=attack_user_runbook_descriptions_patch_single_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_attack_user_runbook_descriptions: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **attack_user_runbook_descriptions_patch_single_input** | [**AttackUserRunbookDescriptionsPatchSingleInput**](AttackUserRunbookDescriptionsPatchSingleInput.md)|  | [optional]
-
-### Return type
-
-[**AttackUserRunbookDescriptionsSingleOutput**](AttackUserRunbookDescriptionsSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch_single_peer_map**
-> PeerMapSingleOutput patch_single_peer_map(id)
-
-
-
-Update fields for the peer-map object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.peer_map_patch_single_input import PeerMapPatchSingleInput
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.peer_map_single_output import PeerMapSingleOutput
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    peer_map_patch_single_input = PeerMapPatchSingleInput(
-        data=PeerMapPatchSingleInputData(None),
-        org_id="org_id_example",
-    ) # PeerMapPatchSingleInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.patch_single_peer_map(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_peer_map: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.patch_single_peer_map(id, peer_map_patch_single_input=peer_map_patch_single_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_peer_map: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **peer_map_patch_single_input** | [**PeerMapPatchSingleInput**](PeerMapPatchSingleInput.md)|  | [optional]
-
-### Return type
-
-[**PeerMapSingleOutput**](PeerMapSingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch_single_policy**
-> PolicySingleOutput patch_single_policy(id)
-
-
-
-Update fields for the policy object by id
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.policy_patch_single_input import PolicyPatchSingleInput
-from randori_api.model.policy_single_output import PolicySingleOutput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    policy_patch_single_input = PolicyPatchSingleInput(
-        data=PolicyPatchSingleInputData(None),
-        org_id="org_id_example",
-    ) # PolicyPatchSingleInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.patch_single_policy(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_policy: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.patch_single_policy(id, policy_patch_single_input=policy_patch_single_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_policy: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **policy_patch_single_input** | [**PolicyPatchSingleInput**](PolicyPatchSingleInput.md)|  | [optional]
-
-### Return type
-
-[**PolicySingleOutput**](PolicySingleOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -6850,7 +5901,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_single_saved_views**
-> SavedViewsSingleOutput patch_single_saved_views(id)
+> SavedViewsSingleOutput patch_single_saved_views(id, saved_views_patch_single_input=saved_views_patch_single_input)
 
 
 
@@ -6862,16 +5913,17 @@ Update fields for the saved-views object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.saved_views_single_output import SavedViewsSingleOutput
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.saved_views_patch_single_input import SavedViewsPatchSingleInput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.saved_views_patch_single_input import SavedViewsPatchSingleInput
+from randori_api_sdk.models.saved_views_single_output import SavedViewsSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -6880,43 +5932,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    saved_views_patch_single_input = SavedViewsPatchSingleInput(
-        data=SavedViewsPatchSingleInputData(None),
-        org_id="org_id_example",
-    ) # SavedViewsPatchSingleInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    saved_views_patch_single_input = randori_api_sdk.SavedViewsPatchSingleInput() # SavedViewsPatchSingleInput |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.patch_single_saved_views(id)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_saved_views: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.patch_single_saved_views(id, saved_views_patch_single_input=saved_views_patch_single_input)
+        print("The response of DefaultApi->patch_single_saved_views:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->patch_single_saved_views: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **saved_views_patch_single_input** | [**SavedViewsPatchSingleInput**](SavedViewsPatchSingleInput.md)|  | [optional]
+ **id** | **str**|  | 
+ **saved_views_patch_single_input** | [**SavedViewsPatchSingleInput**](SavedViewsPatchSingleInput.md)|  | [optional] 
 
 ### Return type
 
@@ -6931,7 +5974,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -6945,12 +5987,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patch_single_user_ap_action_instances**
-> UserApActionInstancesSingleOutput patch_single_user_ap_action_instances(id)
+# **patch_single_user**
+> UserSingleOutput patch_single_user(id, user_patch_single_input=user_patch_single_input)
 
 
 
-Update fields for the user-ap-action-instances object by id
+Update fields for the user object by id
 
 ### Example
 
@@ -6958,16 +6000,17 @@ Update fields for the user-ap-action-instances object by id
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.user_ap_action_instances_patch_single_input import UserApActionInstancesPatchSingleInput
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.user_ap_action_instances_single_output import UserApActionInstancesSingleOutput
+import os
+import randori_api_sdk
+from randori_api_sdk.models.user_patch_single_input import UserPatchSingleInput
+from randori_api_sdk.models.user_single_output import UserSingleOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -6976,47 +6019,38 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str | 
-    user_ap_action_instances_patch_single_input = UserApActionInstancesPatchSingleInput(
-        data=UserApActionInstancesPatchSingleInputData(None),
-        org_id="org_id_example",
-    ) # UserApActionInstancesPatchSingleInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    id = 'id_example' # str | 
+    user_patch_single_input = randori_api_sdk.UserPatchSingleInput() # UserPatchSingleInput |  (optional)
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.patch_single_user_ap_action_instances(id)
+        api_response = api_instance.patch_single_user(id, user_patch_single_input=user_patch_single_input)
+        print("The response of DefaultApi->patch_single_user:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_user_ap_action_instances: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.patch_single_user_ap_action_instances(id, user_ap_action_instances_patch_single_input=user_ap_action_instances_patch_single_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->patch_single_user_ap_action_instances: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->patch_single_user: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  |
- **user_ap_action_instances_patch_single_input** | [**UserApActionInstancesPatchSingleInput**](UserApActionInstancesPatchSingleInput.md)|  | [optional]
+ **id** | **str**|  | 
+ **user_patch_single_input** | [**UserPatchSingleInput**](UserPatchSingleInput.md)|  | [optional] 
 
 ### Return type
 
-[**UserApActionInstancesSingleOutput**](UserApActionInstancesSingleOutput.md)
+[**UserSingleOutput**](UserSingleOutput.md)
 
 ### Authorization
 
@@ -7026,7 +6060,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -7042,7 +6075,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_social_entity**
-> SocialEntityPatchOutput patch_social_entity()
+> SocialEntityPatchOutput patch_social_entity(social_entity_patch_input=social_entity_patch_input)
 
 
 
@@ -7054,16 +6087,17 @@ bulk-patch social-entity records
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.social_entity_patch_output import SocialEntityPatchOutput
-from randori_api.model.social_entity_patch_input import SocialEntityPatchInput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.social_entity_patch_input import SocialEntityPatchInput
+from randori_api_sdk.models.social_entity_patch_output import SocialEntityPatchOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -7072,37 +6106,32 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    social_entity_patch_input = SocialEntityPatchInput(
-        data=SocialEntityPatchInputData(None),
-        operations=[
-            HostnamePatchInputOperationsInner(None),
-        ],
-        q=HostnamePatchInputQ(None),
-    ) # SocialEntityPatchInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    social_entity_patch_input = randori_api_sdk.SocialEntityPatchInput() # SocialEntityPatchInput |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.patch_social_entity(social_entity_patch_input=social_entity_patch_input)
+        print("The response of DefaultApi->patch_social_entity:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->patch_social_entity: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **social_entity_patch_input** | [**SocialEntityPatchInput**](SocialEntityPatchInput.md)|  | [optional]
+ **social_entity_patch_input** | [**SocialEntityPatchInput**](SocialEntityPatchInput.md)|  | [optional] 
 
 ### Return type
 
@@ -7116,7 +6145,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -7132,7 +6160,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_target**
-> TargetPatchOutput patch_target()
+> TargetPatchOutput patch_target(target_patch_input=target_patch_input)
 
 
 
@@ -7144,16 +6172,17 @@ bulk-patch target records
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.target_patch_output import TargetPatchOutput
-from randori_api.model.target_patch_input import TargetPatchInput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.target_patch_input import TargetPatchInput
+from randori_api_sdk.models.target_patch_output import TargetPatchOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -7162,37 +6191,32 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    target_patch_input = TargetPatchInput(
-        data=TargetPatchInputData(None),
-        operations=[
-            HostnamePatchInputOperationsInner(None),
-        ],
-        q=HostnamePatchInputQ(None),
-    ) # TargetPatchInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    target_patch_input = randori_api_sdk.TargetPatchInput() # TargetPatchInput |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.patch_target(target_patch_input=target_patch_input)
+        print("The response of DefaultApi->patch_target:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->patch_target: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **target_patch_input** | [**TargetPatchInput**](TargetPatchInput.md)|  | [optional]
+ **target_patch_input** | [**TargetPatchInput**](TargetPatchInput.md)|  | [optional] 
 
 ### Return type
 
@@ -7206,7 +6230,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -7222,7 +6245,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **paths**
-> PathsOutputSchema paths()
+> PathsOutputSchema paths(terminal=terminal)
 
 
 
@@ -7234,15 +6257,16 @@ Returns paths from query param to nearest prime entity(s)
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.paths_output_schema import PathsOutputSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.paths_output_schema import PathsOutputSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -7251,31 +6275,32 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    terminal = "terminal_example" # str |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    terminal = 'terminal_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.paths(terminal=terminal)
+        print("The response of DefaultApi->paths:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->paths: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **terminal** | **str**|  | [optional]
+ **terminal** | **str**|  | [optional] 
 
 ### Return type
 
@@ -7290,6 +6315,85 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **permission_group_types**
+> PermissionGroupsInfo permission_group_types()
+
+
+
+Retrieve valid permission group types.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.permission_groups_info import PermissionGroupsInfo
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+
+    try:
+        api_response = api_instance.permission_group_types()
+        print("The response of DefaultApi->permission_group_types:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->permission_group_types: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**PermissionGroupsInfo**](PermissionGroupsInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -7304,12 +6408,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **post_attack_user_action_descriptions**
-> AttackUserActionDescriptionsPostOutput post_attack_user_action_descriptions()
+# **permission_groups_read**
+> PermissionGroup permission_groups_read(target_user_id)
 
 
 
-Add new attack-user-action-descriptions objects
+Retrieve permission groups for a user in the currently viewed organization.
 
 ### Example
 
@@ -7317,16 +6421,16 @@ Add new attack-user-action-descriptions objects
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_user_action_descriptions_post_input import AttackUserActionDescriptionsPostInput
-from randori_api.model.attack_user_action_descriptions_post_output import AttackUserActionDescriptionsPostOutput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.permission_group import PermissionGroup
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -7335,45 +6439,36 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    attack_user_action_descriptions_post_input = AttackUserActionDescriptionsPostInput(
-        data=[
-            AttackUserActionDescriptionsModelIn(
-                action_id="action_id_example",
-                description="description_example",
-                id="id_example",
-                name="name_example",
-                template="template_example",
-            ),
-        ],
-    ) # AttackUserActionDescriptionsPostInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    target_user_id = 'target_user_id_example' # str | 
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        api_response = api_instance.post_attack_user_action_descriptions(attack_user_action_descriptions_post_input=attack_user_action_descriptions_post_input)
+        api_response = api_instance.permission_groups_read(target_user_id)
+        print("The response of DefaultApi->permission_groups_read:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->post_attack_user_action_descriptions: %s\n" % e)
+    except Exception as e:
+        print("Exception when calling DefaultApi->permission_groups_read: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attack_user_action_descriptions_post_input** | [**AttackUserActionDescriptionsPostInput**](AttackUserActionDescriptionsPostInput.md)|  | [optional]
+ **target_user_id** | **str**|  | 
 
 ### Return type
 
-[**AttackUserActionDescriptionsPostOutput**](AttackUserActionDescriptionsPostOutput.md)
+[**PermissionGroup**](PermissionGroup.md)
 
 ### Authorization
 
@@ -7381,199 +6476,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **post_attack_user_autoapprove**
-> AttackUserAutoapprovePostOutput post_attack_user_autoapprove()
-
-
-
-Add new attack-user-autoapprove objects
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_user_autoapprove_post_output import AttackUserAutoapprovePostOutput
-from randori_api.model.attack_user_autoapprove_post_input import AttackUserAutoapprovePostInput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    attack_user_autoapprove_post_input = AttackUserAutoapprovePostInput(
-        data=[
-            AttackUserAutoapproveModelIn(
-                approved=True,
-                approver="approver_example",
-                id="id_example",
-                org_id="org_id_example",
-                process_definition_id="process_definition_id_example",
-                time=dateutil_parser('1970-01-01T00:00:00.00Z'),
-            ),
-        ],
-    ) # AttackUserAutoapprovePostInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.post_attack_user_autoapprove(attack_user_autoapprove_post_input=attack_user_autoapprove_post_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->post_attack_user_autoapprove: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **attack_user_autoapprove_post_input** | [**AttackUserAutoapprovePostInput**](AttackUserAutoapprovePostInput.md)|  | [optional]
-
-### Return type
-
-[**AttackUserAutoapprovePostOutput**](AttackUserAutoapprovePostOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **post_attack_user_runbook_descriptions**
-> AttackUserRunbookDescriptionsPostOutput post_attack_user_runbook_descriptions()
-
-
-
-Add new attack-user-runbook-descriptions objects
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.attack_user_runbook_descriptions_post_output import AttackUserRunbookDescriptionsPostOutput
-from randori_api.model.attack_user_runbook_descriptions_post_input import AttackUserRunbookDescriptionsPostInput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    attack_user_runbook_descriptions_post_input = AttackUserRunbookDescriptionsPostInput(
-        data=[
-            AttackUserRunbookDescriptionsModelIn(
-                description="description_example",
-                guidance="guidance_example",
-                id="id_example",
-                name="name_example",
-                objective="objective_example",
-                runbook_id="runbook_id_example",
-            ),
-        ],
-    ) # AttackUserRunbookDescriptionsPostInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.post_attack_user_runbook_descriptions(attack_user_runbook_descriptions_post_input=attack_user_runbook_descriptions_post_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->post_attack_user_runbook_descriptions: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **attack_user_runbook_descriptions_post_input** | [**AttackUserRunbookDescriptionsPostInput**](AttackUserRunbookDescriptionsPostInput.md)|  | [optional]
-
-### Return type
-
-[**AttackUserRunbookDescriptionsPostOutput**](AttackUserRunbookDescriptionsPostOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -7589,7 +6493,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_comment_multi**
-> post_comment_multi()
+> post_comment_multi(external_comment_creation_schema=external_comment_creation_schema)
 
 
 
@@ -7601,15 +6505,16 @@ Creates a single comment for multiple entity IDs
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.external_comment_creation_schema import ExternalCommentCreationSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.external_comment_creation_schema import ExternalCommentCreationSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -7618,36 +6523,30 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    external_comment_creation_schema = ExternalCommentCreationSchema(
-        action={},
-        comment="comment_example",
-        entity_ids=[
-            "entity_ids_example",
-        ],
-    ) # ExternalCommentCreationSchema |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    external_comment_creation_schema = randori_api_sdk.ExternalCommentCreationSchema() # ExternalCommentCreationSchema |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_instance.post_comment_multi(external_comment_creation_schema=external_comment_creation_schema)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->post_comment_multi: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **external_comment_creation_schema** | [**ExternalCommentCreationSchema**](ExternalCommentCreationSchema.md)|  | [optional]
+ **external_comment_creation_schema** | [**ExternalCommentCreationSchema**](ExternalCommentCreationSchema.md)|  | [optional] 
 
 ### Return type
 
@@ -7662,7 +6561,6 @@ void (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -7672,295 +6570,11 @@ void (empty response body)
 **403** |  |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **post_peer**
-> PeerPostOutput post_peer()
-
-
-
-Add new peer objects
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.peer_post_input import PeerPostInput
-from randori_api.model.peer_post_output import PeerPostOutput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    peer_post_input = PeerPostInput(
-        data=[
-            PeerModelIn(
-                type="SIZE",
-                value="value_example",
-            ),
-        ],
-    ) # PeerPostInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.post_peer(peer_post_input=peer_post_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->post_peer: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **peer_post_input** | [**PeerPostInput**](PeerPostInput.md)|  | [optional]
-
-### Return type
-
-[**PeerPostOutput**](PeerPostOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **post_peer_map**
-> PeerMapPostOutput post_peer_map()
-
-
-
-Add new peer-map objects
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.peer_map_post_input import PeerMapPostInput
-from randori_api.model.peer_map_post_output import PeerMapPostOutput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    peer_map_post_input = PeerMapPostInput(
-        data=[
-            PeerMapModelIn(
-                org_id="org_id_example",
-                org_peer_industry="org_peer_industry_example",
-                org_peer_size="org_peer_size_example",
-            ),
-        ],
-    ) # PeerMapPostInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.post_peer_map(peer_map_post_input=peer_map_post_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->post_peer_map: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **peer_map_post_input** | [**PeerMapPostInput**](PeerMapPostInput.md)|  | [optional]
-
-### Return type
-
-[**PeerMapPostOutput**](PeerMapPostOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **post_policy**
-> PolicyPostOutput post_policy()
-
-
-
-Add new policy objects
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.policy_post_output import PolicyPostOutput
-from randori_api.model.policy_post_input import PolicyPostInput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    policy_post_input = PolicyPostInput(
-        data=[
-            PolicyModelCustomIn(
-                actions=[
-                    {},
-                ],
-                entity_types=[
-                    "entity_types_example",
-                ],
-                expires_at=dateutil_parser('1970-01-01T00:00:00.00Z'),
-                filter_data={},
-                is_active=True,
-                name="name_example",
-                notes="notes_example",
-                sys_period="sys_period_example",
-            ),
-        ],
-    ) # PolicyPostInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.post_policy(policy_post_input=policy_post_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->post_policy: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **policy_post_input** | [**PolicyPostInput**](PolicyPostInput.md)|  | [optional]
-
-### Return type
-
-[**PolicyPostOutput**](PolicyPostOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_saved_views**
-> SavedViewsPostOutput post_saved_views()
+> SavedViewsPostOutput post_saved_views(saved_views_post_input=saved_views_post_input)
 
 
 
@@ -7972,16 +6586,17 @@ Add new saved-views objects
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.saved_views_post_output import SavedViewsPostOutput
-from randori_api.model.saved_views_post_input import SavedViewsPostInput
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.saved_views_post_input import SavedViewsPostInput
+from randori_api_sdk.models.saved_views_post_output import SavedViewsPostOutput
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -7990,43 +6605,32 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    saved_views_post_input = SavedViewsPostInput(
-        data=[
-            SavedViewsModelCustomIn(
-                description="description_example",
-                entity_type="target",
-                filter_data={},
-                is_favorite=True,
-                is_global=True,
-                name="name_example",
-                sort_data={},
-            ),
-        ],
-    ) # SavedViewsPostInput |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    saved_views_post_input = randori_api_sdk.SavedViewsPostInput() # SavedViewsPostInput |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.post_saved_views(saved_views_post_input=saved_views_post_input)
+        print("The response of DefaultApi->post_saved_views:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->post_saved_views: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **saved_views_post_input** | [**SavedViewsPostInput**](SavedViewsPostInput.md)|  | [optional]
+ **saved_views_post_input** | [**SavedViewsPostInput**](SavedViewsPostInput.md)|  | [optional] 
 
 ### Return type
 
@@ -8040,250 +6644,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **post_user_ap_action_instances**
-> UserApActionInstancesPostOutput post_user_ap_action_instances()
-
-
-
-Add new user-ap-action-instances objects
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.user_ap_action_instances_post_output import UserApActionInstancesPostOutput
-from randori_api.model.user_ap_action_instances_post_input import UserApActionInstancesPostInput
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    user_ap_action_instances_post_input = UserApActionInstancesPostInput(
-        data=[
-            UserApActionInstancesModelIn(
-                dst_ip=[
-                    "dst_ip_example",
-                ],
-                dst_network=[
-                    "dst_network_example",
-                ],
-                src_ip=[
-                    "src_ip_example",
-                ],
-                action_id="action_id_example",
-                artifacts_status="artifacts_status_example",
-                bart_id="bart_id_example",
-                completed=dateutil_parser('1970-01-01T00:00:00.00Z'),
-                config={},
-                config_hash="config_hash_example",
-                deleted=True,
-                dst_email=[
-                    "dst_email_example",
-                ],
-                dst_host=[
-                    "dst_host_example",
-                ],
-                dst_mac=[
-                    "dst_mac_example",
-                ],
-                dst_misc=[
-                    "dst_misc_example",
-                ],
-                dst_path=[
-                    "dst_path_example",
-                ],
-                dst_port=[
-                    1,
-                ],
-                id="id_example",
-                implant_id="implant_id_example",
-                implant_uid="implant_uid_example",
-                org_id="org_id_example",
-                perspective_metadata={},
-                platform_state=1,
-                randori_notes="randori_notes_example",
-                result="result_example",
-                result_hash="result_hash_example",
-                runbook_instance_id="runbook_instance_id_example",
-                src_email=[
-                    "src_email_example",
-                ],
-                src_host=[
-                    "src_host_example",
-                ],
-                src_mac=[
-                    "src_mac_example",
-                ],
-                src_misc=[
-                    "src_misc_example",
-                ],
-                started=dateutil_parser('1970-01-01T00:00:00.00Z'),
-                summary_sha="summary_sha_example",
-                trigger={},
-                updated=dateutil_parser('1970-01-01T00:00:00.00Z'),
-            ),
-        ],
-    ) # UserApActionInstancesPostInput |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.post_user_ap_action_instances(user_ap_action_instances_post_input=user_ap_action_instances_post_input)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->post_user_ap_action_instances: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user_ap_action_instances_post_input** | [**UserApActionInstancesPostInput**](UserApActionInstancesPostInput.md)|  | [optional]
-
-### Return type
-
-[**UserApActionInstancesPostOutput**](UserApActionInstancesPostOutput.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **priority_groups**
-> PriorityGroupOuterResult priority_groups()
-
-
-
-Return counts of a given entity type grouped by priority score ranges. This depends on the requestor to provide sane ranges; ranges are evaluated in order so overlaps wont yield duplicate results.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.priority_group_outer_result import PriorityGroupOuterResult
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.priority_entity_req import PriorityEntityReq
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    priority_entity_req = PriorityEntityReq(
-        entity_type="ip",
-        min_first_seen=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        prio_ranges=[
-            PriorityRange(
-                prio_max=0,
-                prio_min=0,
-                prio_range_name="high",
-            ),
-        ],
-    ) # PriorityEntityReq |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.priority_groups(priority_entity_req=priority_entity_req)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->priority_groups: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **priority_entity_req** | [**PriorityEntityReq**](PriorityEntityReq.md)|  | [optional]
-
-### Return type
-
-[**PriorityGroupOuterResult**](PriorityGroupOuterResult.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -8299,7 +6659,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **recon_worker_node_ips**
-> ReconWorkerNodeIps recon_worker_node_ips(ips)
+> ReconWorkerNodeIps recon_worker_node_ips(ips, lookbackdays=lookbackdays)
 
 
 
@@ -8311,15 +6671,16 @@ Return IP addresses supplied, with a boolean value key indicating whether the IP
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.recon_worker_node_ips import ReconWorkerNodeIps
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.recon_worker_node_ips import ReconWorkerNodeIps
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -8328,40 +6689,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    ips = "ips_example" # str | 
-    lookbackdays = 1 # int |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    ips = 'ips_example' # str | 
+    lookbackdays = 56 # int |  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.recon_worker_node_ips(ips)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->recon_worker_node_ips: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         api_response = api_instance.recon_worker_node_ips(ips, lookbackdays=lookbackdays)
+        print("The response of DefaultApi->recon_worker_node_ips:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->recon_worker_node_ips: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ips** | **str**|  |
- **lookbackdays** | **int**|  | [optional]
+ **ips** | **str**|  | 
+ **lookbackdays** | **int**|  | [optional] 
 
 ### Return type
 
@@ -8376,6 +6731,90 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **renew**
+> DefaultOutputSchema renew(logout_input_schema=logout_input_schema)
+
+
+
+Renew the user token if it is valid
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.default_output_schema import DefaultOutputSchema
+from randori_api_sdk.models.logout_input_schema import LogoutInputSchema
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    logout_input_schema = randori_api_sdk.LogoutInputSchema() # LogoutInputSchema |  (optional)
+
+    try:
+        api_response = api_instance.renew(logout_input_schema=logout_input_schema)
+        print("The response of DefaultApi->renew:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->renew: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **logout_input_schema** | [**LogoutInputSchema**](LogoutInputSchema.md)|  | [optional] 
+
+### Return type
+
+[**DefaultOutputSchema**](DefaultOutputSchema.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -8390,12 +6829,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **status_groups**
-> StatusGroupOuterResult status_groups()
+# **renew_api_token**
+> renew_api_token()
 
 
 
-Return counts of a given entity type grouped by status.
+Invalidates current session of an API token, and clones it into a new token/session. A way to rotate an API token value without changing anything else about it
 
 ### Example
 
@@ -8403,16 +6842,15 @@ Return counts of a given entity type grouped by status.
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.status_group_outer_result import StatusGroupOuterResult
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.status_entity_req import StatusEntityReq
+import os
+import randori_api_sdk
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -8421,38 +6859,30 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    status_entity_req = StatusEntityReq(
-        entity_type="ip",
-        min_first_seen=dateutil_parser('1970-01-01T00:00:00.00Z'),
-    ) # StatusEntityReq |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        api_response = api_instance.status_groups(status_entity_req=status_entity_req)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->status_groups: %s\n" % e)
+        api_instance.renew_api_token()
+    except Exception as e:
+        print("Exception when calling DefaultApi->renew_api_token: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **status_entity_req** | [**StatusEntityReq**](StatusEntityReq.md)|  | [optional]
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**StatusGroupOuterResult**](StatusGroupOuterResult.md)
+void (empty response body)
 
 ### Authorization
 
@@ -8460,9 +6890,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -8473,7 +6902,6 @@ Name | Type | Description  | Notes
 **403** |  |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
-**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8490,15 +6918,16 @@ Return list of all tags present on system that belong belong to an entity alive 
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.user_tag_name_list import UserTagNameList
-from randori_api.model.error_schema import ErrorSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.user_tag_name_list import UserTagNameList
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -8507,25 +6936,27 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         api_response = api_instance.tag()
+        print("The response of DefaultApi->tag:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->tag: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -8541,7 +6972,6 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -8555,12 +6985,12 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **target_temptation_groups**
-> TargetTemptationGroupOuterResult target_temptation_groups()
+# **uuid_artifactsource_uuid**
+> uuid_artifactsource_uuid(artifactsource_uuid, activity_instance_id=activity_instance_id)
 
 
 
-Return counts of a given entity type grouped by target temptation score ranges. This depends on the requestor to provide sane ranges; ranges are evaluated in order so overlaps wont yield duplicate results.
+Returns the raw artifact for the given artifact instance id provided
 
 ### Example
 
@@ -8568,16 +6998,15 @@ Return counts of a given entity type grouped by target temptation score ranges. 
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.target_temptation_group_outer_result import TargetTemptationGroupOuterResult
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.target_temptation_entity_req import TargetTemptationEntityReq
+import os
+import randori_api_sdk
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -8586,241 +7015,32 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    target_temptation_entity_req = TargetTemptationEntityReq(
-        entity_type="ip",
-        min_first_seen=dateutil_parser('1970-01-01T00:00:00.00Z'),
-        tt_ranges=[
-            TargetTemptationRange(
-                tt_max=0,
-                tt_min=0,
-                tt_range_name="high",
-            ),
-        ],
-    ) # TargetTemptationEntityReq |  (optional)
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    artifactsource_uuid = 'artifactsource_uuid_example' # str | 
+    activity_instance_id = 'activity_instance_id_example' # str |  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
-        api_response = api_instance.target_temptation_groups(target_temptation_entity_req=target_temptation_entity_req)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->target_temptation_groups: %s\n" % e)
+        api_instance.uuid_artifactsource_uuid(artifactsource_uuid, activity_instance_id=activity_instance_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->uuid_artifactsource_uuid: %s\n" % e)
 ```
+
 
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **target_temptation_entity_req** | [**TargetTemptationEntityReq**](TargetTemptationEntityReq.md)|  | [optional]
-
-### Return type
-
-[**TargetTemptationGroupOuterResult**](TargetTemptationGroupOuterResult.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **user_query**
-> UserArtifactQuery user_query()
-
-
-
-UserQuery
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.user_artifact_query import UserArtifactQuery
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    id = "id_example" # str |  (optional)
-    created = "created_example" # str |  (optional)
-    updated = "updated_example" # str |  (optional)
-    org_id = "org_id_example" # str |  (optional)
-    source = "source_example" # str |  (optional)
-    filename = "filename_example" # str |  (optional)
-    shasum = "shasum_example" # str |  (optional)
-    ingests = 1 # int |  (optional)
-    size = 1 # int |  (optional)
-    created_start = 1 # int |  (optional)
-    created_end = 1 # int |  (optional)
-    updated_start = 1 # int |  (optional)
-    updated_end = 1 # int |  (optional)
-    max_count = 1 # int |  (optional)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.user_query(id=id, created=created, updated=updated, org_id=org_id, source=source, filename=filename, shasum=shasum, ingests=ingests, size=size, created_start=created_start, created_end=created_end, updated_start=updated_start, updated_end=updated_end, max_count=max_count)
-        pprint(api_response)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->user_query: %s\n" % e)
-```
-
-
-### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**|  | [optional]
- **created** | **str**|  | [optional]
- **updated** | **str**|  | [optional]
- **org_id** | **str**|  | [optional]
- **source** | **str**|  | [optional]
- **filename** | **str**|  | [optional]
- **shasum** | **str**|  | [optional]
- **ingests** | **int**|  | [optional]
- **size** | **int**|  | [optional]
- **created_start** | **int**|  | [optional]
- **created_end** | **int**|  | [optional]
- **updated_start** | **int**|  | [optional]
- **updated_end** | **int**|  | [optional]
- **max_count** | **int**|  | [optional]
-
-### Return type
-
-[**UserArtifactQuery**](UserArtifactQuery.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **user_retrieve**
-> user_retrieve(shasum2)
-
-
-
-Retrieve
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    shasum2 = "shasum_example" # str | 
-    shasum = "shasum_example" # str |  (optional)
-    org_id = "org_id_example" # str |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_instance.user_retrieve(shasum2)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->user_retrieve: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_instance.user_retrieve(shasum2, shasum=shasum, org_id=org_id)
-    except randori_api.ApiException as e:
-        print("Exception when calling DefaultApi->user_retrieve: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **shasum2** | **str**|  |
- **shasum** | **str**|  | [optional]
- **org_id** | **str**|  | [optional]
+ **artifactsource_uuid** | **str**|  | 
+ **activity_instance_id** | **str**|  | [optional] 
 
 ### Return type
 
@@ -8835,7 +7055,6 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -8849,7 +7068,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uuid_comment_id**
-> CommentResponseSchema uuid_comment_id(entity_id, comment_id)
+> CommentResponseSchema uuid_comment_id(comment_id, entity_id)
 
 
 
@@ -8861,15 +7080,16 @@ Deletes an existing comment
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.comment_response_schema import CommentResponseSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.comment_response_schema import CommentResponseSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -8878,32 +7098,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    entity_id = "entity_id_example" # str | 
-    comment_id = "comment_id_example" # str | 
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    comment_id = 'comment_id_example' # str | 
+    entity_id = 'entity_id_example' # str | 
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.uuid_comment_id(entity_id, comment_id)
+        api_response = api_instance.uuid_comment_id(comment_id, entity_id)
+        print("The response of DefaultApi->uuid_comment_id:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->uuid_comment_id: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entity_id** | **str**|  |
- **comment_id** | **str**|  |
+ **comment_id** | **str**|  | 
+ **entity_id** | **str**|  | 
 
 ### Return type
 
@@ -8917,7 +7139,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -8933,7 +7154,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uuid_comment_id_0**
-> CommentResponseSchema uuid_comment_id_0(entity_id, comment_id)
+> CommentResponseSchema uuid_comment_id_0(comment_id, entity_id)
 
 
 
@@ -8945,15 +7166,16 @@ Updates an existing comment
 
 ```python
 import time
-import randori_api
-from randori_api.api import default_api
-from randori_api.model.error_schema import ErrorSchema
-from randori_api.model.comment_response_schema import CommentResponseSchema
+import os
+import randori_api_sdk
+from randori_api_sdk.models.comment_response_schema import CommentResponseSchema
+from randori_api_sdk.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://app.randori.io
+
+# Defining the host is optional and defaults to https://app3.randori.io
 # See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api.Configuration(
-    host = "https://app.randori.io"
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -8962,32 +7184,34 @@ configuration = randori_api.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with randori_api.ApiClient(configuration) as api_client:
+with randori_api_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    entity_id = "entity_id_example" # str | 
-    comment_id = "comment_id_example" # str | 
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    comment_id = 'comment_id_example' # str | 
+    entity_id = 'entity_id_example' # str | 
 
-    # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.uuid_comment_id_0(entity_id, comment_id)
+        api_response = api_instance.uuid_comment_id_0(comment_id, entity_id)
+        print("The response of DefaultApi->uuid_comment_id_0:\n")
         pprint(api_response)
-    except randori_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling DefaultApi->uuid_comment_id_0: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **entity_id** | **str**|  |
- **comment_id** | **str**|  |
+ **comment_id** | **str**|  | 
+ **entity_id** | **str**|  | 
 
 ### Return type
 
@@ -9002,6 +7226,170 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate**
+> TokenOutputSchema validate(token_input_schema=token_input_schema)
+
+
+
+Validate provided tokens
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.token_input_schema import TokenInputSchema
+from randori_api_sdk.models.token_output_schema import TokenOutputSchema
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+    token_input_schema = randori_api_sdk.TokenInputSchema() # TokenInputSchema |  (optional)
+
+    try:
+        api_response = api_instance.validate(token_input_schema=token_input_schema)
+        print("The response of DefaultApi->validate:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->validate: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token_input_schema** | [**TokenInputSchema**](TokenInputSchema.md)|  | [optional] 
+
+### Return type
+
+[**TokenOutputSchema**](TokenOutputSchema.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **validate_user_jwt**
+> TokenOutputSchema validate_user_jwt()
+
+
+
+Validate user token from auth
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import os
+import randori_api_sdk
+from randori_api_sdk.models.token_output_schema import TokenOutputSchema
+from randori_api_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = randori_api_sdk.DefaultApi(api_client)
+
+    try:
+        api_response = api_instance.validate_user_jwt()
+        print("The response of DefaultApi->validate_user_jwt:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->validate_user_jwt: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TokenOutputSchema**](TokenOutputSchema.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

@@ -2,38 +2,56 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**org_id** | **str** |  | 
 **affiliation_state** | **str** |  | [optional] 
+**characteristic_tags** | **List[str]** |  | [optional] 
 **confidence** | **int** |  | [optional] 
-**country** | **str, none_type** |  | [optional] 
+**country** | **str** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
-**hostname** | **str, none_type** |  | [optional] 
+**hostname** | **str** |  | [optional] 
+**id** | **str** |  | 
 **impact_score** | **str** |  | [optional] 
 **ip** | **str** |  | [optional] 
 **ip_id** | **str** |  | [optional] 
 **ip_str** | **str** |  | [optional] 
 **last_seen** | **datetime** |  | [optional] 
-**latitude** | **float, none_type** |  | [optional] 
+**latitude** | **float** |  | [optional] 
 **lens_id** | **str** |  | [optional] 
 **lens_view** | **str** |  | [optional] 
-**longitude** | **float, none_type** |  | [optional] 
+**longitude** | **float** |  | [optional] 
 **network** | **str** |  | [optional] 
 **network_id** | **str** |  | [optional] 
 **network_str** | **str** |  | [optional] 
 **open_port_count** | **int** |  | [optional] 
+**org_id** | **str** |  | 
 **perspective** | **str** |  | [optional] 
 **perspective_name** | **str** |  | [optional] 
-**radius** | **float, none_type** |  | [optional] 
-**service_count** | **int, none_type** |  | [optional] 
+**radius** | **float** |  | [optional] 
+**service_count** | **int** |  | [optional] 
 **status** | **str** |  | [optional] 
-**tags** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
 **target_count** | **int** |  | [optional] 
-**target_temptation** | **int, none_type** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**target_temptation** | **int** |  | [optional] 
+**user_tags** | **List[str]** |  | [optional] 
 
+## Example
+
+```python
+from randori_api_sdk.models.ips_for_network import IpsForNetwork
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of IpsForNetwork from a JSON string
+ips_for_network_instance = IpsForNetwork.from_json(json)
+# print the JSON string representation of the object
+print IpsForNetwork.to_json()
+
+# convert the object into a dict
+ips_for_network_dict = ips_for_network_instance.to_dict()
+# create an instance of IpsForNetwork from a dict
+ips_for_network_form_dict = ips_for_network.from_dict(ips_for_network_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

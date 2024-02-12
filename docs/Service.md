@@ -2,42 +2,60 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**org_id** | **str** |  | 
-**applicability** | **int, none_type** |  | [optional] 
-**attack_note** | **str, none_type** |  | [optional] 
+**applicability** | **int** |  | [optional] 
+**attack_note** | **str** |  | [optional] 
 **confidence** | **int** |  | [optional] 
-**cpe** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
-**criticality** | **int, none_type** |  | [optional] 
+**cpe** | **object** |  | [optional] 
+**criticality** | **int** |  | [optional] 
 **deleted** | **bool** |  | [optional] 
-**description** | **str, none_type** |  | [optional] 
-**enumerability** | **int, none_type** |  | [optional] 
-**exploitability** | **int, none_type** |  | [optional] 
+**description** | **str** |  | [optional] 
+**description_source** | **str** |  | [optional] 
+**enumerability** | **int** |  | [optional] 
+**exploitability** | **int** |  | [optional] 
 **first_seen** | **datetime** |  | [optional] 
+**id** | **str** |  | 
 **instance_count** | **float** |  | [optional] 
 **ip_count** | **float** |  | [optional] 
 **last_seen** | **datetime** |  | [optional] 
 **lens_id** | **str** |  | [optional] 
 **lens_view** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**org_id** | **str** |  | 
 **perspective** | **str** |  | [optional] 
 **perspective_name** | **str** |  | [optional] 
-**post_exploit** | **int, none_type** |  | [optional] 
-**private_weakness** | **int, none_type** |  | [optional] 
-**public_weakness** | **int, none_type** |  | [optional] 
-**randori_notes** | **str, none_type** |  | [optional] 
-**reference** | **str, none_type** |  | [optional] 
-**research** | **int, none_type** |  | [optional] 
+**post_exploit** | **int** |  | [optional] 
+**private_weakness** | **int** |  | [optional] 
+**public_weakness** | **int** |  | [optional] 
+**randori_notes** | **str** |  | [optional] 
+**reference** | **str** |  | [optional] 
+**research** | **int** |  | [optional] 
 **service_id** | **str** |  | [optional] 
-**target_temptation** | **int, none_type** |  | [optional] 
-**tech_category** | **[str], none_type** |  | [optional] 
+**target_temptation** | **int** |  | [optional] 
+**tech_category** | **List[str]** |  | [optional] 
 **temptation_last_modified** | **datetime** |  | [optional] 
-**vendor** | **str, none_type** |  | [optional] 
-**version** | **str, none_type** |  | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**vendor** | **str** |  | [optional] 
+**version** | **str** |  | [optional] 
 
+## Example
+
+```python
+from randori_api_sdk.models.service import Service
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Service from a JSON string
+service_instance = Service.from_json(json)
+# print the JSON string representation of the object
+print Service.to_json()
+
+# convert the object into a dict
+service_dict = service_instance.to_dict()
+# create an instance of Service from a dict
+service_form_dict = service.from_dict(service_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 
