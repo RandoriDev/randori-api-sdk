@@ -1715,14 +1715,14 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
-        self.get_entityid_comment_endpoint = _Endpoint(
+        self.get_comment_endpoint = _Endpoint(
             settings={
                 'response_type': (CommentResponseCollectionSchema,),
                 'auth': [
                     'bearerAuth'
                 ],
                 'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment',
-                'operation_id': 'get_entityid_comment',
+                'operation_id': 'get_comment',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -5535,14 +5535,14 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
-        self.patch_entiityid_commentid_endpoint = _Endpoint(
+        self.patch_comment_endpoint = _Endpoint(
             settings={
                 'response_type': (CommentResponseSchema,),
                 'auth': [
                     'bearerAuth'
                 ],
                 'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment/{comment_id}',
-                'operation_id': 'patch_entiityid_commentid',
+                'operation_id': 'patch_comment',
                 'http_method': 'PATCH',
                 'servers': None,
             },
@@ -6106,6 +6106,63 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
+        self.post_comment_endpoint = _Endpoint(
+            settings={
+                'response_type': (CommentResponseSchema,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment',
+                'operation_id': 'post_comment',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'entity_id',
+                    'comment_creation_schema',
+                ],
+                'required': [
+                    'entity_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'entity_id':
+                        (str,),
+                    'comment_creation_schema':
+                        (CommentCreationSchema,),
+                },
+                'attribute_map': {
+                    'entity_id': 'entity_id',
+                },
+                'location_map': {
+                    'entity_id': 'path',
+                    'comment_creation_schema': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.post_comment_multi_endpoint = _Endpoint(
             settings={
                 'response_type': None,
@@ -6142,63 +6199,6 @@ class DefaultApi(object):
                 },
                 'location_map': {
                     'external_comment_creation_schema': 'body',
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [
-                    'application/json'
-                ],
-                'content_type': [
-                    'application/json'
-                ]
-            },
-            api_client=api_client
-        )
-        self.post_entity_comment_endpoint = _Endpoint(
-            settings={
-                'response_type': (CommentResponseSchema,),
-                'auth': [
-                    'bearerAuth'
-                ],
-                'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment',
-                'operation_id': 'post_entity_comment',
-                'http_method': 'POST',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                    'entity_id',
-                    'comment_creation_schema',
-                ],
-                'required': [
-                    'entity_id',
-                ],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                    'entity_id':
-                        (str,),
-                    'comment_creation_schema':
-                        (CommentCreationSchema,),
-                },
-                'attribute_map': {
-                    'entity_id': 'entity_id',
-                },
-                'location_map': {
-                    'entity_id': 'path',
-                    'comment_creation_schema': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -7904,18 +7904,18 @@ class DefaultApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_authorization_policy_endpoint.call_with_http_info(**kwargs)
 
-    def get_entityid_comment(
+    def get_comment(
         self,
         entity_id,
         **kwargs
     ):
-        """get_entityid_comment  # noqa: E501
+        """get_comment  # noqa: E501
 
         Retrieves a page of comments for a provided entity ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_entityid_comment(entity_id, async_req=True)
+        >>> thread = api.get_comment(entity_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -7982,7 +7982,7 @@ class DefaultApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['entity_id'] = \
             entity_id
-        return self.get_entityid_comment_endpoint.call_with_http_info(**kwargs)
+        return self.get_comment_endpoint.call_with_http_info(**kwargs)
 
     def get_guidance_file(
         self,
@@ -11493,19 +11493,19 @@ class DefaultApi(object):
             feature_name
         return self.org_with_feature_endpoint.call_with_http_info(**kwargs)
 
-    def patch_entiityid_commentid(
+    def patch_comment(
         self,
         comment_id,
         entity_id,
         **kwargs
     ):
-        """patch_entiityid_commentid  # noqa: E501
+        """patch_comment  # noqa: E501
 
         Updates an existing comment  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.patch_entiityid_commentid(comment_id, entity_id, async_req=True)
+        >>> thread = api.patch_comment(comment_id, entity_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -11574,7 +11574,7 @@ class DefaultApi(object):
             comment_id
         kwargs['entity_id'] = \
             entity_id
-        return self.patch_entiityid_commentid_endpoint.call_with_http_info(**kwargs)
+        return self.patch_comment_endpoint.call_with_http_info(**kwargs)
 
     def patch_hostname(
         self,
@@ -12329,6 +12329,85 @@ class DefaultApi(object):
             target_user_id
         return self.permission_groups_read_endpoint.call_with_http_info(**kwargs)
 
+    def post_comment(
+        self,
+        entity_id,
+        **kwargs
+    ):
+        """post_comment  # noqa: E501
+
+        Creates a single comment for a provided entity ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.post_comment(entity_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            entity_id (str):
+
+        Keyword Args:
+            comment_creation_schema (CommentCreationSchema): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CommentResponseSchema
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['entity_id'] = \
+            entity_id
+        return self.post_comment_endpoint.call_with_http_info(**kwargs)
+
     def post_comment_multi(
         self,
         **kwargs
@@ -12402,85 +12481,6 @@ class DefaultApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.post_comment_multi_endpoint.call_with_http_info(**kwargs)
-
-    def post_entity_comment(
-        self,
-        entity_id,
-        **kwargs
-    ):
-        """post_entity_comment  # noqa: E501
-
-        Creates a single comment for a provided entity ID.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.post_entity_comment(entity_id, async_req=True)
-        >>> result = thread.get()
-
-        Args:
-            entity_id (str):
-
-        Keyword Args:
-            comment_creation_schema (CommentCreationSchema): [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _spec_property_naming (bool): True if the variable names in the input data
-                are serialized names, as specified in the OpenAPI document.
-                False if the variable names in the input data
-                are pythonic names, e.g. snake case (default)
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            CommentResponseSchema
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_spec_property_naming'] = kwargs.get(
-            '_spec_property_naming', False
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['entity_id'] = \
-            entity_id
-        return self.post_entity_comment_endpoint.call_with_http_info(**kwargs)
 
     def post_saved_views(
         self,

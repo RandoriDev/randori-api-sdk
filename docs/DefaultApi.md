@@ -20,7 +20,7 @@ Method | HTTP request | Description
 [**get_attack_runbook**](DefaultApi.md#get_attack_runbook) | **GET** /attack/api/v1/user/runbooks | 
 [**get_attack_statistics**](DefaultApi.md#get_attack_statistics) | **GET** /attack/api/v1/user/statistics | 
 [**get_authorization_policy**](DefaultApi.md#get_authorization_policy) | **GET** /recon/api/v1/authorization-policy | 
-[**get_entityid_comment**](DefaultApi.md#get_entityid_comment) | **GET** /recon/api/v1/entity/{entity_id}/comment | 
+[**get_comment**](DefaultApi.md#get_comment) | **GET** /recon/api/v1/entity/{entity_id}/comment | 
 [**get_guidance_file**](DefaultApi.md#get_guidance_file) | **GET** /guidance-articles/api/v1/{tag}.md | 
 [**get_hostname**](DefaultApi.md#get_hostname) | **GET** /recon/api/v1/hostname | 
 [**get_hostnames_for_ip**](DefaultApi.md#get_hostnames_for_ip) | **GET** /recon/api/v1/hostnames-for-ip | 
@@ -66,7 +66,7 @@ Method | HTTP request | Description
 [**mitre_tactic**](DefaultApi.md#mitre_tactic) | **GET** /recon/api/v1/mitre/tactic/{mitre_code} | 
 [**mitre_technique**](DefaultApi.md#mitre_technique) | **GET** /recon/api/v1/mitre/technique/{mitre_code} | 
 [**org_with_feature**](DefaultApi.md#org_with_feature) | **GET** /auth/api/v1/org_with_feature | 
-[**patch_entiityid_commentid**](DefaultApi.md#patch_entiityid_commentid) | **PATCH** /recon/api/v1/entity/{entity_id}/comment/{comment_id} | 
+[**patch_comment**](DefaultApi.md#patch_comment) | **PATCH** /recon/api/v1/entity/{entity_id}/comment/{comment_id} | 
 [**patch_hostname**](DefaultApi.md#patch_hostname) | **PATCH** /recon/api/v1/hostname | 
 [**patch_ip**](DefaultApi.md#patch_ip) | **PATCH** /recon/api/v1/ip | 
 [**patch_network**](DefaultApi.md#patch_network) | **PATCH** /recon/api/v1/network | 
@@ -77,8 +77,8 @@ Method | HTTP request | Description
 [**paths**](DefaultApi.md#paths) | **GET** /recon/api/v1/paths | 
 [**permission_group_types**](DefaultApi.md#permission_group_types) | **GET** /auth/api/v1/permission-group-types | 
 [**permission_groups_read**](DefaultApi.md#permission_groups_read) | **GET** /auth/api/v1/permission-groups | 
+[**post_comment**](DefaultApi.md#post_comment) | **POST** /recon/api/v1/entity/{entity_id}/comment | 
 [**post_comment_multi**](DefaultApi.md#post_comment_multi) | **POST** /recon/api/v1/comment | 
-[**post_entity_comment**](DefaultApi.md#post_entity_comment) | **POST** /recon/api/v1/entity/{entity_id}/comment | 
 [**post_saved_views**](DefaultApi.md#post_saved_views) | **POST** /recon/api/v1/saved-views | 
 [**recon_worker_node_ips**](DefaultApi.md#recon_worker_node_ips) | **GET** /recon/api/v1/recon-worker-node-ips | 
 [**renew**](DefaultApi.md#renew) | **POST** /auth/api/v1/renew | 
@@ -1550,8 +1550,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_entityid_comment**
-> CommentResponseCollectionSchema get_entityid_comment(entity_id)
+# **get_comment**
+> CommentResponseCollectionSchema get_comment(entity_id)
 
 
 
@@ -1594,18 +1594,18 @@ with randori_api_sdk.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.get_entityid_comment(entity_id)
+        api_response = api_instance.get_comment(entity_id)
         pprint(api_response)
     except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->get_entityid_comment: %s\n" % e)
+        print("Exception when calling DefaultApi->get_comment: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.get_entityid_comment(entity_id, offset=offset, limit=limit)
+        api_response = api_instance.get_comment(entity_id, offset=offset, limit=limit)
         pprint(api_response)
     except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->get_entityid_comment: %s\n" % e)
+        print("Exception when calling DefaultApi->get_comment: %s\n" % e)
 ```
 
 
@@ -5708,8 +5708,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patch_entiityid_commentid**
-> CommentResponseSchema patch_entiityid_commentid(comment_id, entity_id)
+# **patch_comment**
+> CommentResponseSchema patch_comment(comment_id, entity_id)
 
 
 
@@ -5755,18 +5755,18 @@ with randori_api_sdk.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.patch_entiityid_commentid(comment_id, entity_id)
+        api_response = api_instance.patch_comment(comment_id, entity_id)
         pprint(api_response)
     except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->patch_entiityid_commentid: %s\n" % e)
+        print("Exception when calling DefaultApi->patch_comment: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.patch_entiityid_commentid(comment_id, entity_id, comment_creation_schema=comment_creation_schema)
+        api_response = api_instance.patch_comment(comment_id, entity_id, comment_creation_schema=comment_creation_schema)
         pprint(api_response)
     except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->patch_entiityid_commentid: %s\n" % e)
+        print("Exception when calling DefaultApi->patch_comment: %s\n" % e)
 ```
 
 
@@ -6690,6 +6690,101 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **post_comment**
+> CommentResponseSchema post_comment(entity_id)
+
+
+
+Creates a single comment for a provided entity ID.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import randori_api_sdk
+from randori_api_sdk.api import default_api
+from randori_api_sdk.model.error_schema import ErrorSchema
+from randori_api_sdk.model.comment_response_schema import CommentResponseSchema
+from randori_api_sdk.model.comment_creation_schema import CommentCreationSchema
+from pprint import pprint
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = default_api.DefaultApi(api_client)
+    entity_id = "entity_id_example" # str | 
+    comment_creation_schema = CommentCreationSchema(
+        comment="comment_example",
+    ) # CommentCreationSchema |  (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        api_response = api_instance.post_comment(entity_id)
+        pprint(api_response)
+    except randori_api_sdk.ApiException as e:
+        print("Exception when calling DefaultApi->post_comment: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        api_response = api_instance.post_comment(entity_id, comment_creation_schema=comment_creation_schema)
+        pprint(api_response)
+    except randori_api_sdk.ApiException as e:
+        print("Exception when calling DefaultApi->post_comment: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity_id** | **str**|  |
+ **comment_creation_schema** | [**CommentCreationSchema**](CommentCreationSchema.md)|  | [optional]
+
+### Return type
+
+[**CommentResponseSchema**](CommentResponseSchema.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **post_comment_multi**
 > post_comment_multi()
 
@@ -6774,101 +6869,6 @@ void (empty response body)
 **403** |  |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **post_entity_comment**
-> CommentResponseSchema post_entity_comment(entity_id)
-
-
-
-Creates a single comment for a provided entity ID.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api_sdk
-from randori_api_sdk.api import default_api
-from randori_api_sdk.model.error_schema import ErrorSchema
-from randori_api_sdk.model.comment_response_schema import CommentResponseSchema
-from randori_api_sdk.model.comment_creation_schema import CommentCreationSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app3.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api_sdk.Configuration(
-    host = "https://app3.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    entity_id = "entity_id_example" # str | 
-    comment_creation_schema = CommentCreationSchema(
-        comment="comment_example",
-    ) # CommentCreationSchema |  (optional)
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.post_entity_comment(entity_id)
-        pprint(api_response)
-    except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->post_entity_comment: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        api_response = api_instance.post_entity_comment(entity_id, comment_creation_schema=comment_creation_schema)
-        pprint(api_response)
-    except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->post_entity_comment: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entity_id** | **str**|  |
- **comment_creation_schema** | [**CommentCreationSchema**](CommentCreationSchema.md)|  | [optional]
-
-### Return type
-
-[**CommentResponseSchema**](CommentResponseSchema.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
