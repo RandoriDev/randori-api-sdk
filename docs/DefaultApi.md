@@ -78,7 +78,7 @@ Method | HTTP request | Description
 [**permission_group_types**](DefaultApi.md#permission_group_types) | **GET** /auth/api/v1/permission-group-types | 
 [**permission_groups_read**](DefaultApi.md#permission_groups_read) | **GET** /auth/api/v1/permission-groups | 
 [**post_comment_multi**](DefaultApi.md#post_comment_multi) | **POST** /recon/api/v1/comment | 
-[**post_entityid_comment**](DefaultApi.md#post_entityid_comment) | **POST** /recon/api/v1/entity/{entity_id}/comment | 
+[**post_entity_comment**](DefaultApi.md#post_entity_comment) | **POST** /recon/api/v1/entity/{entity_id}/comment | 
 [**post_saved_views**](DefaultApi.md#post_saved_views) | **POST** /recon/api/v1/saved-views | 
 [**recon_worker_node_ips**](DefaultApi.md#recon_worker_node_ips) | **GET** /recon/api/v1/recon-worker-node-ips | 
 [**renew**](DefaultApi.md#renew) | **POST** /auth/api/v1/renew | 
@@ -6777,8 +6777,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **post_entityid_comment**
-> CommentResponseSchema post_entityid_comment(entity_id)
+# **post_entity_comment**
+> CommentResponseSchema post_entity_comment(entity_id)
 
 
 
@@ -6823,18 +6823,18 @@ with randori_api_sdk.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.post_entityid_comment(entity_id)
+        api_response = api_instance.post_entity_comment(entity_id)
         pprint(api_response)
     except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->post_entityid_comment: %s\n" % e)
+        print("Exception when calling DefaultApi->post_entity_comment: %s\n" % e)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        api_response = api_instance.post_entityid_comment(entity_id, comment_creation_schema=comment_creation_schema)
+        api_response = api_instance.post_entity_comment(entity_id, comment_creation_schema=comment_creation_schema)
         pprint(api_response)
     except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->post_entityid_comment: %s\n" % e)
+        print("Exception when calling DefaultApi->post_entity_comment: %s\n" % e)
 ```
 
 

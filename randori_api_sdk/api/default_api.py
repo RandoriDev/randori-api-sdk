@@ -6156,14 +6156,14 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
-        self.post_entityid_comment_endpoint = _Endpoint(
+        self.post_entity_comment_endpoint = _Endpoint(
             settings={
                 'response_type': (CommentResponseSchema,),
                 'auth': [
                     'bearerAuth'
                 ],
                 'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment',
-                'operation_id': 'post_entityid_comment',
+                'operation_id': 'post_entity_comment',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -12403,18 +12403,18 @@ class DefaultApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.post_comment_multi_endpoint.call_with_http_info(**kwargs)
 
-    def post_entityid_comment(
+    def post_entity_comment(
         self,
         entity_id,
         **kwargs
     ):
-        """post_entityid_comment  # noqa: E501
+        """post_entity_comment  # noqa: E501
 
         Creates a single comment for a provided entity ID.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.post_entityid_comment(entity_id, async_req=True)
+        >>> thread = api.post_entity_comment(entity_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -12480,7 +12480,7 @@ class DefaultApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['entity_id'] = \
             entity_id
-        return self.post_entityid_comment_endpoint.call_with_http_info(**kwargs)
+        return self.post_entity_comment_endpoint.call_with_http_info(**kwargs)
 
     def post_saved_views(
         self,
