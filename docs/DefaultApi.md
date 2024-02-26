@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**add_affiliation_file**](DefaultApi.md#add_affiliation_file) | **POST** /artifactstore/api/v1/add_affiliation_file | 
 [**artifacts**](DefaultApi.md#artifacts) | **GET** /artifactstore/api/v1/activity-log/{activity_instance_id}/artifacts | 
 [**change_password**](DefaultApi.md#change_password) | **POST** /auth/api/v1/change-password | 
-[**delete_coment**](DefaultApi.md#delete_coment) | **DELETE** /recon/api/v1/entity/{entity_id}/comment/{comment_id} | 
+[**delete_comment**](DefaultApi.md#delete_comment) | **DELETE** /recon/api/v1/entity/{entity_id}/comment/{comment_id} | 
 [**delete_single_saved_views**](DefaultApi.md#delete_single_saved_views) | **DELETE** /recon/api/v1/saved-views/{id} | 
 [**features**](DefaultApi.md#features) | **GET** /auth/api/v1/features | 
 [**features_org**](DefaultApi.md#features_org) | **GET** /auth/api/v1/features-org | 
@@ -346,8 +346,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_coment**
-> CommentResponseSchema delete_coment(comment_id, entity_id)
+# **delete_comment**
+> CommentResponseSchema delete_comment(comment_id, entity_id)
 
 
 
@@ -389,10 +389,10 @@ with randori_api_sdk.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        api_response = api_instance.delete_coment(comment_id, entity_id)
+        api_response = api_instance.delete_comment(comment_id, entity_id)
         pprint(api_response)
     except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->delete_coment: %s\n" % e)
+        print("Exception when calling DefaultApi->delete_comment: %s\n" % e)
 ```
 
 

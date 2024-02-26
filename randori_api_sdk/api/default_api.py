@@ -276,14 +276,14 @@ class DefaultApi(object):
             },
             api_client=api_client
         )
-        self.delete_coment_endpoint = _Endpoint(
+        self.delete_comment_endpoint = _Endpoint(
             settings={
                 'response_type': (CommentResponseSchema,),
                 'auth': [
                     'bearerAuth'
                 ],
                 'endpoint_path': '/recon/api/v1/entity/{entity_id}/comment/{comment_id}',
-                'operation_id': 'delete_coment',
+                'operation_id': 'delete_comment',
                 'http_method': 'DELETE',
                 'servers': None,
             },
@@ -6892,19 +6892,19 @@ class DefaultApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.change_password_endpoint.call_with_http_info(**kwargs)
 
-    def delete_coment(
+    def delete_comment(
         self,
         comment_id,
         entity_id,
         **kwargs
     ):
-        """delete_coment  # noqa: E501
+        """delete_comment  # noqa: E501
 
         Deletes an existing comment  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.delete_coment(comment_id, entity_id, async_req=True)
+        >>> thread = api.delete_comment(comment_id, entity_id, async_req=True)
         >>> result = thread.get()
 
         Args:
@@ -6972,7 +6972,7 @@ class DefaultApi(object):
             comment_id
         kwargs['entity_id'] = \
             entity_id
-        return self.delete_coment_endpoint.call_with_http_info(**kwargs)
+        return self.delete_comment_endpoint.call_with_http_info(**kwargs)
 
     def delete_single_saved_views(
         self,
