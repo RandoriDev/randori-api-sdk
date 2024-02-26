@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**add_affiliation_file**](DefaultApi.md#add_affiliation_file) | **POST** /artifactstore/api/v1/add_affiliation_file | 
 [**artifacts**](DefaultApi.md#artifacts) | **GET** /artifactstore/api/v1/activity-log/{activity_instance_id}/artifacts | 
 [**change_password**](DefaultApi.md#change_password) | **POST** /auth/api/v1/change-password | 
+[**delete_coment**](DefaultApi.md#delete_coment) | **DELETE** /recon/api/v1/entity/{entity_id}/comment/{comment_id} | 
 [**delete_single_saved_views**](DefaultApi.md#delete_single_saved_views) | **DELETE** /recon/api/v1/saved-views/{id} | 
 [**features**](DefaultApi.md#features) | **GET** /auth/api/v1/features | 
 [**features_org**](DefaultApi.md#features_org) | **GET** /auth/api/v1/features-org | 
@@ -85,7 +86,6 @@ Method | HTTP request | Description
 [**renew_api_token**](DefaultApi.md#renew_api_token) | **POST** /auth/api/v1/renew-api-token | 
 [**tag**](DefaultApi.md#tag) | **GET** /recon/api/v1/tag | 
 [**uuid_artifactsource_uuid**](DefaultApi.md#uuid_artifactsource_uuid) | **GET** /artifactstore/api/v1/retrieve-artifact/{artifactsource_uuid} | 
-[**uuid_comment_id**](DefaultApi.md#uuid_comment_id) | **DELETE** /recon/api/v1/entity/{entity_id}/comment/{comment_id} | 
 [**validate**](DefaultApi.md#validate) | **POST** /auth/api/v1/validate | 
 [**validate_user_jwt**](DefaultApi.md#validate_user_jwt) | **GET** /auth/api/v1/validate | 
 
@@ -330,6 +330,90 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** |  |  -  |
+**401** |  |  -  |
+**403** |  |  -  |
+**404** |  |  -  |
+**500** |  |  -  |
+**0** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_coment**
+> CommentResponseSchema delete_coment(comment_id, entity_id)
+
+
+
+Deletes an existing comment
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import randori_api_sdk
+from randori_api_sdk.api import default_api
+from randori_api_sdk.model.error_schema import ErrorSchema
+from randori_api_sdk.model.comment_response_schema import CommentResponseSchema
+from pprint import pprint
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = default_api.DefaultApi(api_client)
+    comment_id = "comment_id_example" # str | 
+    entity_id = "entity_id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        api_response = api_instance.delete_coment(comment_id, entity_id)
+        pprint(api_response)
+    except randori_api_sdk.ApiException as e:
+        print("Exception when calling DefaultApi->delete_coment: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **comment_id** | **str**|  |
+ **entity_id** | **str**|  |
+
+### Return type
+
+[**CommentResponseSchema**](CommentResponseSchema.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -7384,90 +7468,6 @@ void (empty response body)
 **403** |  |  -  |
 **404** |  |  -  |
 **500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **uuid_comment_id**
-> CommentResponseSchema uuid_comment_id(comment_id, entity_id)
-
-
-
-Deletes an existing comment
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api_sdk
-from randori_api_sdk.api import default_api
-from randori_api_sdk.model.error_schema import ErrorSchema
-from randori_api_sdk.model.comment_response_schema import CommentResponseSchema
-from pprint import pprint
-# Defining the host is optional and defaults to https://app3.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api_sdk.Configuration(
-    host = "https://app3.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = default_api.DefaultApi(api_client)
-    comment_id = "comment_id_example" # str | 
-    entity_id = "entity_id_example" # str | 
-
-    # example passing only required values which don't have defaults set
-    try:
-        api_response = api_instance.uuid_comment_id(comment_id, entity_id)
-        pprint(api_response)
-    except randori_api_sdk.ApiException as e:
-        print("Exception when calling DefaultApi->uuid_comment_id: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **comment_id** | **str**|  |
- **entity_id** | **str**|  |
-
-### Return type
-
-[**CommentResponseSchema**](CommentResponseSchema.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**400** |  |  -  |
-**401** |  |  -  |
-**403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
-**0** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
