@@ -618,7 +618,7 @@ class CmsApi(object):
                 'auth': [
                     'bearerAuth'
                 ],
-                'endpoint_path': '/cms/api/v1/frontend/activity-configurations/:id/applicable-entities/:entity_type',
+                'endpoint_path': '/cms/api/v1/frontend/activity-configurations/{id}/applicable-entities/{entity_type}',
                 'operation_id': 'frontend_list_applicable_entities_parameters',
                 'http_method': 'GET',
                 'servers': None,
