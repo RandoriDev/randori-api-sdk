@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **actions** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]** |  | [optional] 
 **expires_at** | **datetime, none_type** |  | [optional] 
 **id** | **str** |  | [optional] 
+**is_deleted** | **bool** |  | [optional] 
+**is_dirty** | **bool** |  | [optional] 
 **name** | **str, none_type** |  | [optional] 
 **notes** | **str, none_type** |  | [optional] 
 **version** | **int** |  | [optional] 

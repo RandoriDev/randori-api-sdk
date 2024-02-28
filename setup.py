@@ -1,12 +1,7 @@
 """
-© Copyright IBM Corp. 2022
-Copyright © 2022 Randori https://randori.com - All Rights Reserved.
-"""
+    Randori API SDK
 
-"""
-    Randori API
-
-    Endpoints accessible using API tokens  # noqa: E501
+    A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
 
     The version of the OpenAPI document: 1.0
     Contact: support@randori.com
@@ -16,8 +11,8 @@ Copyright © 2022 Randori https://randori.com - All Rights Reserved.
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "Randori-API"
-VERSION = "1.5.0"
+NAME = "randori-api-sdk"
+VERSION = "1.6.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -33,17 +28,17 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Randori API",
+    description="Randori API SDK",
     author="API Support",
     author_email="support@randori.com",
-    url="",
-    keywords=["OpenAPI", "OpenAPI-Generator", "Randori API"],
+    url="https://github.com/RandoriDev/randori-api-sdk",
+    keywords=["OpenAPI", "OpenAPI-Generator", "Randori API SDK"],
     python_requires=">=3.6",
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="Proprietary License",
     long_description="""\
-    Endpoints accessible using API tokens  # noqa: E501
+    A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
     """
 )
