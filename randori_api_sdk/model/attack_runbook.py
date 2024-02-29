@@ -115,7 +115,7 @@ class AttackRunbook(ModelNormal):
             'implant_src_ip': ([str, none_type], none_type,),  # noqa: E501
             'instance_label': (str, none_type,),  # noqa: E501
             'objective': (str, none_type,),  # noqa: E501
-            'perspective_metadata': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
+            'perspective_metadata': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type,),  # noqa: E501
             'randori_notes': (str, none_type,),  # noqa: E501
             'results': (str, none_type,),  # noqa: E501
             'src_email': ([str, none_type], none_type,),  # noqa: E501
@@ -123,7 +123,7 @@ class AttackRunbook(ModelNormal):
             'src_ip': ([str, none_type], none_type,),  # noqa: E501
             'src_mac': ([str, none_type], none_type,),  # noqa: E501
             'src_misc': ([str, none_type], none_type,),  # noqa: E501
-            'trigger': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
+            'trigger': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -244,7 +244,7 @@ class AttackRunbook(ModelNormal):
             implant_src_ip ([str, none_type], none_type): [optional]  # noqa: E501
             instance_label (str, none_type): [optional]  # noqa: E501
             objective (str, none_type): [optional]  # noqa: E501
-            perspective_metadata ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
+            perspective_metadata ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type): [optional]  # noqa: E501
             randori_notes (str, none_type): [optional]  # noqa: E501
             results (str, none_type): [optional]  # noqa: E501
             src_email ([str, none_type], none_type): [optional]  # noqa: E501
@@ -252,7 +252,7 @@ class AttackRunbook(ModelNormal):
             src_ip ([str, none_type], none_type): [optional]  # noqa: E501
             src_mac ([str, none_type], none_type): [optional]  # noqa: E501
             src_misc ([str, none_type], none_type): [optional]  # noqa: E501
-            trigger ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
+            trigger ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -374,7 +374,7 @@ class AttackRunbook(ModelNormal):
             implant_src_ip ([str, none_type], none_type): [optional]  # noqa: E501
             instance_label (str, none_type): [optional]  # noqa: E501
             objective (str, none_type): [optional]  # noqa: E501
-            perspective_metadata ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
+            perspective_metadata ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type): [optional]  # noqa: E501
             randori_notes (str, none_type): [optional]  # noqa: E501
             results (str, none_type): [optional]  # noqa: E501
             src_email ([str, none_type], none_type): [optional]  # noqa: E501
@@ -382,7 +382,7 @@ class AttackRunbook(ModelNormal):
             src_ip ([str, none_type], none_type): [optional]  # noqa: E501
             src_mac ([str, none_type], none_type): [optional]  # noqa: E501
             src_misc ([str, none_type], none_type): [optional]  # noqa: E501
-            trigger ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
+            trigger ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

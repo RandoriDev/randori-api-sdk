@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | **str, none_type** |  | [optional] 
 **is_renderable** | **bool, none_type** |  | [optional] 
 **org_id** | **str, none_type** |  | [optional] 
-**renderable_metadata** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
+**renderable_metadata** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
 **shasum** | **str, none_type** |  | [optional] 
 **source** | **str, none_type** |  | [optional] 
 **updated** | **datetime, none_type** |  | [optional] 

@@ -107,7 +107,7 @@ class Service(ModelNormal):
             'applicability': (int, none_type,),  # noqa: E501
             'attack_note': (str, none_type,),  # noqa: E501
             'confidence': (int, none_type,),  # noqa: E501
-            'cpe': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'cpe': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'criticality': (int, none_type,),  # noqa: E501
             'deleted': (bool, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
@@ -226,7 +226,7 @@ class Service(ModelNormal):
             applicability (int, none_type): [optional]  # noqa: E501
             attack_note (str, none_type): [optional]  # noqa: E501
             confidence (int, none_type): [optional]  # noqa: E501
-            cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             criticality (int, none_type): [optional]  # noqa: E501
             deleted (bool, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
@@ -344,7 +344,7 @@ class Service(ModelNormal):
             applicability (int, none_type): [optional]  # noqa: E501
             attack_note (str, none_type): [optional]  # noqa: E501
             confidence (int, none_type): [optional]  # noqa: E501
-            cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             criticality (int, none_type): [optional]  # noqa: E501
             deleted (bool, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501

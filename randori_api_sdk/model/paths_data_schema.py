@@ -90,8 +90,8 @@ class PathsDataSchema(ModelNormal):
         """
         lazy_import()
         return {
-            'edges': ({str: (PathDrSchema,)},),  # noqa: E501
-            'nodes': ({str: (PathEntitySchema,)},),  # noqa: E501
+            'edges': ({str: (PathDrSchema,)}, none_type,),  # noqa: E501
+            'nodes': ({str: (PathEntitySchema,)}, none_type,),  # noqa: E501
             'paths': ([[str], none_type], none_type,),  # noqa: E501
         }
 
@@ -147,8 +147,8 @@ class PathsDataSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            edges ({str: (PathDrSchema,)}): [optional]  # noqa: E501
-            nodes ({str: (PathEntitySchema,)}): [optional]  # noqa: E501
+            edges ({str: (PathDrSchema,)}, none_type): [optional]  # noqa: E501
+            nodes ({str: (PathEntitySchema,)}, none_type): [optional]  # noqa: E501
             paths ([[str], none_type], none_type): [optional]  # noqa: E501
         """
 
@@ -231,8 +231,8 @@ class PathsDataSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            edges ({str: (PathDrSchema,)}): [optional]  # noqa: E501
-            nodes ({str: (PathEntitySchema,)}): [optional]  # noqa: E501
+            edges ({str: (PathDrSchema,)}, none_type): [optional]  # noqa: E501
+            nodes ({str: (PathEntitySchema,)}, none_type): [optional]  # noqa: E501
             paths ([[str], none_type], none_type): [optional]  # noqa: E501
         """
 

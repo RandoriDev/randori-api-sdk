@@ -118,7 +118,7 @@ class SocialEntity(ModelNormal):
             'confidence': (int, none_type,),  # noqa: E501
             'country': (str, none_type,),  # noqa: E501
             'deleted': (bool, none_type,),  # noqa: E501
-            'details': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'details': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'domain': (str, none_type,),  # noqa: E501
             'email': (str, none_type,),  # noqa: E501
             'email_type': (str, none_type,),  # noqa: E501
@@ -263,7 +263,7 @@ class SocialEntity(ModelNormal):
             confidence (int, none_type): [optional]  # noqa: E501
             country (str, none_type): [optional]  # noqa: E501
             deleted (bool, none_type): [optional]  # noqa: E501
-            details ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            details ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             domain (str, none_type): [optional]  # noqa: E501
             email (str, none_type): [optional]  # noqa: E501
             email_type (str, none_type): [optional]  # noqa: E501
@@ -394,7 +394,7 @@ class SocialEntity(ModelNormal):
             confidence (int, none_type): [optional]  # noqa: E501
             country (str, none_type): [optional]  # noqa: E501
             deleted (bool, none_type): [optional]  # noqa: E501
-            details ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            details ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             domain (str, none_type): [optional]  # noqa: E501
             email (str, none_type): [optional]  # noqa: E501
             email_type (str, none_type): [optional]  # noqa: E501

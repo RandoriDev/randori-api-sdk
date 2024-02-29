@@ -89,7 +89,7 @@ class ArtifactForActivityResponseSchema(ModelNormal):
             'id': (str, none_type,),  # noqa: E501
             'is_renderable': (bool, none_type,),  # noqa: E501
             'org_id': (str, none_type,),  # noqa: E501
-            'renderable_metadata': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'renderable_metadata': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'shasum': (str, none_type,),  # noqa: E501
             'source': (str, none_type,),  # noqa: E501
             'updated': (datetime, none_type,),  # noqa: E501
@@ -162,7 +162,7 @@ class ArtifactForActivityResponseSchema(ModelNormal):
             id (str, none_type): [optional]  # noqa: E501
             is_renderable (bool, none_type): [optional]  # noqa: E501
             org_id (str, none_type): [optional]  # noqa: E501
-            renderable_metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            renderable_metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             shasum (str, none_type): [optional]  # noqa: E501
             source (str, none_type): [optional]  # noqa: E501
             updated (datetime, none_type): [optional]  # noqa: E501
@@ -254,7 +254,7 @@ class ArtifactForActivityResponseSchema(ModelNormal):
             id (str, none_type): [optional]  # noqa: E501
             is_renderable (bool, none_type): [optional]  # noqa: E501
             org_id (str, none_type): [optional]  # noqa: E501
-            renderable_metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            renderable_metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             shasum (str, none_type): [optional]  # noqa: E501
             source (str, none_type): [optional]  # noqa: E501
             updated (datetime, none_type): [optional]  # noqa: E501

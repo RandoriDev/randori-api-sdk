@@ -86,7 +86,7 @@ class AttackCheckinsForImplant(ModelNormal):
             'id': (str, none_type,),  # noqa: E501
             'implant_id': (str, none_type,),  # noqa: E501
             'last_checkin': (datetime, none_type,),  # noqa: E501
-            'method': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'method': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'org_id': (str, none_type,),  # noqa: E501
             'src_ip': (str, none_type,),  # noqa: E501
             'src_ip_str': (str, none_type,),  # noqa: E501
@@ -123,7 +123,7 @@ class AttackCheckinsForImplant(ModelNormal):
             id (str, none_type):
             implant_id (str, none_type):
             last_checkin (datetime, none_type):
-            method ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            method ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type):
             org_id (str, none_type):
             src_ip (str, none_type):
             src_ip_str (str, none_type):
@@ -222,7 +222,7 @@ class AttackCheckinsForImplant(ModelNormal):
             id (str, none_type):
             implant_id (str, none_type):
             last_checkin (datetime, none_type):
-            method ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            method ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type):
             org_id (str, none_type):
             src_ip (str, none_type):
             src_ip_str (str, none_type):

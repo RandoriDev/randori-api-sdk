@@ -83,7 +83,7 @@ class ReconWorkerNodeIps(ModelNormal):
         """
         return {
             'lookbackdays': (int, none_type,),  # noqa: E501
-            'results': ({str: (bool,)},),  # noqa: E501
+            'results': ({str: (bool,)}, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -138,7 +138,7 @@ class ReconWorkerNodeIps(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             lookbackdays (int, none_type): [optional]  # noqa: E501
-            results ({str: (bool,)}): [optional]  # noqa: E501
+            results ({str: (bool,)}, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -221,7 +221,7 @@ class ReconWorkerNodeIps(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             lookbackdays (int, none_type): [optional]  # noqa: E501
-            results ({str: (bool,)}): [optional]  # noqa: E501
+            results ({str: (bool,)}, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

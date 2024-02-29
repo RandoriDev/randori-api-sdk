@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **created_on** | **datetime, none_type** |  | 
 **hostnames** | **[str, none_type], none_type** |  | 
 **last_checkin** | **datetime, none_type** |  | 
-**method** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
+**method** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | 
 **next_checkin** | **datetime, none_type** |  | 
 **org_id** | **str, none_type** |  | 
 **status** | **str, none_type** |  | 

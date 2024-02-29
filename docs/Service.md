@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **applicability** | **int, none_type** |  | [optional] 
 **attack_note** | **str, none_type** |  | [optional] 
 **confidence** | **int, none_type** |  | [optional] 
-**cpe** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
+**cpe** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
 **criticality** | **int, none_type** |  | [optional] 
 **deleted** | **bool, none_type** |  | [optional] 
 **description** | **str, none_type** |  | [optional] 

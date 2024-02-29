@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **str, none_type** |  | 
 **implant_id** | **str, none_type** |  | 
 **last_checkin** | **datetime, none_type** |  | 
-**method** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
+**method** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | 
 **org_id** | **str, none_type** |  | 
 **src_ip** | **str, none_type** |  | 
 **src_ip_str** | **str, none_type** |  | 

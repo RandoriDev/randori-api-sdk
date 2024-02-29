@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **confidence** | **int, none_type** |  | [optional] 
 **country** | **str, none_type** |  | [optional] 
 **deleted** | **bool, none_type** |  | [optional] 
-**details** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
+**details** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
 **domain** | **str, none_type** |  | [optional] 
 **email** | **str, none_type** |  | [optional] 
 **email_type** | **str, none_type** |  | [optional] 
