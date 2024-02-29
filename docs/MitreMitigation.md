@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **type** | **str, none_type** |  | 
 **x_mitre_domains** | **[str, none_type], none_type** |  | 
 **x_mitre_modified_by_ref** | **str, none_type** |  | 
-**x_mitre_version** | **float** |  | 
+**x_mitre_version** | **float, none_type** |  | 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

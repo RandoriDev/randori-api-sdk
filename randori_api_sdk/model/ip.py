@@ -118,19 +118,19 @@ class Ip(ModelNormal):
             'ip': (str, none_type,),  # noqa: E501
             'ip_str': (str, none_type,),  # noqa: E501
             'last_seen': (datetime, none_type,),  # noqa: E501
-            'latitude': (float,),  # noqa: E501
+            'latitude': (float, none_type,),  # noqa: E501
             'lens_id': (str, none_type,),  # noqa: E501
             'lens_view': (str, none_type,),  # noqa: E501
-            'longitude': (float,),  # noqa: E501
+            'longitude': (float, none_type,),  # noqa: E501
             'only_in_review_targets': (bool, none_type,),  # noqa: E501
             'open_port_count': (int, none_type,),  # noqa: E501
             'perspective': (str, none_type,),  # noqa: E501
             'perspective_name': (str, none_type,),  # noqa: E501
-            'priority_impact_factor': (float,),  # noqa: E501
-            'priority_score': (float,),  # noqa: E501
-            'priority_status_factor': (float,),  # noqa: E501
-            'priority_tags_factor': (float,),  # noqa: E501
-            'radius': (float,),  # noqa: E501
+            'priority_impact_factor': (float, none_type,),  # noqa: E501
+            'priority_score': (float, none_type,),  # noqa: E501
+            'priority_status_factor': (float, none_type,),  # noqa: E501
+            'priority_tags_factor': (float, none_type,),  # noqa: E501
+            'radius': (float, none_type,),  # noqa: E501
             'service_count': (int, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'target_count': (int, none_type,),  # noqa: E501
@@ -243,19 +243,19 @@ class Ip(ModelNormal):
             ip (str, none_type): [optional]  # noqa: E501
             ip_str (str, none_type): [optional]  # noqa: E501
             last_seen (datetime, none_type): [optional]  # noqa: E501
-            latitude (float): [optional]  # noqa: E501
+            latitude (float, none_type): [optional]  # noqa: E501
             lens_id (str, none_type): [optional]  # noqa: E501
             lens_view (str, none_type): [optional]  # noqa: E501
-            longitude (float): [optional]  # noqa: E501
+            longitude (float, none_type): [optional]  # noqa: E501
             only_in_review_targets (bool, none_type): [optional]  # noqa: E501
             open_port_count (int, none_type): [optional]  # noqa: E501
             perspective (str, none_type): [optional]  # noqa: E501
             perspective_name (str, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
-            radius (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
+            radius (float, none_type): [optional]  # noqa: E501
             service_count (int, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             target_count (int, none_type): [optional]  # noqa: E501
@@ -364,19 +364,19 @@ class Ip(ModelNormal):
             ip (str, none_type): [optional]  # noqa: E501
             ip_str (str, none_type): [optional]  # noqa: E501
             last_seen (datetime, none_type): [optional]  # noqa: E501
-            latitude (float): [optional]  # noqa: E501
+            latitude (float, none_type): [optional]  # noqa: E501
             lens_id (str, none_type): [optional]  # noqa: E501
             lens_view (str, none_type): [optional]  # noqa: E501
-            longitude (float): [optional]  # noqa: E501
+            longitude (float, none_type): [optional]  # noqa: E501
             only_in_review_targets (bool, none_type): [optional]  # noqa: E501
             open_port_count (int, none_type): [optional]  # noqa: E501
             perspective (str, none_type): [optional]  # noqa: E501
             perspective_name (str, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
-            radius (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
+            radius (float, none_type): [optional]  # noqa: E501
             service_count (int, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             target_count (int, none_type): [optional]  # noqa: E501

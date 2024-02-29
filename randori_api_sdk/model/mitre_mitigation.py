@@ -94,7 +94,7 @@ class MitreMitigation(ModelNormal):
             'type': (str, none_type,),  # noqa: E501
             'x_mitre_domains': ([str, none_type], none_type,),  # noqa: E501
             'x_mitre_modified_by_ref': (str, none_type,),  # noqa: E501
-            'x_mitre_version': (float,),  # noqa: E501
+            'x_mitre_version': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -141,7 +141,7 @@ class MitreMitigation(ModelNormal):
             type (str, none_type):
             x_mitre_domains ([str, none_type], none_type):
             x_mitre_modified_by_ref (str, none_type):
-            x_mitre_version (float):
+            x_mitre_version (float, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -250,7 +250,7 @@ class MitreMitigation(ModelNormal):
             type (str, none_type):
             x_mitre_domains ([str, none_type], none_type):
             x_mitre_modified_by_ref (str, none_type):
-            x_mitre_version (float):
+            x_mitre_version (float, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

@@ -173,10 +173,10 @@ class AllDetectionsForTarget(ModelNormal):
             'poc_id': (str, none_type,),  # noqa: E501
             'port': (int, none_type,),  # noqa: E501
             'post_exploit': (int, none_type,),  # noqa: E501
-            'priority_impact_factor': (float,),  # noqa: E501
-            'priority_score': (float,),  # noqa: E501
-            'priority_status_factor': (float,),  # noqa: E501
-            'priority_tags_factor': (float,),  # noqa: E501
+            'priority_impact_factor': (float, none_type,),  # noqa: E501
+            'priority_score': (float, none_type,),  # noqa: E501
+            'priority_status_factor': (float, none_type,),  # noqa: E501
+            'priority_tags_factor': (float, none_type,),  # noqa: E501
             'private_weakness': (int, none_type,),  # noqa: E501
             'protocol': (str, none_type,),  # noqa: E501
             'public_weakness': (int, none_type,),  # noqa: E501
@@ -376,10 +376,10 @@ class AllDetectionsForTarget(ModelNormal):
             poc_id (str, none_type): [optional]  # noqa: E501
             port (int, none_type): [optional]  # noqa: E501
             post_exploit (int, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
             private_weakness (int, none_type): [optional]  # noqa: E501
             protocol (str, none_type): [optional]  # noqa: E501
             public_weakness (int, none_type): [optional]  # noqa: E501
@@ -536,10 +536,10 @@ class AllDetectionsForTarget(ModelNormal):
             poc_id (str, none_type): [optional]  # noqa: E501
             port (int, none_type): [optional]  # noqa: E501
             post_exploit (int, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
             private_weakness (int, none_type): [optional]  # noqa: E501
             protocol (str, none_type): [optional]  # noqa: E501
             public_weakness (int, none_type): [optional]  # noqa: E501
