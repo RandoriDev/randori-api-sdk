@@ -71,14 +71,9 @@ def prep_query(query_object):
     return query
 
 
-def get_hosts(query):
-    offset = 0
-    limit = 1
-    sort = ["hostname"]
-
+def get_hosts(query, limit=1, offset=0, sort=["hostname"]):
     query = prep_query(query)
-    resp = r_api.get_hostname(limit=limit, q=query)
-    #resp = r_api.get_hostname(offset=offset, limit=limit, sort=sort, q=query)
+    resp = r_api.get_hostname(q=query, limit=limit, offset=offset, sort=sort)
     for host in resp.data:
         print(f"Returned Data Type: {type(host)}")
         print(host)
