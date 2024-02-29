@@ -90,16 +90,16 @@ class CmspbFrontendListApplicableConfigurationsResponseAttributes(ModelNormal):
         """
         lazy_import()
         return {
-            'configuration_id': (str,),  # noqa: E501
-            'description': (str,),  # noqa: E501
+            'configuration_id': (str, none_type,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
             'last_planned_at': (TimestamppbTimestamp,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'needs_authorization': (bool,),  # noqa: E501
-            'period': (int,),  # noqa: E501
-            'required_authorization': (int,),  # noqa: E501
-            'stability': (int,),  # noqa: E501
-            'stealth': (int,),  # noqa: E501
-            'trigger_criteria': ([CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria],),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'needs_authorization': (bool, none_type,),  # noqa: E501
+            'period': (int, none_type,),  # noqa: E501
+            'required_authorization': (int, none_type,),  # noqa: E501
+            'stability': (int, none_type,),  # noqa: E501
+            'stealth': (int, none_type,),  # noqa: E501
+            'trigger_criteria': ([CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -161,16 +161,16 @@ class CmspbFrontendListApplicableConfigurationsResponseAttributes(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            configuration_id (str): [optional]  # noqa: E501
-            description (str): [optional]  # noqa: E501
+            configuration_id (str, none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
             last_planned_at (TimestamppbTimestamp): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            needs_authorization (bool): [optional]  # noqa: E501
-            period (int): [optional]  # noqa: E501
-            required_authorization (int): [optional]  # noqa: E501
-            stability (int): [optional]  # noqa: E501
-            stealth (int): [optional]  # noqa: E501
-            trigger_criteria ([CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria]): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            needs_authorization (bool, none_type): [optional]  # noqa: E501
+            period (int, none_type): [optional]  # noqa: E501
+            required_authorization (int, none_type): [optional]  # noqa: E501
+            stability (int, none_type): [optional]  # noqa: E501
+            stealth (int, none_type): [optional]  # noqa: E501
+            trigger_criteria ([CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -252,16 +252,16 @@ class CmspbFrontendListApplicableConfigurationsResponseAttributes(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            configuration_id (str): [optional]  # noqa: E501
-            description (str): [optional]  # noqa: E501
+            configuration_id (str, none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
             last_planned_at (TimestamppbTimestamp): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            needs_authorization (bool): [optional]  # noqa: E501
-            period (int): [optional]  # noqa: E501
-            required_authorization (int): [optional]  # noqa: E501
-            stability (int): [optional]  # noqa: E501
-            stealth (int): [optional]  # noqa: E501
-            trigger_criteria ([CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria]): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            needs_authorization (bool, none_type): [optional]  # noqa: E501
+            period (int, none_type): [optional]  # noqa: E501
+            required_authorization (int, none_type): [optional]  # noqa: E501
+            stability (int, none_type): [optional]  # noqa: E501
+            stealth (int, none_type): [optional]  # noqa: E501
+            trigger_criteria ([CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

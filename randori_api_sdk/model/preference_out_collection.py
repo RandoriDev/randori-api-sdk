@@ -88,7 +88,7 @@ class PreferenceOutCollection(ModelNormal):
         """
         lazy_import()
         return {
-            'preferences': ([PreferenceOut],),  # noqa: E501
+            'preferences': ([PreferenceOut], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -141,7 +141,7 @@ class PreferenceOutCollection(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            preferences ([PreferenceOut]): [optional]  # noqa: E501
+            preferences ([PreferenceOut], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,7 +223,7 @@ class PreferenceOutCollection(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            preferences ([PreferenceOut]): [optional]  # noqa: E501
+            preferences ([PreferenceOut], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

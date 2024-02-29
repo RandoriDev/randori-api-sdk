@@ -98,18 +98,18 @@ class Organization(ModelNormal):
         """
         return {
             'address': (str, none_type,),  # noqa: E501
-            'allowed_email_domains': ([str],),  # noqa: E501
+            'allowed_email_domains': ([str, none_type], none_type,),  # noqa: E501
             'contact': (str, none_type,),  # noqa: E501
             'created_on': (datetime, none_type,),  # noqa: E501
-            'id': (str,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
             'license_level': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'login_methods': ([str],),  # noqa: E501
+            'login_methods': ([str, none_type], none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
-            'paying': (bool,),  # noqa: E501
+            'paying': (bool, none_type,),  # noqa: E501
             'platform_subscription_id': (str, none_type,),  # noqa: E501
             'shortname': (str, none_type,),  # noqa: E501
-            'sso_path': (str,),  # noqa: E501
-            'stasis': (bool,),  # noqa: E501
+            'sso_path': (str, none_type,),  # noqa: E501
+            'stasis': (bool, none_type,),  # noqa: E501
             'stasis_last_update_by': (str, none_type,),  # noqa: E501
             'stasis_last_update_on': (datetime, none_type,),  # noqa: E501
         }
@@ -179,18 +179,18 @@ class Organization(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address (str, none_type): [optional]  # noqa: E501
-            allowed_email_domains ([str]): [optional]  # noqa: E501
+            allowed_email_domains ([str, none_type], none_type): [optional]  # noqa: E501
             contact (str, none_type): [optional]  # noqa: E501
             created_on (datetime, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             license_level (bool, date, datetime, dict, float, int, list, str, none_type): License tier for the organization. [optional]  # noqa: E501
-            login_methods ([str]): [optional]  # noqa: E501
+            login_methods ([str, none_type], none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
-            paying (bool): [optional]  # noqa: E501
+            paying (bool, none_type): [optional]  # noqa: E501
             platform_subscription_id (str, none_type): [optional]  # noqa: E501
             shortname (str, none_type): [optional]  # noqa: E501
-            sso_path (str): If SSO is enabled, is a unique login link. [optional]  # noqa: E501
-            stasis (bool): [optional]  # noqa: E501
+            sso_path (str, none_type): If SSO is enabled, is a unique login link. [optional]  # noqa: E501
+            stasis (bool, none_type): [optional]  # noqa: E501
             stasis_last_update_by (str, none_type): [optional]  # noqa: E501
             stasis_last_update_on (datetime, none_type): [optional]  # noqa: E501
         """
@@ -275,18 +275,18 @@ class Organization(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address (str, none_type): [optional]  # noqa: E501
-            allowed_email_domains ([str]): [optional]  # noqa: E501
+            allowed_email_domains ([str, none_type], none_type): [optional]  # noqa: E501
             contact (str, none_type): [optional]  # noqa: E501
             created_on (datetime, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             license_level (bool, date, datetime, dict, float, int, list, str, none_type): License tier for the organization. [optional]  # noqa: E501
-            login_methods ([str]): [optional]  # noqa: E501
+            login_methods ([str, none_type], none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
-            paying (bool): [optional]  # noqa: E501
+            paying (bool, none_type): [optional]  # noqa: E501
             platform_subscription_id (str, none_type): [optional]  # noqa: E501
             shortname (str, none_type): [optional]  # noqa: E501
-            sso_path (str): If SSO is enabled, is a unique login link. [optional]  # noqa: E501
-            stasis (bool): [optional]  # noqa: E501
+            sso_path (str, none_type): If SSO is enabled, is a unique login link. [optional]  # noqa: E501
+            stasis (bool, none_type): [optional]  # noqa: E501
             stasis_last_update_by (str, none_type): [optional]  # noqa: E501
             stasis_last_update_on (datetime, none_type): [optional]  # noqa: E501
         """

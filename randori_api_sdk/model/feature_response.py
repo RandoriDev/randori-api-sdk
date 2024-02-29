@@ -82,8 +82,8 @@ class FeatureResponse(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'feature_uuid': (str,),  # noqa: E501
-            'is_active': (bool,),  # noqa: E501
+            'feature_uuid': (str, none_type,),  # noqa: E501
+            'is_active': (bool, none_type,),  # noqa: E501
             'name': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'type': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
@@ -111,8 +111,8 @@ class FeatureResponse(ModelNormal):
         """FeatureResponse - a model defined in OpenAPI
 
         Args:
-            feature_uuid (str):
-            is_active (bool):
+            feature_uuid (str, none_type):
+            is_active (bool, none_type):
             name (bool, date, datetime, dict, float, int, list, str, none_type):
             type (bool, date, datetime, dict, float, int, list, str, none_type):
 
@@ -202,8 +202,8 @@ class FeatureResponse(ModelNormal):
         """FeatureResponse - a model defined in OpenAPI
 
         Args:
-            feature_uuid (str):
-            is_active (bool):
+            feature_uuid (str, none_type):
+            is_active (bool, none_type):
             name (bool, date, datetime, dict, float, int, list, str, none_type):
             type (bool, date, datetime, dict, float, int, list, str, none_type):
 

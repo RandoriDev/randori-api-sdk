@@ -90,10 +90,10 @@ class CmspbSettings(ModelNormal):
         """
         lazy_import()
         return {
-            'execution_parameters': ([CmspbSettingsParameter],),  # noqa: E501
-            'matching_criteria': ([CmspbSettingsCriteria],),  # noqa: E501
-            'parameters': ([CmspbSettingsParameter],),  # noqa: E501
-            'trigger_criteria': ([CmspbSettingsCriteria],),  # noqa: E501
+            'execution_parameters': ([CmspbSettingsParameter], none_type,),  # noqa: E501
+            'matching_criteria': ([CmspbSettingsCriteria], none_type,),  # noqa: E501
+            'parameters': ([CmspbSettingsParameter], none_type,),  # noqa: E501
+            'trigger_criteria': ([CmspbSettingsCriteria], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -149,10 +149,10 @@ class CmspbSettings(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            execution_parameters ([CmspbSettingsParameter]): [optional]  # noqa: E501
-            matching_criteria ([CmspbSettingsCriteria]): [optional]  # noqa: E501
-            parameters ([CmspbSettingsParameter]): [optional]  # noqa: E501
-            trigger_criteria ([CmspbSettingsCriteria]): [optional]  # noqa: E501
+            execution_parameters ([CmspbSettingsParameter], none_type): [optional]  # noqa: E501
+            matching_criteria ([CmspbSettingsCriteria], none_type): [optional]  # noqa: E501
+            parameters ([CmspbSettingsParameter], none_type): [optional]  # noqa: E501
+            trigger_criteria ([CmspbSettingsCriteria], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -234,10 +234,10 @@ class CmspbSettings(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            execution_parameters ([CmspbSettingsParameter]): [optional]  # noqa: E501
-            matching_criteria ([CmspbSettingsCriteria]): [optional]  # noqa: E501
-            parameters ([CmspbSettingsParameter]): [optional]  # noqa: E501
-            trigger_criteria ([CmspbSettingsCriteria]): [optional]  # noqa: E501
+            execution_parameters ([CmspbSettingsParameter], none_type): [optional]  # noqa: E501
+            matching_criteria ([CmspbSettingsCriteria], none_type): [optional]  # noqa: E501
+            parameters ([CmspbSettingsParameter], none_type): [optional]  # noqa: E501
+            trigger_criteria ([CmspbSettingsCriteria], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -57,6 +57,7 @@ class QuerybuilderRuleGroupSchema(ModelNormal):
 
     allowed_values = {
         ('condition',): {
+            'None': None,
             'AND': "AND",
             'OR': "OR",
         },
@@ -86,10 +87,10 @@ class QuerybuilderRuleGroupSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'condition': (str,),  # noqa: E501
-            'rules': ([dict],),  # noqa: E501
-            'label': (str,),  # noqa: E501
-            'ui_id': (str,),  # noqa: E501
+            'condition': (str, none_type,),  # noqa: E501
+            'rules': ([dict], none_type,),  # noqa: E501
+            'label': (str, none_type,),  # noqa: E501
+            'ui_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -115,8 +116,8 @@ class QuerybuilderRuleGroupSchema(ModelNormal):
         """QuerybuilderRuleGroupSchema - a model defined in OpenAPI
 
         Args:
-            condition (str):
-            rules ([dict]):
+            condition (str, none_type):
+            rules ([dict], none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -149,8 +150,8 @@ class QuerybuilderRuleGroupSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            label (str): [optional]  # noqa: E501
-            ui_id (str): [optional]  # noqa: E501
+            label (str, none_type): [optional]  # noqa: E501
+            ui_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -204,8 +205,8 @@ class QuerybuilderRuleGroupSchema(ModelNormal):
         """QuerybuilderRuleGroupSchema - a model defined in OpenAPI
 
         Args:
-            condition (str):
-            rules ([dict]):
+            condition (str, none_type):
+            rules ([dict], none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -238,8 +239,8 @@ class QuerybuilderRuleGroupSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            label (str): [optional]  # noqa: E501
-            ui_id (str): [optional]  # noqa: E501
+            label (str, none_type): [optional]  # noqa: E501
+            ui_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

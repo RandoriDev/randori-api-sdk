@@ -90,8 +90,8 @@ class CmspbSettingsCriteria(ModelNormal):
         """
         lazy_import()
         return {
-            'name': (str,),  # noqa: E501
-            'obsolete_value': (str,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'obsolete_value': (str, none_type,),  # noqa: E501
             'value': (StructpbValue,),  # noqa: E501
             'value_format': (ContentstorepbConfigurationValueFormat,),  # noqa: E501
         }
@@ -149,8 +149,8 @@ class CmspbSettingsCriteria(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): [optional]  # noqa: E501
-            obsolete_value (str): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            obsolete_value (str, none_type): [optional]  # noqa: E501
             value (StructpbValue): [optional]  # noqa: E501
             value_format (ContentstorepbConfigurationValueFormat): [optional]  # noqa: E501
         """
@@ -234,8 +234,8 @@ class CmspbSettingsCriteria(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            name (str): [optional]  # noqa: E501
-            obsolete_value (str): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            obsolete_value (str, none_type): [optional]  # noqa: E501
             value (StructpbValue): [optional]  # noqa: E501
             value_format (ContentstorepbConfigurationValueFormat): [optional]  # noqa: E501
         """

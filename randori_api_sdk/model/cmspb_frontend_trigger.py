@@ -90,16 +90,16 @@ class CmspbFrontendTrigger(ModelNormal):
         """
         lazy_import()
         return {
-            'description': (str,),  # noqa: E501
-            'display_value': (str,),  # noqa: E501
-            'field_label': (str,),  # noqa: E501
-            'field_type': (str,),  # noqa: E501
-            'input_variable_path': (str,),  # noqa: E501
-            'is_configurable': (bool,),  # noqa: E501
-            'is_matching': (bool,),  # noqa: E501
-            'is_standard': (bool,),  # noqa: E501
-            'operator': (str,),  # noqa: E501
-            'trigger_identifier': (str,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
+            'display_value': (str, none_type,),  # noqa: E501
+            'field_label': (str, none_type,),  # noqa: E501
+            'field_type': (str, none_type,),  # noqa: E501
+            'input_variable_path': (str, none_type,),  # noqa: E501
+            'is_configurable': (bool, none_type,),  # noqa: E501
+            'is_matching': (bool, none_type,),  # noqa: E501
+            'is_standard': (bool, none_type,),  # noqa: E501
+            'operator': (str, none_type,),  # noqa: E501
+            'trigger_identifier': (str, none_type,),  # noqa: E501
             'validation': (CmspbFrontendValidation,),  # noqa: E501
             'value': (StructpbValue,),  # noqa: E501
         }
@@ -165,16 +165,16 @@ class CmspbFrontendTrigger(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            description (str): [optional]  # noqa: E501
-            display_value (str): [optional]  # noqa: E501
-            field_label (str): [optional]  # noqa: E501
-            field_type (str): [optional]  # noqa: E501
-            input_variable_path (str): [optional]  # noqa: E501
-            is_configurable (bool): [optional]  # noqa: E501
-            is_matching (bool): [optional]  # noqa: E501
-            is_standard (bool): [optional]  # noqa: E501
-            operator (str): [optional]  # noqa: E501
-            trigger_identifier (str): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            display_value (str, none_type): [optional]  # noqa: E501
+            field_label (str, none_type): [optional]  # noqa: E501
+            field_type (str, none_type): [optional]  # noqa: E501
+            input_variable_path (str, none_type): [optional]  # noqa: E501
+            is_configurable (bool, none_type): [optional]  # noqa: E501
+            is_matching (bool, none_type): [optional]  # noqa: E501
+            is_standard (bool, none_type): [optional]  # noqa: E501
+            operator (str, none_type): [optional]  # noqa: E501
+            trigger_identifier (str, none_type): [optional]  # noqa: E501
             validation (CmspbFrontendValidation): [optional]  # noqa: E501
             value (StructpbValue): [optional]  # noqa: E501
         """
@@ -258,16 +258,16 @@ class CmspbFrontendTrigger(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            description (str): [optional]  # noqa: E501
-            display_value (str): [optional]  # noqa: E501
-            field_label (str): [optional]  # noqa: E501
-            field_type (str): [optional]  # noqa: E501
-            input_variable_path (str): [optional]  # noqa: E501
-            is_configurable (bool): [optional]  # noqa: E501
-            is_matching (bool): [optional]  # noqa: E501
-            is_standard (bool): [optional]  # noqa: E501
-            operator (str): [optional]  # noqa: E501
-            trigger_identifier (str): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            display_value (str, none_type): [optional]  # noqa: E501
+            field_label (str, none_type): [optional]  # noqa: E501
+            field_type (str, none_type): [optional]  # noqa: E501
+            input_variable_path (str, none_type): [optional]  # noqa: E501
+            is_configurable (bool, none_type): [optional]  # noqa: E501
+            is_matching (bool, none_type): [optional]  # noqa: E501
+            is_standard (bool, none_type): [optional]  # noqa: E501
+            operator (str, none_type): [optional]  # noqa: E501
+            trigger_identifier (str, none_type): [optional]  # noqa: E501
             validation (CmspbFrontendValidation): [optional]  # noqa: E501
             value (StructpbValue): [optional]  # noqa: E501
         """

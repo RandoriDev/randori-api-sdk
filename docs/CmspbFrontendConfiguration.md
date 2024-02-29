@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attributes** | [**CmspbFrontendConfigurationAttributes**](CmspbFrontendConfigurationAttributes.md) |  | [optional] 
-**id** | **str** |  | [optional] 
+**id** | **str, none_type** |  | [optional] 
 **relationships** | [**CmspbRelationships**](CmspbRelationships.md) |  | [optional] 
 **type** | [**CmspbFrontendType**](CmspbFrontendType.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

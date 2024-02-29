@@ -82,16 +82,16 @@ class AttackStatistics(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'current': (bool,),  # noqa: E501
-            'index': (int,),  # noqa: E501
-            'latest': (bool,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'row_time': (datetime,),  # noqa: E501
-            'time': (datetime,),  # noqa: E501
-            'type': (str,),  # noqa: E501
-            'value': (int,),  # noqa: E501
-            'id': (str,),  # noqa: E501
+            'current': (bool, none_type,),  # noqa: E501
+            'index': (int, none_type,),  # noqa: E501
+            'latest': (bool, none_type,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'row_time': (datetime, none_type,),  # noqa: E501
+            'time': (datetime, none_type,),  # noqa: E501
+            'type': (str, none_type,),  # noqa: E501
+            'value': (int, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -123,15 +123,15 @@ class AttackStatistics(ModelNormal):
         """AttackStatistics - a model defined in OpenAPI
 
         Args:
-            current (bool):
-            index (int):
-            latest (bool):
-            name (str):
-            org_id (str):
-            row_time (datetime):
-            time (datetime):
-            type (str):
-            value (int):
+            current (bool, none_type):
+            index (int, none_type):
+            latest (bool, none_type):
+            name (str, none_type):
+            org_id (str, none_type):
+            row_time (datetime, none_type):
+            time (datetime, none_type):
+            type (str, none_type):
+            value (int, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -164,7 +164,7 @@ class AttackStatistics(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -225,15 +225,15 @@ class AttackStatistics(ModelNormal):
         """AttackStatistics - a model defined in OpenAPI
 
         Args:
-            current (bool):
-            index (int):
-            latest (bool):
-            name (str):
-            org_id (str):
-            row_time (datetime):
-            time (datetime):
-            type (str):
-            value (int):
+            current (bool, none_type):
+            index (int, none_type):
+            latest (bool, none_type):
+            name (str, none_type):
+            org_id (str, none_type):
+            row_time (datetime, none_type):
+            time (datetime, none_type):
+            type (str, none_type):
+            value (int, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -266,7 +266,7 @@ class AttackStatistics(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -4,20 +4,20 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**org_id** | **str** |  | 
+**id** | **str, none_type** |  | 
+**org_id** | **str, none_type** |  | 
 **affiliation_state** | **str** |  | [optional] 
-**confidence** | **int** |  | [optional] 
-**deleted** | **bool** |  | [optional] 
-**hostname** | **str** |  | [optional] 
-**hostname_id** | **str** |  | [optional] 
+**confidence** | **int, none_type** |  | [optional] 
+**deleted** | **bool, none_type** |  | [optional] 
+**hostname** | **str, none_type** |  | [optional] 
+**hostname_id** | **str, none_type** |  | [optional] 
 **impact_score** | **str** |  | [optional] 
-**ip_id** | **str** |  | [optional] 
-**last_seen** | **datetime** |  | [optional] 
-**lens_id** | **str** |  | [optional] 
-**lens_view** | **str** |  | [optional] 
-**perspective** | **str** |  | [optional] 
-**perspective_name** | **str** |  | [optional] 
+**ip_id** | **str, none_type** |  | [optional] 
+**last_seen** | **datetime, none_type** |  | [optional] 
+**lens_id** | **str, none_type** |  | [optional] 
+**lens_view** | **str, none_type** |  | [optional] 
+**perspective** | **str, none_type** |  | [optional] 
+**perspective_name** | **str, none_type** |  | [optional] 
 **status** | **str** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

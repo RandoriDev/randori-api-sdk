@@ -82,7 +82,7 @@ class HostnamePatchOutput(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'count': (int,),  # noqa: E501
+            'count': (int, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -135,7 +135,7 @@ class HostnamePatchOutput(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            count (int): number of records affected by PATCH. [optional]  # noqa: E501
+            count (int, none_type): number of records affected by PATCH. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -217,7 +217,7 @@ class HostnamePatchOutput(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            count (int): number of records affected by PATCH. [optional]  # noqa: E501
+            count (int, none_type): number of records affected by PATCH. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

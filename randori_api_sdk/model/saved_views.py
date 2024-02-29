@@ -57,6 +57,7 @@ class SavedViews(ModelNormal):
 
     allowed_values = {
         ('entity_type',): {
+            'None': None,
             'TARGET': "target",
             'HOSTNAME': "hostname",
             'SERVICE': "service",
@@ -96,13 +97,13 @@ class SavedViews(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'created_at': (datetime,),  # noqa: E501
-            'edited_at': (datetime,),  # noqa: E501
-            'entity_type': (str,),  # noqa: E501
+            'created_at': (datetime, none_type,),  # noqa: E501
+            'edited_at': (datetime, none_type,),  # noqa: E501
+            'entity_type': (str, none_type,),  # noqa: E501
             'filter_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'sort_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
-            'id': (str,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
             'is_favorite': (bool, none_type,),  # noqa: E501
             'is_global': (bool, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
@@ -139,9 +140,9 @@ class SavedViews(ModelNormal):
         """SavedViews - a model defined in OpenAPI
 
         Args:
-            created_at (datetime):
-            edited_at (datetime):
-            entity_type (str):
+            created_at (datetime, none_type):
+            edited_at (datetime, none_type):
+            entity_type (str, none_type):
             filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             sort_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
 
@@ -177,7 +178,7 @@ class SavedViews(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             description (str, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             is_favorite (bool, none_type): [optional]  # noqa: E501
             is_global (bool, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
@@ -238,9 +239,9 @@ class SavedViews(ModelNormal):
         """SavedViews - a model defined in OpenAPI
 
         Args:
-            created_at (datetime):
-            edited_at (datetime):
-            entity_type (str):
+            created_at (datetime, none_type):
+            edited_at (datetime, none_type):
+            entity_type (str, none_type):
             filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             sort_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
 
@@ -276,7 +277,7 @@ class SavedViews(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             description (str, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             is_favorite (bool, none_type): [optional]  # noqa: E501
             is_global (bool, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501

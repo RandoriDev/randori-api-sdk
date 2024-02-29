@@ -4,10 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **int** |  | [optional] 
-**data** | [**[ArtifactForActivityResponseSchema]**](ArtifactForActivityResponseSchema.md) |  | [optional] 
-**offset** | **int** |  | [optional] 
-**total** | **int** |  | [optional] 
+**count** | **int, none_type** |  | [optional] 
+**data** | [**[ArtifactForActivityResponseSchema], none_type**](ArtifactForActivityResponseSchema.md) |  | [optional] 
+**offset** | **int, none_type** |  | [optional] 
+**total** | **int, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

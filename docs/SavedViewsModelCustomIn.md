@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**entity_type** | **str** |  | 
+**entity_type** | **str, none_type** |  | 
 **filter_data** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
 **sort_data** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
 **description** | **str, none_type** |  | [optional] 

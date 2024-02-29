@@ -82,17 +82,17 @@ class ArtifactForActivityResponseSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'artifact_description': (str,),  # noqa: E501
-            'artifact_renderer': (str,),  # noqa: E501
-            'created': (datetime,),  # noqa: E501
-            'filename': (str,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'is_renderable': (bool,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
+            'artifact_description': (str, none_type,),  # noqa: E501
+            'artifact_renderer': (str, none_type,),  # noqa: E501
+            'created': (datetime, none_type,),  # noqa: E501
+            'filename': (str, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'is_renderable': (bool, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
             'renderable_metadata': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'shasum': (str,),  # noqa: E501
-            'source': (str,),  # noqa: E501
-            'updated': (datetime,),  # noqa: E501
+            'shasum': (str, none_type,),  # noqa: E501
+            'source': (str, none_type,),  # noqa: E501
+            'updated': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -155,17 +155,17 @@ class ArtifactForActivityResponseSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            artifact_description (str): [optional]  # noqa: E501
-            artifact_renderer (str): [optional]  # noqa: E501
-            created (datetime): [optional]  # noqa: E501
-            filename (str): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            is_renderable (bool): [optional]  # noqa: E501
-            org_id (str): [optional]  # noqa: E501
+            artifact_description (str, none_type): [optional]  # noqa: E501
+            artifact_renderer (str, none_type): [optional]  # noqa: E501
+            created (datetime, none_type): [optional]  # noqa: E501
+            filename (str, none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            is_renderable (bool, none_type): [optional]  # noqa: E501
+            org_id (str, none_type): [optional]  # noqa: E501
             renderable_metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            shasum (str): [optional]  # noqa: E501
-            source (str): [optional]  # noqa: E501
-            updated (datetime): [optional]  # noqa: E501
+            shasum (str, none_type): [optional]  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
+            updated (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -247,17 +247,17 @@ class ArtifactForActivityResponseSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            artifact_description (str): [optional]  # noqa: E501
-            artifact_renderer (str): [optional]  # noqa: E501
-            created (datetime): [optional]  # noqa: E501
-            filename (str): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            is_renderable (bool): [optional]  # noqa: E501
-            org_id (str): [optional]  # noqa: E501
+            artifact_description (str, none_type): [optional]  # noqa: E501
+            artifact_renderer (str, none_type): [optional]  # noqa: E501
+            created (datetime, none_type): [optional]  # noqa: E501
+            filename (str, none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            is_renderable (bool, none_type): [optional]  # noqa: E501
+            org_id (str, none_type): [optional]  # noqa: E501
             renderable_metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            shasum (str): [optional]  # noqa: E501
-            source (str): [optional]  # noqa: E501
-            updated (datetime): [optional]  # noqa: E501
+            shasum (str, none_type): [optional]  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
+            updated (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

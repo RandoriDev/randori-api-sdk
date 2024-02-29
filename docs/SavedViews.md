@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created_at** | **datetime** |  | 
-**edited_at** | **datetime** |  | 
-**entity_type** | **str** |  | 
+**created_at** | **datetime, none_type** |  | 
+**edited_at** | **datetime, none_type** |  | 
+**entity_type** | **str, none_type** |  | 
 **filter_data** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
 **sort_data** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
 **description** | **str, none_type** |  | [optional] 
-**id** | **str** |  | [optional] 
+**id** | **str, none_type** |  | [optional] 
 **is_favorite** | **bool, none_type** |  | [optional] 
 **is_global** | **bool, none_type** |  | [optional] 
 **name** | **str, none_type** |  | [optional] 

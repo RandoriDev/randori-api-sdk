@@ -7,14 +7,14 @@ Method | HTTP request | Description
 [**frontend_edit_activity_configuration**](CmsApi.md#frontend_edit_activity_configuration) | **PATCH** /cms/api/v1/frontend/activity-configurations/{id} | Edit activity configurations
 [**frontend_edit_activity_configuration_criteria**](CmsApi.md#frontend_edit_activity_configuration_criteria) | **POST** /cms/api/v1/frontend/activity-configurations/{id}/trigger_criteria/{name} | Edit activity configuration criteria
 [**frontend_edit_activity_configuration_parameter**](CmsApi.md#frontend_edit_activity_configuration_parameter) | **POST** /cms/api/v1/frontend/activity-configurations/{id}/parameters/{name}/{kind} | Edit activity configuration parameter
-[**frontend_get_activity_configuration**](CmsApi.md#frontend_get_activity_configuration) | **GET** /cms/api/v1/frontend/activity-configurations/{id} | Get activity configurations
 [**frontend_get_configuration_criteria**](CmsApi.md#frontend_get_configuration_criteria) | **GET** /cms/api/v1/frontend/activity-configurations/{id}/trigger_criteria/{name} | Get activity configuration criteria
 [**frontend_get_configuration_parameter**](CmsApi.md#frontend_get_configuration_parameter) | **GET** /cms/api/v1/frontend/activity-configurations/{id}/parameters/{name}/{kind} | Get activity configuration parameter
 [**frontend_list_activity_configuration**](CmsApi.md#frontend_list_activity_configuration) | **GET** /cms/api/v1/frontend/activity-configurations | List activity configurations
 [**frontend_list_activity_configuration_criteria**](CmsApi.md#frontend_list_activity_configuration_criteria) | **GET** /cms/api/v1/frontend/activity-configurations/{id}/trigger_criteria | List activity configuration criteria
 [**frontend_list_activity_configuration_parameters**](CmsApi.md#frontend_list_activity_configuration_parameters) | **GET** /cms/api/v1/frontend/activity-configurations/{id}/parameters | List activity configuration parameters
 [**frontend_list_applicable_activities**](CmsApi.md#frontend_list_applicable_activities) | **GET** /cms/api/v1/frontend/applicable-activities/{entity_type}/{entity_id} | List applicable activity configurations
-[**frontend_list_applicable_entities_parameters**](CmsApi.md#frontend_list_applicable_entities_parameters) | **GET** /cms/api/v1/frontend/activity-configurations/:id/applicable-entities/:entity_type | List applicable entities for a configuration
+[**frontend_list_applicable_entities_parameters**](CmsApi.md#frontend_list_applicable_entities_parameters) | **GET** /cms/api/v1/frontend/activity-configurations/{id}/applicable-entities/{entity_type} | List applicable entities for a configuration
+[**frontend_list_single_activity_configuration**](CmsApi.md#frontend_list_single_activity_configuration) | **GET** /cms/api/v1/frontend/activity-configurations/{id} | Get activity configurations
 [**frontend_validate_now**](CmsApi.md#frontend_validate_now) | **POST** /cms/api/v1/frontend/validate | Start validate now job
 
 
@@ -298,83 +298,6 @@ Name | Type | Description  | Notes
  **name** | **str**| Criteria name |
  **kind** | **str**| Parameter kind (configuration or execution) |
  **cms_update_parameter_request** | [**CmsUpdateParameterRequest**](CmsUpdateParameterRequest.md)| Parameter edit request |
-
-### Return type
-
-[**CmspbFrontendSingleConfigurationResponse**](CmspbFrontendSingleConfigurationResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **frontend_get_activity_configuration**
-> CmspbFrontendSingleConfigurationResponse frontend_get_activity_configuration(id)
-
-Get activity configurations
-
-Get activity configurations
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import time
-import randori_api_sdk
-from randori_api_sdk.api import cms_api
-from randori_api_sdk.model.cmspb_frontend_single_configuration_response import CmspbFrontendSingleConfigurationResponse
-from pprint import pprint
-# Defining the host is optional and defaults to https://app3.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api_sdk.Configuration(
-    host = "https://app3.randori.io"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = randori_api_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with randori_api_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cms_api.CmsApi(api_client)
-    id = "id_example" # str | Activity Configuration ID
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get activity configurations
-        api_response = api_instance.frontend_get_activity_configuration(id)
-        pprint(api_response)
-    except randori_api_sdk.ApiException as e:
-        print("Exception when calling CmsApi->frontend_get_activity_configuration: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **str**| Activity Configuration ID |
 
 ### Return type
 
@@ -989,6 +912,83 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CmspbFrontendListApplicableEntitiesResponse**](CmspbFrontendListApplicableEntitiesResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **frontend_list_single_activity_configuration**
+> CmspbFrontendSingleConfigurationResponse frontend_list_single_activity_configuration(id)
+
+Get activity configurations
+
+Get activity configurations
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import time
+import randori_api_sdk
+from randori_api_sdk.api import cms_api
+from randori_api_sdk.model.cmspb_frontend_single_configuration_response import CmspbFrontendSingleConfigurationResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://app3.randori.io
+# See configuration.py for a list of all supported configuration parameters.
+configuration = randori_api_sdk.Configuration(
+    host = "https://app3.randori.io"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with randori_api_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cms_api.CmsApi(api_client)
+    id = "id_example" # str | Activity Configuration ID
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get activity configurations
+        api_response = api_instance.frontend_list_single_activity_configuration(id)
+        pprint(api_response)
+    except randori_api_sdk.ApiException as e:
+        print("Exception when calling CmsApi->frontend_list_single_activity_configuration: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| Activity Configuration ID |
+
+### Return type
+
+[**CmspbFrontendSingleConfigurationResponse**](CmspbFrontendSingleConfigurationResponse.md)
 
 ### Authorization
 

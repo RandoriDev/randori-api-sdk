@@ -4,31 +4,31 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**org_id** | **str** |  | 
+**id** | **str, none_type** |  | 
+**org_id** | **str, none_type** |  | 
 **affiliation_state** | **str** |  | [optional] 
-**confidence** | **int** |  | [optional] 
-**country** | **str** |  | [optional] 
-**deleted** | **bool** |  | [optional] 
-**hostname_id** | **str** |  | [optional] 
+**confidence** | **int, none_type** |  | [optional] 
+**country** | **str, none_type** |  | [optional] 
+**deleted** | **bool, none_type** |  | [optional] 
+**hostname_id** | **str, none_type** |  | [optional] 
 **impact_score** | **str** |  | [optional] 
-**ip** | **str** |  | [optional] 
-**ip_id** | **str** |  | [optional] 
-**ip_str** | **str** |  | [optional] 
-**last_seen** | **datetime** |  | [optional] 
+**ip** | **str, none_type** |  | [optional] 
+**ip_id** | **str, none_type** |  | [optional] 
+**ip_str** | **str, none_type** |  | [optional] 
+**last_seen** | **datetime, none_type** |  | [optional] 
 **latitude** | **float** |  | [optional] 
-**lens_id** | **str** |  | [optional] 
-**lens_view** | **str** |  | [optional] 
+**lens_id** | **str, none_type** |  | [optional] 
+**lens_view** | **str, none_type** |  | [optional] 
 **longitude** | **float** |  | [optional] 
-**open_port_count** | **int** |  | [optional] 
-**perspective** | **str** |  | [optional] 
-**perspective_name** | **str** |  | [optional] 
+**open_port_count** | **int, none_type** |  | [optional] 
+**perspective** | **str, none_type** |  | [optional] 
+**perspective_name** | **str, none_type** |  | [optional] 
 **radius** | **float** |  | [optional] 
-**service_count** | **int** |  | [optional] 
+**service_count** | **int, none_type** |  | [optional] 
 **status** | **str** |  | [optional] 
-**target_count** | **int** |  | [optional] 
+**target_count** | **int, none_type** |  | [optional] 
 **target_temptation** | **int, none_type** |  | [optional] 
-**top_hostname** | **str** |  | [optional] 
+**top_hostname** | **str, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

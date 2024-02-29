@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**org_id** | **str** |  | 
-**time** | **datetime** |  | 
-**id** | **str** |  | [optional] 
+**org_id** | **str, none_type** |  | 
+**time** | **datetime, none_type** |  | 
+**id** | **str, none_type** |  | [optional] 
 **name** | **str, none_type** |  | [optional] 
 **type** | **str, none_type** |  | [optional] 
 **value** | **int, none_type** |  | [optional] 

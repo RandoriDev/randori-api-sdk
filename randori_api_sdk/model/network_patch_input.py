@@ -93,7 +93,7 @@ class NetworkPatchInput(ModelNormal):
         lazy_import()
         return {
             'data': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'operations': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'operations': ([bool, date, datetime, dict, float, int, list, str, none_type], none_type,),  # noqa: E501
             'q': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
@@ -150,7 +150,7 @@ class NetworkPatchInput(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             data (bool, date, datetime, dict, float, int, list, str, none_type): data fields to update on the object. [optional]  # noqa: E501
-            operations ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            operations ([bool, date, datetime, dict, float, int, list, str, none_type], none_type): [optional]  # noqa: E501
             q (bool, date, datetime, dict, float, int, list, str, none_type): Querybuilder object. [optional]  # noqa: E501
         """
 
@@ -234,7 +234,7 @@ class NetworkPatchInput(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             data (bool, date, datetime, dict, float, int, list, str, none_type): data fields to update on the object. [optional]  # noqa: E501
-            operations ([bool, date, datetime, dict, float, int, list, str, none_type]): [optional]  # noqa: E501
+            operations ([bool, date, datetime, dict, float, int, list, str, none_type], none_type): [optional]  # noqa: E501
             q (bool, date, datetime, dict, float, int, list, str, none_type): Querybuilder object. [optional]  # noqa: E501
         """
 

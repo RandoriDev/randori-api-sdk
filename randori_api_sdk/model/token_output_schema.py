@@ -82,16 +82,16 @@ class TokenOutputSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'exp': (int,),  # noqa: E501
-            'iat': (int,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'paying': (bool,),  # noqa: E501
-            'perms': ([str],),  # noqa: E501
-            'shortname': (str,),  # noqa: E501
-            'stasis': (bool,),  # noqa: E501
-            'tracking': (bool,),  # noqa: E501
-            'username': (str,),  # noqa: E501
-            'view_org': (str,),  # noqa: E501
+            'exp': (int, none_type,),  # noqa: E501
+            'iat': (int, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'paying': (bool, none_type,),  # noqa: E501
+            'perms': ([str, none_type], none_type,),  # noqa: E501
+            'shortname': (str, none_type,),  # noqa: E501
+            'stasis': (bool, none_type,),  # noqa: E501
+            'tracking': (bool, none_type,),  # noqa: E501
+            'username': (str, none_type,),  # noqa: E501
+            'view_org': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -153,16 +153,16 @@ class TokenOutputSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            exp (int): [optional]  # noqa: E501
-            iat (int): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            paying (bool): [optional]  # noqa: E501
-            perms ([str]): [optional]  # noqa: E501
-            shortname (str): [optional]  # noqa: E501
-            stasis (bool): [optional]  # noqa: E501
-            tracking (bool): [optional]  # noqa: E501
-            username (str): [optional]  # noqa: E501
-            view_org (str): [optional]  # noqa: E501
+            exp (int, none_type): [optional]  # noqa: E501
+            iat (int, none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            paying (bool, none_type): [optional]  # noqa: E501
+            perms ([str, none_type], none_type): [optional]  # noqa: E501
+            shortname (str, none_type): [optional]  # noqa: E501
+            stasis (bool, none_type): [optional]  # noqa: E501
+            tracking (bool, none_type): [optional]  # noqa: E501
+            username (str, none_type): [optional]  # noqa: E501
+            view_org (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -244,16 +244,16 @@ class TokenOutputSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            exp (int): [optional]  # noqa: E501
-            iat (int): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            paying (bool): [optional]  # noqa: E501
-            perms ([str]): [optional]  # noqa: E501
-            shortname (str): [optional]  # noqa: E501
-            stasis (bool): [optional]  # noqa: E501
-            tracking (bool): [optional]  # noqa: E501
-            username (str): [optional]  # noqa: E501
-            view_org (str): [optional]  # noqa: E501
+            exp (int, none_type): [optional]  # noqa: E501
+            iat (int, none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            paying (bool, none_type): [optional]  # noqa: E501
+            perms ([str, none_type], none_type): [optional]  # noqa: E501
+            shortname (str, none_type): [optional]  # noqa: E501
+            stasis (bool, none_type): [optional]  # noqa: E501
+            tracking (bool, none_type): [optional]  # noqa: E501
+            username (str, none_type): [optional]  # noqa: E501
+            view_org (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

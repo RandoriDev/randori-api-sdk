@@ -90,13 +90,13 @@ class CmspbEditConfigurationRequest(ModelNormal):
         """
         lazy_import()
         return {
-            'changed_fields': ([CmspbEditConfigurationRequestFields],),  # noqa: E501
-            'description': (str,),  # noqa: E501
-            'enabled': (bool,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'pinned': (bool,),  # noqa: E501
+            'changed_fields': ([CmspbEditConfigurationRequestFields], none_type,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
+            'enabled': (bool, none_type,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'pinned': (bool, none_type,),  # noqa: E501
             'settings': (CmspbSettings,),  # noqa: E501
-            'template_version_id': (str,),  # noqa: E501
+            'template_version_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -155,13 +155,13 @@ class CmspbEditConfigurationRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            changed_fields ([CmspbEditConfigurationRequestFields]): [optional]  # noqa: E501
-            description (str): [optional]  # noqa: E501
-            enabled (bool): [optional]  # noqa: E501
-            name (str): string activity_configuration_id = 1;. [optional]  # noqa: E501
-            pinned (bool): [optional]  # noqa: E501
+            changed_fields ([CmspbEditConfigurationRequestFields], none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            enabled (bool, none_type): [optional]  # noqa: E501
+            name (str, none_type): string activity_configuration_id = 1;. [optional]  # noqa: E501
+            pinned (bool, none_type): [optional]  # noqa: E501
             settings (CmspbSettings): [optional]  # noqa: E501
-            template_version_id (str): [optional]  # noqa: E501
+            template_version_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -243,13 +243,13 @@ class CmspbEditConfigurationRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            changed_fields ([CmspbEditConfigurationRequestFields]): [optional]  # noqa: E501
-            description (str): [optional]  # noqa: E501
-            enabled (bool): [optional]  # noqa: E501
-            name (str): string activity_configuration_id = 1;. [optional]  # noqa: E501
-            pinned (bool): [optional]  # noqa: E501
+            changed_fields ([CmspbEditConfigurationRequestFields], none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            enabled (bool, none_type): [optional]  # noqa: E501
+            name (str, none_type): string activity_configuration_id = 1;. [optional]  # noqa: E501
+            pinned (bool, none_type): [optional]  # noqa: E501
             settings (CmspbSettings): [optional]  # noqa: E501
-            template_version_id (str): [optional]  # noqa: E501
+            template_version_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

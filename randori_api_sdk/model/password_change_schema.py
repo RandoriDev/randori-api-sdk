@@ -82,8 +82,8 @@ class PasswordChangeSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'new_password': (str,),  # noqa: E501
-            'old_password': (str,),  # noqa: E501
+            'new_password': (str, none_type,),  # noqa: E501
+            'old_password': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -107,8 +107,8 @@ class PasswordChangeSchema(ModelNormal):
         """PasswordChangeSchema - a model defined in OpenAPI
 
         Args:
-            new_password (str):
-            old_password (str):
+            new_password (str, none_type):
+            old_password (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -194,8 +194,8 @@ class PasswordChangeSchema(ModelNormal):
         """PasswordChangeSchema - a model defined in OpenAPI
 
         Args:
-            new_password (str):
-            old_password (str):
+            new_password (str, none_type):
+            old_password (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

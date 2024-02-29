@@ -86,9 +86,9 @@ class ExternalCommentCreationSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'comment': (str,),  # noqa: E501
+            'comment': (str, none_type,),  # noqa: E501
             'action': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
-            'entity_ids': ([str],),  # noqa: E501
+            'entity_ids': ([str, none_type], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -113,7 +113,7 @@ class ExternalCommentCreationSchema(ModelNormal):
         """ExternalCommentCreationSchema - a model defined in OpenAPI
 
         Args:
-            comment (str):
+            comment (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -147,7 +147,7 @@ class ExternalCommentCreationSchema(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             action ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            entity_ids ([str]): [optional]  # noqa: E501
+            entity_ids ([str, none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -200,7 +200,7 @@ class ExternalCommentCreationSchema(ModelNormal):
         """ExternalCommentCreationSchema - a model defined in OpenAPI
 
         Args:
-            comment (str):
+            comment (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -234,7 +234,7 @@ class ExternalCommentCreationSchema(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             action ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            entity_ids ([str]): [optional]  # noqa: E501
+            entity_ids ([str, none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

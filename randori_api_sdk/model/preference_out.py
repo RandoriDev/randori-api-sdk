@@ -84,7 +84,7 @@ class PreferenceOut(ModelNormal):
         return {
             'preference': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'preference_source': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'can_override': (bool,),  # noqa: E501
+            'can_override': (bool, none_type,),  # noqa: E501
             'value': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
@@ -145,7 +145,7 @@ class PreferenceOut(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            can_override (bool): [optional]  # noqa: E501
+            can_override (bool, none_type): [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
@@ -234,7 +234,7 @@ class PreferenceOut(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            can_override (bool): [optional]  # noqa: E501
+            can_override (bool, none_type): [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 

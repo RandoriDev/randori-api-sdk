@@ -11,7 +11,7 @@
 """
 
 
-__version__ = "1.6.0"
+__version__ = "1.6.1"
 
 # import ApiClient
 from randori_api_sdk.api_client import ApiClient

@@ -82,9 +82,9 @@ class CmsValidateNowRequest(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'configuration_id': (str,),  # noqa: E501
-            'entity_id': (str,),  # noqa: E501
-            'entity_type': (str,),  # noqa: E501
+            'configuration_id': (str, none_type,),  # noqa: E501
+            'entity_id': (str, none_type,),  # noqa: E501
+            'entity_type': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -139,9 +139,9 @@ class CmsValidateNowRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            configuration_id (str): [optional]  # noqa: E501
-            entity_id (str): [optional]  # noqa: E501
-            entity_type (str): [optional]  # noqa: E501
+            configuration_id (str, none_type): [optional]  # noqa: E501
+            entity_id (str, none_type): [optional]  # noqa: E501
+            entity_type (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,9 +223,9 @@ class CmsValidateNowRequest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            configuration_id (str): [optional]  # noqa: E501
-            entity_id (str): [optional]  # noqa: E501
-            entity_type (str): [optional]  # noqa: E501
+            configuration_id (str, none_type): [optional]  # noqa: E501
+            entity_id (str, none_type): [optional]  # noqa: E501
+            entity_type (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -82,20 +82,20 @@ class AuthorizationPolicy(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'created_at': (datetime,),  # noqa: E501
-            'edited_at': (datetime,),  # noqa: E501
-            'entity_types': ([str],),  # noqa: E501
+            'created_at': (datetime, none_type,),  # noqa: E501
+            'edited_at': (datetime, none_type,),  # noqa: E501
+            'entity_types': ([str, none_type], none_type,),  # noqa: E501
             'filter_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'is_active': (bool,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'actions': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
+            'is_active': (bool, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'actions': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
             'expires_at': (datetime, none_type,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'is_deleted': (bool,),  # noqa: E501
-            'is_dirty': (bool,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'is_deleted': (bool, none_type,),  # noqa: E501
+            'is_dirty': (bool, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'notes': (str, none_type,),  # noqa: E501
-            'version': (int,),  # noqa: E501
+            'version': (int, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -131,12 +131,12 @@ class AuthorizationPolicy(ModelNormal):
         """AuthorizationPolicy - a model defined in OpenAPI
 
         Args:
-            created_at (datetime):
-            edited_at (datetime):
-            entity_types ([str]):
+            created_at (datetime, none_type):
+            edited_at (datetime, none_type):
+            entity_types ([str, none_type], none_type):
             filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-            is_active (bool):
-            org_id (str):
+            is_active (bool, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -169,14 +169,14 @@ class AuthorizationPolicy(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            actions ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
+            actions ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
             expires_at (datetime, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            is_deleted (bool): [optional]  # noqa: E501
-            is_dirty (bool): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            is_deleted (bool, none_type): [optional]  # noqa: E501
+            is_dirty (bool, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             notes (str, none_type): [optional]  # noqa: E501
-            version (int): [optional]  # noqa: E501
+            version (int, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -234,12 +234,12 @@ class AuthorizationPolicy(ModelNormal):
         """AuthorizationPolicy - a model defined in OpenAPI
 
         Args:
-            created_at (datetime):
-            edited_at (datetime):
-            entity_types ([str]):
+            created_at (datetime, none_type):
+            edited_at (datetime, none_type):
+            entity_types ([str, none_type], none_type):
             filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-            is_active (bool):
-            org_id (str):
+            is_active (bool, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -272,14 +272,14 @@ class AuthorizationPolicy(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            actions ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
+            actions ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
             expires_at (datetime, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            is_deleted (bool): [optional]  # noqa: E501
-            is_dirty (bool): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            is_deleted (bool, none_type): [optional]  # noqa: E501
+            is_dirty (bool, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             notes (str, none_type): [optional]  # noqa: E501
-            version (int): [optional]  # noqa: E501
+            version (int, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

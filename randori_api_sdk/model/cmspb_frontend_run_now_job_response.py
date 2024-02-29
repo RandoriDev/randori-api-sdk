@@ -88,7 +88,7 @@ class CmspbFrontendRunNowJobResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'job_id': (str,),  # noqa: E501
+            'job_id': (str, none_type,),  # noqa: E501
             'status': (CmspbFrontendRunNowJobStatus,),  # noqa: E501
         }
 
@@ -143,7 +143,7 @@ class CmspbFrontendRunNowJobResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            job_id (str): [optional]  # noqa: E501
+            job_id (str, none_type): [optional]  # noqa: E501
             status (CmspbFrontendRunNowJobStatus): [optional]  # noqa: E501
         """
 
@@ -226,7 +226,7 @@ class CmspbFrontendRunNowJobResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            job_id (str): [optional]  # noqa: E501
+            job_id (str, none_type): [optional]  # noqa: E501
             status (CmspbFrontendRunNowJobStatus): [optional]  # noqa: E501
         """
 

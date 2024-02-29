@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**[CmspbFrontendParameterObject]**](CmspbFrontendParameterObject.md) |  | [optional] 
+**data** | [**[CmspbFrontendParameterObject], none_type**](CmspbFrontendParameterObject.md) |  | [optional] 
 **links** | [**CmspbFrontendLinks**](CmspbFrontendLinks.md) |  | [optional] 
 **meta** | [**CmspbFrontendMeta**](CmspbFrontendMeta.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

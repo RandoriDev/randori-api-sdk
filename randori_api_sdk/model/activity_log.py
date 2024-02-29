@@ -82,10 +82,10 @@ class ActivityLog(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'id': (str,),  # noqa: E501
-            'instance__most_recent_instance_id': (str,),  # noqa: E501
-            'matching_entity__id': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'instance__most_recent_instance_id': (str, none_type,),  # noqa: E501
+            'matching_entity__id': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
             'configuration__description': (str, none_type,),  # noqa: E501
             'configuration__id': (str, none_type,),  # noqa: E501
             'configuration__name': (str, none_type,),  # noqa: E501
@@ -107,9 +107,9 @@ class ActivityLog(ModelNormal):
             'matching_entity__target': (str, none_type,),  # noqa: E501
             'matching_entity__term': (str, none_type,),  # noqa: E501
             'matching_entity__type': (str, none_type,),  # noqa: E501
-            'mitre__mitigations': ([str], none_type,),  # noqa: E501
-            'mitre__tactics': ([str], none_type,),  # noqa: E501
-            'mitre__techniques': ([str], none_type,),  # noqa: E501
+            'mitre__mitigations': ([str, none_type], none_type,),  # noqa: E501
+            'mitre__tactics': ([str, none_type], none_type,),  # noqa: E501
+            'mitre__techniques': ([str, none_type], none_type,),  # noqa: E501
             'objective__attacker_perspective': (str, none_type,),  # noqa: E501
             'objective__description': (str, none_type,),  # noqa: E501
             'objective__implication': (str, none_type,),  # noqa: E501
@@ -173,10 +173,10 @@ class ActivityLog(ModelNormal):
         """ActivityLog - a model defined in OpenAPI
 
         Args:
-            id (str):
-            instance__most_recent_instance_id (str):
-            matching_entity__id (str):
-            org_id (str):
+            id (str, none_type):
+            instance__most_recent_instance_id (str, none_type):
+            matching_entity__id (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -230,9 +230,9 @@ class ActivityLog(ModelNormal):
             matching_entity__target (str, none_type): [optional]  # noqa: E501
             matching_entity__term (str, none_type): [optional]  # noqa: E501
             matching_entity__type (str, none_type): [optional]  # noqa: E501
-            mitre__mitigations ([str], none_type): [optional]  # noqa: E501
-            mitre__tactics ([str], none_type): [optional]  # noqa: E501
-            mitre__techniques ([str], none_type): [optional]  # noqa: E501
+            mitre__mitigations ([str, none_type], none_type): [optional]  # noqa: E501
+            mitre__tactics ([str, none_type], none_type): [optional]  # noqa: E501
+            mitre__techniques ([str, none_type], none_type): [optional]  # noqa: E501
             objective__attacker_perspective (str, none_type): [optional]  # noqa: E501
             objective__description (str, none_type): [optional]  # noqa: E501
             objective__implication (str, none_type): [optional]  # noqa: E501
@@ -295,10 +295,10 @@ class ActivityLog(ModelNormal):
         """ActivityLog - a model defined in OpenAPI
 
         Args:
-            id (str):
-            instance__most_recent_instance_id (str):
-            matching_entity__id (str):
-            org_id (str):
+            id (str, none_type):
+            instance__most_recent_instance_id (str, none_type):
+            matching_entity__id (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -352,9 +352,9 @@ class ActivityLog(ModelNormal):
             matching_entity__target (str, none_type): [optional]  # noqa: E501
             matching_entity__term (str, none_type): [optional]  # noqa: E501
             matching_entity__type (str, none_type): [optional]  # noqa: E501
-            mitre__mitigations ([str], none_type): [optional]  # noqa: E501
-            mitre__tactics ([str], none_type): [optional]  # noqa: E501
-            mitre__techniques ([str], none_type): [optional]  # noqa: E501
+            mitre__mitigations ([str, none_type], none_type): [optional]  # noqa: E501
+            mitre__tactics ([str, none_type], none_type): [optional]  # noqa: E501
+            mitre__techniques ([str, none_type], none_type): [optional]  # noqa: E501
             objective__attacker_perspective (str, none_type): [optional]  # noqa: E501
             objective__description (str, none_type): [optional]  # noqa: E501
             objective__implication (str, none_type): [optional]  # noqa: E501

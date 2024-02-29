@@ -90,9 +90,9 @@ class CmspbSettingsParameter(ModelNormal):
         """
         lazy_import()
         return {
-            'is_unset': (bool,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'obsolete_value': (str,),  # noqa: E501
+            'is_unset': (bool, none_type,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'obsolete_value': (str, none_type,),  # noqa: E501
             'value': (StructpbValue,),  # noqa: E501
             'value_format': (ContentstorepbConfigurationValueFormat,),  # noqa: E501
         }
@@ -151,9 +151,9 @@ class CmspbSettingsParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            is_unset (bool): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            obsolete_value (str): [optional]  # noqa: E501
+            is_unset (bool, none_type): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            obsolete_value (str, none_type): [optional]  # noqa: E501
             value (StructpbValue): [optional]  # noqa: E501
             value_format (ContentstorepbConfigurationValueFormat): [optional]  # noqa: E501
         """
@@ -237,9 +237,9 @@ class CmspbSettingsParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            is_unset (bool): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            obsolete_value (str): [optional]  # noqa: E501
+            is_unset (bool, none_type): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            obsolete_value (str, none_type): [optional]  # noqa: E501
             value (StructpbValue): [optional]  # noqa: E501
             value_format (ContentstorepbConfigurationValueFormat): [optional]  # noqa: E501
         """

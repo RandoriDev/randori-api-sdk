@@ -97,13 +97,13 @@ class UserPatchIn(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'email': (str,),  # noqa: E501
+            'email': (str, none_type,),  # noqa: E501
             'managed_personnel': (bool, none_type,),  # noqa: E501
-            'name': (str,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
             'title': (str, none_type,),  # noqa: E501
-            'tos_date': (datetime,),  # noqa: E501
-            'tos_version': (int,),  # noqa: E501
-            'username': (str,),  # noqa: E501
+            'tos_date': (datetime, none_type,),  # noqa: E501
+            'tos_version': (int, none_type,),  # noqa: E501
+            'username': (str, none_type,),  # noqa: E501
             'view_org': (str, none_type,),  # noqa: E501
         }
 
@@ -164,13 +164,13 @@ class UserPatchIn(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            email (str): [optional]  # noqa: E501
+            email (str, none_type): [optional]  # noqa: E501
             managed_personnel (bool, none_type): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
-            tos_date (datetime): [optional]  # noqa: E501
-            tos_version (int): [optional]  # noqa: E501
-            username (str): [optional]  # noqa: E501
+            tos_date (datetime, none_type): [optional]  # noqa: E501
+            tos_version (int, none_type): [optional]  # noqa: E501
+            username (str, none_type): [optional]  # noqa: E501
             view_org (str, none_type): [optional]  # noqa: E501
         """
 
@@ -253,13 +253,13 @@ class UserPatchIn(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            email (str): [optional]  # noqa: E501
+            email (str, none_type): [optional]  # noqa: E501
             managed_personnel (bool, none_type): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
-            tos_date (datetime): [optional]  # noqa: E501
-            tos_version (int): [optional]  # noqa: E501
-            username (str): [optional]  # noqa: E501
+            tos_date (datetime, none_type): [optional]  # noqa: E501
+            tos_version (int, none_type): [optional]  # noqa: E501
+            username (str, none_type): [optional]  # noqa: E501
             view_org (str, none_type): [optional]  # noqa: E501
         """
 

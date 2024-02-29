@@ -4,18 +4,18 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created** | **datetime** |  | 
-**created_by_ref** | **str** |  | 
-**description** | **str** |  | 
-**external_references** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]** |  | 
-**id** | **str** |  | 
-**modified** | **datetime** |  | 
-**name** | **str** |  | 
-**object_marking_refs** | **[str]** |  | 
-**revoked** | **bool** |  | 
-**type** | **str** |  | 
-**x_mitre_domains** | **[str]** |  | 
-**x_mitre_modified_by_ref** | **str** |  | 
+**created** | **datetime, none_type** |  | 
+**created_by_ref** | **str, none_type** |  | 
+**description** | **str, none_type** |  | 
+**external_references** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type** |  | 
+**id** | **str, none_type** |  | 
+**modified** | **datetime, none_type** |  | 
+**name** | **str, none_type** |  | 
+**object_marking_refs** | **[str, none_type], none_type** |  | 
+**revoked** | **bool, none_type** |  | 
+**type** | **str, none_type** |  | 
+**x_mitre_domains** | **[str, none_type], none_type** |  | 
+**x_mitre_modified_by_ref** | **str, none_type** |  | 
 **x_mitre_version** | **float** |  | 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

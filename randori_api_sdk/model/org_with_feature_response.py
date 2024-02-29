@@ -85,9 +85,9 @@ class OrgWithFeatureResponse(ModelNormal):
             'end_time_utc': (datetime, none_type,),  # noqa: E501
             'feature_name': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'feature_type': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'feature_uuid': (str,),  # noqa: E501
-            'org_name': (str,),  # noqa: E501
-            'org_uuid': (str,),  # noqa: E501
+            'feature_uuid': (str, none_type,),  # noqa: E501
+            'org_name': (str, none_type,),  # noqa: E501
+            'org_uuid': (str, none_type,),  # noqa: E501
             'start_time_utc': (datetime, none_type,),  # noqa: E501
         }
 
@@ -150,9 +150,9 @@ class OrgWithFeatureResponse(ModelNormal):
             end_time_utc (datetime, none_type): [optional]  # noqa: E501
             feature_name (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             feature_type (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            feature_uuid (str): [optional]  # noqa: E501
-            org_name (str): [optional]  # noqa: E501
-            org_uuid (str): [optional]  # noqa: E501
+            feature_uuid (str, none_type): [optional]  # noqa: E501
+            org_name (str, none_type): [optional]  # noqa: E501
+            org_uuid (str, none_type): [optional]  # noqa: E501
             start_time_utc (datetime, none_type): [optional]  # noqa: E501
         """
 
@@ -238,9 +238,9 @@ class OrgWithFeatureResponse(ModelNormal):
             end_time_utc (datetime, none_type): [optional]  # noqa: E501
             feature_name (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             feature_type (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            feature_uuid (str): [optional]  # noqa: E501
-            org_name (str): [optional]  # noqa: E501
-            org_uuid (str): [optional]  # noqa: E501
+            feature_uuid (str, none_type): [optional]  # noqa: E501
+            org_name (str, none_type): [optional]  # noqa: E501
+            org_uuid (str, none_type): [optional]  # noqa: E501
             start_time_utc (datetime, none_type): [optional]  # noqa: E501
         """
 

@@ -82,9 +82,9 @@ class Statistics(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'org_id': (str,),  # noqa: E501
-            'time': (datetime,),  # noqa: E501
-            'id': (str,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'time': (datetime, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'type': (str, none_type,),  # noqa: E501
             'value': (int, none_type,),  # noqa: E501
@@ -115,8 +115,8 @@ class Statistics(ModelNormal):
         """Statistics - a model defined in OpenAPI
 
         Args:
-            org_id (str):
-            time (datetime):
+            org_id (str, none_type):
+            time (datetime, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -149,7 +149,7 @@ class Statistics(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             type (str, none_type): [optional]  # noqa: E501
             value (int, none_type): [optional]  # noqa: E501
@@ -206,8 +206,8 @@ class Statistics(ModelNormal):
         """Statistics - a model defined in OpenAPI
 
         Args:
-            org_id (str):
-            time (datetime):
+            org_id (str, none_type):
+            time (datetime, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -240,7 +240,7 @@ class Statistics(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             type (str, none_type): [optional]  # noqa: E501
             value (int, none_type): [optional]  # noqa: E501

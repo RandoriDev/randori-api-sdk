@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**[CmspbFrontendApplicableEntity]**](CmspbFrontendApplicableEntity.md) |  | [optional] 
+**data** | [**[CmspbFrontendApplicableEntity], none_type**](CmspbFrontendApplicableEntity.md) |  | [optional] 
 **links** | [**CmspbFrontendLinks**](CmspbFrontendLinks.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

@@ -88,7 +88,7 @@ class CommentResponseCollectionSchema(ModelNormal):
         """
         lazy_import()
         return {
-            'comments': ([CommentResponseSchema],),  # noqa: E501
+            'comments': ([CommentResponseSchema], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -141,7 +141,7 @@ class CommentResponseCollectionSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            comments ([CommentResponseSchema]): [optional]  # noqa: E501
+            comments ([CommentResponseSchema], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,7 +223,7 @@ class CommentResponseCollectionSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            comments ([CommentResponseSchema]): [optional]  # noqa: E501
+            comments ([CommentResponseSchema], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

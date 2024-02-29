@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **preference** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | 
 **preference_source** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | 
-**can_override** | **bool** |  | [optional] 
+**can_override** | **bool, none_type** |  | [optional] 
 **value** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

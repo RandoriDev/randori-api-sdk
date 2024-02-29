@@ -83,10 +83,10 @@ class PathDrSchema(ModelNormal):
         """
         return {
             'content': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'dst': (str,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'src': (str,),  # noqa: E501
-            'type': (str,),  # noqa: E501
+            'dst': (str, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'src': (str, none_type,),  # noqa: E501
+            'type': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -144,10 +144,10 @@ class PathDrSchema(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             content ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            dst (str): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            src (str): [optional]  # noqa: E501
-            type (str): [optional]  # noqa: E501
+            dst (str, none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            src (str, none_type): [optional]  # noqa: E501
+            type (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -230,10 +230,10 @@ class PathDrSchema(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             content ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            dst (str): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            src (str): [optional]  # noqa: E501
-            type (str): [optional]  # noqa: E501
+            dst (str, none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            src (str, none_type): [optional]  # noqa: E501
+            type (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

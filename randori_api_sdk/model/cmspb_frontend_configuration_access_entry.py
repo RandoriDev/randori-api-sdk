@@ -88,7 +88,7 @@ class CmspbFrontendConfigurationAccessEntry(ModelNormal):
         """
         lazy_import()
         return {
-            'author_id': (str,),  # noqa: E501
+            'author_id': (str, none_type,),  # noqa: E501
             'date': (TimestamppbTimestamp,),  # noqa: E501
         }
 
@@ -143,7 +143,7 @@ class CmspbFrontendConfigurationAccessEntry(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            author_id (str): [optional]  # noqa: E501
+            author_id (str, none_type): [optional]  # noqa: E501
             date (TimestamppbTimestamp): [optional]  # noqa: E501
         """
 
@@ -226,7 +226,7 @@ class CmspbFrontendConfigurationAccessEntry(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            author_id (str): [optional]  # noqa: E501
+            author_id (str, none_type): [optional]  # noqa: E501
             date (TimestamppbTimestamp): [optional]  # noqa: E501
         """
 
