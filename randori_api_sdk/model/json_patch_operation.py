@@ -82,8 +82,8 @@ class JsonPatchOperation(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'op': (str,),  # noqa: E501
-            'path': (str,),  # noqa: E501
+            'op': (str, none_type,),  # noqa: E501
+            'path': (str, none_type,),  # noqa: E501
             'value': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
@@ -139,8 +139,8 @@ class JsonPatchOperation(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            op (str): operation, \"add\" or \"remove\". [optional]  # noqa: E501
-            path (str): target location. [optional]  # noqa: E501
+            op (str, none_type): operation, \"add\" or \"remove\". [optional]  # noqa: E501
+            path (str, none_type): target location. [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): new value for add/replace. [optional]  # noqa: E501
         """
 
@@ -223,8 +223,8 @@ class JsonPatchOperation(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            op (str): operation, \"add\" or \"remove\". [optional]  # noqa: E501
-            path (str): target location. [optional]  # noqa: E501
+            op (str, none_type): operation, \"add\" or \"remove\". [optional]  # noqa: E501
+            path (str, none_type): target location. [optional]  # noqa: E501
             value (bool, date, datetime, dict, float, int, list, str, none_type): new value for add/replace. [optional]  # noqa: E501
         """
 

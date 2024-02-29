@@ -82,7 +82,7 @@ class SavedViewsPostOutput(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'ids': ([str],),  # noqa: E501
+            'ids': ([str, none_type], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -135,7 +135,7 @@ class SavedViewsPostOutput(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            ids ([str]): ids created for the posted objects. [optional]  # noqa: E501
+            ids ([str, none_type], none_type): ids created for the posted objects. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -217,7 +217,7 @@ class SavedViewsPostOutput(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            ids ([str]): ids created for the posted objects. [optional]  # noqa: E501
+            ids ([str, none_type], none_type): ids created for the posted objects. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

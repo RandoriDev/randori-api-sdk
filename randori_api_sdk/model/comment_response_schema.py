@@ -83,14 +83,14 @@ class CommentResponseSchema(ModelNormal):
         """
         return {
             'action': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
-            'comment': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'is_author': (bool,),  # noqa: E501
-            'is_bulk_applied': (bool,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'rel_id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
+            'comment': (str, none_type,),  # noqa: E501
+            'created_at': (datetime, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'is_author': (bool, none_type,),  # noqa: E501
+            'is_bulk_applied': (bool, none_type,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'rel_id': (str, none_type,),  # noqa: E501
+            'status': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -152,14 +152,14 @@ class CommentResponseSchema(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             action ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            comment (str): [optional]  # noqa: E501
-            created_at (datetime): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            is_author (bool): [optional]  # noqa: E501
-            is_bulk_applied (bool): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            rel_id (str): [optional]  # noqa: E501
-            status (str): [optional]  # noqa: E501
+            comment (str, none_type): [optional]  # noqa: E501
+            created_at (datetime, none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            is_author (bool, none_type): [optional]  # noqa: E501
+            is_bulk_applied (bool, none_type): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            rel_id (str, none_type): [optional]  # noqa: E501
+            status (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -242,14 +242,14 @@ class CommentResponseSchema(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             action ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            comment (str): [optional]  # noqa: E501
-            created_at (datetime): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            is_author (bool): [optional]  # noqa: E501
-            is_bulk_applied (bool): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            rel_id (str): [optional]  # noqa: E501
-            status (str): [optional]  # noqa: E501
+            comment (str, none_type): [optional]  # noqa: E501
+            created_at (datetime, none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            is_author (bool, none_type): [optional]  # noqa: E501
+            is_bulk_applied (bool, none_type): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            rel_id (str, none_type): [optional]  # noqa: E501
+            status (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

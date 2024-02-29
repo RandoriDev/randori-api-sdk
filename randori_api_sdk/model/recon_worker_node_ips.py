@@ -82,7 +82,7 @@ class ReconWorkerNodeIps(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'lookbackdays': (int,),  # noqa: E501
+            'lookbackdays': (int, none_type,),  # noqa: E501
             'results': ({str: (bool,)},),  # noqa: E501
         }
 
@@ -137,7 +137,7 @@ class ReconWorkerNodeIps(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            lookbackdays (int): [optional]  # noqa: E501
+            lookbackdays (int, none_type): [optional]  # noqa: E501
             results ({str: (bool,)}): [optional]  # noqa: E501
         """
 
@@ -220,7 +220,7 @@ class ReconWorkerNodeIps(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            lookbackdays (int): [optional]  # noqa: E501
+            lookbackdays (int, none_type): [optional]  # noqa: E501
             results ({str: (bool,)}): [optional]  # noqa: E501
         """
 

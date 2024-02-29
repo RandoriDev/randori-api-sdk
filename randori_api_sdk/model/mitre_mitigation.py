@@ -82,18 +82,18 @@ class MitreMitigation(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'created': (datetime,),  # noqa: E501
-            'created_by_ref': (str,),  # noqa: E501
-            'description': (str,),  # noqa: E501
-            'external_references': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'modified': (datetime,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'object_marking_refs': ([str],),  # noqa: E501
-            'revoked': (bool,),  # noqa: E501
-            'type': (str,),  # noqa: E501
-            'x_mitre_domains': ([str],),  # noqa: E501
-            'x_mitre_modified_by_ref': (str,),  # noqa: E501
+            'created': (datetime, none_type,),  # noqa: E501
+            'created_by_ref': (str, none_type,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
+            'external_references': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'modified': (datetime, none_type,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'object_marking_refs': ([str, none_type], none_type,),  # noqa: E501
+            'revoked': (bool, none_type,),  # noqa: E501
+            'type': (str, none_type,),  # noqa: E501
+            'x_mitre_domains': ([str, none_type], none_type,),  # noqa: E501
+            'x_mitre_modified_by_ref': (str, none_type,),  # noqa: E501
             'x_mitre_version': (float,),  # noqa: E501
         }
 
@@ -129,18 +129,18 @@ class MitreMitigation(ModelNormal):
         """MitreMitigation - a model defined in OpenAPI
 
         Args:
-            created (datetime):
-            created_by_ref (str):
-            description (str):
-            external_references ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]):
-            id (str):
-            modified (datetime):
-            name (str):
-            object_marking_refs ([str]):
-            revoked (bool):
-            type (str):
-            x_mitre_domains ([str]):
-            x_mitre_modified_by_ref (str):
+            created (datetime, none_type):
+            created_by_ref (str, none_type):
+            description (str, none_type):
+            external_references ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type):
+            id (str, none_type):
+            modified (datetime, none_type):
+            name (str, none_type):
+            object_marking_refs ([str, none_type], none_type):
+            revoked (bool, none_type):
+            type (str, none_type):
+            x_mitre_domains ([str, none_type], none_type):
+            x_mitre_modified_by_ref (str, none_type):
             x_mitre_version (float):
 
         Keyword Args:
@@ -238,18 +238,18 @@ class MitreMitigation(ModelNormal):
         """MitreMitigation - a model defined in OpenAPI
 
         Args:
-            created (datetime):
-            created_by_ref (str):
-            description (str):
-            external_references ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]):
-            id (str):
-            modified (datetime):
-            name (str):
-            object_marking_refs ([str]):
-            revoked (bool):
-            type (str):
-            x_mitre_domains ([str]):
-            x_mitre_modified_by_ref (str):
+            created (datetime, none_type):
+            created_by_ref (str, none_type):
+            description (str, none_type):
+            external_references ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type):
+            id (str, none_type):
+            modified (datetime, none_type):
+            name (str, none_type):
+            object_marking_refs ([str, none_type], none_type):
+            revoked (bool, none_type):
+            type (str, none_type):
+            x_mitre_domains ([str, none_type], none_type):
+            x_mitre_modified_by_ref (str, none_type):
             x_mitre_version (float):
 
         Keyword Args:

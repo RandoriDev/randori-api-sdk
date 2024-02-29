@@ -82,7 +82,7 @@ class DefaultOutputSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'authorization': (str,),  # noqa: E501
+            'authorization': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -135,7 +135,7 @@ class DefaultOutputSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            authorization (str): [optional]  # noqa: E501
+            authorization (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -217,7 +217,7 @@ class DefaultOutputSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            authorization (str): [optional]  # noqa: E501
+            authorization (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

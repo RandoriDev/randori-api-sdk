@@ -104,52 +104,52 @@ class SocialEntity(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'id': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'address': (str,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'address': (str, none_type,),  # noqa: E501
             'affiliation_state': (str,),  # noqa: E501
-            'authority': (bool,),  # noqa: E501
-            'authority_distance': (int,),  # noqa: E501
-            'authority_override': (bool,),  # noqa: E501
+            'authority': (bool, none_type,),  # noqa: E501
+            'authority_distance': (int, none_type,),  # noqa: E501
+            'authority_override': (bool, none_type,),  # noqa: E501
             'authorization_state': (str,),  # noqa: E501
-            'characteristic_tags': ([str],),  # noqa: E501
-            'city': (str,),  # noqa: E501
-            'company_name': (str,),  # noqa: E501
-            'confidence': (int,),  # noqa: E501
-            'country': (str,),  # noqa: E501
-            'deleted': (bool,),  # noqa: E501
+            'characteristic_tags': ([str, none_type], none_type,),  # noqa: E501
+            'city': (str, none_type,),  # noqa: E501
+            'company_name': (str, none_type,),  # noqa: E501
+            'confidence': (int, none_type,),  # noqa: E501
+            'country': (str, none_type,),  # noqa: E501
+            'deleted': (bool, none_type,),  # noqa: E501
             'details': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'domain': (str,),  # noqa: E501
-            'email': (str,),  # noqa: E501
-            'email_type': (str,),  # noqa: E501
-            'first_seen': (datetime,),  # noqa: E501
+            'domain': (str, none_type,),  # noqa: E501
+            'email': (str, none_type,),  # noqa: E501
+            'email_type': (str, none_type,),  # noqa: E501
+            'first_seen': (datetime, none_type,),  # noqa: E501
             'impact_score': (str,),  # noqa: E501
-            'last_seen': (datetime,),  # noqa: E501
-            'lens_id': (str,),  # noqa: E501
-            'lens_view': (str,),  # noqa: E501
-            'only_in_review_targets': (bool,),  # noqa: E501
-            'person_first_name': (str,),  # noqa: E501
-            'person_last_name': (str,),  # noqa: E501
-            'person_middle_name': (str,),  # noqa: E501
-            'person_name': (str,),  # noqa: E501
-            'perspective': (str,),  # noqa: E501
-            'perspective_name': (str,),  # noqa: E501
-            'phone': (str,),  # noqa: E501
-            'postal_code': (str,),  # noqa: E501
+            'last_seen': (datetime, none_type,),  # noqa: E501
+            'lens_id': (str, none_type,),  # noqa: E501
+            'lens_view': (str, none_type,),  # noqa: E501
+            'only_in_review_targets': (bool, none_type,),  # noqa: E501
+            'person_first_name': (str, none_type,),  # noqa: E501
+            'person_last_name': (str, none_type,),  # noqa: E501
+            'person_middle_name': (str, none_type,),  # noqa: E501
+            'person_name': (str, none_type,),  # noqa: E501
+            'perspective': (str, none_type,),  # noqa: E501
+            'perspective_name': (str, none_type,),  # noqa: E501
+            'phone': (str, none_type,),  # noqa: E501
+            'postal_code': (str, none_type,),  # noqa: E501
             'priority_impact_factor': (float,),  # noqa: E501
             'priority_score': (float,),  # noqa: E501
             'priority_status_factor': (float,),  # noqa: E501
             'priority_tags_factor': (float,),  # noqa: E501
-            'role': (str,),  # noqa: E501
-            'seniority': (str,),  # noqa: E501
-            'state': (str,),  # noqa: E501
+            'role': (str, none_type,),  # noqa: E501
+            'seniority': (str, none_type,),  # noqa: E501
+            'state': (str, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'sub_role': (str,),  # noqa: E501
+            'sub_role': (str, none_type,),  # noqa: E501
             'target_temptation': (int, none_type,),  # noqa: E501
-            'title': (str,),  # noqa: E501
-            'tld': (str,),  # noqa: E501
-            'user_tags': ([str],),  # noqa: E501
-            'username': (str,),  # noqa: E501
+            'title': (str, none_type,),  # noqa: E501
+            'tld': (str, none_type,),  # noqa: E501
+            'user_tags': ([str, none_type], none_type,),  # noqa: E501
+            'username': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -217,8 +217,8 @@ class SocialEntity(ModelNormal):
         """SocialEntity - a model defined in OpenAPI
 
         Args:
-            id (str):
-            org_id (str):
+            id (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -251,50 +251,50 @@ class SocialEntity(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            address (str): [optional]  # noqa: E501
+            address (str, none_type): [optional]  # noqa: E501
             affiliation_state (str): [optional]  # noqa: E501
-            authority (bool): [optional]  # noqa: E501
-            authority_distance (int): [optional]  # noqa: E501
-            authority_override (bool): [optional]  # noqa: E501
+            authority (bool, none_type): [optional]  # noqa: E501
+            authority_distance (int, none_type): [optional]  # noqa: E501
+            authority_override (bool, none_type): [optional]  # noqa: E501
             authorization_state (str): [optional]  # noqa: E501
-            characteristic_tags ([str]): [optional]  # noqa: E501
-            city (str): [optional]  # noqa: E501
-            company_name (str): [optional]  # noqa: E501
-            confidence (int): [optional]  # noqa: E501
-            country (str): [optional]  # noqa: E501
-            deleted (bool): [optional]  # noqa: E501
+            characteristic_tags ([str, none_type], none_type): [optional]  # noqa: E501
+            city (str, none_type): [optional]  # noqa: E501
+            company_name (str, none_type): [optional]  # noqa: E501
+            confidence (int, none_type): [optional]  # noqa: E501
+            country (str, none_type): [optional]  # noqa: E501
+            deleted (bool, none_type): [optional]  # noqa: E501
             details ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            domain (str): [optional]  # noqa: E501
-            email (str): [optional]  # noqa: E501
-            email_type (str): [optional]  # noqa: E501
-            first_seen (datetime): [optional]  # noqa: E501
+            domain (str, none_type): [optional]  # noqa: E501
+            email (str, none_type): [optional]  # noqa: E501
+            email_type (str, none_type): [optional]  # noqa: E501
+            first_seen (datetime, none_type): [optional]  # noqa: E501
             impact_score (str): [optional]  # noqa: E501
-            last_seen (datetime): [optional]  # noqa: E501
-            lens_id (str): [optional]  # noqa: E501
-            lens_view (str): [optional]  # noqa: E501
-            only_in_review_targets (bool): [optional]  # noqa: E501
-            person_first_name (str): [optional]  # noqa: E501
-            person_last_name (str): [optional]  # noqa: E501
-            person_middle_name (str): [optional]  # noqa: E501
-            person_name (str): [optional]  # noqa: E501
-            perspective (str): [optional]  # noqa: E501
-            perspective_name (str): [optional]  # noqa: E501
-            phone (str): [optional]  # noqa: E501
-            postal_code (str): [optional]  # noqa: E501
+            last_seen (datetime, none_type): [optional]  # noqa: E501
+            lens_id (str, none_type): [optional]  # noqa: E501
+            lens_view (str, none_type): [optional]  # noqa: E501
+            only_in_review_targets (bool, none_type): [optional]  # noqa: E501
+            person_first_name (str, none_type): [optional]  # noqa: E501
+            person_last_name (str, none_type): [optional]  # noqa: E501
+            person_middle_name (str, none_type): [optional]  # noqa: E501
+            person_name (str, none_type): [optional]  # noqa: E501
+            perspective (str, none_type): [optional]  # noqa: E501
+            perspective_name (str, none_type): [optional]  # noqa: E501
+            phone (str, none_type): [optional]  # noqa: E501
+            postal_code (str, none_type): [optional]  # noqa: E501
             priority_impact_factor (float): [optional]  # noqa: E501
             priority_score (float): [optional]  # noqa: E501
             priority_status_factor (float): [optional]  # noqa: E501
             priority_tags_factor (float): [optional]  # noqa: E501
-            role (str): [optional]  # noqa: E501
-            seniority (str): [optional]  # noqa: E501
-            state (str): [optional]  # noqa: E501
+            role (str, none_type): [optional]  # noqa: E501
+            seniority (str, none_type): [optional]  # noqa: E501
+            state (str, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
-            sub_role (str): [optional]  # noqa: E501
+            sub_role (str, none_type): [optional]  # noqa: E501
             target_temptation (int, none_type): [optional]  # noqa: E501
-            title (str): [optional]  # noqa: E501
-            tld (str): [optional]  # noqa: E501
-            user_tags ([str]): [optional]  # noqa: E501
-            username (str): [optional]  # noqa: E501
+            title (str, none_type): [optional]  # noqa: E501
+            tld (str, none_type): [optional]  # noqa: E501
+            user_tags ([str, none_type], none_type): [optional]  # noqa: E501
+            username (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -348,8 +348,8 @@ class SocialEntity(ModelNormal):
         """SocialEntity - a model defined in OpenAPI
 
         Args:
-            id (str):
-            org_id (str):
+            id (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -382,50 +382,50 @@ class SocialEntity(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            address (str): [optional]  # noqa: E501
+            address (str, none_type): [optional]  # noqa: E501
             affiliation_state (str): [optional]  # noqa: E501
-            authority (bool): [optional]  # noqa: E501
-            authority_distance (int): [optional]  # noqa: E501
-            authority_override (bool): [optional]  # noqa: E501
+            authority (bool, none_type): [optional]  # noqa: E501
+            authority_distance (int, none_type): [optional]  # noqa: E501
+            authority_override (bool, none_type): [optional]  # noqa: E501
             authorization_state (str): [optional]  # noqa: E501
-            characteristic_tags ([str]): [optional]  # noqa: E501
-            city (str): [optional]  # noqa: E501
-            company_name (str): [optional]  # noqa: E501
-            confidence (int): [optional]  # noqa: E501
-            country (str): [optional]  # noqa: E501
-            deleted (bool): [optional]  # noqa: E501
+            characteristic_tags ([str, none_type], none_type): [optional]  # noqa: E501
+            city (str, none_type): [optional]  # noqa: E501
+            company_name (str, none_type): [optional]  # noqa: E501
+            confidence (int, none_type): [optional]  # noqa: E501
+            country (str, none_type): [optional]  # noqa: E501
+            deleted (bool, none_type): [optional]  # noqa: E501
             details ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            domain (str): [optional]  # noqa: E501
-            email (str): [optional]  # noqa: E501
-            email_type (str): [optional]  # noqa: E501
-            first_seen (datetime): [optional]  # noqa: E501
+            domain (str, none_type): [optional]  # noqa: E501
+            email (str, none_type): [optional]  # noqa: E501
+            email_type (str, none_type): [optional]  # noqa: E501
+            first_seen (datetime, none_type): [optional]  # noqa: E501
             impact_score (str): [optional]  # noqa: E501
-            last_seen (datetime): [optional]  # noqa: E501
-            lens_id (str): [optional]  # noqa: E501
-            lens_view (str): [optional]  # noqa: E501
-            only_in_review_targets (bool): [optional]  # noqa: E501
-            person_first_name (str): [optional]  # noqa: E501
-            person_last_name (str): [optional]  # noqa: E501
-            person_middle_name (str): [optional]  # noqa: E501
-            person_name (str): [optional]  # noqa: E501
-            perspective (str): [optional]  # noqa: E501
-            perspective_name (str): [optional]  # noqa: E501
-            phone (str): [optional]  # noqa: E501
-            postal_code (str): [optional]  # noqa: E501
+            last_seen (datetime, none_type): [optional]  # noqa: E501
+            lens_id (str, none_type): [optional]  # noqa: E501
+            lens_view (str, none_type): [optional]  # noqa: E501
+            only_in_review_targets (bool, none_type): [optional]  # noqa: E501
+            person_first_name (str, none_type): [optional]  # noqa: E501
+            person_last_name (str, none_type): [optional]  # noqa: E501
+            person_middle_name (str, none_type): [optional]  # noqa: E501
+            person_name (str, none_type): [optional]  # noqa: E501
+            perspective (str, none_type): [optional]  # noqa: E501
+            perspective_name (str, none_type): [optional]  # noqa: E501
+            phone (str, none_type): [optional]  # noqa: E501
+            postal_code (str, none_type): [optional]  # noqa: E501
             priority_impact_factor (float): [optional]  # noqa: E501
             priority_score (float): [optional]  # noqa: E501
             priority_status_factor (float): [optional]  # noqa: E501
             priority_tags_factor (float): [optional]  # noqa: E501
-            role (str): [optional]  # noqa: E501
-            seniority (str): [optional]  # noqa: E501
-            state (str): [optional]  # noqa: E501
+            role (str, none_type): [optional]  # noqa: E501
+            seniority (str, none_type): [optional]  # noqa: E501
+            state (str, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
-            sub_role (str): [optional]  # noqa: E501
+            sub_role (str, none_type): [optional]  # noqa: E501
             target_temptation (int, none_type): [optional]  # noqa: E501
-            title (str): [optional]  # noqa: E501
-            tld (str): [optional]  # noqa: E501
-            user_tags ([str]): [optional]  # noqa: E501
-            username (str): [optional]  # noqa: E501
+            title (str, none_type): [optional]  # noqa: E501
+            tld (str, none_type): [optional]  # noqa: E501
+            user_tags ([str, none_type], none_type): [optional]  # noqa: E501
+            username (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

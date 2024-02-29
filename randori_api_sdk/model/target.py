@@ -83,6 +83,7 @@ class Target(ModelNormal):
             'ACCEPTED': "Accepted",
         },
         ('tech_category',): {
+            'None': None,
             'APP_SERVERS': "App Servers",
             'APPLICATIONS': "Applications",
             'DATABASES': "Databases",
@@ -123,52 +124,52 @@ class Target(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'id': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
             'affiliation_state': (str,),  # noqa: E501
-            'applicability': (int,),  # noqa: E501
-            'attack_note': (str,),  # noqa: E501
-            'authority': (bool,),  # noqa: E501
-            'authority_distance': (int,),  # noqa: E501
-            'authority_override': (bool,),  # noqa: E501
+            'applicability': (int, none_type,),  # noqa: E501
+            'attack_note': (str, none_type,),  # noqa: E501
+            'authority': (bool, none_type,),  # noqa: E501
+            'authority_distance': (int, none_type,),  # noqa: E501
+            'authority_override': (bool, none_type,),  # noqa: E501
             'authorization_state': (str,),  # noqa: E501
-            'characteristic_tags': ([str],),  # noqa: E501
-            'confidence': (int,),  # noqa: E501
+            'characteristic_tags': ([str, none_type], none_type,),  # noqa: E501
+            'confidence': (int, none_type,),  # noqa: E501
             'cpe': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'criticality': (int,),  # noqa: E501
-            'deleted': (bool,),  # noqa: E501
-            'description': (str,),  # noqa: E501
+            'criticality': (int, none_type,),  # noqa: E501
+            'deleted': (bool, none_type,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
             'description_source': (str,),  # noqa: E501
             'detection_criteria': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'enumerability': (int,),  # noqa: E501
-            'first_seen': (datetime,),  # noqa: E501
+            'enumerability': (int, none_type,),  # noqa: E501
+            'first_seen': (datetime, none_type,),  # noqa: E501
             'impact_score': (str,),  # noqa: E501
-            'last_seen': (datetime,),  # noqa: E501
-            'lens_id': (str,),  # noqa: E501
-            'lens_view': (str,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'perspective': (str,),  # noqa: E501
-            'perspective_name': (str,),  # noqa: E501
-            'post_exploit': (int,),  # noqa: E501
+            'last_seen': (datetime, none_type,),  # noqa: E501
+            'lens_id': (str, none_type,),  # noqa: E501
+            'lens_view': (str, none_type,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'perspective': (str, none_type,),  # noqa: E501
+            'perspective_name': (str, none_type,),  # noqa: E501
+            'post_exploit': (int, none_type,),  # noqa: E501
             'priority_impact_factor': (float,),  # noqa: E501
             'priority_score': (float,),  # noqa: E501
             'priority_status_factor': (float,),  # noqa: E501
             'priority_tags_factor': (float,),  # noqa: E501
-            'private_weakness': (int,),  # noqa: E501
-            'public_weakness': (int,),  # noqa: E501
-            'randori_notes': (str,),  # noqa: E501
-            'reference': (str,),  # noqa: E501
-            'research': (int,),  # noqa: E501
-            'service_id': (str,),  # noqa: E501
+            'private_weakness': (int, none_type,),  # noqa: E501
+            'public_weakness': (int, none_type,),  # noqa: E501
+            'randori_notes': (str, none_type,),  # noqa: E501
+            'reference': (str, none_type,),  # noqa: E501
+            'research': (int, none_type,),  # noqa: E501
+            'service_id': (str, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'target_temptation': (int, none_type,),  # noqa: E501
-            'tech_category': ([str],),  # noqa: E501
-            'temptation_last_modified': (datetime,),  # noqa: E501
-            'user_tags': ([str],),  # noqa: E501
-            'validated_vulnerabilities_target': ([str],),  # noqa: E501
-            'validated_vulnerabilities_target_count': (int,),  # noqa: E501
-            'vendor': (str,),  # noqa: E501
-            'version': (str,),  # noqa: E501
+            'tech_category': ([str], none_type,),  # noqa: E501
+            'temptation_last_modified': (datetime, none_type,),  # noqa: E501
+            'user_tags': ([str, none_type], none_type,),  # noqa: E501
+            'validated_vulnerabilities_target': ([str, none_type], none_type,),  # noqa: E501
+            'validated_vulnerabilities_target_count': (int, none_type,),  # noqa: E501
+            'vendor': (str, none_type,),  # noqa: E501
+            'version': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -236,8 +237,8 @@ class Target(ModelNormal):
         """Target - a model defined in OpenAPI
 
         Args:
-            id (str):
-            org_id (str):
+            id (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -271,49 +272,49 @@ class Target(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             affiliation_state (str): [optional]  # noqa: E501
-            applicability (int): [optional]  # noqa: E501
-            attack_note (str): [optional]  # noqa: E501
-            authority (bool): [optional]  # noqa: E501
-            authority_distance (int): [optional]  # noqa: E501
-            authority_override (bool): [optional]  # noqa: E501
+            applicability (int, none_type): [optional]  # noqa: E501
+            attack_note (str, none_type): [optional]  # noqa: E501
+            authority (bool, none_type): [optional]  # noqa: E501
+            authority_distance (int, none_type): [optional]  # noqa: E501
+            authority_override (bool, none_type): [optional]  # noqa: E501
             authorization_state (str): [optional]  # noqa: E501
-            characteristic_tags ([str]): [optional]  # noqa: E501
-            confidence (int): [optional]  # noqa: E501
+            characteristic_tags ([str, none_type], none_type): [optional]  # noqa: E501
+            confidence (int, none_type): [optional]  # noqa: E501
             cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            criticality (int): [optional]  # noqa: E501
-            deleted (bool): [optional]  # noqa: E501
-            description (str): [optional]  # noqa: E501
+            criticality (int, none_type): [optional]  # noqa: E501
+            deleted (bool, none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
             description_source (str): [optional]  # noqa: E501
             detection_criteria ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            enumerability (int): [optional]  # noqa: E501
-            first_seen (datetime): [optional]  # noqa: E501
+            enumerability (int, none_type): [optional]  # noqa: E501
+            first_seen (datetime, none_type): [optional]  # noqa: E501
             impact_score (str): [optional]  # noqa: E501
-            last_seen (datetime): [optional]  # noqa: E501
-            lens_id (str): [optional]  # noqa: E501
-            lens_view (str): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            perspective (str): [optional]  # noqa: E501
-            perspective_name (str): [optional]  # noqa: E501
-            post_exploit (int): [optional]  # noqa: E501
+            last_seen (datetime, none_type): [optional]  # noqa: E501
+            lens_id (str, none_type): [optional]  # noqa: E501
+            lens_view (str, none_type): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            perspective (str, none_type): [optional]  # noqa: E501
+            perspective_name (str, none_type): [optional]  # noqa: E501
+            post_exploit (int, none_type): [optional]  # noqa: E501
             priority_impact_factor (float): [optional]  # noqa: E501
             priority_score (float): [optional]  # noqa: E501
             priority_status_factor (float): [optional]  # noqa: E501
             priority_tags_factor (float): [optional]  # noqa: E501
-            private_weakness (int): [optional]  # noqa: E501
-            public_weakness (int): [optional]  # noqa: E501
-            randori_notes (str): [optional]  # noqa: E501
-            reference (str): [optional]  # noqa: E501
-            research (int): [optional]  # noqa: E501
-            service_id (str): [optional]  # noqa: E501
+            private_weakness (int, none_type): [optional]  # noqa: E501
+            public_weakness (int, none_type): [optional]  # noqa: E501
+            randori_notes (str, none_type): [optional]  # noqa: E501
+            reference (str, none_type): [optional]  # noqa: E501
+            research (int, none_type): [optional]  # noqa: E501
+            service_id (str, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             target_temptation (int, none_type): [optional]  # noqa: E501
-            tech_category ([str]): [optional]  # noqa: E501
-            temptation_last_modified (datetime): [optional]  # noqa: E501
-            user_tags ([str]): [optional]  # noqa: E501
-            validated_vulnerabilities_target ([str]): [optional]  # noqa: E501
-            validated_vulnerabilities_target_count (int): [optional]  # noqa: E501
-            vendor (str): [optional]  # noqa: E501
-            version (str): [optional]  # noqa: E501
+            tech_category ([str], none_type): [optional]  # noqa: E501
+            temptation_last_modified (datetime, none_type): [optional]  # noqa: E501
+            user_tags ([str, none_type], none_type): [optional]  # noqa: E501
+            validated_vulnerabilities_target ([str, none_type], none_type): [optional]  # noqa: E501
+            validated_vulnerabilities_target_count (int, none_type): [optional]  # noqa: E501
+            vendor (str, none_type): [optional]  # noqa: E501
+            version (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -367,8 +368,8 @@ class Target(ModelNormal):
         """Target - a model defined in OpenAPI
 
         Args:
-            id (str):
-            org_id (str):
+            id (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -402,49 +403,49 @@ class Target(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             affiliation_state (str): [optional]  # noqa: E501
-            applicability (int): [optional]  # noqa: E501
-            attack_note (str): [optional]  # noqa: E501
-            authority (bool): [optional]  # noqa: E501
-            authority_distance (int): [optional]  # noqa: E501
-            authority_override (bool): [optional]  # noqa: E501
+            applicability (int, none_type): [optional]  # noqa: E501
+            attack_note (str, none_type): [optional]  # noqa: E501
+            authority (bool, none_type): [optional]  # noqa: E501
+            authority_distance (int, none_type): [optional]  # noqa: E501
+            authority_override (bool, none_type): [optional]  # noqa: E501
             authorization_state (str): [optional]  # noqa: E501
-            characteristic_tags ([str]): [optional]  # noqa: E501
-            confidence (int): [optional]  # noqa: E501
+            characteristic_tags ([str, none_type], none_type): [optional]  # noqa: E501
+            confidence (int, none_type): [optional]  # noqa: E501
             cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            criticality (int): [optional]  # noqa: E501
-            deleted (bool): [optional]  # noqa: E501
-            description (str): [optional]  # noqa: E501
+            criticality (int, none_type): [optional]  # noqa: E501
+            deleted (bool, none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
             description_source (str): [optional]  # noqa: E501
             detection_criteria ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
-            enumerability (int): [optional]  # noqa: E501
-            first_seen (datetime): [optional]  # noqa: E501
+            enumerability (int, none_type): [optional]  # noqa: E501
+            first_seen (datetime, none_type): [optional]  # noqa: E501
             impact_score (str): [optional]  # noqa: E501
-            last_seen (datetime): [optional]  # noqa: E501
-            lens_id (str): [optional]  # noqa: E501
-            lens_view (str): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
-            perspective (str): [optional]  # noqa: E501
-            perspective_name (str): [optional]  # noqa: E501
-            post_exploit (int): [optional]  # noqa: E501
+            last_seen (datetime, none_type): [optional]  # noqa: E501
+            lens_id (str, none_type): [optional]  # noqa: E501
+            lens_view (str, none_type): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
+            perspective (str, none_type): [optional]  # noqa: E501
+            perspective_name (str, none_type): [optional]  # noqa: E501
+            post_exploit (int, none_type): [optional]  # noqa: E501
             priority_impact_factor (float): [optional]  # noqa: E501
             priority_score (float): [optional]  # noqa: E501
             priority_status_factor (float): [optional]  # noqa: E501
             priority_tags_factor (float): [optional]  # noqa: E501
-            private_weakness (int): [optional]  # noqa: E501
-            public_weakness (int): [optional]  # noqa: E501
-            randori_notes (str): [optional]  # noqa: E501
-            reference (str): [optional]  # noqa: E501
-            research (int): [optional]  # noqa: E501
-            service_id (str): [optional]  # noqa: E501
+            private_weakness (int, none_type): [optional]  # noqa: E501
+            public_weakness (int, none_type): [optional]  # noqa: E501
+            randori_notes (str, none_type): [optional]  # noqa: E501
+            reference (str, none_type): [optional]  # noqa: E501
+            research (int, none_type): [optional]  # noqa: E501
+            service_id (str, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             target_temptation (int, none_type): [optional]  # noqa: E501
-            tech_category ([str]): [optional]  # noqa: E501
-            temptation_last_modified (datetime): [optional]  # noqa: E501
-            user_tags ([str]): [optional]  # noqa: E501
-            validated_vulnerabilities_target ([str]): [optional]  # noqa: E501
-            validated_vulnerabilities_target_count (int): [optional]  # noqa: E501
-            vendor (str): [optional]  # noqa: E501
-            version (str): [optional]  # noqa: E501
+            tech_category ([str], none_type): [optional]  # noqa: E501
+            temptation_last_modified (datetime, none_type): [optional]  # noqa: E501
+            user_tags ([str, none_type], none_type): [optional]  # noqa: E501
+            validated_vulnerabilities_target ([str, none_type], none_type): [optional]  # noqa: E501
+            validated_vulnerabilities_target_count (int, none_type): [optional]  # noqa: E501
+            vendor (str, none_type): [optional]  # noqa: E501
+            version (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

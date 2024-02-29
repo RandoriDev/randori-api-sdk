@@ -57,6 +57,7 @@ class SavedViewsModelCustomIn(ModelNormal):
 
     allowed_values = {
         ('entity_type',): {
+            'None': None,
             'TARGET': "target",
             'HOSTNAME': "hostname",
             'SERVICE': "service",
@@ -96,7 +97,7 @@ class SavedViewsModelCustomIn(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'entity_type': (str,),  # noqa: E501
+            'entity_type': (str, none_type,),  # noqa: E501
             'filter_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'sort_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
@@ -131,7 +132,7 @@ class SavedViewsModelCustomIn(ModelNormal):
         """SavedViewsModelCustomIn - a model defined in OpenAPI
 
         Args:
-            entity_type (str):
+            entity_type (str, none_type):
             filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             sort_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
 
@@ -224,7 +225,7 @@ class SavedViewsModelCustomIn(ModelNormal):
         """SavedViewsModelCustomIn - a model defined in OpenAPI
 
         Args:
-            entity_type (str):
+            entity_type (str, none_type):
             filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             sort_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
 

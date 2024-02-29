@@ -93,7 +93,7 @@ class CmspbFrontendConfiguration(ModelNormal):
         lazy_import()
         return {
             'attributes': (CmspbFrontendConfigurationAttributes,),  # noqa: E501
-            'id': (str,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
             'relationships': (CmspbRelationships,),  # noqa: E501
             'type': (CmspbFrontendType,),  # noqa: E501
         }
@@ -152,7 +152,7 @@ class CmspbFrontendConfiguration(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             attributes (CmspbFrontendConfigurationAttributes): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             relationships (CmspbRelationships): [optional]  # noqa: E501
             type (CmspbFrontendType): [optional]  # noqa: E501
         """
@@ -237,7 +237,7 @@ class CmspbFrontendConfiguration(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             attributes (CmspbFrontendConfigurationAttributes): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             relationships (CmspbRelationships): [optional]  # noqa: E501
             type (CmspbFrontendType): [optional]  # noqa: E501
         """

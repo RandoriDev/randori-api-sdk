@@ -82,8 +82,8 @@ class UsernamePasswordInputSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'password': (str,),  # noqa: E501
-            'username': (str,),  # noqa: E501
+            'password': (str, none_type,),  # noqa: E501
+            'username': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -107,8 +107,8 @@ class UsernamePasswordInputSchema(ModelNormal):
         """UsernamePasswordInputSchema - a model defined in OpenAPI
 
         Args:
-            password (str):
-            username (str):
+            password (str, none_type):
+            username (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -194,8 +194,8 @@ class UsernamePasswordInputSchema(ModelNormal):
         """UsernamePasswordInputSchema - a model defined in OpenAPI
 
         Args:
-            password (str):
-            username (str):
+            password (str, none_type):
+            username (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

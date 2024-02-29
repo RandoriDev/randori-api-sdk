@@ -83,8 +83,8 @@ class PermissionGroupInfo(ModelNormal):
         """
         return {
             'perm_group_type': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'perm_group_desc': (str,),  # noqa: E501
-            'perm_group_name': (str,),  # noqa: E501
+            'perm_group_desc': (str, none_type,),  # noqa: E501
+            'perm_group_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -142,8 +142,8 @@ class PermissionGroupInfo(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            perm_group_desc (str): [optional]  # noqa: E501
-            perm_group_name (str): [optional]  # noqa: E501
+            perm_group_desc (str, none_type): [optional]  # noqa: E501
+            perm_group_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -229,8 +229,8 @@ class PermissionGroupInfo(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            perm_group_desc (str): [optional]  # noqa: E501
-            perm_group_name (str): [optional]  # noqa: E501
+            perm_group_desc (str, none_type): [optional]  # noqa: E501
+            perm_group_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

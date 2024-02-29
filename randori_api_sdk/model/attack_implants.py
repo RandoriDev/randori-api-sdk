@@ -82,19 +82,19 @@ class AttackImplants(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'arch': (str,),  # noqa: E501
-            'bart_id': (str,),  # noqa: E501
-            'created_on': (datetime,),  # noqa: E501
-            'hostnames': ([str],),  # noqa: E501
-            'last_checkin': (datetime,),  # noqa: E501
+            'arch': (str, none_type,),  # noqa: E501
+            'bart_id': (str, none_type,),  # noqa: E501
+            'created_on': (datetime, none_type,),  # noqa: E501
+            'hostnames': ([str, none_type], none_type,),  # noqa: E501
+            'last_checkin': (datetime, none_type,),  # noqa: E501
             'method': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'next_checkin': (datetime,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'uid': (str,),  # noqa: E501
+            'next_checkin': (datetime, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'status': (str, none_type,),  # noqa: E501
+            'uid': (str, none_type,),  # noqa: E501
             'bits': (int, none_type,),  # noqa: E501
-            'host_ips': ([str],),  # noqa: E501
-            'id': (str,),  # noqa: E501
+            'host_ips': ([str, none_type], none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
             'nick': (str, none_type,),  # noqa: E501
             'os': (str, none_type,),  # noqa: E501
             'ostype': (str, none_type,),  # noqa: E501
@@ -137,16 +137,16 @@ class AttackImplants(ModelNormal):
         """AttackImplants - a model defined in OpenAPI
 
         Args:
-            arch (str):
-            bart_id (str):
-            created_on (datetime):
-            hostnames ([str]):
-            last_checkin (datetime):
+            arch (str, none_type):
+            bart_id (str, none_type):
+            created_on (datetime, none_type):
+            hostnames ([str, none_type], none_type):
+            last_checkin (datetime, none_type):
             method ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-            next_checkin (datetime):
-            org_id (str):
-            status (str):
-            uid (str):
+            next_checkin (datetime, none_type):
+            org_id (str, none_type):
+            status (str, none_type):
+            uid (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -180,8 +180,8 @@ class AttackImplants(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             bits (int, none_type): [optional]  # noqa: E501
-            host_ips ([str]): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            host_ips ([str, none_type], none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             nick (str, none_type): [optional]  # noqa: E501
             os (str, none_type): [optional]  # noqa: E501
             ostype (str, none_type): [optional]  # noqa: E501
@@ -247,16 +247,16 @@ class AttackImplants(ModelNormal):
         """AttackImplants - a model defined in OpenAPI
 
         Args:
-            arch (str):
-            bart_id (str):
-            created_on (datetime):
-            hostnames ([str]):
-            last_checkin (datetime):
+            arch (str, none_type):
+            bart_id (str, none_type):
+            created_on (datetime, none_type):
+            hostnames ([str, none_type], none_type):
+            last_checkin (datetime, none_type):
             method ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-            next_checkin (datetime):
-            org_id (str):
-            status (str):
-            uid (str):
+            next_checkin (datetime, none_type):
+            org_id (str, none_type):
+            status (str, none_type):
+            uid (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -290,8 +290,8 @@ class AttackImplants(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             bits (int, none_type): [optional]  # noqa: E501
-            host_ips ([str]): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            host_ips ([str, none_type], none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             nick (str, none_type): [optional]  # noqa: E501
             os (str, none_type): [optional]  # noqa: E501
             ostype (str, none_type): [optional]  # noqa: E501

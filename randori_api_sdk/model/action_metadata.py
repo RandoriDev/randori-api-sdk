@@ -82,12 +82,12 @@ class ActionMetadata(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'action_id': (str,),  # noqa: E501
-            'bart_id': (str,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'result': (str,),  # noqa: E501
-            'runbook_instance_id': (str,),  # noqa: E501
+            'action_id': (str, none_type,),  # noqa: E501
+            'bart_id': (str, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'result': (str, none_type,),  # noqa: E501
+            'runbook_instance_id': (str, none_type,),  # noqa: E501
             'artifacts_status': (str, none_type,),  # noqa: E501
             'completed': (datetime, none_type,),  # noqa: E501
             'config_hash': (str, none_type,),  # noqa: E501
@@ -96,27 +96,27 @@ class ActionMetadata(ModelNormal):
             'description': (str, none_type,),  # noqa: E501
             'description_id': (str, none_type,),  # noqa: E501
             'display_name': (str, none_type,),  # noqa: E501
-            'dst_email': ([str], none_type,),  # noqa: E501
-            'dst_host': ([str], none_type,),  # noqa: E501
-            'dst_ip': ([str], none_type,),  # noqa: E501
-            'dst_mac': ([str], none_type,),  # noqa: E501
-            'dst_misc': ([str], none_type,),  # noqa: E501
-            'dst_network': ([str], none_type,),  # noqa: E501
-            'dst_path': ([str], none_type,),  # noqa: E501
-            'dst_port': ([int], none_type,),  # noqa: E501
+            'dst_email': ([str, none_type], none_type,),  # noqa: E501
+            'dst_host': ([str, none_type], none_type,),  # noqa: E501
+            'dst_ip': ([str, none_type], none_type,),  # noqa: E501
+            'dst_mac': ([str, none_type], none_type,),  # noqa: E501
+            'dst_misc': ([str, none_type], none_type,),  # noqa: E501
+            'dst_network': ([str, none_type], none_type,),  # noqa: E501
+            'dst_path': ([str, none_type], none_type,),  # noqa: E501
+            'dst_port': ([int, none_type], none_type,),  # noqa: E501
             'implant_id': (str, none_type,),  # noqa: E501
             'implant_nick': (str, none_type,),  # noqa: E501
             'implant_uid': (str, none_type,),  # noqa: E501
-            'mitre_techniques': ([str], none_type,),  # noqa: E501
+            'mitre_techniques': ([str, none_type], none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'perspective_metadata': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'randori_notes': (str, none_type,),  # noqa: E501
             'result_hash': (str, none_type,),  # noqa: E501
-            'src_email': ([str], none_type,),  # noqa: E501
-            'src_host': ([str], none_type,),  # noqa: E501
-            'src_ip': ([str], none_type,),  # noqa: E501
-            'src_mac': ([str], none_type,),  # noqa: E501
-            'src_misc': ([str], none_type,),  # noqa: E501
+            'src_email': ([str, none_type], none_type,),  # noqa: E501
+            'src_host': ([str, none_type], none_type,),  # noqa: E501
+            'src_ip': ([str, none_type], none_type,),  # noqa: E501
+            'src_mac': ([str, none_type], none_type,),  # noqa: E501
+            'src_misc': ([str, none_type], none_type,),  # noqa: E501
             'stability': (int, none_type,),  # noqa: E501
             'started': (datetime, none_type,),  # noqa: E501
             'stealth': (int, none_type,),  # noqa: E501
@@ -187,12 +187,12 @@ class ActionMetadata(ModelNormal):
         """ActionMetadata - a model defined in OpenAPI
 
         Args:
-            action_id (str):
-            bart_id (str):
-            id (str):
-            org_id (str):
-            result (str):
-            runbook_instance_id (str):
+            action_id (str, none_type):
+            bart_id (str, none_type):
+            id (str, none_type):
+            org_id (str, none_type):
+            result (str, none_type):
+            runbook_instance_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -233,27 +233,27 @@ class ActionMetadata(ModelNormal):
             description (str, none_type): [optional]  # noqa: E501
             description_id (str, none_type): [optional]  # noqa: E501
             display_name (str, none_type): [optional]  # noqa: E501
-            dst_email ([str], none_type): [optional]  # noqa: E501
-            dst_host ([str], none_type): [optional]  # noqa: E501
-            dst_ip ([str], none_type): [optional]  # noqa: E501
-            dst_mac ([str], none_type): [optional]  # noqa: E501
-            dst_misc ([str], none_type): [optional]  # noqa: E501
-            dst_network ([str], none_type): [optional]  # noqa: E501
-            dst_path ([str], none_type): [optional]  # noqa: E501
-            dst_port ([int], none_type): [optional]  # noqa: E501
+            dst_email ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_host ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_ip ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_mac ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_misc ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_network ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_path ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_port ([int, none_type], none_type): [optional]  # noqa: E501
             implant_id (str, none_type): [optional]  # noqa: E501
             implant_nick (str, none_type): [optional]  # noqa: E501
             implant_uid (str, none_type): [optional]  # noqa: E501
-            mitre_techniques ([str], none_type): [optional]  # noqa: E501
+            mitre_techniques ([str, none_type], none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             perspective_metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             randori_notes (str, none_type): [optional]  # noqa: E501
             result_hash (str, none_type): [optional]  # noqa: E501
-            src_email ([str], none_type): [optional]  # noqa: E501
-            src_host ([str], none_type): [optional]  # noqa: E501
-            src_ip ([str], none_type): [optional]  # noqa: E501
-            src_mac ([str], none_type): [optional]  # noqa: E501
-            src_misc ([str], none_type): [optional]  # noqa: E501
+            src_email ([str, none_type], none_type): [optional]  # noqa: E501
+            src_host ([str, none_type], none_type): [optional]  # noqa: E501
+            src_ip ([str, none_type], none_type): [optional]  # noqa: E501
+            src_mac ([str, none_type], none_type): [optional]  # noqa: E501
+            src_misc ([str, none_type], none_type): [optional]  # noqa: E501
             stability (int, none_type): [optional]  # noqa: E501
             started (datetime, none_type): [optional]  # noqa: E501
             stealth (int, none_type): [optional]  # noqa: E501
@@ -318,12 +318,12 @@ class ActionMetadata(ModelNormal):
         """ActionMetadata - a model defined in OpenAPI
 
         Args:
-            action_id (str):
-            bart_id (str):
-            id (str):
-            org_id (str):
-            result (str):
-            runbook_instance_id (str):
+            action_id (str, none_type):
+            bart_id (str, none_type):
+            id (str, none_type):
+            org_id (str, none_type):
+            result (str, none_type):
+            runbook_instance_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -364,27 +364,27 @@ class ActionMetadata(ModelNormal):
             description (str, none_type): [optional]  # noqa: E501
             description_id (str, none_type): [optional]  # noqa: E501
             display_name (str, none_type): [optional]  # noqa: E501
-            dst_email ([str], none_type): [optional]  # noqa: E501
-            dst_host ([str], none_type): [optional]  # noqa: E501
-            dst_ip ([str], none_type): [optional]  # noqa: E501
-            dst_mac ([str], none_type): [optional]  # noqa: E501
-            dst_misc ([str], none_type): [optional]  # noqa: E501
-            dst_network ([str], none_type): [optional]  # noqa: E501
-            dst_path ([str], none_type): [optional]  # noqa: E501
-            dst_port ([int], none_type): [optional]  # noqa: E501
+            dst_email ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_host ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_ip ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_mac ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_misc ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_network ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_path ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_port ([int, none_type], none_type): [optional]  # noqa: E501
             implant_id (str, none_type): [optional]  # noqa: E501
             implant_nick (str, none_type): [optional]  # noqa: E501
             implant_uid (str, none_type): [optional]  # noqa: E501
-            mitre_techniques ([str], none_type): [optional]  # noqa: E501
+            mitre_techniques ([str, none_type], none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             perspective_metadata ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             randori_notes (str, none_type): [optional]  # noqa: E501
             result_hash (str, none_type): [optional]  # noqa: E501
-            src_email ([str], none_type): [optional]  # noqa: E501
-            src_host ([str], none_type): [optional]  # noqa: E501
-            src_ip ([str], none_type): [optional]  # noqa: E501
-            src_mac ([str], none_type): [optional]  # noqa: E501
-            src_misc ([str], none_type): [optional]  # noqa: E501
+            src_email ([str, none_type], none_type): [optional]  # noqa: E501
+            src_host ([str, none_type], none_type): [optional]  # noqa: E501
+            src_ip ([str, none_type], none_type): [optional]  # noqa: E501
+            src_mac ([str, none_type], none_type): [optional]  # noqa: E501
+            src_misc ([str, none_type], none_type): [optional]  # noqa: E501
             stability (int, none_type): [optional]  # noqa: E501
             started (datetime, none_type): [optional]  # noqa: E501
             stealth (int, none_type): [optional]  # noqa: E501

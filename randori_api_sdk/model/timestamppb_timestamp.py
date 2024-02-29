@@ -82,8 +82,8 @@ class TimestamppbTimestamp(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'nanos': (int,),  # noqa: E501
-            'seconds': (int,),  # noqa: E501
+            'nanos': (int, none_type,),  # noqa: E501
+            'seconds': (int, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -137,8 +137,8 @@ class TimestamppbTimestamp(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            nanos (int): Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.. [optional]  # noqa: E501
-            seconds (int): Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.. [optional]  # noqa: E501
+            nanos (int, none_type): Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.. [optional]  # noqa: E501
+            seconds (int, none_type): Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -220,8 +220,8 @@ class TimestamppbTimestamp(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            nanos (int): Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.. [optional]  # noqa: E501
-            seconds (int): Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.. [optional]  # noqa: E501
+            nanos (int, none_type): Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.. [optional]  # noqa: E501
+            seconds (int, none_type): Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**feature_uuid** | **str** |  | 
-**is_active** | **bool** |  | 
+**feature_uuid** | **str, none_type** |  | 
+**is_active** | **bool, none_type** |  | 
 **name** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | 
 **type** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

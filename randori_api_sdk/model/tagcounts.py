@@ -82,17 +82,17 @@ class Tagcounts(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'all_count': (int,),  # noqa: E501
-            'content': (str,),  # noqa: E501
-            'hostname_count': (int,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'ip_count': (int,),  # noqa: E501
-            'is_characteristic_tag': (bool,),  # noqa: E501
-            'network_count': (int,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'poc_count': (int,),  # noqa: E501
-            'service_count': (int,),  # noqa: E501
-            'target_count': (int,),  # noqa: E501
+            'all_count': (int, none_type,),  # noqa: E501
+            'content': (str, none_type,),  # noqa: E501
+            'hostname_count': (int, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'ip_count': (int, none_type,),  # noqa: E501
+            'is_characteristic_tag': (bool, none_type,),  # noqa: E501
+            'network_count': (int, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'poc_count': (int, none_type,),  # noqa: E501
+            'service_count': (int, none_type,),  # noqa: E501
+            'target_count': (int, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -125,17 +125,17 @@ class Tagcounts(ModelNormal):
         """Tagcounts - a model defined in OpenAPI
 
         Args:
-            all_count (int):
-            content (str):
-            hostname_count (int):
-            id (str):
-            ip_count (int):
-            is_characteristic_tag (bool):
-            network_count (int):
-            org_id (str):
-            poc_count (int):
-            service_count (int):
-            target_count (int):
+            all_count (int, none_type):
+            content (str, none_type):
+            hostname_count (int, none_type):
+            id (str, none_type):
+            ip_count (int, none_type):
+            is_characteristic_tag (bool, none_type):
+            network_count (int, none_type):
+            org_id (str, none_type):
+            poc_count (int, none_type):
+            service_count (int, none_type):
+            target_count (int, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -230,17 +230,17 @@ class Tagcounts(ModelNormal):
         """Tagcounts - a model defined in OpenAPI
 
         Args:
-            all_count (int):
-            content (str):
-            hostname_count (int):
-            id (str):
-            ip_count (int):
-            is_characteristic_tag (bool):
-            network_count (int):
-            org_id (str):
-            poc_count (int):
-            service_count (int):
-            target_count (int):
+            all_count (int, none_type):
+            content (str, none_type):
+            hostname_count (int, none_type):
+            id (str, none_type):
+            ip_count (int, none_type):
+            is_characteristic_tag (bool, none_type):
+            network_count (int, none_type):
+            org_id (str, none_type):
+            poc_count (int, none_type):
+            service_count (int, none_type):
+            target_count (int, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

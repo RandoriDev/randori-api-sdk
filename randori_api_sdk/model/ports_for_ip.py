@@ -82,20 +82,20 @@ class PortsForIp(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'id': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'confidence': (int,),  # noqa: E501
-            'deleted': (bool,),  # noqa: E501
-            'ip_id': (str,),  # noqa: E501
-            'last_seen': (datetime,),  # noqa: E501
-            'lens_id': (str,),  # noqa: E501
-            'lens_view': (str,),  # noqa: E501
-            'perspective': (str,),  # noqa: E501
-            'perspective_name': (str,),  # noqa: E501
-            'port': (int,),  # noqa: E501
-            'protocol': (int,),  # noqa: E501
-            'seen_open': (bool,),  # noqa: E501
-            'state': (str,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'confidence': (int, none_type,),  # noqa: E501
+            'deleted': (bool, none_type,),  # noqa: E501
+            'ip_id': (str, none_type,),  # noqa: E501
+            'last_seen': (datetime, none_type,),  # noqa: E501
+            'lens_id': (str, none_type,),  # noqa: E501
+            'lens_view': (str, none_type,),  # noqa: E501
+            'perspective': (str, none_type,),  # noqa: E501
+            'perspective_name': (str, none_type,),  # noqa: E501
+            'port': (int, none_type,),  # noqa: E501
+            'protocol': (int, none_type,),  # noqa: E501
+            'seen_open': (bool, none_type,),  # noqa: E501
+            'state': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -131,8 +131,8 @@ class PortsForIp(ModelNormal):
         """PortsForIp - a model defined in OpenAPI
 
         Args:
-            id (str):
-            org_id (str):
+            id (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -165,18 +165,18 @@ class PortsForIp(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            confidence (int): [optional]  # noqa: E501
-            deleted (bool): [optional]  # noqa: E501
-            ip_id (str): [optional]  # noqa: E501
-            last_seen (datetime): [optional]  # noqa: E501
-            lens_id (str): [optional]  # noqa: E501
-            lens_view (str): [optional]  # noqa: E501
-            perspective (str): [optional]  # noqa: E501
-            perspective_name (str): [optional]  # noqa: E501
-            port (int): [optional]  # noqa: E501
-            protocol (int): [optional]  # noqa: E501
-            seen_open (bool): [optional]  # noqa: E501
-            state (str): [optional]  # noqa: E501
+            confidence (int, none_type): [optional]  # noqa: E501
+            deleted (bool, none_type): [optional]  # noqa: E501
+            ip_id (str, none_type): [optional]  # noqa: E501
+            last_seen (datetime, none_type): [optional]  # noqa: E501
+            lens_id (str, none_type): [optional]  # noqa: E501
+            lens_view (str, none_type): [optional]  # noqa: E501
+            perspective (str, none_type): [optional]  # noqa: E501
+            perspective_name (str, none_type): [optional]  # noqa: E501
+            port (int, none_type): [optional]  # noqa: E501
+            protocol (int, none_type): [optional]  # noqa: E501
+            seen_open (bool, none_type): [optional]  # noqa: E501
+            state (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -230,8 +230,8 @@ class PortsForIp(ModelNormal):
         """PortsForIp - a model defined in OpenAPI
 
         Args:
-            id (str):
-            org_id (str):
+            id (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -264,18 +264,18 @@ class PortsForIp(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            confidence (int): [optional]  # noqa: E501
-            deleted (bool): [optional]  # noqa: E501
-            ip_id (str): [optional]  # noqa: E501
-            last_seen (datetime): [optional]  # noqa: E501
-            lens_id (str): [optional]  # noqa: E501
-            lens_view (str): [optional]  # noqa: E501
-            perspective (str): [optional]  # noqa: E501
-            perspective_name (str): [optional]  # noqa: E501
-            port (int): [optional]  # noqa: E501
-            protocol (int): [optional]  # noqa: E501
-            seen_open (bool): [optional]  # noqa: E501
-            state (str): [optional]  # noqa: E501
+            confidence (int, none_type): [optional]  # noqa: E501
+            deleted (bool, none_type): [optional]  # noqa: E501
+            ip_id (str, none_type): [optional]  # noqa: E501
+            last_seen (datetime, none_type): [optional]  # noqa: E501
+            lens_id (str, none_type): [optional]  # noqa: E501
+            lens_view (str, none_type): [optional]  # noqa: E501
+            perspective (str, none_type): [optional]  # noqa: E501
+            perspective_name (str, none_type): [optional]  # noqa: E501
+            port (int, none_type): [optional]  # noqa: E501
+            protocol (int, none_type): [optional]  # noqa: E501
+            seen_open (bool, none_type): [optional]  # noqa: E501
+            state (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -92,13 +92,13 @@ class CmspbFrontendParameter(ModelNormal):
         """
         lazy_import()
         return {
-            'description': (str,),  # noqa: E501
-            'field_label': (str,),  # noqa: E501
-            'field_type': (str,),  # noqa: E501
-            'is_configurable': (bool,),  # noqa: E501
-            'is_not_set': (bool,),  # noqa: E501
-            'is_optional': (bool,),  # noqa: E501
-            'parameter': (str,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
+            'field_label': (str, none_type,),  # noqa: E501
+            'field_type': (str, none_type,),  # noqa: E501
+            'is_configurable': (bool, none_type,),  # noqa: E501
+            'is_not_set': (bool, none_type,),  # noqa: E501
+            'is_optional': (bool, none_type,),  # noqa: E501
+            'parameter': (str, none_type,),  # noqa: E501
             'parameter_type': (CmspbFrontendParameterKind,),  # noqa: E501
             'validation': (CmspbFrontendValidation,),  # noqa: E501
             'value': (StructpbValue,),  # noqa: E501
@@ -163,13 +163,13 @@ class CmspbFrontendParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            description (str): [optional]  # noqa: E501
-            field_label (str): [optional]  # noqa: E501
-            field_type (str): [optional]  # noqa: E501
-            is_configurable (bool): [optional]  # noqa: E501
-            is_not_set (bool): [optional]  # noqa: E501
-            is_optional (bool): [optional]  # noqa: E501
-            parameter (str): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            field_label (str, none_type): [optional]  # noqa: E501
+            field_type (str, none_type): [optional]  # noqa: E501
+            is_configurable (bool, none_type): [optional]  # noqa: E501
+            is_not_set (bool, none_type): [optional]  # noqa: E501
+            is_optional (bool, none_type): [optional]  # noqa: E501
+            parameter (str, none_type): [optional]  # noqa: E501
             parameter_type (CmspbFrontendParameterKind): [optional]  # noqa: E501
             validation (CmspbFrontendValidation): [optional]  # noqa: E501
             value (StructpbValue): [optional]  # noqa: E501
@@ -254,13 +254,13 @@ class CmspbFrontendParameter(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            description (str): [optional]  # noqa: E501
-            field_label (str): [optional]  # noqa: E501
-            field_type (str): [optional]  # noqa: E501
-            is_configurable (bool): [optional]  # noqa: E501
-            is_not_set (bool): [optional]  # noqa: E501
-            is_optional (bool): [optional]  # noqa: E501
-            parameter (str): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            field_label (str, none_type): [optional]  # noqa: E501
+            field_type (str, none_type): [optional]  # noqa: E501
+            is_configurable (bool, none_type): [optional]  # noqa: E501
+            is_not_set (bool, none_type): [optional]  # noqa: E501
+            is_optional (bool, none_type): [optional]  # noqa: E501
+            parameter (str, none_type): [optional]  # noqa: E501
             parameter_type (CmspbFrontendParameterKind): [optional]  # noqa: E501
             validation (CmspbFrontendValidation): [optional]  # noqa: E501
             value (StructpbValue): [optional]  # noqa: E501

@@ -82,13 +82,13 @@ class AttackInterfacesForImplant(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'bart_id': (str,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'implant_id': (str,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
+            'bart_id': (str, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'implant_id': (str, none_type,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
             'address': (str, none_type,),  # noqa: E501
-            'ip_strs': ([str],),  # noqa: E501
+            'ip_strs': ([str, none_type], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -117,11 +117,11 @@ class AttackInterfacesForImplant(ModelNormal):
         """AttackInterfacesForImplant - a model defined in OpenAPI
 
         Args:
-            bart_id (str):
-            id (str):
-            implant_id (str):
-            name (str):
-            org_id (str):
+            bart_id (str, none_type):
+            id (str, none_type):
+            implant_id (str, none_type):
+            name (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -155,7 +155,7 @@ class AttackInterfacesForImplant(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address (str, none_type): [optional]  # noqa: E501
-            ip_strs ([str]): [optional]  # noqa: E501
+            ip_strs ([str, none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -212,11 +212,11 @@ class AttackInterfacesForImplant(ModelNormal):
         """AttackInterfacesForImplant - a model defined in OpenAPI
 
         Args:
-            bart_id (str):
-            id (str):
-            implant_id (str):
-            name (str):
-            org_id (str):
+            bart_id (str, none_type):
+            id (str, none_type):
+            implant_id (str, none_type):
+            name (str, none_type):
+            org_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -250,7 +250,7 @@ class AttackInterfacesForImplant(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address (str, none_type): [optional]  # noqa: E501
-            ip_strs ([str]): [optional]  # noqa: E501
+            ip_strs ([str, none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

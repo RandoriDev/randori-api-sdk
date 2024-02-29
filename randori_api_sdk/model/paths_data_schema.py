@@ -92,7 +92,7 @@ class PathsDataSchema(ModelNormal):
         return {
             'edges': ({str: (PathDrSchema,)},),  # noqa: E501
             'nodes': ({str: (PathEntitySchema,)},),  # noqa: E501
-            'paths': ([[str]],),  # noqa: E501
+            'paths': ([[str], none_type], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -149,7 +149,7 @@ class PathsDataSchema(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             edges ({str: (PathDrSchema,)}): [optional]  # noqa: E501
             nodes ({str: (PathEntitySchema,)}): [optional]  # noqa: E501
-            paths ([[str]]): [optional]  # noqa: E501
+            paths ([[str], none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -233,7 +233,7 @@ class PathsDataSchema(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             edges ({str: (PathDrSchema,)}): [optional]  # noqa: E501
             nodes ({str: (PathEntitySchema,)}): [optional]  # noqa: E501
-            paths ([[str]]): [optional]  # noqa: E501
+            paths ([[str], none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

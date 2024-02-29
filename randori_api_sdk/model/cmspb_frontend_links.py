@@ -82,9 +82,9 @@ class CmspbFrontendLinks(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'last': (str,),  # noqa: E501
-            'next': (str,),  # noqa: E501
-            '_self': (str,),  # noqa: E501
+            'last': (str, none_type,),  # noqa: E501
+            'next': (str, none_type,),  # noqa: E501
+            '_self': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -139,9 +139,9 @@ class CmspbFrontendLinks(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            last (str): [optional]  # noqa: E501
-            next (str): [optional]  # noqa: E501
-            _self (str): [optional]  # noqa: E501
+            last (str, none_type): [optional]  # noqa: E501
+            next (str, none_type): [optional]  # noqa: E501
+            _self (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,9 +223,9 @@ class CmspbFrontendLinks(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            last (str): [optional]  # noqa: E501
-            next (str): [optional]  # noqa: E501
-            _self (str): [optional]  # noqa: E501
+            last (str, none_type): [optional]  # noqa: E501
+            next (str, none_type): [optional]  # noqa: E501
+            _self (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

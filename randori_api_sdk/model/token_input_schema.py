@@ -82,7 +82,7 @@ class TokenInputSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'token': (str,),  # noqa: E501
+            'token': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -105,7 +105,7 @@ class TokenInputSchema(ModelNormal):
         """TokenInputSchema - a model defined in OpenAPI
 
         Args:
-            token (str):
+            token (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -190,7 +190,7 @@ class TokenInputSchema(ModelNormal):
         """TokenInputSchema - a model defined in OpenAPI
 
         Args:
-            token (str):
+            token (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

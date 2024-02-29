@@ -88,7 +88,7 @@ class PermissionGroupsInfo(ModelNormal):
         """
         lazy_import()
         return {
-            'perm_group_info': ([PermissionGroupInfo],),  # noqa: E501
+            'perm_group_info': ([PermissionGroupInfo], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -141,7 +141,7 @@ class PermissionGroupsInfo(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            perm_group_info ([PermissionGroupInfo]): [optional]  # noqa: E501
+            perm_group_info ([PermissionGroupInfo], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,7 +223,7 @@ class PermissionGroupsInfo(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            perm_group_info ([PermissionGroupInfo]): [optional]  # noqa: E501
+            perm_group_info ([PermissionGroupInfo], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -82,16 +82,16 @@ class AttackRedirectors(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'bart_id': (str,),  # noqa: E501
-            'created_on': (datetime,),  # noqa: E501
-            'deleted': (bool,),  # noqa: E501
-            'external_ip': (str,),  # noqa: E501
-            'external_ip_str': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'remote_row_id': (int,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'usage': ([str],),  # noqa: E501
-            'id': (str,),  # noqa: E501
+            'bart_id': (str, none_type,),  # noqa: E501
+            'created_on': (datetime, none_type,),  # noqa: E501
+            'deleted': (bool, none_type,),  # noqa: E501
+            'external_ip': (str, none_type,),  # noqa: E501
+            'external_ip_str': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'remote_row_id': (int, none_type,),  # noqa: E501
+            'status': (str, none_type,),  # noqa: E501
+            'usage': ([str, none_type], none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
             'retired': (datetime, none_type,),  # noqa: E501
             'updated_on': (datetime, none_type,),  # noqa: E501
         }
@@ -127,15 +127,15 @@ class AttackRedirectors(ModelNormal):
         """AttackRedirectors - a model defined in OpenAPI
 
         Args:
-            bart_id (str):
-            created_on (datetime):
-            deleted (bool):
-            external_ip (str):
-            external_ip_str (str):
-            org_id (str):
-            remote_row_id (int):
-            status (str):
-            usage ([str]):
+            bart_id (str, none_type):
+            created_on (datetime, none_type):
+            deleted (bool, none_type):
+            external_ip (str, none_type):
+            external_ip_str (str, none_type):
+            org_id (str, none_type):
+            remote_row_id (int, none_type):
+            status (str, none_type):
+            usage ([str, none_type], none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -168,7 +168,7 @@ class AttackRedirectors(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             retired (datetime, none_type): [optional]  # noqa: E501
             updated_on (datetime, none_type): [optional]  # noqa: E501
         """
@@ -231,15 +231,15 @@ class AttackRedirectors(ModelNormal):
         """AttackRedirectors - a model defined in OpenAPI
 
         Args:
-            bart_id (str):
-            created_on (datetime):
-            deleted (bool):
-            external_ip (str):
-            external_ip_str (str):
-            org_id (str):
-            remote_row_id (int):
-            status (str):
-            usage ([str]):
+            bart_id (str, none_type):
+            created_on (datetime, none_type):
+            deleted (bool, none_type):
+            external_ip (str, none_type):
+            external_ip_str (str, none_type):
+            org_id (str, none_type):
+            remote_row_id (int, none_type):
+            status (str, none_type):
+            usage ([str, none_type], none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -272,7 +272,7 @@ class AttackRedirectors(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             retired (datetime, none_type): [optional]  # noqa: E501
             updated_on (datetime, none_type): [optional]  # noqa: E501
         """

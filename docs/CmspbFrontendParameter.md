@@ -4,13 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**field_label** | **str** |  | [optional] 
-**field_type** | **str** |  | [optional] 
-**is_configurable** | **bool** |  | [optional] 
-**is_not_set** | **bool** |  | [optional] 
-**is_optional** | **bool** |  | [optional] 
-**parameter** | **str** |  | [optional] 
+**description** | **str, none_type** |  | [optional] 
+**field_label** | **str, none_type** |  | [optional] 
+**field_type** | **str, none_type** |  | [optional] 
+**is_configurable** | **bool, none_type** |  | [optional] 
+**is_not_set** | **bool, none_type** |  | [optional] 
+**is_optional** | **bool, none_type** |  | [optional] 
+**parameter** | **str, none_type** |  | [optional] 
 **parameter_type** | [**CmspbFrontendParameterKind**](CmspbFrontendParameterKind.md) |  | [optional] 
 **validation** | [**CmspbFrontendValidation**](CmspbFrontendValidation.md) |  | [optional] 
 **value** | [**StructpbValue**](StructpbValue.md) |  | [optional] 

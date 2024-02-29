@@ -82,14 +82,14 @@ class AttackCheckinsForImplant(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'bart_id': (str,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'implant_id': (str,),  # noqa: E501
-            'last_checkin': (datetime,),  # noqa: E501
+            'bart_id': (str, none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'implant_id': (str, none_type,),  # noqa: E501
+            'last_checkin': (datetime, none_type,),  # noqa: E501
             'method': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'src_ip': (str,),  # noqa: E501
-            'src_ip_str': (str,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'src_ip': (str, none_type,),  # noqa: E501
+            'src_ip_str': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -119,14 +119,14 @@ class AttackCheckinsForImplant(ModelNormal):
         """AttackCheckinsForImplant - a model defined in OpenAPI
 
         Args:
-            bart_id (str):
-            id (str):
-            implant_id (str):
-            last_checkin (datetime):
+            bart_id (str, none_type):
+            id (str, none_type):
+            implant_id (str, none_type):
+            last_checkin (datetime, none_type):
             method ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-            org_id (str):
-            src_ip (str):
-            src_ip_str (str):
+            org_id (str, none_type):
+            src_ip (str, none_type):
+            src_ip_str (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -218,14 +218,14 @@ class AttackCheckinsForImplant(ModelNormal):
         """AttackCheckinsForImplant - a model defined in OpenAPI
 
         Args:
-            bart_id (str):
-            id (str):
-            implant_id (str):
-            last_checkin (datetime):
+            bart_id (str, none_type):
+            id (str, none_type):
+            implant_id (str, none_type):
+            last_checkin (datetime, none_type):
             method ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-            org_id (str):
-            src_ip (str):
-            src_ip_str (str):
+            org_id (str, none_type):
+            src_ip (str, none_type):
+            src_ip_str (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

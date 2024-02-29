@@ -88,7 +88,7 @@ class UserPatchSingleInput(ModelNormal):
         """
         lazy_import()
         return {
-            'confirmed_password': (str,),  # noqa: E501
+            'confirmed_password': (str, none_type,),  # noqa: E501
             'data': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
@@ -143,7 +143,7 @@ class UserPatchSingleInput(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            confirmed_password (str): [optional]  # noqa: E501
+            confirmed_password (str, none_type): [optional]  # noqa: E501
             data (bool, date, datetime, dict, float, int, list, str, none_type): data fields to update on the object. [optional]  # noqa: E501
         """
 
@@ -226,7 +226,7 @@ class UserPatchSingleInput(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            confirmed_password (str): [optional]  # noqa: E501
+            confirmed_password (str, none_type): [optional]  # noqa: E501
             data (bool, date, datetime, dict, float, int, list, str, none_type): data fields to update on the object. [optional]  # noqa: E501
         """
 

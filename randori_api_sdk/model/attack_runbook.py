@@ -86,43 +86,43 @@ class AttackRunbook(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'dst_search': (str,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'org_id': (str,),  # noqa: E501
-            'runbook_id': (str,),  # noqa: E501
-            'src_search': (str,),  # noqa: E501
-            'start_time': (datetime,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'technique_ids': ([str],),  # noqa: E501
-            'uid': (str,),  # noqa: E501
-            'comment': (str,),  # noqa: E501
+            'dst_search': (str, none_type,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
+            'org_id': (str, none_type,),  # noqa: E501
+            'runbook_id': (str, none_type,),  # noqa: E501
+            'src_search': (str, none_type,),  # noqa: E501
+            'start_time': (datetime, none_type,),  # noqa: E501
+            'status': (str, none_type,),  # noqa: E501
+            'technique_ids': ([str, none_type], none_type,),  # noqa: E501
+            'uid': (str, none_type,),  # noqa: E501
+            'comment': (str, none_type,),  # noqa: E501
             'deleted': (bool, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
-            'dst_email': ([str], none_type,),  # noqa: E501
-            'dst_host': ([str], none_type,),  # noqa: E501
-            'dst_ip': ([str],),  # noqa: E501
-            'dst_mac': ([str], none_type,),  # noqa: E501
-            'dst_misc': ([str], none_type,),  # noqa: E501
-            'dst_network': ([str],),  # noqa: E501
-            'dst_path': ([str], none_type,),  # noqa: E501
-            'dst_port': ([int], none_type,),  # noqa: E501
+            'dst_email': ([str, none_type], none_type,),  # noqa: E501
+            'dst_host': ([str, none_type], none_type,),  # noqa: E501
+            'dst_ip': ([str, none_type], none_type,),  # noqa: E501
+            'dst_mac': ([str, none_type], none_type,),  # noqa: E501
+            'dst_misc': ([str, none_type], none_type,),  # noqa: E501
+            'dst_network': ([str, none_type], none_type,),  # noqa: E501
+            'dst_path': ([str, none_type], none_type,),  # noqa: E501
+            'dst_port': ([int, none_type], none_type,),  # noqa: E501
             'end_time': (datetime, none_type,),  # noqa: E501
             'guidance': (str, none_type,),  # noqa: E501
-            'id': (str,),  # noqa: E501
-            'implant_ids': ([str], none_type,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
+            'implant_ids': ([str, none_type], none_type,),  # noqa: E501
             'implant_nick': (str, none_type,),  # noqa: E501
-            'implant_src_host': ([str], none_type,),  # noqa: E501
-            'implant_src_ip': ([str],),  # noqa: E501
+            'implant_src_host': ([str, none_type], none_type,),  # noqa: E501
+            'implant_src_ip': ([str, none_type], none_type,),  # noqa: E501
             'instance_label': (str, none_type,),  # noqa: E501
             'objective': (str, none_type,),  # noqa: E501
             'perspective_metadata': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
             'randori_notes': (str, none_type,),  # noqa: E501
             'results': (str, none_type,),  # noqa: E501
-            'src_email': ([str], none_type,),  # noqa: E501
-            'src_host': ([str], none_type,),  # noqa: E501
-            'src_ip': ([str],),  # noqa: E501
-            'src_mac': ([str], none_type,),  # noqa: E501
-            'src_misc': ([str], none_type,),  # noqa: E501
+            'src_email': ([str, none_type], none_type,),  # noqa: E501
+            'src_host': ([str, none_type], none_type,),  # noqa: E501
+            'src_ip': ([str, none_type], none_type,),  # noqa: E501
+            'src_mac': ([str, none_type], none_type,),  # noqa: E501
+            'src_misc': ([str, none_type], none_type,),  # noqa: E501
             'trigger': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
         }
 
@@ -183,15 +183,15 @@ class AttackRunbook(ModelNormal):
         """AttackRunbook - a model defined in OpenAPI
 
         Args:
-            dst_search (str):
-            name (str):
-            org_id (str):
-            runbook_id (str):
-            src_search (str):
-            start_time (datetime):
-            status (str):
-            technique_ids ([str]):
-            uid (str):
+            dst_search (str, none_type):
+            name (str, none_type):
+            org_id (str, none_type):
+            runbook_id (str, none_type):
+            src_search (str, none_type):
+            start_time (datetime, none_type):
+            status (str, none_type):
+            technique_ids ([str, none_type], none_type):
+            uid (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -224,34 +224,34 @@ class AttackRunbook(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            comment (str): [optional]  # noqa: E501
+            comment (str, none_type): [optional]  # noqa: E501
             deleted (bool, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
-            dst_email ([str], none_type): [optional]  # noqa: E501
-            dst_host ([str], none_type): [optional]  # noqa: E501
-            dst_ip ([str]): [optional]  # noqa: E501
-            dst_mac ([str], none_type): [optional]  # noqa: E501
-            dst_misc ([str], none_type): [optional]  # noqa: E501
-            dst_network ([str]): [optional]  # noqa: E501
-            dst_path ([str], none_type): [optional]  # noqa: E501
-            dst_port ([int], none_type): [optional]  # noqa: E501
+            dst_email ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_host ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_ip ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_mac ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_misc ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_network ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_path ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_port ([int, none_type], none_type): [optional]  # noqa: E501
             end_time (datetime, none_type): [optional]  # noqa: E501
             guidance (str, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            implant_ids ([str], none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            implant_ids ([str, none_type], none_type): [optional]  # noqa: E501
             implant_nick (str, none_type): [optional]  # noqa: E501
-            implant_src_host ([str], none_type): [optional]  # noqa: E501
-            implant_src_ip ([str]): [optional]  # noqa: E501
+            implant_src_host ([str, none_type], none_type): [optional]  # noqa: E501
+            implant_src_ip ([str, none_type], none_type): [optional]  # noqa: E501
             instance_label (str, none_type): [optional]  # noqa: E501
             objective (str, none_type): [optional]  # noqa: E501
             perspective_metadata ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
             randori_notes (str, none_type): [optional]  # noqa: E501
             results (str, none_type): [optional]  # noqa: E501
-            src_email ([str], none_type): [optional]  # noqa: E501
-            src_host ([str], none_type): [optional]  # noqa: E501
-            src_ip ([str]): [optional]  # noqa: E501
-            src_mac ([str], none_type): [optional]  # noqa: E501
-            src_misc ([str], none_type): [optional]  # noqa: E501
+            src_email ([str, none_type], none_type): [optional]  # noqa: E501
+            src_host ([str, none_type], none_type): [optional]  # noqa: E501
+            src_ip ([str, none_type], none_type): [optional]  # noqa: E501
+            src_mac ([str, none_type], none_type): [optional]  # noqa: E501
+            src_misc ([str, none_type], none_type): [optional]  # noqa: E501
             trigger ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
         """
 
@@ -313,15 +313,15 @@ class AttackRunbook(ModelNormal):
         """AttackRunbook - a model defined in OpenAPI
 
         Args:
-            dst_search (str):
-            name (str):
-            org_id (str):
-            runbook_id (str):
-            src_search (str):
-            start_time (datetime):
-            status (str):
-            technique_ids ([str]):
-            uid (str):
+            dst_search (str, none_type):
+            name (str, none_type):
+            org_id (str, none_type):
+            runbook_id (str, none_type):
+            src_search (str, none_type):
+            start_time (datetime, none_type):
+            status (str, none_type):
+            technique_ids ([str, none_type], none_type):
+            uid (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -354,34 +354,34 @@ class AttackRunbook(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            comment (str): [optional]  # noqa: E501
+            comment (str, none_type): [optional]  # noqa: E501
             deleted (bool, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
-            dst_email ([str], none_type): [optional]  # noqa: E501
-            dst_host ([str], none_type): [optional]  # noqa: E501
-            dst_ip ([str]): [optional]  # noqa: E501
-            dst_mac ([str], none_type): [optional]  # noqa: E501
-            dst_misc ([str], none_type): [optional]  # noqa: E501
-            dst_network ([str]): [optional]  # noqa: E501
-            dst_path ([str], none_type): [optional]  # noqa: E501
-            dst_port ([int], none_type): [optional]  # noqa: E501
+            dst_email ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_host ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_ip ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_mac ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_misc ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_network ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_path ([str, none_type], none_type): [optional]  # noqa: E501
+            dst_port ([int, none_type], none_type): [optional]  # noqa: E501
             end_time (datetime, none_type): [optional]  # noqa: E501
             guidance (str, none_type): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
-            implant_ids ([str], none_type): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
+            implant_ids ([str, none_type], none_type): [optional]  # noqa: E501
             implant_nick (str, none_type): [optional]  # noqa: E501
-            implant_src_host ([str], none_type): [optional]  # noqa: E501
-            implant_src_ip ([str]): [optional]  # noqa: E501
+            implant_src_host ([str, none_type], none_type): [optional]  # noqa: E501
+            implant_src_ip ([str, none_type], none_type): [optional]  # noqa: E501
             instance_label (str, none_type): [optional]  # noqa: E501
             objective (str, none_type): [optional]  # noqa: E501
             perspective_metadata ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
             randori_notes (str, none_type): [optional]  # noqa: E501
             results (str, none_type): [optional]  # noqa: E501
-            src_email ([str], none_type): [optional]  # noqa: E501
-            src_host ([str], none_type): [optional]  # noqa: E501
-            src_ip ([str]): [optional]  # noqa: E501
-            src_mac ([str], none_type): [optional]  # noqa: E501
-            src_misc ([str], none_type): [optional]  # noqa: E501
+            src_email ([str, none_type], none_type): [optional]  # noqa: E501
+            src_host ([str, none_type], none_type): [optional]  # noqa: E501
+            src_ip ([str, none_type], none_type): [optional]  # noqa: E501
+            src_mac ([str, none_type], none_type): [optional]  # noqa: E501
+            src_misc ([str, none_type], none_type): [optional]  # noqa: E501
             trigger ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
         """
 

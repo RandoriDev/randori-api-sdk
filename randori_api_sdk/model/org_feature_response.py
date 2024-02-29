@@ -83,9 +83,9 @@ class OrgFeatureResponse(ModelNormal):
         """
         return {
             'end_time_utc': (datetime, none_type,),  # noqa: E501
-            'feature_uuid': (str,),  # noqa: E501
+            'feature_uuid': (str, none_type,),  # noqa: E501
             'name': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'org_uuid': (str,),  # noqa: E501
+            'org_uuid': (str, none_type,),  # noqa: E501
             'start_time_utc': (datetime, none_type,),  # noqa: E501
             'type': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
@@ -146,9 +146,9 @@ class OrgFeatureResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             end_time_utc (datetime, none_type): [optional]  # noqa: E501
-            feature_uuid (str): [optional]  # noqa: E501
+            feature_uuid (str, none_type): [optional]  # noqa: E501
             name (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            org_uuid (str): [optional]  # noqa: E501
+            org_uuid (str, none_type): [optional]  # noqa: E501
             start_time_utc (datetime, none_type): [optional]  # noqa: E501
             type (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
@@ -233,9 +233,9 @@ class OrgFeatureResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             end_time_utc (datetime, none_type): [optional]  # noqa: E501
-            feature_uuid (str): [optional]  # noqa: E501
+            feature_uuid (str, none_type): [optional]  # noqa: E501
             name (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
-            org_uuid (str): [optional]  # noqa: E501
+            org_uuid (str, none_type): [optional]  # noqa: E501
             start_time_utc (datetime, none_type): [optional]  # noqa: E501
             type (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """

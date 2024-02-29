@@ -4,10 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**instance__most_recent_instance_id** | **str** |  | 
-**matching_entity__id** | **str** |  | 
-**org_id** | **str** |  | 
+**id** | **str, none_type** |  | 
+**instance__most_recent_instance_id** | **str, none_type** |  | 
+**matching_entity__id** | **str, none_type** |  | 
+**org_id** | **str, none_type** |  | 
 **configuration__description** | **str, none_type** |  | [optional] 
 **configuration__id** | **str, none_type** |  | [optional] 
 **configuration__name** | **str, none_type** |  | [optional] 
@@ -29,9 +29,9 @@ Name | Type | Description | Notes
 **matching_entity__target** | **str, none_type** |  | [optional] 
 **matching_entity__term** | **str, none_type** |  | [optional] 
 **matching_entity__type** | **str, none_type** |  | [optional] 
-**mitre__mitigations** | **[str], none_type** |  | [optional] 
-**mitre__tactics** | **[str], none_type** |  | [optional] 
-**mitre__techniques** | **[str], none_type** |  | [optional] 
+**mitre__mitigations** | **[str, none_type], none_type** |  | [optional] 
+**mitre__tactics** | **[str, none_type], none_type** |  | [optional] 
+**mitre__techniques** | **[str, none_type], none_type** |  | [optional] 
 **objective__attacker_perspective** | **str, none_type** |  | [optional] 
 **objective__description** | **str, none_type** |  | [optional] 
 **objective__implication** | **str, none_type** |  | [optional] 

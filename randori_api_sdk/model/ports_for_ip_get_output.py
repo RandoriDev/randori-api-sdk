@@ -88,10 +88,10 @@ class PortsForIpGetOutput(ModelNormal):
         """
         lazy_import()
         return {
-            'count': (int,),  # noqa: E501
-            'data': ([PortsForIp],),  # noqa: E501
-            'offset': (int,),  # noqa: E501
-            'total': (int,),  # noqa: E501
+            'count': (int, none_type,),  # noqa: E501
+            'data': ([PortsForIp], none_type,),  # noqa: E501
+            'offset': (int, none_type,),  # noqa: E501
+            'total': (int, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -147,10 +147,10 @@ class PortsForIpGetOutput(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            count (int): number of records in this result. [optional]  # noqa: E501
-            data ([PortsForIp]): list of objects. [optional]  # noqa: E501
-            offset (int): starting offset after filtering. [optional]  # noqa: E501
-            total (int): number of records total after filtering. [optional]  # noqa: E501
+            count (int, none_type): number of records in this result. [optional]  # noqa: E501
+            data ([PortsForIp], none_type): list of objects. [optional]  # noqa: E501
+            offset (int, none_type): starting offset after filtering. [optional]  # noqa: E501
+            total (int, none_type): number of records total after filtering. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -232,10 +232,10 @@ class PortsForIpGetOutput(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            count (int): number of records in this result. [optional]  # noqa: E501
-            data ([PortsForIp]): list of objects. [optional]  # noqa: E501
-            offset (int): starting offset after filtering. [optional]  # noqa: E501
-            total (int): number of records total after filtering. [optional]  # noqa: E501
+            count (int, none_type): number of records in this result. [optional]  # noqa: E501
+            data ([PortsForIp], none_type): list of objects. [optional]  # noqa: E501
+            offset (int, none_type): starting offset after filtering. [optional]  # noqa: E501
+            total (int, none_type): number of records total after filtering. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

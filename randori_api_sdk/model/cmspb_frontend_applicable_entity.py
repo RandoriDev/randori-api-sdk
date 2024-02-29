@@ -91,7 +91,7 @@ class CmspbFrontendApplicableEntity(ModelNormal):
         lazy_import()
         return {
             'attributes': (CmspbFrontendApplicableEntityAttributes,),  # noqa: E501
-            'id': (str,),  # noqa: E501
+            'id': (str, none_type,),  # noqa: E501
             'type': (CmspbFrontendType,),  # noqa: E501
         }
 
@@ -148,7 +148,7 @@ class CmspbFrontendApplicableEntity(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             attributes (CmspbFrontendApplicableEntityAttributes): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             type (CmspbFrontendType): [optional]  # noqa: E501
         """
 
@@ -232,7 +232,7 @@ class CmspbFrontendApplicableEntity(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             attributes (CmspbFrontendApplicableEntityAttributes): [optional]  # noqa: E501
-            id (str): [optional]  # noqa: E501
+            id (str, none_type): [optional]  # noqa: E501
             type (CmspbFrontendType): [optional]  # noqa: E501
         """
 

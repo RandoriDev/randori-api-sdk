@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**[CmspbFrontendTriggerObject]**](CmspbFrontendTriggerObject.md) |  | [optional] 
+**data** | [**[CmspbFrontendTriggerObject], none_type**](CmspbFrontendTriggerObject.md) |  | [optional] 
 **links** | [**CmspbFrontendLinks**](CmspbFrontendLinks.md) |  | [optional] 
 **meta** | [**CmspbFrontendMeta**](CmspbFrontendMeta.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]

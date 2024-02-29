@@ -82,7 +82,7 @@ class PermissionGroup(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'target_user_id': (str,),  # noqa: E501
+            'target_user_id': (str, none_type,),  # noqa: E501
             'perm_groups': ([bool, date, datetime, dict, float, int, list, str, none_type], none_type,),  # noqa: E501
         }
 
@@ -107,7 +107,7 @@ class PermissionGroup(ModelNormal):
         """PermissionGroup - a model defined in OpenAPI
 
         Args:
-            target_user_id (str):
+            target_user_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -193,7 +193,7 @@ class PermissionGroup(ModelNormal):
         """PermissionGroup - a model defined in OpenAPI
 
         Args:
-            target_user_id (str):
+            target_user_id (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

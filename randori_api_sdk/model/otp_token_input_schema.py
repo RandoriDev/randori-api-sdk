@@ -82,7 +82,7 @@ class OtpTokenInputSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'otp': (str,),  # noqa: E501
+            'otp': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -105,7 +105,7 @@ class OtpTokenInputSchema(ModelNormal):
         """OtpTokenInputSchema - a model defined in OpenAPI
 
         Args:
-            otp (str):
+            otp (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -190,7 +190,7 @@ class OtpTokenInputSchema(ModelNormal):
         """OtpTokenInputSchema - a model defined in OpenAPI
 
         Args:
-            otp (str):
+            otp (str, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

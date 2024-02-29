@@ -98,31 +98,31 @@ class CmspbFrontendConfigurationAttributes(ModelNormal):
         """
         lazy_import()
         return {
-            'activity_type_description': (str,),  # noqa: E501
-            'activity_type_name': (str,),  # noqa: E501
-            'authority_display': (bool,),  # noqa: E501
-            'authority_distance_max': (int,),  # noqa: E501
-            'authority_distance_min': (int,),  # noqa: E501
-            'configuration_id': (str,),  # noqa: E501
+            'activity_type_description': (str, none_type,),  # noqa: E501
+            'activity_type_name': (str, none_type,),  # noqa: E501
+            'authority_display': (bool, none_type,),  # noqa: E501
+            'authority_distance_max': (int, none_type,),  # noqa: E501
+            'authority_distance_min': (int, none_type,),  # noqa: E501
+            'configuration_id': (str, none_type,),  # noqa: E501
             'created': (CmspbFrontendConfigurationAccessEntry,),  # noqa: E501
-            'cves': ([str],),  # noqa: E501
-            'description': (str,),  # noqa: E501
-            'enabled': (bool,),  # noqa: E501
-            'entities_count': (int,),  # noqa: E501
+            'cves': ([str, none_type], none_type,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
+            'enabled': (bool, none_type,),  # noqa: E501
+            'entities_count': (int, none_type,),  # noqa: E501
             'last_planned_at': (TimestamppbTimestamp,),  # noqa: E501
-            'matching_entity_types': ([str],),  # noqa: E501
+            'matching_entity_types': ([str, none_type], none_type,),  # noqa: E501
             'mitre': (CmspbFrontendConfigurationMitre,),  # noqa: E501
-            'name': (str,),  # noqa: E501
+            'name': (str, none_type,),  # noqa: E501
             'objective': (CmspbFrontendConfigurationObjective,),  # noqa: E501
-            'parameters': ([CmspbFrontendParameterObject],),  # noqa: E501
-            'period': (int,),  # noqa: E501
-            'required_authorization': (int,),  # noqa: E501
-            'stability': (int,),  # noqa: E501
-            'stealth': (int,),  # noqa: E501
-            'targets_count': (int,),  # noqa: E501
-            'trigger_criteria': ([CmspbFrontendTriggerObject],),  # noqa: E501
+            'parameters': ([CmspbFrontendParameterObject], none_type,),  # noqa: E501
+            'period': (int, none_type,),  # noqa: E501
+            'required_authorization': (int, none_type,),  # noqa: E501
+            'stability': (int, none_type,),  # noqa: E501
+            'stealth': (int, none_type,),  # noqa: E501
+            'targets_count': (int, none_type,),  # noqa: E501
+            'trigger_criteria': ([CmspbFrontendTriggerObject], none_type,),  # noqa: E501
             'updated': (CmspbFrontendConfigurationAccessEntry,),  # noqa: E501
-            'version': (str,),  # noqa: E501
+            'version': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -199,31 +199,31 @@ class CmspbFrontendConfigurationAttributes(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            activity_type_description (str): [optional]  # noqa: E501
-            activity_type_name (str): [optional]  # noqa: E501
-            authority_display (bool): [optional]  # noqa: E501
-            authority_distance_max (int): [optional]  # noqa: E501
-            authority_distance_min (int): [optional]  # noqa: E501
-            configuration_id (str): [optional]  # noqa: E501
+            activity_type_description (str, none_type): [optional]  # noqa: E501
+            activity_type_name (str, none_type): [optional]  # noqa: E501
+            authority_display (bool, none_type): [optional]  # noqa: E501
+            authority_distance_max (int, none_type): [optional]  # noqa: E501
+            authority_distance_min (int, none_type): [optional]  # noqa: E501
+            configuration_id (str, none_type): [optional]  # noqa: E501
             created (CmspbFrontendConfigurationAccessEntry): [optional]  # noqa: E501
-            cves ([str]): [optional]  # noqa: E501
-            description (str): [optional]  # noqa: E501
-            enabled (bool): [optional]  # noqa: E501
-            entities_count (int): [optional]  # noqa: E501
+            cves ([str, none_type], none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            enabled (bool, none_type): [optional]  # noqa: E501
+            entities_count (int, none_type): [optional]  # noqa: E501
             last_planned_at (TimestamppbTimestamp): [optional]  # noqa: E501
-            matching_entity_types ([str]): [optional]  # noqa: E501
+            matching_entity_types ([str, none_type], none_type): [optional]  # noqa: E501
             mitre (CmspbFrontendConfigurationMitre): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
             objective (CmspbFrontendConfigurationObjective): [optional]  # noqa: E501
-            parameters ([CmspbFrontendParameterObject]): [optional]  # noqa: E501
-            period (int): [optional]  # noqa: E501
-            required_authorization (int): [optional]  # noqa: E501
-            stability (int): [optional]  # noqa: E501
-            stealth (int): [optional]  # noqa: E501
-            targets_count (int): [optional]  # noqa: E501
-            trigger_criteria ([CmspbFrontendTriggerObject]): [optional]  # noqa: E501
+            parameters ([CmspbFrontendParameterObject], none_type): [optional]  # noqa: E501
+            period (int, none_type): [optional]  # noqa: E501
+            required_authorization (int, none_type): [optional]  # noqa: E501
+            stability (int, none_type): [optional]  # noqa: E501
+            stealth (int, none_type): [optional]  # noqa: E501
+            targets_count (int, none_type): [optional]  # noqa: E501
+            trigger_criteria ([CmspbFrontendTriggerObject], none_type): [optional]  # noqa: E501
             updated (CmspbFrontendConfigurationAccessEntry): [optional]  # noqa: E501
-            version (str): [optional]  # noqa: E501
+            version (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -305,31 +305,31 @@ class CmspbFrontendConfigurationAttributes(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            activity_type_description (str): [optional]  # noqa: E501
-            activity_type_name (str): [optional]  # noqa: E501
-            authority_display (bool): [optional]  # noqa: E501
-            authority_distance_max (int): [optional]  # noqa: E501
-            authority_distance_min (int): [optional]  # noqa: E501
-            configuration_id (str): [optional]  # noqa: E501
+            activity_type_description (str, none_type): [optional]  # noqa: E501
+            activity_type_name (str, none_type): [optional]  # noqa: E501
+            authority_display (bool, none_type): [optional]  # noqa: E501
+            authority_distance_max (int, none_type): [optional]  # noqa: E501
+            authority_distance_min (int, none_type): [optional]  # noqa: E501
+            configuration_id (str, none_type): [optional]  # noqa: E501
             created (CmspbFrontendConfigurationAccessEntry): [optional]  # noqa: E501
-            cves ([str]): [optional]  # noqa: E501
-            description (str): [optional]  # noqa: E501
-            enabled (bool): [optional]  # noqa: E501
-            entities_count (int): [optional]  # noqa: E501
+            cves ([str, none_type], none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            enabled (bool, none_type): [optional]  # noqa: E501
+            entities_count (int, none_type): [optional]  # noqa: E501
             last_planned_at (TimestamppbTimestamp): [optional]  # noqa: E501
-            matching_entity_types ([str]): [optional]  # noqa: E501
+            matching_entity_types ([str, none_type], none_type): [optional]  # noqa: E501
             mitre (CmspbFrontendConfigurationMitre): [optional]  # noqa: E501
-            name (str): [optional]  # noqa: E501
+            name (str, none_type): [optional]  # noqa: E501
             objective (CmspbFrontendConfigurationObjective): [optional]  # noqa: E501
-            parameters ([CmspbFrontendParameterObject]): [optional]  # noqa: E501
-            period (int): [optional]  # noqa: E501
-            required_authorization (int): [optional]  # noqa: E501
-            stability (int): [optional]  # noqa: E501
-            stealth (int): [optional]  # noqa: E501
-            targets_count (int): [optional]  # noqa: E501
-            trigger_criteria ([CmspbFrontendTriggerObject]): [optional]  # noqa: E501
+            parameters ([CmspbFrontendParameterObject], none_type): [optional]  # noqa: E501
+            period (int, none_type): [optional]  # noqa: E501
+            required_authorization (int, none_type): [optional]  # noqa: E501
+            stability (int, none_type): [optional]  # noqa: E501
+            stealth (int, none_type): [optional]  # noqa: E501
+            targets_count (int, none_type): [optional]  # noqa: E501
+            trigger_criteria ([CmspbFrontendTriggerObject], none_type): [optional]  # noqa: E501
             updated (CmspbFrontendConfigurationAccessEntry): [optional]  # noqa: E501
-            version (str): [optional]  # noqa: E501
+            version (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

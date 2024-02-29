@@ -92,7 +92,7 @@ class CmspbFrontendParametersResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'data': ([CmspbFrontendParameterObject],),  # noqa: E501
+            'data': ([CmspbFrontendParameterObject], none_type,),  # noqa: E501
             'links': (CmspbFrontendLinks,),  # noqa: E501
             'meta': (CmspbFrontendMeta,),  # noqa: E501
         }
@@ -149,7 +149,7 @@ class CmspbFrontendParametersResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            data ([CmspbFrontendParameterObject]): [optional]  # noqa: E501
+            data ([CmspbFrontendParameterObject], none_type): [optional]  # noqa: E501
             links (CmspbFrontendLinks): [optional]  # noqa: E501
             meta (CmspbFrontendMeta): [optional]  # noqa: E501
         """
@@ -233,7 +233,7 @@ class CmspbFrontendParametersResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            data ([CmspbFrontendParameterObject]): [optional]  # noqa: E501
+            data ([CmspbFrontendParameterObject], none_type): [optional]  # noqa: E501
             links (CmspbFrontendLinks): [optional]  # noqa: E501
             meta (CmspbFrontendMeta): [optional]  # noqa: E501
         """

@@ -82,9 +82,9 @@ class CmspbFrontendConfigurationMitre(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'mitigations': ([str],),  # noqa: E501
-            'tactics': ([str],),  # noqa: E501
-            'techniques': ([str],),  # noqa: E501
+            'mitigations': ([str, none_type], none_type,),  # noqa: E501
+            'tactics': ([str, none_type], none_type,),  # noqa: E501
+            'techniques': ([str, none_type], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -139,9 +139,9 @@ class CmspbFrontendConfigurationMitre(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            mitigations ([str]): [optional]  # noqa: E501
-            tactics ([str]): [optional]  # noqa: E501
-            techniques ([str]): [optional]  # noqa: E501
+            mitigations ([str, none_type], none_type): [optional]  # noqa: E501
+            tactics ([str, none_type], none_type): [optional]  # noqa: E501
+            techniques ([str, none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,9 +223,9 @@ class CmspbFrontendConfigurationMitre(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            mitigations ([str]): [optional]  # noqa: E501
-            tactics ([str]): [optional]  # noqa: E501
-            techniques ([str]): [optional]  # noqa: E501
+            mitigations ([str, none_type], none_type): [optional]  # noqa: E501
+            tactics ([str, none_type], none_type): [optional]  # noqa: E501
+            techniques ([str, none_type], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

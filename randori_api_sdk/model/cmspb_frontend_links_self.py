@@ -82,7 +82,7 @@ class CmspbFrontendLinksSelf(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            '_self': (str,),  # noqa: E501
+            '_self': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -135,7 +135,7 @@ class CmspbFrontendLinksSelf(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            _self (str): [optional]  # noqa: E501
+            _self (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -217,7 +217,7 @@ class CmspbFrontendLinksSelf(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            _self (str): [optional]  # noqa: E501
+            _self (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

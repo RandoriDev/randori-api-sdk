@@ -4,19 +4,19 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**arch** | **str** |  | 
-**bart_id** | **str** |  | 
-**created_on** | **datetime** |  | 
-**hostnames** | **[str]** |  | 
-**last_checkin** | **datetime** |  | 
+**arch** | **str, none_type** |  | 
+**bart_id** | **str, none_type** |  | 
+**created_on** | **datetime, none_type** |  | 
+**hostnames** | **[str, none_type], none_type** |  | 
+**last_checkin** | **datetime, none_type** |  | 
 **method** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
-**next_checkin** | **datetime** |  | 
-**org_id** | **str** |  | 
-**status** | **str** |  | 
-**uid** | **str** |  | 
+**next_checkin** | **datetime, none_type** |  | 
+**org_id** | **str, none_type** |  | 
+**status** | **str, none_type** |  | 
+**uid** | **str, none_type** |  | 
 **bits** | **int, none_type** |  | [optional] 
-**host_ips** | **[str]** |  | [optional] 
-**id** | **str** |  | [optional] 
+**host_ips** | **[str, none_type], none_type** |  | [optional] 
+**id** | **str, none_type** |  | [optional] 
 **nick** | **str, none_type** |  | [optional] 
 **os** | **str, none_type** |  | [optional] 
 **ostype** | **str, none_type** |  | [optional] 

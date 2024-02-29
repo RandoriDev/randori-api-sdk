@@ -88,10 +88,10 @@ class ArtifactForActivityResponseCollectionSchema(ModelNormal):
         """
         lazy_import()
         return {
-            'count': (int,),  # noqa: E501
-            'data': ([ArtifactForActivityResponseSchema],),  # noqa: E501
-            'offset': (int,),  # noqa: E501
-            'total': (int,),  # noqa: E501
+            'count': (int, none_type,),  # noqa: E501
+            'data': ([ArtifactForActivityResponseSchema], none_type,),  # noqa: E501
+            'offset': (int, none_type,),  # noqa: E501
+            'total': (int, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -147,10 +147,10 @@ class ArtifactForActivityResponseCollectionSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            count (int): [optional]  # noqa: E501
-            data ([ArtifactForActivityResponseSchema]): [optional]  # noqa: E501
-            offset (int): [optional]  # noqa: E501
-            total (int): [optional]  # noqa: E501
+            count (int, none_type): [optional]  # noqa: E501
+            data ([ArtifactForActivityResponseSchema], none_type): [optional]  # noqa: E501
+            offset (int, none_type): [optional]  # noqa: E501
+            total (int, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -232,10 +232,10 @@ class ArtifactForActivityResponseCollectionSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            count (int): [optional]  # noqa: E501
-            data ([ArtifactForActivityResponseSchema]): [optional]  # noqa: E501
-            offset (int): [optional]  # noqa: E501
-            total (int): [optional]  # noqa: E501
+            count (int, none_type): [optional]  # noqa: E501
+            data ([ArtifactForActivityResponseSchema], none_type): [optional]  # noqa: E501
+            offset (int, none_type): [optional]  # noqa: E501
+            total (int, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
