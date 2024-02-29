@@ -98,8 +98,8 @@ class SavedViewsModelCustomIn(ModelNormal):
         """
         return {
             'entity_type': (str, none_type,),  # noqa: E501
-            'filter_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
-            'sort_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'filter_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
+            'sort_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'is_favorite': (bool, none_type,),  # noqa: E501
             'is_global': (bool, none_type,),  # noqa: E501
@@ -133,8 +133,8 @@ class SavedViewsModelCustomIn(ModelNormal):
 
         Args:
             entity_type (str, none_type):
-            filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-            sort_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type):
+            sort_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,8 +226,8 @@ class SavedViewsModelCustomIn(ModelNormal):
 
         Args:
             entity_type (str, none_type):
-            filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
-            sort_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type):
+            sort_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

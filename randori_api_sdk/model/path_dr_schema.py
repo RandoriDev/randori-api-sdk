@@ -82,7 +82,7 @@ class PathDrSchema(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'content': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'content': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'dst': (str, none_type,),  # noqa: E501
             'id': (str, none_type,),  # noqa: E501
             'src': (str, none_type,),  # noqa: E501
@@ -143,7 +143,7 @@ class PathDrSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            content ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            content ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             dst (str, none_type): [optional]  # noqa: E501
             id (str, none_type): [optional]  # noqa: E501
             src (str, none_type): [optional]  # noqa: E501
@@ -229,7 +229,7 @@ class PathDrSchema(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            content ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            content ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             dst (str, none_type): [optional]  # noqa: E501
             id (str, none_type): [optional]  # noqa: E501
             src (str, none_type): [optional]  # noqa: E501

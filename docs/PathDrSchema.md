@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
+**content** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | [optional] 
 **dst** | **str, none_type** |  | [optional] 
 **id** | **str, none_type** |  | [optional] 
 **src** | **str, none_type** |  | [optional] 

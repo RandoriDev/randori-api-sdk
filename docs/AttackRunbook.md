@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **implant_src_ip** | **[str, none_type], none_type** |  | [optional] 
 **instance_label** | **str, none_type** |  | [optional] 
 **objective** | **str, none_type** |  | [optional] 
-**perspective_metadata** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type** |  | [optional] 
+**perspective_metadata** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type** |  | [optional] 
 **randori_notes** | **str, none_type** |  | [optional] 
 **results** | **str, none_type** |  | [optional] 
 **src_email** | **[str, none_type], none_type** |  | [optional] 
@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **src_ip** | **[str, none_type], none_type** |  | [optional] 
 **src_mac** | **[str, none_type], none_type** |  | [optional] 
 **src_misc** | **[str, none_type], none_type** |  | [optional] 
-**trigger** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type** |  | [optional] 
+**trigger** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

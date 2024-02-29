@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **str, none_type** |  | 
 **org_id** | **str, none_type** |  | 
 **affiliation_state** | **str** |  | [optional] 
-**all_ports** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type** |  | [optional] 
+**all_ports** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type** |  | [optional] 
 **authority** | **bool, none_type** |  | [optional] 
 **authority_distance** | **int, none_type** |  | [optional] 
 **authority_override** | **bool, none_type** |  | [optional] 

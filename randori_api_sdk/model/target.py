@@ -135,12 +135,12 @@ class Target(ModelNormal):
             'authorization_state': (str,),  # noqa: E501
             'characteristic_tags': ([str, none_type], none_type,),  # noqa: E501
             'confidence': (int, none_type,),  # noqa: E501
-            'cpe': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'cpe': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'criticality': (int, none_type,),  # noqa: E501
             'deleted': (bool, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'description_source': (str,),  # noqa: E501
-            'detection_criteria': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'detection_criteria': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'enumerability': (int, none_type,),  # noqa: E501
             'first_seen': (datetime, none_type,),  # noqa: E501
             'impact_score': (str,),  # noqa: E501
@@ -280,12 +280,12 @@ class Target(ModelNormal):
             authorization_state (str): [optional]  # noqa: E501
             characteristic_tags ([str, none_type], none_type): [optional]  # noqa: E501
             confidence (int, none_type): [optional]  # noqa: E501
-            cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             criticality (int, none_type): [optional]  # noqa: E501
             deleted (bool, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
             description_source (str): [optional]  # noqa: E501
-            detection_criteria ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            detection_criteria ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             enumerability (int, none_type): [optional]  # noqa: E501
             first_seen (datetime, none_type): [optional]  # noqa: E501
             impact_score (str): [optional]  # noqa: E501
@@ -411,12 +411,12 @@ class Target(ModelNormal):
             authorization_state (str): [optional]  # noqa: E501
             characteristic_tags ([str, none_type], none_type): [optional]  # noqa: E501
             confidence (int, none_type): [optional]  # noqa: E501
-            cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            cpe ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             criticality (int, none_type): [optional]  # noqa: E501
             deleted (bool, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
             description_source (str): [optional]  # noqa: E501
-            detection_criteria ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            detection_criteria ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             enumerability (int, none_type): [optional]  # noqa: E501
             first_seen (datetime, none_type): [optional]  # noqa: E501
             impact_score (str): [optional]  # noqa: E501

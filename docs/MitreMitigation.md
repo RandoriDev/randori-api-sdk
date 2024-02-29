@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **created** | **datetime, none_type** |  | 
 **created_by_ref** | **str, none_type** |  | 
 **description** | **str, none_type** |  | 
-**external_references** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type** |  | 
+**external_references** | **[{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type** |  | 
 **id** | **str, none_type** |  | 
 **modified** | **datetime, none_type** |  | 
 **name** | **str, none_type** |  | 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entity_type** | **str, none_type** |  | 
-**filter_data** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
-**sort_data** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | 
+**filter_data** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | 
+**sort_data** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type** |  | 
 **description** | **str, none_type** |  | [optional] 
 **is_favorite** | **bool, none_type** |  | [optional] 
 **is_global** | **bool, none_type** |  | [optional] 

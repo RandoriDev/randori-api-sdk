@@ -85,10 +85,10 @@ class AuthorizationPolicy(ModelNormal):
             'created_at': (datetime, none_type,),  # noqa: E501
             'edited_at': (datetime, none_type,),  # noqa: E501
             'entity_types': ([str, none_type], none_type,),  # noqa: E501
-            'filter_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'filter_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'is_active': (bool, none_type,),  # noqa: E501
             'org_id': (str, none_type,),  # noqa: E501
-            'actions': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
+            'actions': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type,),  # noqa: E501
             'expires_at': (datetime, none_type,),  # noqa: E501
             'id': (str, none_type,),  # noqa: E501
             'is_deleted': (bool, none_type,),  # noqa: E501
@@ -134,7 +134,7 @@ class AuthorizationPolicy(ModelNormal):
             created_at (datetime, none_type):
             edited_at (datetime, none_type):
             entity_types ([str, none_type], none_type):
-            filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type):
             is_active (bool, none_type):
             org_id (str, none_type):
 
@@ -169,7 +169,7 @@ class AuthorizationPolicy(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            actions ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
+            actions ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type): [optional]  # noqa: E501
             expires_at (datetime, none_type): [optional]  # noqa: E501
             id (str, none_type): [optional]  # noqa: E501
             is_deleted (bool, none_type): [optional]  # noqa: E501
@@ -237,7 +237,7 @@ class AuthorizationPolicy(ModelNormal):
             created_at (datetime, none_type):
             edited_at (datetime, none_type):
             entity_types ([str, none_type], none_type):
-            filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            filter_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type):
             is_active (bool, none_type):
             org_id (str, none_type):
 
@@ -272,7 +272,7 @@ class AuthorizationPolicy(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            actions ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): [optional]  # noqa: E501
+            actions ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type], none_type): [optional]  # noqa: E501
             expires_at (datetime, none_type): [optional]  # noqa: E501
             id (str, none_type): [optional]  # noqa: E501
             is_deleted (bool, none_type): [optional]  # noqa: E501
