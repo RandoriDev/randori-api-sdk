@@ -98,7 +98,7 @@ class MitreTechnique(ModelNormal):
             'x_mitre_is_subtechnique': (bool, none_type,),  # noqa: E501
             'x_mitre_modified_by_ref': (str, none_type,),  # noqa: E501
             'x_mitre_platforms': ([str, none_type], none_type,),  # noqa: E501
-            'x_mitre_version': (float,),  # noqa: E501
+            'x_mitre_version': (float, none_type,),  # noqa: E501
             'x_mitre_attack_spec_version': (str, none_type,),  # noqa: E501
             'x_mitre_data_sources': ([str, none_type], none_type,),  # noqa: E501
             'x_mitre_deprecated': (bool, none_type,),  # noqa: E501
@@ -161,7 +161,7 @@ class MitreTechnique(ModelNormal):
             x_mitre_is_subtechnique (bool, none_type):
             x_mitre_modified_by_ref (str, none_type):
             x_mitre_platforms ([str, none_type], none_type):
-            x_mitre_version (float):
+            x_mitre_version (float, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -282,7 +282,7 @@ class MitreTechnique(ModelNormal):
             x_mitre_is_subtechnique (bool, none_type):
             x_mitre_modified_by_ref (str, none_type):
             x_mitre_platforms ([str, none_type], none_type):
-            x_mitre_version (float):
+            x_mitre_version (float, none_type):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

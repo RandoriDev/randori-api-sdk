@@ -123,10 +123,10 @@ class Hostname(ModelNormal):
             'only_in_review_targets': (bool, none_type,),  # noqa: E501
             'perspective': (str, none_type,),  # noqa: E501
             'perspective_name': (str, none_type,),  # noqa: E501
-            'priority_impact_factor': (float,),  # noqa: E501
-            'priority_score': (float,),  # noqa: E501
-            'priority_status_factor': (float,),  # noqa: E501
-            'priority_tags_factor': (float,),  # noqa: E501
+            'priority_impact_factor': (float, none_type,),  # noqa: E501
+            'priority_score': (float, none_type,),  # noqa: E501
+            'priority_status_factor': (float, none_type,),  # noqa: E501
+            'priority_tags_factor': (float, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'target_temptation': (int, none_type,),  # noqa: E501
             'user_tags': ([str, none_type], none_type,),  # noqa: E501
@@ -236,10 +236,10 @@ class Hostname(ModelNormal):
             only_in_review_targets (bool, none_type): [optional]  # noqa: E501
             perspective (str, none_type): [optional]  # noqa: E501
             perspective_name (str, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             target_temptation (int, none_type): [optional]  # noqa: E501
             user_tags ([str, none_type], none_type): [optional]  # noqa: E501
@@ -351,10 +351,10 @@ class Hostname(ModelNormal):
             only_in_review_targets (bool, none_type): [optional]  # noqa: E501
             perspective (str, none_type): [optional]  # noqa: E501
             perspective_name (str, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             target_temptation (int, none_type): [optional]  # noqa: E501
             user_tags ([str, none_type], none_type): [optional]  # noqa: E501

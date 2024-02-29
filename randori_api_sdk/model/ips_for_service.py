@@ -112,14 +112,14 @@ class IpsForService(ModelNormal):
             'ip_id': (str, none_type,),  # noqa: E501
             'ip_str': (str, none_type,),  # noqa: E501
             'last_seen': (datetime, none_type,),  # noqa: E501
-            'latitude': (float,),  # noqa: E501
+            'latitude': (float, none_type,),  # noqa: E501
             'lens_id': (str, none_type,),  # noqa: E501
             'lens_view': (str, none_type,),  # noqa: E501
-            'longitude': (float,),  # noqa: E501
+            'longitude': (float, none_type,),  # noqa: E501
             'open_port_count': (int, none_type,),  # noqa: E501
             'perspective': (str, none_type,),  # noqa: E501
             'perspective_name': (str, none_type,),  # noqa: E501
-            'radius': (float,),  # noqa: E501
+            'radius': (float, none_type,),  # noqa: E501
             'service_count': (int, none_type,),  # noqa: E501
             'service_id': (str, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
@@ -215,14 +215,14 @@ class IpsForService(ModelNormal):
             ip_id (str, none_type): [optional]  # noqa: E501
             ip_str (str, none_type): [optional]  # noqa: E501
             last_seen (datetime, none_type): [optional]  # noqa: E501
-            latitude (float): [optional]  # noqa: E501
+            latitude (float, none_type): [optional]  # noqa: E501
             lens_id (str, none_type): [optional]  # noqa: E501
             lens_view (str, none_type): [optional]  # noqa: E501
-            longitude (float): [optional]  # noqa: E501
+            longitude (float, none_type): [optional]  # noqa: E501
             open_port_count (int, none_type): [optional]  # noqa: E501
             perspective (str, none_type): [optional]  # noqa: E501
             perspective_name (str, none_type): [optional]  # noqa: E501
-            radius (float): [optional]  # noqa: E501
+            radius (float, none_type): [optional]  # noqa: E501
             service_count (int, none_type): [optional]  # noqa: E501
             service_id (str, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
@@ -325,14 +325,14 @@ class IpsForService(ModelNormal):
             ip_id (str, none_type): [optional]  # noqa: E501
             ip_str (str, none_type): [optional]  # noqa: E501
             last_seen (datetime, none_type): [optional]  # noqa: E501
-            latitude (float): [optional]  # noqa: E501
+            latitude (float, none_type): [optional]  # noqa: E501
             lens_id (str, none_type): [optional]  # noqa: E501
             lens_view (str, none_type): [optional]  # noqa: E501
-            longitude (float): [optional]  # noqa: E501
+            longitude (float, none_type): [optional]  # noqa: E501
             open_port_count (int, none_type): [optional]  # noqa: E501
             perspective (str, none_type): [optional]  # noqa: E501
             perspective_name (str, none_type): [optional]  # noqa: E501
-            radius (float): [optional]  # noqa: E501
+            radius (float, none_type): [optional]  # noqa: E501
             service_count (int, none_type): [optional]  # noqa: E501
             service_id (str, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501

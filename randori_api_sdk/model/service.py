@@ -115,8 +115,8 @@ class Service(ModelNormal):
             'enumerability': (int, none_type,),  # noqa: E501
             'exploitability': (int, none_type,),  # noqa: E501
             'first_seen': (datetime, none_type,),  # noqa: E501
-            'instance_count': (float,),  # noqa: E501
-            'ip_count': (float,),  # noqa: E501
+            'instance_count': (float, none_type,),  # noqa: E501
+            'ip_count': (float, none_type,),  # noqa: E501
             'last_seen': (datetime, none_type,),  # noqa: E501
             'lens_id': (str, none_type,),  # noqa: E501
             'lens_view': (str, none_type,),  # noqa: E501
@@ -234,8 +234,8 @@ class Service(ModelNormal):
             enumerability (int, none_type): [optional]  # noqa: E501
             exploitability (int, none_type): [optional]  # noqa: E501
             first_seen (datetime, none_type): [optional]  # noqa: E501
-            instance_count (float): [optional]  # noqa: E501
-            ip_count (float): [optional]  # noqa: E501
+            instance_count (float, none_type): [optional]  # noqa: E501
+            ip_count (float, none_type): [optional]  # noqa: E501
             last_seen (datetime, none_type): [optional]  # noqa: E501
             lens_id (str, none_type): [optional]  # noqa: E501
             lens_view (str, none_type): [optional]  # noqa: E501
@@ -352,8 +352,8 @@ class Service(ModelNormal):
             enumerability (int, none_type): [optional]  # noqa: E501
             exploitability (int, none_type): [optional]  # noqa: E501
             first_seen (datetime, none_type): [optional]  # noqa: E501
-            instance_count (float): [optional]  # noqa: E501
-            ip_count (float): [optional]  # noqa: E501
+            instance_count (float, none_type): [optional]  # noqa: E501
+            ip_count (float, none_type): [optional]  # noqa: E501
             last_seen (datetime, none_type): [optional]  # noqa: E501
             lens_id (str, none_type): [optional]  # noqa: E501
             lens_view (str, none_type): [optional]  # noqa: E501

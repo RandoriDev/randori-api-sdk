@@ -136,10 +136,10 @@ class SocialEntity(ModelNormal):
             'perspective_name': (str, none_type,),  # noqa: E501
             'phone': (str, none_type,),  # noqa: E501
             'postal_code': (str, none_type,),  # noqa: E501
-            'priority_impact_factor': (float,),  # noqa: E501
-            'priority_score': (float,),  # noqa: E501
-            'priority_status_factor': (float,),  # noqa: E501
-            'priority_tags_factor': (float,),  # noqa: E501
+            'priority_impact_factor': (float, none_type,),  # noqa: E501
+            'priority_score': (float, none_type,),  # noqa: E501
+            'priority_status_factor': (float, none_type,),  # noqa: E501
+            'priority_tags_factor': (float, none_type,),  # noqa: E501
             'role': (str, none_type,),  # noqa: E501
             'seniority': (str, none_type,),  # noqa: E501
             'state': (str, none_type,),  # noqa: E501
@@ -281,10 +281,10 @@ class SocialEntity(ModelNormal):
             perspective_name (str, none_type): [optional]  # noqa: E501
             phone (str, none_type): [optional]  # noqa: E501
             postal_code (str, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
             role (str, none_type): [optional]  # noqa: E501
             seniority (str, none_type): [optional]  # noqa: E501
             state (str, none_type): [optional]  # noqa: E501
@@ -412,10 +412,10 @@ class SocialEntity(ModelNormal):
             perspective_name (str, none_type): [optional]  # noqa: E501
             phone (str, none_type): [optional]  # noqa: E501
             postal_code (str, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
             role (str, none_type): [optional]  # noqa: E501
             seniority (str, none_type): [optional]  # noqa: E501
             state (str, none_type): [optional]  # noqa: E501

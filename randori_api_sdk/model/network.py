@@ -111,7 +111,7 @@ class Network(ModelNormal):
             'deleted': (bool, none_type,),  # noqa: E501
             'first_seen': (datetime, none_type,),  # noqa: E501
             'impact_score': (str,),  # noqa: E501
-            'ip_count': (float,),  # noqa: E501
+            'ip_count': (float, none_type,),  # noqa: E501
             'last_seen': (datetime, none_type,),  # noqa: E501
             'lens_id': (str, none_type,),  # noqa: E501
             'lens_view': (str, none_type,),  # noqa: E501
@@ -122,13 +122,13 @@ class Network(ModelNormal):
             'open_port_count': (int, none_type,),  # noqa: E501
             'perspective': (str, none_type,),  # noqa: E501
             'perspective_name': (str, none_type,),  # noqa: E501
-            'priority_impact_factor': (float,),  # noqa: E501
-            'priority_score': (float,),  # noqa: E501
-            'priority_status_factor': (float,),  # noqa: E501
-            'priority_tags_factor': (float,),  # noqa: E501
-            'service_count': (float,),  # noqa: E501
+            'priority_impact_factor': (float, none_type,),  # noqa: E501
+            'priority_score': (float, none_type,),  # noqa: E501
+            'priority_status_factor': (float, none_type,),  # noqa: E501
+            'priority_tags_factor': (float, none_type,),  # noqa: E501
+            'service_count': (float, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'target_count': (float,),  # noqa: E501
+            'target_count': (float, none_type,),  # noqa: E501
             'target_temptation': (int, none_type,),  # noqa: E501
             'user_tags': ([str, none_type], none_type,),  # noqa: E501
         }
@@ -226,7 +226,7 @@ class Network(ModelNormal):
             deleted (bool, none_type): [optional]  # noqa: E501
             first_seen (datetime, none_type): [optional]  # noqa: E501
             impact_score (str): [optional]  # noqa: E501
-            ip_count (float): [optional]  # noqa: E501
+            ip_count (float, none_type): [optional]  # noqa: E501
             last_seen (datetime, none_type): [optional]  # noqa: E501
             lens_id (str, none_type): [optional]  # noqa: E501
             lens_view (str, none_type): [optional]  # noqa: E501
@@ -237,13 +237,13 @@ class Network(ModelNormal):
             open_port_count (int, none_type): [optional]  # noqa: E501
             perspective (str, none_type): [optional]  # noqa: E501
             perspective_name (str, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
-            service_count (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
+            service_count (float, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
-            target_count (float): [optional]  # noqa: E501
+            target_count (float, none_type): [optional]  # noqa: E501
             target_temptation (int, none_type): [optional]  # noqa: E501
             user_tags ([str, none_type], none_type): [optional]  # noqa: E501
         """
@@ -342,7 +342,7 @@ class Network(ModelNormal):
             deleted (bool, none_type): [optional]  # noqa: E501
             first_seen (datetime, none_type): [optional]  # noqa: E501
             impact_score (str): [optional]  # noqa: E501
-            ip_count (float): [optional]  # noqa: E501
+            ip_count (float, none_type): [optional]  # noqa: E501
             last_seen (datetime, none_type): [optional]  # noqa: E501
             lens_id (str, none_type): [optional]  # noqa: E501
             lens_view (str, none_type): [optional]  # noqa: E501
@@ -353,13 +353,13 @@ class Network(ModelNormal):
             open_port_count (int, none_type): [optional]  # noqa: E501
             perspective (str, none_type): [optional]  # noqa: E501
             perspective_name (str, none_type): [optional]  # noqa: E501
-            priority_impact_factor (float): [optional]  # noqa: E501
-            priority_score (float): [optional]  # noqa: E501
-            priority_status_factor (float): [optional]  # noqa: E501
-            priority_tags_factor (float): [optional]  # noqa: E501
-            service_count (float): [optional]  # noqa: E501
+            priority_impact_factor (float, none_type): [optional]  # noqa: E501
+            priority_score (float, none_type): [optional]  # noqa: E501
+            priority_status_factor (float, none_type): [optional]  # noqa: E501
+            priority_tags_factor (float, none_type): [optional]  # noqa: E501
+            service_count (float, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
-            target_count (float): [optional]  # noqa: E501
+            target_count (float, none_type): [optional]  # noqa: E501
             target_temptation (int, none_type): [optional]  # noqa: E501
             user_tags ([str, none_type], none_type): [optional]  # noqa: E501
         """

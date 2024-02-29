@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **x_mitre_is_subtechnique** | **bool, none_type** |  | 
 **x_mitre_modified_by_ref** | **str, none_type** |  | 
 **x_mitre_platforms** | **[str, none_type], none_type** |  | 
-**x_mitre_version** | **float** |  | 
+**x_mitre_version** | **float, none_type** |  | 
 **x_mitre_attack_spec_version** | **str, none_type** |  | [optional]  if omitted the server will use the default value of "null"
 **x_mitre_data_sources** | **[str, none_type], none_type** |  | [optional]  if omitted the server will use the default value of []
 **x_mitre_deprecated** | **bool, none_type** |  | [optional] 

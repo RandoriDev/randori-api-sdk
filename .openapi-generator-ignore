@@ -5,6 +5,7 @@
 # The patterns follow closely to .gitignore or .dockerignore.
 .openapi-generator-ignore
 .openapi-generator/
+.github/workflows/python.yml
 .gitignore
 .gitlab-ci.yml
 .travis.yml
