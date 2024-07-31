@@ -1,0 +1,99 @@
+######################################################################
+# © Copyright IBM Corp. 2024
+######################################################################
+name: Run SAST
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: 0 13 * * 1  # monday, 1pm utc / 6am pst
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Action to perform against repository
+        required: true
+        type: choice
+        options:
+          - scan-and-sync
+          - sync-only
+        default: "scan-and-sync"
+
+jobs:
+  scan-and-sync:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'scan-and-sync') }}
+    steps:
+      - name: Generate a token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.SAST_APP_ID }}
+          private-key: ${{ secrets.SAST_PRIVATE_KEY }}
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Run SAST
+        uses: RandoriDev/ci-actions/run-sast@run-sast-v0
+        with:
+          project_name: ${{ github.event.repository.name }}
+          contrast_api_key: ${{ secrets.CONTRAST_API_KEY }}
+          contrast_orgid: ${{ secrets.CONTRAST_ORGID }}
+          scan_name: ${{ github.event.repository.name }}
+          contrast_user: ${{ secrets.CONTRAST_USER }}
+          contrast_service_key: ${{ secrets.CONTRAST_SERVICE_KEY }}
+          package_path: ${{ github.workspace }}
+          jfrog_token: ${{ secrets.CONTRAST_JFROG_TOKEN }}
+
+      - name: Setup Python & GCP Registry
+        uses: RandoriDev/ci-actions/setup-ci@setup-ci-v1
+        with:
+          checkout_repo: false
+          python_version: "3.9"
+          python_cache_type: ''
+          gcp_key: ${{ secrets.REGISTRY_CONTAINER_WRITE_KEY }}
+          github_token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Sync SAST
+        uses: RandoriDev/ci-actions/sync-issues@sync-issues-v0
+        with:
+          service: Contrast
+          project_name: ${{ github.event.repository.name }}
+          contrast_api_key: ${{ secrets.CONTRAST_API_KEY }}
+          contrast_orgid: ${{ secrets.CONTRAST_ORGID }}
+          contrast_token: ${{ secrets.CONTRAST_TOKEN }}
+          github_token: ${{ steps.generate_token.outputs.token }}
+
+  sync-only:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'sync-only') }}
+    steps:
+      - name: Generate a token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.TWISTLOCK_APP_ID }}
+          private-key: ${{ secrets.TWISTLOCK_PRIVATE_KEY }}
+
+      - name: Setup Python & GCP Registry
+        uses: RandoriDev/ci-actions/setup-ci@setup-ci-v1
+        with:
+          checkout_repo: false
+          python_version: "3.9"
+          python_cache_type: ''
+          gcp_key: ${{ secrets.REGISTRY_CONTAINER_WRITE_KEY }}
+          github_token: ${{ steps.generate_token.outputs.token }}
+
+      - name: Sync SAST
+        uses: RandoriDev/ci-actions/sync-issues@sync-issues-v0
+        with:
+          service: Contrast
+          project_name: ${{ github.event.repository.name }}
+          contrast_api_key: ${{ secrets.CONTRAST_API_KEY }}
+          contrast_orgid: ${{ secrets.CONTRAST_ORGID }}
+          contrast_token: ${{ secrets.CONTRAST_TOKEN }}
+          github_token: ${{ steps.generate_token.outputs.token }}
