@@ -1,0 +1,60 @@
+######################################################################
+# © Copyright IBM Corp. 2024
+######################################################################
+name: Build new SDK version
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  build:
+    name: Build release
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}
+    steps:
+      - uses: RandoriDev/ci-actions/setup-ci@setup-ci-v1
+        with:
+          gcp_key: ${{ secrets.REGISTRY_CONTAINER_WRITE_KEY }}
+
+      - uses: RandoriDev/ci-actions/detect-version@detect-version-v0
+        id: version
+        with:
+          head-branch: main
+          check-branch: true
+          enforce-changelog: true
+          abort-on-tagged: true
+
+      - name: Generate randori-api.json
+        run: |
+          echo ${{ secrets.RANDORI_API_SPEC }} > randori-api.b64
+          base64 randori-api.b64 -d > randori-api.json.xz
+          xz randori-api.json.xz -d
+
+      - name: Build sdk
+        run: make build
+
+      - name: Ensure copyright headers
+        run: make copyright
+
+      - name: Commit changes to branch
+        if: ${{ steps.version.outputs.on-head-branch == 'false' }}
+        run: |
+          git config --global user.email ${{github.event.pusher.email}}
+          git config --global user.name ${{github.event.pusher.name}}
+          git add .
+          git reset -- randori-api.b64 randori-api.json gha-creds-*
+          git commit -m "auto-update" || echo "No changes to commit"
+          git push
+
+      - name: Release SDK
+        if: ${{ steps.version.outputs.on-head-branch == 'true' && steps.version.outputs.tagged == 'false' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+          tag_name: ${{ env.VERSION }}
+          target_commitish: ${{ github.sha }}
+          name: ${{ env.VERSION }}
