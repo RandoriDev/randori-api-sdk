@@ -16,17 +16,25 @@ jobs:
       run:
         working-directory: ${{ github.workspace }}
     steps:
-      - uses: RandoriDev/ci-actions/setup-ci@setup-ci-v1
-        with:
-          gcp_key: ${{ secrets.REGISTRY_CONTAINER_WRITE_KEY }}
+      - name: Checkout git repo
+        uses: actions/checkout@v4
 
-      - uses: RandoriDev/ci-actions/detect-version@detect-version-v0
-        id: version
-        with:
-          head-branch: main
-          check-branch: true
-          enforce-changelog: true
-          abort-on-tagged: true
+      - name: Detect version
+        shell: bash
+        run: echo "VERSION=$(shell cat ./VERSION)" >> $GITHUB_ENV
+
+      - name: Check if on head branch
+        shell: bash
+        run: |
+          if "${{ github.ref }}" == "refs/heads/main" ]]; then
+              echo "ON_HEAD_BRANCH=true" >> $GITHUB_ENV
+          else
+              echo "ON_HEAD_BRANCH=false" >> $GITHUB_ENV
+          fi
+      
+      - name: Check if tagged
+        shell: bash
+        run: git show-ref --tags --verify --quiet -- "refs/tags/${{ env.VERSION }}" && echo "TAGGED=true" >> $GITHUB_ENV || echo "TAGGED=false" >> $GITHUB_ENV
 
       - name: Generate randori-api.json
         run: |
@@ -41,7 +49,7 @@ jobs:
         run: make copyright
 
       - name: Commit changes to branch
-        if: ${{ steps.version.outputs.on-head-branch == 'false' }}
+        if: ${{ env.ON_HEAD_BRANCH == 'false' }}
         run: |
           git config --global user.email ${{github.event.pusher.email}}
           git config --global user.name ${{github.event.pusher.name}}
@@ -51,7 +59,7 @@ jobs:
           git push
 
       - name: Release SDK
-        if: ${{ steps.version.outputs.on-head-branch == 'true' && steps.version.outputs.tagged == 'false' }}
+        if: ${{ env.ON_HEAD_BRANCH == 'true' && env.TAGGED == 'false' }}
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
