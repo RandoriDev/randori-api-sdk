@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "randori-api-sdk"
-VERSION = "1.6.3"
+VERSION = ""
 # To install the library, run the following
 #
 # python setup.py install

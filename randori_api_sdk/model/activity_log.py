@@ -98,6 +98,7 @@ class ActivityLog(ModelNormal):
             'instance__time_duration': (int, none_type,),  # noqa: E501
             'instance__time_end': (datetime, none_type,),  # noqa: E501
             'instance__time_start': (datetime, none_type,),  # noqa: E501
+            'matching_entity__asset': (str, none_type,),  # noqa: E501
             'matching_entity__detection': (str, none_type,),  # noqa: E501
             'matching_entity__email': (str, none_type,),  # noqa: E501
             'matching_entity__hostname': (str, none_type,),  # noqa: E501
@@ -141,6 +142,7 @@ class ActivityLog(ModelNormal):
         'instance__time_duration': 'instance__time_duration',  # noqa: E501
         'instance__time_end': 'instance__time_end',  # noqa: E501
         'instance__time_start': 'instance__time_start',  # noqa: E501
+        'matching_entity__asset': 'matching_entity__asset',  # noqa: E501
         'matching_entity__detection': 'matching_entity__detection',  # noqa: E501
         'matching_entity__email': 'matching_entity__email',  # noqa: E501
         'matching_entity__hostname': 'matching_entity__hostname',  # noqa: E501
@@ -221,6 +223,7 @@ class ActivityLog(ModelNormal):
             instance__time_duration (int, none_type): [optional]  # noqa: E501
             instance__time_end (datetime, none_type): [optional]  # noqa: E501
             instance__time_start (datetime, none_type): [optional]  # noqa: E501
+            matching_entity__asset (str, none_type): [optional]  # noqa: E501
             matching_entity__detection (str, none_type): [optional]  # noqa: E501
             matching_entity__email (str, none_type): [optional]  # noqa: E501
             matching_entity__hostname (str, none_type): [optional]  # noqa: E501
@@ -343,6 +346,7 @@ class ActivityLog(ModelNormal):
             instance__time_duration (int, none_type): [optional]  # noqa: E501
             instance__time_end (datetime, none_type): [optional]  # noqa: E501
             instance__time_start (datetime, none_type): [optional]  # noqa: E501
+            matching_entity__asset (str, none_type): [optional]  # noqa: E501
             matching_entity__detection (str, none_type): [optional]  # noqa: E501
             matching_entity__email (str, none_type): [optional]  # noqa: E501
             matching_entity__hostname (str, none_type): [optional]  # noqa: E501

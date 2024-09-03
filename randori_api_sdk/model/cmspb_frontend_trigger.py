@@ -32,9 +32,7 @@ from randori_api_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from randori_api_sdk.model.cmspb_frontend_validation import CmspbFrontendValidation
-    from randori_api_sdk.model.structpb_value import StructpbValue
     globals()['CmspbFrontendValidation'] = CmspbFrontendValidation
-    globals()['StructpbValue'] = StructpbValue
 
 
 class CmspbFrontendTrigger(ModelNormal):
@@ -101,7 +99,7 @@ class CmspbFrontendTrigger(ModelNormal):
             'operator': (str, none_type,),  # noqa: E501
             'trigger_identifier': (str, none_type,),  # noqa: E501
             'validation': (CmspbFrontendValidation,),  # noqa: E501
-            'value': (StructpbValue,),  # noqa: E501
+            'value': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -176,7 +174,7 @@ class CmspbFrontendTrigger(ModelNormal):
             operator (str, none_type): [optional]  # noqa: E501
             trigger_identifier (str, none_type): [optional]  # noqa: E501
             validation (CmspbFrontendValidation): [optional]  # noqa: E501
-            value (StructpbValue): [optional]  # noqa: E501
+            value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -269,7 +267,7 @@ class CmspbFrontendTrigger(ModelNormal):
             operator (str, none_type): [optional]  # noqa: E501
             trigger_identifier (str, none_type): [optional]  # noqa: E501
             validation (CmspbFrontendValidation): [optional]  # noqa: E501
-            value (StructpbValue): [optional]  # noqa: E501
+            value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

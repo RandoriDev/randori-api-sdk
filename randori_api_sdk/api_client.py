@@ -77,7 +77,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.6.3/python'
+        self.user_agent = 'OpenAPI-Generator//python'
 
     def __enter__(self):
         return self
@@ -775,10 +775,10 @@ class Endpoint(object):
         Example:
 
         api_instance = CmsApi()
-        api_instance.frontend_edit_activity_configuration  # this is an instance of the class Endpoint
-        api_instance.frontend_edit_activity_configuration()  # this invokes api_instance.frontend_edit_activity_configuration.__call__()
+        api_instance.change_exception_policy_assignment  # this is an instance of the class Endpoint
+        api_instance.change_exception_policy_assignment()  # this invokes api_instance.change_exception_policy_assignment.__call__()
         which then invokes the callable functions stored in that endpoint at
-        api_instance.frontend_edit_activity_configuration.callable or self.callable in this class
+        api_instance.change_exception_policy_assignment.callable or self.callable in this class
 
         """
         return self.callable(self, *args, **kwargs)

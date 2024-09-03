@@ -138,7 +138,9 @@ class AllDetectionsForTarget(ModelNormal):
             'authority_override': (bool, none_type,),  # noqa: E501
             'authorization_state': (str,),  # noqa: E501
             'authorizing_policies': ([str, none_type], none_type,),  # noqa: E501
+            'banners_data_hash': (str, none_type,),  # noqa: E501
             'banners_uuid': (str, none_type,),  # noqa: E501
+            'cert_data_hash': (str, none_type,),  # noqa: E501
             'cert_uuid': (str, none_type,),  # noqa: E501
             'characteristic_tags': ([str, none_type], none_type,),  # noqa: E501
             'characteristics_count': (int, none_type,),  # noqa: E501
@@ -155,6 +157,7 @@ class AllDetectionsForTarget(ModelNormal):
             'enumerability': (int, none_type,),  # noqa: E501
             'exploitability': (int, none_type,),  # noqa: E501
             'first_seen': (datetime, none_type,),  # noqa: E501
+            'headers_data_hash': (str, none_type,),  # noqa: E501
             'headers_uuid': (str, none_type,),  # noqa: E501
             'hostname': (str, none_type,),  # noqa: E501
             'hostname_id': (str, none_type,),  # noqa: E501
@@ -183,6 +186,7 @@ class AllDetectionsForTarget(ModelNormal):
             'randori_notes': (str, none_type,),  # noqa: E501
             'reference': (str, none_type,),  # noqa: E501
             'research': (int, none_type,),  # noqa: E501
+            'screenshot_data_hash': (str, none_type,),  # noqa: E501
             'screenshot_uuid': (str, none_type,),  # noqa: E501
             'service_id': (str, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
@@ -195,6 +199,7 @@ class AllDetectionsForTarget(ModelNormal):
             'target_temptation': (int, none_type,),  # noqa: E501
             'tech_category': ([str], none_type,),  # noqa: E501
             'temptation_last_modified': (datetime, none_type,),  # noqa: E501
+            'thumbnail_data_hash': (str, none_type,),  # noqa: E501
             'thumbnail_uuid': (str, none_type,),  # noqa: E501
             'user_tags': ([str, none_type], none_type,),  # noqa: E501
             'validated_vulnerabilities_detection': ([str, none_type], none_type,),  # noqa: E501
@@ -221,7 +226,9 @@ class AllDetectionsForTarget(ModelNormal):
         'authority_override': 'authority_override',  # noqa: E501
         'authorization_state': 'authorization_state',  # noqa: E501
         'authorizing_policies': 'authorizing_policies',  # noqa: E501
+        'banners_data_hash': 'banners_data_hash',  # noqa: E501
         'banners_uuid': 'banners_uuid',  # noqa: E501
+        'cert_data_hash': 'cert_data_hash',  # noqa: E501
         'cert_uuid': 'cert_uuid',  # noqa: E501
         'characteristic_tags': 'characteristic_tags',  # noqa: E501
         'characteristics_count': 'characteristics_count',  # noqa: E501
@@ -238,6 +245,7 @@ class AllDetectionsForTarget(ModelNormal):
         'enumerability': 'enumerability',  # noqa: E501
         'exploitability': 'exploitability',  # noqa: E501
         'first_seen': 'first_seen',  # noqa: E501
+        'headers_data_hash': 'headers_data_hash',  # noqa: E501
         'headers_uuid': 'headers_uuid',  # noqa: E501
         'hostname': 'hostname',  # noqa: E501
         'hostname_id': 'hostname_id',  # noqa: E501
@@ -266,6 +274,7 @@ class AllDetectionsForTarget(ModelNormal):
         'randori_notes': 'randori_notes',  # noqa: E501
         'reference': 'reference',  # noqa: E501
         'research': 'research',  # noqa: E501
+        'screenshot_data_hash': 'screenshot_data_hash',  # noqa: E501
         'screenshot_uuid': 'screenshot_uuid',  # noqa: E501
         'service_id': 'service_id',  # noqa: E501
         'status': 'status',  # noqa: E501
@@ -278,6 +287,7 @@ class AllDetectionsForTarget(ModelNormal):
         'target_temptation': 'target_temptation',  # noqa: E501
         'tech_category': 'tech_category',  # noqa: E501
         'temptation_last_modified': 'temptation_last_modified',  # noqa: E501
+        'thumbnail_data_hash': 'thumbnail_data_hash',  # noqa: E501
         'thumbnail_uuid': 'thumbnail_uuid',  # noqa: E501
         'user_tags': 'user_tags',  # noqa: E501
         'validated_vulnerabilities_detection': 'validated_vulnerabilities_detection',  # noqa: E501
@@ -341,7 +351,9 @@ class AllDetectionsForTarget(ModelNormal):
             authority_override (bool, none_type): [optional]  # noqa: E501
             authorization_state (str): [optional]  # noqa: E501
             authorizing_policies ([str, none_type], none_type): [optional]  # noqa: E501
+            banners_data_hash (str, none_type): [optional]  # noqa: E501
             banners_uuid (str, none_type): [optional]  # noqa: E501
+            cert_data_hash (str, none_type): [optional]  # noqa: E501
             cert_uuid (str, none_type): [optional]  # noqa: E501
             characteristic_tags ([str, none_type], none_type): [optional]  # noqa: E501
             characteristics_count (int, none_type): [optional]  # noqa: E501
@@ -358,6 +370,7 @@ class AllDetectionsForTarget(ModelNormal):
             enumerability (int, none_type): [optional]  # noqa: E501
             exploitability (int, none_type): [optional]  # noqa: E501
             first_seen (datetime, none_type): [optional]  # noqa: E501
+            headers_data_hash (str, none_type): [optional]  # noqa: E501
             headers_uuid (str, none_type): [optional]  # noqa: E501
             hostname (str, none_type): [optional]  # noqa: E501
             hostname_id (str, none_type): [optional]  # noqa: E501
@@ -386,6 +399,7 @@ class AllDetectionsForTarget(ModelNormal):
             randori_notes (str, none_type): [optional]  # noqa: E501
             reference (str, none_type): [optional]  # noqa: E501
             research (int, none_type): [optional]  # noqa: E501
+            screenshot_data_hash (str, none_type): [optional]  # noqa: E501
             screenshot_uuid (str, none_type): [optional]  # noqa: E501
             service_id (str, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
@@ -398,6 +412,7 @@ class AllDetectionsForTarget(ModelNormal):
             target_temptation (int, none_type): [optional]  # noqa: E501
             tech_category ([str], none_type): [optional]  # noqa: E501
             temptation_last_modified (datetime, none_type): [optional]  # noqa: E501
+            thumbnail_data_hash (str, none_type): [optional]  # noqa: E501
             thumbnail_uuid (str, none_type): [optional]  # noqa: E501
             user_tags ([str, none_type], none_type): [optional]  # noqa: E501
             validated_vulnerabilities_detection ([str, none_type], none_type): [optional]  # noqa: E501
@@ -501,7 +516,9 @@ class AllDetectionsForTarget(ModelNormal):
             authority_override (bool, none_type): [optional]  # noqa: E501
             authorization_state (str): [optional]  # noqa: E501
             authorizing_policies ([str, none_type], none_type): [optional]  # noqa: E501
+            banners_data_hash (str, none_type): [optional]  # noqa: E501
             banners_uuid (str, none_type): [optional]  # noqa: E501
+            cert_data_hash (str, none_type): [optional]  # noqa: E501
             cert_uuid (str, none_type): [optional]  # noqa: E501
             characteristic_tags ([str, none_type], none_type): [optional]  # noqa: E501
             characteristics_count (int, none_type): [optional]  # noqa: E501
@@ -518,6 +535,7 @@ class AllDetectionsForTarget(ModelNormal):
             enumerability (int, none_type): [optional]  # noqa: E501
             exploitability (int, none_type): [optional]  # noqa: E501
             first_seen (datetime, none_type): [optional]  # noqa: E501
+            headers_data_hash (str, none_type): [optional]  # noqa: E501
             headers_uuid (str, none_type): [optional]  # noqa: E501
             hostname (str, none_type): [optional]  # noqa: E501
             hostname_id (str, none_type): [optional]  # noqa: E501
@@ -546,6 +564,7 @@ class AllDetectionsForTarget(ModelNormal):
             randori_notes (str, none_type): [optional]  # noqa: E501
             reference (str, none_type): [optional]  # noqa: E501
             research (int, none_type): [optional]  # noqa: E501
+            screenshot_data_hash (str, none_type): [optional]  # noqa: E501
             screenshot_uuid (str, none_type): [optional]  # noqa: E501
             service_id (str, none_type): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
@@ -558,6 +577,7 @@ class AllDetectionsForTarget(ModelNormal):
             target_temptation (int, none_type): [optional]  # noqa: E501
             tech_category ([str], none_type): [optional]  # noqa: E501
             temptation_last_modified (datetime, none_type): [optional]  # noqa: E501
+            thumbnail_data_hash (str, none_type): [optional]  # noqa: E501
             thumbnail_uuid (str, none_type): [optional]  # noqa: E501
             user_tags ([str, none_type], none_type): [optional]  # noqa: E501
             validated_vulnerabilities_detection ([str, none_type], none_type): [optional]  # noqa: E501

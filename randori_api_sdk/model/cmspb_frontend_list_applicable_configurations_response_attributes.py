@@ -32,9 +32,7 @@ from randori_api_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from randori_api_sdk.model.cmspb_frontend_list_applicable_configurations_response_trigger_criteria import CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria
-    from randori_api_sdk.model.timestamppb_timestamp import TimestamppbTimestamp
     globals()['CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria'] = CmspbFrontendListApplicableConfigurationsResponseTriggerCriteria
-    globals()['TimestamppbTimestamp'] = TimestamppbTimestamp
 
 
 class CmspbFrontendListApplicableConfigurationsResponseAttributes(ModelNormal):
@@ -92,7 +90,7 @@ class CmspbFrontendListApplicableConfigurationsResponseAttributes(ModelNormal):
         return {
             'configuration_id': (str, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
-            'last_planned_at': (TimestamppbTimestamp,),  # noqa: E501
+            'last_planned_at': (datetime, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'needs_authorization': (bool, none_type,),  # noqa: E501
             'period': (int, none_type,),  # noqa: E501
@@ -163,7 +161,7 @@ class CmspbFrontendListApplicableConfigurationsResponseAttributes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             configuration_id (str, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
-            last_planned_at (TimestamppbTimestamp): [optional]  # noqa: E501
+            last_planned_at (datetime, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             needs_authorization (bool, none_type): [optional]  # noqa: E501
             period (int, none_type): [optional]  # noqa: E501
@@ -254,7 +252,7 @@ class CmspbFrontendListApplicableConfigurationsResponseAttributes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             configuration_id (str, none_type): [optional]  # noqa: E501
             description (str, none_type): [optional]  # noqa: E501
-            last_planned_at (TimestamppbTimestamp): [optional]  # noqa: E501
+            last_planned_at (datetime, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             needs_authorization (bool, none_type): [optional]  # noqa: E501
             period (int, none_type): [optional]  # noqa: E501

@@ -12,9 +12,11 @@
 import copy
 import logging
 import multiprocessing
+import requests
 import sys
 import urllib3
 
+from datetime import datetime, timedelta
 from http import client as http_client
 from randori_api_sdk.exceptions import ApiValueError
 
@@ -32,10 +34,7 @@ class Configuration(object):
     Do not edit the class manually.
 
     :param host: Base url
-    :param api_key: Dict to store API key(s).
-      Each entry in the dict specifies an API key.
-      The dict key is the name of the security scheme in the OAS specification.
-      The dict value is the API key secret.
+    :param api_key: The API key that is exchanged with a Randori JWT
     :param api_key_prefix: Dict to store API prefix (e.g. Bearer)
       The dict key is the name of the security scheme in the OAS specification.
       The dict value is an API key prefix when generating the auth data.
@@ -94,7 +93,7 @@ class Configuration(object):
                  ):
         """Constructor
         """
-        self._base_path = "https://app3.randori.io" if host is None else host
+        self._base_path = "https://app.randori.io" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -110,7 +109,7 @@ class Configuration(object):
         """
         # Authentication Settings
         self.access_token = access_token
-        self.api_key = {}
+        self.access_token_exp = None
         if api_key:
             self.api_key = api_key
         """dict to store API key(s)
@@ -371,7 +370,16 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if self.access_token is not None:
+        if self.api_key is not None:
+            self.ensure_access_token()
+            auth['bearerAuth'] = {
+                'type': 'bearer',
+                'in': 'header',
+                'format': 'JWT',
+                'key': 'Authorization',
+                'value': 'Bearer ' + self.access_token
+            }
+        elif self.access_token is not None:
             auth['bearerAuth'] = {
                 'type': 'bearer',
                 'in': 'header',
@@ -380,6 +388,21 @@ class Configuration(object):
                 'value': 'Bearer ' + self.access_token
             }
         return auth
+
+    def ensure_access_token(self) -> None:
+        if self.access_token_exp is None or self.access_token_exp < datetime.now() - timedelta(minutes=5):
+            url = f"{self.host}/auth/api/v1/login-api-key"
+            payload = {
+                "api_key": self.api_key,
+            }
+            response = requests.post(url, json=payload)
+
+            if response.status_code == 200:
+                response_data = response.json()
+                self.access_token = response_data.get('authorization')
+                self.access_token_exp = datetime.now() + timedelta(days=1)
+            else:
+                raise Exception(f"Failed to exchange api key with access token: {response.status_code}")
 
     def to_debug_report(self):
         """Gets the essential information for debugging.
@@ -390,7 +413,7 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0\n"\
-               "SDK Package Version: 1.6.3".\
+               "SDK Package Version: ".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
@@ -400,7 +423,7 @@ class Configuration(object):
         """
         return [
             {
-                'url': "https://app3.randori.io",
+                'url': "https://app.randori.io",
                 'description': "No description provided",
             }
         ]

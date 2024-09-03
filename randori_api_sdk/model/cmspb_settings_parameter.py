@@ -32,9 +32,7 @@ from randori_api_sdk.exceptions import ApiAttributeError
 
 def lazy_import():
     from randori_api_sdk.model.contentstorepb_configuration_value_format import ContentstorepbConfigurationValueFormat
-    from randori_api_sdk.model.structpb_value import StructpbValue
     globals()['ContentstorepbConfigurationValueFormat'] = ContentstorepbConfigurationValueFormat
-    globals()['StructpbValue'] = StructpbValue
 
 
 class CmspbSettingsParameter(ModelNormal):
@@ -93,7 +91,7 @@ class CmspbSettingsParameter(ModelNormal):
             'is_unset': (bool, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'obsolete_value': (str, none_type,),  # noqa: E501
-            'value': (StructpbValue,),  # noqa: E501
+            'value': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'value_format': (ContentstorepbConfigurationValueFormat,),  # noqa: E501
         }
 
@@ -154,7 +152,7 @@ class CmspbSettingsParameter(ModelNormal):
             is_unset (bool, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             obsolete_value (str, none_type): [optional]  # noqa: E501
-            value (StructpbValue): [optional]  # noqa: E501
+            value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             value_format (ContentstorepbConfigurationValueFormat): [optional]  # noqa: E501
         """
 
@@ -240,7 +238,7 @@ class CmspbSettingsParameter(ModelNormal):
             is_unset (bool, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             obsolete_value (str, none_type): [optional]  # noqa: E501
-            value (StructpbValue): [optional]  # noqa: E501
+            value (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             value_format (ContentstorepbConfigurationValueFormat): [optional]  # noqa: E501
         """
 

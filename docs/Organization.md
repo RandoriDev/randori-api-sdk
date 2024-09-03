@@ -5,9 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **str, none_type** |  | [optional] 
+**admin_source_count** | **int, none_type** |  | [optional] 
 **allowed_email_domains** | **[str, none_type], none_type** |  | [optional] 
+**client_id** | **str, none_type** |  | [optional] 
 **contact** | **str, none_type** |  | [optional] 
 **created_on** | **datetime, none_type** |  | [optional] 
+**freeze_time** | **datetime, none_type** |  | [optional] 
+**freeze_time_last_update_by** | **str, none_type** |  | [optional] 
+**freeze_time_last_update_on** | **datetime, none_type** |  | [optional] 
 **id** | **str, none_type** |  | [optional] 
 **license_level** | **bool, date, datetime, dict, float, int, list, str, none_type** | License tier for the organization | [optional] 
 **login_methods** | **[str, none_type], none_type** |  | [optional] 
