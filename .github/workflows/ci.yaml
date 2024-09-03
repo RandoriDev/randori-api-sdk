@@ -21,7 +21,7 @@ jobs:
 
       - name: Detect version
         shell: bash
-        run: echo "VERSION=$(shell cat ./VERSION)" >> $GITHUB_ENV
+        run: echo "VERSION=$(cat ./VERSION)" >> $GITHUB_ENV
 
       - name: Check if on head branch
         shell: bash
