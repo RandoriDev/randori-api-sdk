@@ -45,9 +45,6 @@ jobs:
       - name: Build sdk
         run: make build
 
-      - name: Ensure copyright headers
-        run: make copyright
-
       - name: Commit changes to branch
         if: ${{ env.ON_HEAD_BRANCH == 'false' }}
         run: |
