@@ -112,6 +112,7 @@ class Configuration(object):
         """
         # Authentication Settings
         self.access_token = access_token
+        self.api_key = api_key
         self.access_token_exp = None
         if api_key:
             self.api_key = api_key
