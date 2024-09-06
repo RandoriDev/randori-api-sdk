@@ -21,9 +21,14 @@ configuration = {{{packageName}}}.Configuration(
 {{/isBasicBasic}}
 {{#isBasicBearer}}
 
-# Configure Bearer authorization{{#bearerFormat}} ({{{.}}}){{/bearerFormat}}: {{{name}}}
+# Configure API Key
 configuration = {{{packageName}}}.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = {{{packageName}}}.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 {{/isBasicBearer}}
 {{#isHttpSignature}}
