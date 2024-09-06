@@ -47,83 +47,41 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 
-import time
+import base64
+import json
+import os
+
 import randori_api_sdk
-from pprint import pprint
-from randori_api_sdk.api import cms_api
-from randori_api_sdk.model.cms_list_statistics_request import CmsListStatisticsRequest
-from randori_api_sdk.model.cms_update_parameter_request import CmsUpdateParameterRequest
-from randori_api_sdk.model.cms_update_trigger_request import CmsUpdateTriggerRequest
-from randori_api_sdk.model.cms_upload_policy_request import CmsUploadPolicyRequest
-from randori_api_sdk.model.cms_validate_now_request import CmsValidateNowRequest
-from randori_api_sdk.model.cmspb_activity_type_flow_response import CmspbActivityTypeFlowResponse
-from randori_api_sdk.model.cmspb_assign_configuration_to_policy_request import CmspbAssignConfigurationToPolicyRequest
-from randori_api_sdk.model.cmspb_change_organization_settings_request import CmspbChangeOrganizationSettingsRequest
-from randori_api_sdk.model.cmspb_configurations_response import CmspbConfigurationsResponse
-from randori_api_sdk.model.cmspb_create_configuration_request import CmspbCreateConfigurationRequest
-from randori_api_sdk.model.cmspb_edit_configuration_request import CmspbEditConfigurationRequest
-from randori_api_sdk.model.cmspb_frontend_create_policy_request import CmspbFrontendCreatePolicyRequest
-from randori_api_sdk.model.cmspb_frontend_edit_policy_request import CmspbFrontendEditPolicyRequest
-from randori_api_sdk.model.cmspb_frontend_list_applicable_configurations_response import CmspbFrontendListApplicableConfigurationsResponse
-from randori_api_sdk.model.cmspb_frontend_list_applicable_entities_response import CmspbFrontendListApplicableEntitiesResponse
-from randori_api_sdk.model.cmspb_frontend_list_configurations_response import CmspbFrontendListConfigurationsResponse
-from randori_api_sdk.model.cmspb_frontend_list_exception_policies_response import CmspbFrontendListExceptionPoliciesResponse
-from randori_api_sdk.model.cmspb_frontend_parameters_response import CmspbFrontendParametersResponse
-from randori_api_sdk.model.cmspb_frontend_run_now_job_response import CmspbFrontendRunNowJobResponse
-from randori_api_sdk.model.cmspb_frontend_single_configuration_response import CmspbFrontendSingleConfigurationResponse
-from randori_api_sdk.model.cmspb_frontend_single_exception_policy_response import CmspbFrontendSingleExceptionPolicyResponse
-from randori_api_sdk.model.cmspb_frontend_single_parameter_response import CmspbFrontendSingleParameterResponse
-from randori_api_sdk.model.cmspb_frontend_single_trigger_response import CmspbFrontendSingleTriggerResponse
-from randori_api_sdk.model.cmspb_frontend_triggers_response import CmspbFrontendTriggersResponse
-from randori_api_sdk.model.cmspb_get_configurations_response import CmspbGetConfigurationsResponse
-from randori_api_sdk.model.cmspb_get_organization_response import CmspbGetOrganizationResponse
-from randori_api_sdk.model.cmspb_list_configurations_response import CmspbListConfigurationsResponse
-from randori_api_sdk.model.cmspb_list_organization_settings_response import CmspbListOrganizationSettingsResponse
-from randori_api_sdk.model.cmspb_list_planning_results_response import CmspbListPlanningResultsResponse
-from randori_api_sdk.model.cmspb_list_policies_response import CmspbListPoliciesResponse
-from randori_api_sdk.model.cmspb_policy_response import CmspbPolicyResponse
-from randori_api_sdk.model.cmspb_start_validation_series_request import CmspbStartValidationSeriesRequest
-from randori_api_sdk.model.cmspb_start_validation_series_response import CmspbStartValidationSeriesResponse
-# Defining the host is optional and defaults to https://app.randori.io
-# See configuration.py for a list of all supported configuration parameters.
-configuration = randori_api_sdk.Configuration(
-    host = "https://app.randori.io"
-)
+import randori_api_sdk.api.default_api
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
+configuration = randori_api_sdk.Configuration()
+# configuration.access_token = os.getenv("RANDORI_ACCESS_TOKEN") # Deprecated
+configuration.api_key = os.getenv("RANDORI_API_KEY") # Deprecated
+r_api = randori_api_sdk.api.default_api.DefaultApi(randori_api_sdk.ApiClient(configuration))
 
-# Configure API Key
-configuration = randori_api_sdk.Configuration(
-    api_key = 'YOUR_API_KEY'
-)
+print(f"Randori Platform URL: {configuration.host}")
 
-# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
-configuration = randori_api_sdk.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
+msg = "The environment variable 'RANDORI_API_KEY' must be defined and must be an API Token."
+assert configuration.access_token, msg
 
 
-# Enter a context with an instance of the API client
-with randori_api_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = cms_api.CmsApi(api_client)
-    id = "id_example" # str | Exception Policy ID
-cmspb_assign_configuration_to_policy_request = CmspbAssignConfigurationToPolicyRequest(
-        configuration_id=[
-            "configuration_id_example",
-        ],
-        revoke=True,
-    ) # CmspbAssignConfigurationToPolicyRequest | Assign configuration to policy request
+def prep_query(query_object):
+    iq = json.dumps(query_object).encode()
+    query = base64.b64encode(iq).decode("ascii")
 
-    try:
-        # Change exception policy assignment.
-        api_response = api_instance.change_exception_policy_assignment(id, cmspb_assign_configuration_to_policy_request)
-        pprint(api_response)
-    except randori_api_sdk.ApiException as e:
-        print("Exception when calling CmsApi->change_exception_policy_assignment: %s\n" % e)
+    return query
+
+
+def get_hosts(query, limit=1, offset=0, sort=["hostname"]):
+    query = prep_query(query)
+    resp = r_api.get_hostname(q=query, limit=limit, offset=offset, sort=sort)
+    for host in resp.data:
+        print(f"Returned Data Type: {type(host)}")
+        print(host)
+
+query = {'condition': 'AND', 'rules': [{'field': 'table.target_temptation', 'operator': 'is_null'}]}
+
+get_hosts(query)
 ```
 
 ## Documentation for API Endpoints
