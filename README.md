@@ -56,7 +56,7 @@ import randori_api_sdk.api.default_api
 
 configuration = randori_api_sdk.Configuration()
 # configuration.access_token = os.getenv("RANDORI_ACCESS_TOKEN") # Deprecated
-configuration.api_key = os.getenv("RANDORI_API_KEY") # Deprecated
+configuration.api_key = os.getenv("RANDORI_API_KEY")
 r_api = randori_api_sdk.api.default_api.DefaultApi(randori_api_sdk.ApiClient(configuration))
 
 print(f"Randori Platform URL: {configuration.host}")
