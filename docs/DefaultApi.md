@@ -181,9 +181,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -257,9 +262,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -352,9 +362,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -439,9 +454,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -524,9 +544,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -608,9 +633,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -700,9 +730,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -791,9 +826,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -873,9 +913,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -963,9 +1008,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1054,9 +1104,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1145,9 +1200,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1238,9 +1298,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1320,9 +1385,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1413,9 +1483,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1506,9 +1581,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1599,9 +1679,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1692,9 +1777,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1785,9 +1875,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1878,9 +1973,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -1971,9 +2071,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2064,9 +2169,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2157,9 +2267,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2250,9 +2365,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2343,9 +2463,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2437,9 +2562,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2528,9 +2658,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2598,9 +2733,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2691,9 +2831,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2784,9 +2929,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2877,9 +3027,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -2970,9 +3125,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3063,9 +3223,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3156,9 +3321,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3249,9 +3419,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3342,9 +3517,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3435,9 +3615,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3528,9 +3713,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3617,9 +3807,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3710,9 +3905,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3803,9 +4003,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3896,9 +4101,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -3988,9 +4198,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4080,9 +4295,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4172,9 +4392,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4264,9 +4489,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4356,9 +4586,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4449,9 +4684,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4541,9 +4781,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4633,9 +4878,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4725,9 +4975,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4817,9 +5072,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -4909,9 +5169,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5001,9 +5266,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5093,9 +5363,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5175,9 +5450,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5267,9 +5547,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5359,9 +5644,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5451,9 +5741,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5543,9 +5838,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5635,9 +5935,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5727,9 +6032,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5809,9 +6119,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5901,9 +6216,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -5993,9 +6313,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6085,9 +6410,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6177,9 +6507,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6269,9 +6604,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6361,9 +6701,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6453,9 +6798,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6545,9 +6895,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6637,9 +6992,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6729,9 +7089,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6821,9 +7186,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6914,9 +7284,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -6992,9 +7367,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7087,9 +7467,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7180,9 +7565,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7273,9 +7663,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7368,9 +7763,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7461,9 +7861,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7554,9 +7959,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7647,9 +8057,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7740,9 +8155,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7833,9 +8253,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -7926,9 +8351,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8019,9 +8449,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8112,9 +8547,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8205,9 +8645,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8298,9 +8743,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8391,9 +8841,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8484,9 +8939,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8577,9 +9037,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8670,9 +9135,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8763,9 +9233,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8856,9 +9331,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -8943,9 +9423,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9030,9 +9515,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9116,9 +9606,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9201,9 +9696,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9287,9 +9787,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9369,9 +9874,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9451,9 +9961,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9533,9 +10048,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9627,9 +10147,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9706,9 +10231,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9803,9 +10333,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9893,9 +10428,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -9983,9 +10523,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10073,9 +10618,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10163,9 +10713,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10259,9 +10814,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10354,9 +10914,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10450,9 +11015,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10546,9 +11116,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10642,9 +11217,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10732,9 +11312,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10822,9 +11407,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -10912,9 +11502,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11002,9 +11597,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11092,9 +11692,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11182,9 +11787,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11272,9 +11882,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11361,9 +11976,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11444,9 +12064,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11522,9 +12147,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11604,9 +12234,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11691,9 +12326,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11808,9 +12448,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11901,9 +12546,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -11995,9 +12645,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12083,9 +12738,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12196,9 +12856,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12287,9 +12952,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12382,9 +13052,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12472,9 +13147,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12587,9 +13267,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12680,9 +13365,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12764,9 +13454,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12840,9 +13535,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -12925,9 +13625,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -13010,9 +13715,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -13093,9 +13803,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -13171,9 +13886,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -13254,9 +13974,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -13344,9 +14069,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
@@ -13429,9 +14159,14 @@ configuration = randori_api_sdk.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure Bearer authorization (JWT): bearerAuth
+# Configure API Key
 configuration = randori_api_sdk.Configuration(
     api_key = 'YOUR_API_KEY'
+)
+
+# Configure Bearer authorization (JWT): bearerAuth (Deprecated)
+configuration = randori_api_sdk.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
