@@ -1,3 +1,6 @@
+"""
+© Copyright IBM Corp. 2024
+"""
 # flake8: noqa
 
 # import all models into this package
