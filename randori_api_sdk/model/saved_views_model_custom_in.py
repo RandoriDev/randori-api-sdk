@@ -1,4 +1,7 @@
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -70,6 +73,9 @@ class SavedViewsModelCustomIn(ModelNormal):
             'TOPLEVELDETECTION': "topLevelDetection",
             'ACTIVITY_INSTANCE': "activity_instance",
             'ACTIVITY_CONFIGURATION': "activity_configuration",
+            'ASSET': "asset",
+            'BDO_DETECTION': "bdo_detection",
+            'EXCEPTION_POLICY': "exception_policy",
         },
     }
 

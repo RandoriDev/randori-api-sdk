@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **configuration_id** | **str, none_type** |  | [optional] 
 **description** | **str, none_type** |  | [optional] 
-**last_planned_at** | [**TimestamppbTimestamp**](TimestamppbTimestamp.md) |  | [optional] 
+**last_planned_at** | **datetime, none_type** |  | [optional] 
 **name** | **str, none_type** |  | [optional] 
 **needs_authorization** | **bool, none_type** |  | [optional] 
 **period** | **int, none_type** |  | [optional] 

@@ -1,4 +1,7 @@
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -84,6 +87,7 @@ class CmspbFrontendApplicableEntityAttributes(ModelNormal):
         return {
             'entity_type': (str, none_type,),  # noqa: E501
             'service_id': (str, none_type,),  # noqa: E501
+            'version_match': (bool, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -94,6 +98,7 @@ class CmspbFrontendApplicableEntityAttributes(ModelNormal):
     attribute_map = {
         'entity_type': 'entity_type',  # noqa: E501
         'service_id': 'service_id',  # noqa: E501
+        'version_match': 'version_match',  # noqa: E501
     }
 
     read_only_vars = {
@@ -139,6 +144,7 @@ class CmspbFrontendApplicableEntityAttributes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             entity_type (str, none_type): [optional]  # noqa: E501
             service_id (str, none_type): [optional]  # noqa: E501
+            version_match (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -222,6 +228,7 @@ class CmspbFrontendApplicableEntityAttributes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             entity_type (str, none_type): [optional]  # noqa: E501
             service_id (str, none_type): [optional]  # noqa: E501
+            version_match (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

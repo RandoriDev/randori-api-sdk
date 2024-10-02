@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **instance__time_duration** | **int, none_type** |  | [optional] 
 **instance__time_end** | **datetime, none_type** |  | [optional] 
 **instance__time_start** | **datetime, none_type** |  | [optional] 
+**matching_entity__asset** | **str, none_type** |  | [optional] 
 **matching_entity__detection** | **str, none_type** |  | [optional] 
 **matching_entity__email** | **str, none_type** |  | [optional] 
 **matching_entity__hostname** | **str, none_type** |  | [optional] 

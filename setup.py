@@ -1,4 +1,7 @@
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -12,7 +15,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "randori-api-sdk"
-VERSION = "1.6.3"
+VERSION = "1.7.0"
 # To install the library, run the following
 #
 # python setup.py install

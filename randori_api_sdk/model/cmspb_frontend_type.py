@@ -1,4 +1,7 @@
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -58,6 +61,7 @@ class CmspbFrontendType(ModelSimple):
             'FrontendType_parameter': "parameter",
             'FrontendType_applicable_activity': "applicable_activity",
             'FrontendType_applicable_entity': "applicable_entity",
+            'FrontendType_exception_policy': "exception_policy",
         },
     }
 
@@ -109,10 +113,10 @@ class CmspbFrontendType(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["activity_configuration", "trigger_criteria", "parameter", "applicable_activity", "applicable_entity", ]  # noqa: E501
+            args[0] (str):, must be one of ["activity_configuration", "trigger_criteria", "parameter", "applicable_activity", "applicable_entity", "exception_policy", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["activity_configuration", "trigger_criteria", "parameter", "applicable_activity", "applicable_entity", ]  # noqa: E501
+            value (str):, must be one of ["activity_configuration", "trigger_criteria", "parameter", "applicable_activity", "applicable_entity", "exception_policy", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -199,10 +203,10 @@ class CmspbFrontendType(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["activity_configuration", "trigger_criteria", "parameter", "applicable_activity", "applicable_entity", ]  # noqa: E501
+            args[0] (str):, must be one of ["activity_configuration", "trigger_criteria", "parameter", "applicable_activity", "applicable_entity", "exception_policy", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["activity_configuration", "trigger_criteria", "parameter", "applicable_activity", "applicable_entity", ]  # noqa: E501
+            value (str):, must be one of ["activity_configuration", "trigger_criteria", "parameter", "applicable_activity", "applicable_entity", "exception_policy", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

@@ -1,3 +1,6 @@
+"""
+© Copyright IBM Corp. 2024
+"""
 
 # flake8: noqa
 
@@ -16,3 +19,4 @@
 # Import APIs into API package:
 from randori_api_sdk.api.cms_api import CmsApi
 from randori_api_sdk.api.default_api import DefaultApi
+from randori_api_sdk.api.validation_api import ValidationApi

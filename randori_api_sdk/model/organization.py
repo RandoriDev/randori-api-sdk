@@ -1,4 +1,7 @@
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -98,9 +101,14 @@ class Organization(ModelNormal):
         """
         return {
             'address': (str, none_type,),  # noqa: E501
+            'admin_source_count': (int, none_type,),  # noqa: E501
             'allowed_email_domains': ([str, none_type], none_type,),  # noqa: E501
+            'client_id': (str, none_type,),  # noqa: E501
             'contact': (str, none_type,),  # noqa: E501
             'created_on': (datetime, none_type,),  # noqa: E501
+            'freeze_time': (datetime, none_type,),  # noqa: E501
+            'freeze_time_last_update_by': (str, none_type,),  # noqa: E501
+            'freeze_time_last_update_on': (datetime, none_type,),  # noqa: E501
             'id': (str, none_type,),  # noqa: E501
             'license_level': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'login_methods': ([str, none_type], none_type,),  # noqa: E501
@@ -121,9 +129,14 @@ class Organization(ModelNormal):
 
     attribute_map = {
         'address': 'address',  # noqa: E501
+        'admin_source_count': 'admin_source_count',  # noqa: E501
         'allowed_email_domains': 'allowed_email_domains',  # noqa: E501
+        'client_id': 'client_id',  # noqa: E501
         'contact': 'contact',  # noqa: E501
         'created_on': 'created_on',  # noqa: E501
+        'freeze_time': 'freeze_time',  # noqa: E501
+        'freeze_time_last_update_by': 'freeze_time_last_update_by',  # noqa: E501
+        'freeze_time_last_update_on': 'freeze_time_last_update_on',  # noqa: E501
         'id': 'id',  # noqa: E501
         'license_level': 'license_level',  # noqa: E501
         'login_methods': 'login_methods',  # noqa: E501
@@ -179,9 +192,14 @@ class Organization(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address (str, none_type): [optional]  # noqa: E501
+            admin_source_count (int, none_type): [optional]  # noqa: E501
             allowed_email_domains ([str, none_type], none_type): [optional]  # noqa: E501
+            client_id (str, none_type): [optional]  # noqa: E501
             contact (str, none_type): [optional]  # noqa: E501
             created_on (datetime, none_type): [optional]  # noqa: E501
+            freeze_time (datetime, none_type): [optional]  # noqa: E501
+            freeze_time_last_update_by (str, none_type): [optional]  # noqa: E501
+            freeze_time_last_update_on (datetime, none_type): [optional]  # noqa: E501
             id (str, none_type): [optional]  # noqa: E501
             license_level (bool, date, datetime, dict, float, int, list, str, none_type): License tier for the organization. [optional]  # noqa: E501
             login_methods ([str, none_type], none_type): [optional]  # noqa: E501
@@ -275,9 +293,14 @@ class Organization(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             address (str, none_type): [optional]  # noqa: E501
+            admin_source_count (int, none_type): [optional]  # noqa: E501
             allowed_email_domains ([str, none_type], none_type): [optional]  # noqa: E501
+            client_id (str, none_type): [optional]  # noqa: E501
             contact (str, none_type): [optional]  # noqa: E501
             created_on (datetime, none_type): [optional]  # noqa: E501
+            freeze_time (datetime, none_type): [optional]  # noqa: E501
+            freeze_time_last_update_by (str, none_type): [optional]  # noqa: E501
+            freeze_time_last_update_on (datetime, none_type): [optional]  # noqa: E501
             id (str, none_type): [optional]  # noqa: E501
             license_level (bool, date, datetime, dict, float, int, list, str, none_type): License tier for the organization. [optional]  # noqa: E501
             login_methods ([str, none_type], none_type): [optional]  # noqa: E501

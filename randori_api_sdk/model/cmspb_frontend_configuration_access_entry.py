@@ -1,4 +1,7 @@
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -29,10 +32,6 @@ from randori_api_sdk.model_utils import (  # noqa: F401
 )
 from randori_api_sdk.exceptions import ApiAttributeError
 
-
-def lazy_import():
-    from randori_api_sdk.model.timestamppb_timestamp import TimestamppbTimestamp
-    globals()['TimestamppbTimestamp'] = TimestamppbTimestamp
 
 
 class CmspbFrontendConfigurationAccessEntry(ModelNormal):
@@ -71,7 +70,6 @@ class CmspbFrontendConfigurationAccessEntry(ModelNormal):
         This must be a method because a model may have properties that are
         of type self, this must run after the class is loaded
         """
-        lazy_import()
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
@@ -86,10 +84,9 @@ class CmspbFrontendConfigurationAccessEntry(ModelNormal):
             openapi_types (dict): The key is attribute name
                 and the value is attribute type.
         """
-        lazy_import()
         return {
             'author_id': (str, none_type,),  # noqa: E501
-            'date': (TimestamppbTimestamp,),  # noqa: E501
+            'date': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -144,7 +141,7 @@ class CmspbFrontendConfigurationAccessEntry(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             author_id (str, none_type): [optional]  # noqa: E501
-            date (TimestamppbTimestamp): [optional]  # noqa: E501
+            date (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -227,7 +224,7 @@ class CmspbFrontendConfigurationAccessEntry(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             author_id (str, none_type): [optional]  # noqa: E501
-            date (TimestamppbTimestamp): [optional]  # noqa: E501
+            date (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

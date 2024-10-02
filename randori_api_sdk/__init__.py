@@ -1,6 +1,9 @@
 # flake8: noqa
 
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -11,7 +14,7 @@
 """
 
 
-__version__ = "1.6.3"
+__version__ = "1.7.0"
 
 # import ApiClient
 from randori_api_sdk.api_client import ApiClient

@@ -1,4 +1,7 @@
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -36,13 +39,13 @@ def lazy_import():
     from randori_api_sdk.model.cmspb_frontend_configuration_objective import CmspbFrontendConfigurationObjective
     from randori_api_sdk.model.cmspb_frontend_parameter_object import CmspbFrontendParameterObject
     from randori_api_sdk.model.cmspb_frontend_trigger_object import CmspbFrontendTriggerObject
-    from randori_api_sdk.model.timestamppb_timestamp import TimestamppbTimestamp
+    from randori_api_sdk.model.structpb_value import StructpbValue
     globals()['CmspbFrontendConfigurationAccessEntry'] = CmspbFrontendConfigurationAccessEntry
     globals()['CmspbFrontendConfigurationMitre'] = CmspbFrontendConfigurationMitre
     globals()['CmspbFrontendConfigurationObjective'] = CmspbFrontendConfigurationObjective
     globals()['CmspbFrontendParameterObject'] = CmspbFrontendParameterObject
     globals()['CmspbFrontendTriggerObject'] = CmspbFrontendTriggerObject
-    globals()['TimestamppbTimestamp'] = TimestamppbTimestamp
+    globals()['StructpbValue'] = StructpbValue
 
 
 class CmspbFrontendConfigurationAttributes(ModelNormal):
@@ -109,7 +112,8 @@ class CmspbFrontendConfigurationAttributes(ModelNormal):
             'description': (str, none_type,),  # noqa: E501
             'enabled': (bool, none_type,),  # noqa: E501
             'entities_count': (int, none_type,),  # noqa: E501
-            'last_planned_at': (TimestamppbTimestamp,),  # noqa: E501
+            'indicator_of_compromise': (StructpbValue,),  # noqa: E501
+            'last_planned_at': (datetime, none_type,),  # noqa: E501
             'matching_entity_types': ([str, none_type], none_type,),  # noqa: E501
             'mitre': (CmspbFrontendConfigurationMitre,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
@@ -142,6 +146,7 @@ class CmspbFrontendConfigurationAttributes(ModelNormal):
         'description': 'description',  # noqa: E501
         'enabled': 'enabled',  # noqa: E501
         'entities_count': 'entities_count',  # noqa: E501
+        'indicator_of_compromise': 'indicator_of_compromise',  # noqa: E501
         'last_planned_at': 'last_planned_at',  # noqa: E501
         'matching_entity_types': 'matching_entity_types',  # noqa: E501
         'mitre': 'mitre',  # noqa: E501
@@ -210,7 +215,8 @@ class CmspbFrontendConfigurationAttributes(ModelNormal):
             description (str, none_type): [optional]  # noqa: E501
             enabled (bool, none_type): [optional]  # noqa: E501
             entities_count (int, none_type): [optional]  # noqa: E501
-            last_planned_at (TimestamppbTimestamp): [optional]  # noqa: E501
+            indicator_of_compromise (StructpbValue): [optional]  # noqa: E501
+            last_planned_at (datetime, none_type): [optional]  # noqa: E501
             matching_entity_types ([str, none_type], none_type): [optional]  # noqa: E501
             mitre (CmspbFrontendConfigurationMitre): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
@@ -316,7 +322,8 @@ class CmspbFrontendConfigurationAttributes(ModelNormal):
             description (str, none_type): [optional]  # noqa: E501
             enabled (bool, none_type): [optional]  # noqa: E501
             entities_count (int, none_type): [optional]  # noqa: E501
-            last_planned_at (TimestamppbTimestamp): [optional]  # noqa: E501
+            indicator_of_compromise (StructpbValue): [optional]  # noqa: E501
+            last_planned_at (datetime, none_type): [optional]  # noqa: E501
             matching_entity_types ([str, none_type], none_type): [optional]  # noqa: E501
             mitre (CmspbFrontendConfigurationMitre): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501

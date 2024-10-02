@@ -1,0 +1,112 @@
+```python
+
+import base64
+import json
+import os
+
+import randori_api_sdk
+import randori_api_sdk.api.default_api
+
+configuration = randori_api_sdk.Configuration()
+# configuration.access_token = os.getenv("RANDORI_ACCESS_TOKEN") # Deprecated
+configuration.api_key = os.getenv("RANDORI_API_KEY")
+r_api = randori_api_sdk.api.default_api.DefaultApi(randori_api_sdk.ApiClient(configuration))
+
+print(f"Randori Platform URL: {configuration.host}")
+
+msg = "The environment variable 'RANDORI_API_KEY' must be defined and must be an API Token."
+assert configuration.access_token, msg
+
+
+def prep_query(query_object):
+    iq = json.dumps(query_object).encode()
+    query = base64.b64encode(iq).decode("ascii")
+
+    return query
+
+
+def get_hosts(query, limit=1, offset=0, sort=["hostname"]):
+    query = prep_query(query)
+    resp = r_api.get_hostname(q=query, limit=limit, offset=offset, sort=sort)
+    for host in resp.data:
+        print(f"Returned Data Type: {type(host)}")
+        print(host)
+
+query = {'condition': 'AND', 'rules': [{'field': 'table.target_temptation', 'operator': 'is_null'}]}
+
+get_hosts(query)
+```
+
+## Documentation for API Endpoints
+
+All URIs are relative to *{{basePath}}*
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}} | {{summary}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
+
+## Documentation For Models
+
+{{#models}}{{#model}} - [{{{classname}}}]({{modelDocPath}}{{{classname}}}.md)
+{{/model}}{{/models}}
+
+## Documentation For Authorization
+
+{{^authMethods}}
+ All endpoints do not require authorization.
+{{/authMethods}}
+{{#authMethods}}
+{{#last}} Authentication schemes defined for the API:{{/last}}
+## {{{name}}}
+
+{{#isApiKey}}
+- **Type**: API key
+- **API key parameter name**: {{{keyParamName}}}
+- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+{{/isApiKey}}
+{{#isBasic}}
+{{#isBasicBasic}}
+- **Type**: HTTP basic authentication
+{{/isBasicBasic}}
+{{#isBasicBearer}}
+- **Type**: Bearer authentication{{#bearerFormat}} ({{{.}}}){{/bearerFormat}}
+{{/isBasicBearer}}
+{{#isHttpSignature}}
+- **Type**: HTTP signature authentication
+{{/isHttpSignature}}
+{{/isBasic}}
+{{#isOAuth}}
+- **Type**: OAuth
+- **Flow**: {{{flow}}}
+- **Authorization URL**: {{{authorizationUrl}}}
+- **Scopes**: {{^scopes}}N/A{{/scopes}}
+{{#scopes}} - **{{{scope}}}**: {{{description}}}
+{{/scopes}}
+{{/isOAuth}}
+
+{{/authMethods}}
+
+## Author
+
+{{#apiInfo}}{{#apis}}{{#-last}}{{infoEmail}}
+{{/-last}}{{/apis}}{{/apiInfo}}
+
+## Notes for Large OpenAPI documents
+If the OpenAPI document is large, imports in {{{packageName}}}.apis and {{{packageName}}}.models may fail with a
+RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
+
+Solution 1:
+Use specific imports for apis and models like:
+- `from {{{packageName}}}.api.default_api import DefaultApi`
+- `from {{{packageName}}}.model.pet import Pet`
+
+Solution 2:
+Before importing the package, adjust the maximum recursion limit as shown below:
+```
+import sys
+sys.setrecursionlimit(1500)
+import {{{packageName}}}
+from {{{packageName}}}.apis import *
+from {{{packageName}}}.models import *
+```

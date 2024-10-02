@@ -1,4 +1,7 @@
 """
+© Copyright IBM Corp. 2024
+"""
+"""
     Randori API SDK
 
     A python client library for accessing Randori API endpoints using API tokens  # noqa: E501
@@ -22,19 +25,39 @@ from randori_api_sdk.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from randori_api_sdk.model.cms_list_statistics_request import CmsListStatisticsRequest
 from randori_api_sdk.model.cms_update_parameter_request import CmsUpdateParameterRequest
 from randori_api_sdk.model.cms_update_trigger_request import CmsUpdateTriggerRequest
+from randori_api_sdk.model.cms_upload_policy_request import CmsUploadPolicyRequest
 from randori_api_sdk.model.cms_validate_now_request import CmsValidateNowRequest
+from randori_api_sdk.model.cmspb_activity_type_flow_response import CmspbActivityTypeFlowResponse
+from randori_api_sdk.model.cmspb_assign_configuration_to_policy_request import CmspbAssignConfigurationToPolicyRequest
+from randori_api_sdk.model.cmspb_change_organization_settings_request import CmspbChangeOrganizationSettingsRequest
+from randori_api_sdk.model.cmspb_configurations_response import CmspbConfigurationsResponse
+from randori_api_sdk.model.cmspb_create_configuration_request import CmspbCreateConfigurationRequest
 from randori_api_sdk.model.cmspb_edit_configuration_request import CmspbEditConfigurationRequest
+from randori_api_sdk.model.cmspb_frontend_create_policy_request import CmspbFrontendCreatePolicyRequest
+from randori_api_sdk.model.cmspb_frontend_edit_policy_request import CmspbFrontendEditPolicyRequest
 from randori_api_sdk.model.cmspb_frontend_list_applicable_configurations_response import CmspbFrontendListApplicableConfigurationsResponse
 from randori_api_sdk.model.cmspb_frontend_list_applicable_entities_response import CmspbFrontendListApplicableEntitiesResponse
 from randori_api_sdk.model.cmspb_frontend_list_configurations_response import CmspbFrontendListConfigurationsResponse
+from randori_api_sdk.model.cmspb_frontend_list_exception_policies_response import CmspbFrontendListExceptionPoliciesResponse
 from randori_api_sdk.model.cmspb_frontend_parameters_response import CmspbFrontendParametersResponse
 from randori_api_sdk.model.cmspb_frontend_run_now_job_response import CmspbFrontendRunNowJobResponse
 from randori_api_sdk.model.cmspb_frontend_single_configuration_response import CmspbFrontendSingleConfigurationResponse
+from randori_api_sdk.model.cmspb_frontend_single_exception_policy_response import CmspbFrontendSingleExceptionPolicyResponse
 from randori_api_sdk.model.cmspb_frontend_single_parameter_response import CmspbFrontendSingleParameterResponse
 from randori_api_sdk.model.cmspb_frontend_single_trigger_response import CmspbFrontendSingleTriggerResponse
 from randori_api_sdk.model.cmspb_frontend_triggers_response import CmspbFrontendTriggersResponse
+from randori_api_sdk.model.cmspb_get_configurations_response import CmspbGetConfigurationsResponse
+from randori_api_sdk.model.cmspb_get_organization_response import CmspbGetOrganizationResponse
+from randori_api_sdk.model.cmspb_list_configurations_response import CmspbListConfigurationsResponse
+from randori_api_sdk.model.cmspb_list_organization_settings_response import CmspbListOrganizationSettingsResponse
+from randori_api_sdk.model.cmspb_list_planning_results_response import CmspbListPlanningResultsResponse
+from randori_api_sdk.model.cmspb_list_policies_response import CmspbListPoliciesResponse
+from randori_api_sdk.model.cmspb_policy_response import CmspbPolicyResponse
+from randori_api_sdk.model.cmspb_start_validation_series_request import CmspbStartValidationSeriesRequest
+from randori_api_sdk.model.cmspb_start_validation_series_response import CmspbStartValidationSeriesResponse
 
 
 class CmsApi(object):
@@ -48,6 +71,441 @@ class CmsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.change_exception_policy_assignment_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbActivityTypeFlowResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/exception-policies/{id}',
+                'operation_id': 'change_exception_policy_assignment',
+                'http_method': 'PUT',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'cmspb_assign_configuration_to_policy_request',
+                ],
+                'required': [
+                    'id',
+                    'cmspb_assign_configuration_to_policy_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'cmspb_assign_configuration_to_policy_request':
+                        (CmspbAssignConfigurationToPolicyRequest,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'cmspb_assign_configuration_to_policy_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.change_organization_settings_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbActivityTypeFlowResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/admin/organizations/{id}',
+                'operation_id': 'change_organization_settings',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'cmspb_change_organization_settings_request',
+                ],
+                'required': [
+                    'id',
+                    'cmspb_change_organization_settings_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'cmspb_change_organization_settings_request':
+                        (CmspbChangeOrganizationSettingsRequest,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'cmspb_change_organization_settings_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.create_activity_configuration_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbConfigurationsResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/activity-configurations',
+                'operation_id': 'create_activity_configuration',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cmspb_create_configuration_request',
+                ],
+                'required': [
+                    'cmspb_create_configuration_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cmspb_create_configuration_request':
+                        (CmspbCreateConfigurationRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'cmspb_create_configuration_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.delete_exception_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbPolicyResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/exception-policies/{id}',
+                'operation_id': 'delete_exception_policy',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.edit_activity_configuration_version_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbConfigurationsResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/activity-configuration-versions/{id}',
+                'operation_id': 'edit_activity_configuration_version',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'cmspb_edit_configuration_request',
+                ],
+                'required': [
+                    'id',
+                    'cmspb_edit_configuration_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'cmspb_edit_configuration_request':
+                        (CmspbEditConfigurationRequest,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'cmspb_edit_configuration_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.edit_exception_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbPolicyResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/exception-policies/{id}',
+                'operation_id': 'edit_exception_policy',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'cmspb_edit_configuration_request',
+                ],
+                'required': [
+                    'id',
+                    'cmspb_edit_configuration_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'cmspb_edit_configuration_request':
+                        (CmspbEditConfigurationRequest,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'cmspb_edit_configuration_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.find_planning_results_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbListPlanningResultsResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/planning-results',
+                'operation_id': 'find_planning_results',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cms_list_statistics_request',
+                ],
+                'required': [
+                    'cms_list_statistics_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cms_list_statistics_request':
+                        (CmsListStatisticsRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'cms_list_statistics_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.frontend_create_exception_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbFrontendSingleExceptionPolicyResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/frontend/exception-policies',
+                'operation_id': 'frontend_create_exception_policy',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cmspb_frontend_create_policy_request',
+                ],
+                'required': [
+                    'cmspb_frontend_create_policy_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cmspb_frontend_create_policy_request':
+                        (CmspbFrontendCreatePolicyRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'cmspb_frontend_create_policy_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.frontend_edit_activity_configuration_endpoint = _Endpoint(
             settings={
                 'response_type': (CmspbFrontendSingleConfigurationResponse,),
@@ -234,6 +692,113 @@ class CmsApi(object):
             },
             api_client=api_client
         )
+        self.frontend_edit_exception_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbFrontendSingleExceptionPolicyResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/frontend/exception-policies/{id}',
+                'operation_id': 'frontend_edit_exception_policy',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'cmspb_frontend_edit_policy_request',
+                ],
+                'required': [
+                    'id',
+                    'cmspb_frontend_edit_policy_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'cmspb_frontend_edit_policy_request':
+                        (CmspbFrontendEditPolicyRequest,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'cmspb_frontend_edit_policy_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.frontend_get_activity_configuration_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbFrontendSingleConfigurationResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/frontend/activity-configurations/{id}',
+                'operation_id': 'frontend_get_activity_configuration',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.frontend_get_configuration_criteria_endpoint = _Endpoint(
             settings={
                 'response_type': (CmspbFrontendSingleTriggerResponse,),
@@ -342,6 +907,57 @@ class CmsApi(object):
                     'id': 'path',
                     'name': 'path',
                     'kind': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.frontend_get_exception_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbFrontendSingleExceptionPolicyResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/frontend/exception-policies/{id}',
+                'operation_id': 'frontend_get_exception_policy',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -679,20 +1295,22 @@ class CmsApi(object):
             },
             api_client=api_client
         )
-        self.frontend_list_single_activity_configuration_endpoint = _Endpoint(
+        self.frontend_list_configurations_for_policy_endpoint = _Endpoint(
             settings={
-                'response_type': (CmspbFrontendSingleConfigurationResponse,),
+                'response_type': (CmspbFrontendListConfigurationsResponse,),
                 'auth': [
                     'bearerAuth'
                 ],
-                'endpoint_path': '/cms/api/v1/frontend/activity-configurations/{id}',
-                'operation_id': 'frontend_list_single_activity_configuration',
+                'endpoint_path': '/cms/api/v1/frontend/exception-policies/{id}/configurations',
+                'operation_id': 'frontend_list_configurations_for_policy',
                 'http_method': 'GET',
                 'servers': None,
             },
             params_map={
                 'all': [
                     'id',
+                    'limit',
+                    'offset',
                 ],
                 'required': [
                     'id',
@@ -712,12 +1330,84 @@ class CmsApi(object):
                 'openapi_types': {
                     'id':
                         (str,),
+                    'limit':
+                        (int,),
+                    'offset':
+                        (int,),
                 },
                 'attribute_map': {
                     'id': 'id',
+                    'limit': 'limit',
+                    'offset': 'offset',
                 },
                 'location_map': {
                     'id': 'path',
+                    'limit': 'query',
+                    'offset': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.frontend_list_exception_policies_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbFrontendListExceptionPoliciesResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/frontend/exception-policies',
+                'operation_id': 'frontend_list_exception_policies',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'q',
+                    'sort',
+                    'limit',
+                    'offset',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'q':
+                        (str,),
+                    'sort':
+                        (str,),
+                    'limit':
+                        (int,),
+                    'offset':
+                        (int,),
+                },
+                'attribute_map': {
+                    'q': 'q',
+                    'sort': 'sort',
+                    'limit': 'limit',
+                    'offset': 'offset',
+                },
+                'location_map': {
+                    'q': 'query',
+                    'sort': 'query',
+                    'limit': 'query',
+                    'offset': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -780,6 +1470,1146 @@ class CmsApi(object):
             },
             api_client=api_client
         )
+        self.get_activity_configuration_version_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbGetConfigurationsResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/activity-configuration-versions/{id}',
+                'operation_id': 'get_activity_configuration_version',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_activity_configuration_versions_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbListConfigurationsResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/activity-configuration-versions',
+                'operation_id': 'get_activity_configuration_versions',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'configuration_id',
+                    'policy_id',
+                    'limit',
+                    'offset',
+                ],
+                'required': [
+                    'org_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'configuration_id':
+                        (str,),
+                    'policy_id':
+                        (str,),
+                    'limit':
+                        (int,),
+                    'offset':
+                        (int,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'configuration_id': 'configuration_id',
+                    'policy_id': 'policy_id',
+                    'limit': 'limit',
+                    'offset': 'offset',
+                },
+                'location_map': {
+                    'org_id': 'query',
+                    'configuration_id': 'query',
+                    'policy_id': 'query',
+                    'limit': 'query',
+                    'offset': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_exception_policies_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbListPoliciesResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/exception-policies',
+                'operation_id': 'get_exception_policies',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'org_id',
+                    'limit',
+                    'offset',
+                ],
+                'required': [
+                    'org_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'org_id':
+                        (str,),
+                    'limit':
+                        (int,),
+                    'offset':
+                        (int,),
+                },
+                'attribute_map': {
+                    'org_id': 'org_id',
+                    'limit': 'limit',
+                    'offset': 'offset',
+                },
+                'location_map': {
+                    'org_id': 'query',
+                    'limit': 'query',
+                    'offset': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_exception_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbPolicyResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/exception-policies/{id}',
+                'operation_id': 'get_exception_policy',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_organization_settings_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbGetOrganizationResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/admin/organizations/{id}',
+                'operation_id': 'get_organization_settings',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_organizations_settings_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbListOrganizationSettingsResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/admin/organizations',
+                'operation_id': 'list_organizations_settings',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'limit',
+                    'offset',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'limit':
+                        (int,),
+                    'offset':
+                        (int,),
+                },
+                'attribute_map': {
+                    'limit': 'limit',
+                    'offset': 'offset',
+                },
+                'location_map': {
+                    'limit': 'query',
+                    'offset': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.publish_activity_configuration_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbConfigurationsResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/activity-configuration-versions/{id}/publish',
+                'operation_id': 'publish_activity_configuration',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.upload_exception_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbPolicyResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/exception-policies',
+                'operation_id': 'upload_exception_policy',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'cms_upload_policy_request',
+                ],
+                'required': [
+                    'cms_upload_policy_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'cms_upload_policy_request':
+                        (CmsUploadPolicyRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'cms_upload_policy_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.validate_activity_configuration_version_endpoint = _Endpoint(
+            settings={
+                'response_type': (CmspbStartValidationSeriesResponse,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/cms/api/v1/activity-configuration-versions/{id}/validate',
+                'operation_id': 'validate_activity_configuration_version',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'cmspb_start_validation_series_request',
+                ],
+                'required': [
+                    'id',
+                    'cmspb_start_validation_series_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'cmspb_start_validation_series_request':
+                        (CmspbStartValidationSeriesRequest,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'cmspb_start_validation_series_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+
+    def change_exception_policy_assignment(
+        self,
+        id,
+        cmspb_assign_configuration_to_policy_request,
+        **kwargs
+    ):
+        """Change exception policy assignment.  # noqa: E501
+
+        Change exception policy assignment.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.change_exception_policy_assignment(id, cmspb_assign_configuration_to_policy_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Exception Policy ID
+            cmspb_assign_configuration_to_policy_request (CmspbAssignConfigurationToPolicyRequest): Assign configuration to policy request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbActivityTypeFlowResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        kwargs['cmspb_assign_configuration_to_policy_request'] = \
+            cmspb_assign_configuration_to_policy_request
+        return self.change_exception_policy_assignment_endpoint.call_with_http_info(**kwargs)
+
+    def change_organization_settings(
+        self,
+        id,
+        cmspb_change_organization_settings_request,
+        **kwargs
+    ):
+        """Change organization settings  # noqa: E501
+
+        Change organization settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.change_organization_settings(id, cmspb_change_organization_settings_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Organization id
+            cmspb_change_organization_settings_request (CmspbChangeOrganizationSettingsRequest): Change organization settings
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbActivityTypeFlowResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        kwargs['cmspb_change_organization_settings_request'] = \
+            cmspb_change_organization_settings_request
+        return self.change_organization_settings_endpoint.call_with_http_info(**kwargs)
+
+    def create_activity_configuration(
+        self,
+        cmspb_create_configuration_request,
+        **kwargs
+    ):
+        """Create an activity configuration  # noqa: E501
+
+        Create an activity configuration  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_activity_configuration(cmspb_create_configuration_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cmspb_create_configuration_request (CmspbCreateConfigurationRequest): Activity Configuration creation request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbConfigurationsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['cmspb_create_configuration_request'] = \
+            cmspb_create_configuration_request
+        return self.create_activity_configuration_endpoint.call_with_http_info(**kwargs)
+
+    def delete_exception_policy(
+        self,
+        id,
+        **kwargs
+    ):
+        """Delete exception policy.  # noqa: E501
+
+        Delete exception policy.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_exception_policy(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Exception Policy ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.delete_exception_policy_endpoint.call_with_http_info(**kwargs)
+
+    def edit_activity_configuration_version(
+        self,
+        id,
+        cmspb_edit_configuration_request,
+        **kwargs
+    ):
+        """Edit activity configuration version.  # noqa: E501
+
+        Edit activity configuration version.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edit_activity_configuration_version(id, cmspb_edit_configuration_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Activity Configuration Version ID
+            cmspb_edit_configuration_request (CmspbEditConfigurationRequest): Activity Configuration edit request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbConfigurationsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        kwargs['cmspb_edit_configuration_request'] = \
+            cmspb_edit_configuration_request
+        return self.edit_activity_configuration_version_endpoint.call_with_http_info(**kwargs)
+
+    def edit_exception_policy(
+        self,
+        id,
+        cmspb_edit_configuration_request,
+        **kwargs
+    ):
+        """Edit exception policy.  # noqa: E501
+
+        Edit exception policy.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.edit_exception_policy(id, cmspb_edit_configuration_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Exception Policy ID
+            cmspb_edit_configuration_request (CmspbEditConfigurationRequest): Exception Policy edit request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        kwargs['cmspb_edit_configuration_request'] = \
+            cmspb_edit_configuration_request
+        return self.edit_exception_policy_endpoint.call_with_http_info(**kwargs)
+
+    def find_planning_results(
+        self,
+        cms_list_statistics_request,
+        **kwargs
+    ):
+        """List planning results for org  # noqa: E501
+
+        List planning results for org  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.find_planning_results(cms_list_statistics_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cms_list_statistics_request (CmsListStatisticsRequest): List planning results request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbListPlanningResultsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['cms_list_statistics_request'] = \
+            cms_list_statistics_request
+        return self.find_planning_results_endpoint.call_with_http_info(**kwargs)
+
+    def frontend_create_exception_policy(
+        self,
+        cmspb_frontend_create_policy_request,
+        **kwargs
+    ):
+        """Create exception policy  # noqa: E501
+
+        Create exception policy  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.frontend_create_exception_policy(cmspb_frontend_create_policy_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cmspb_frontend_create_policy_request (CmspbFrontendCreatePolicyRequest): Exception policy create request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbFrontendSingleExceptionPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['cmspb_frontend_create_policy_request'] = \
+            cmspb_frontend_create_policy_request
+        return self.frontend_create_exception_policy_endpoint.call_with_http_info(**kwargs)
 
     def frontend_edit_activity_configuration(
         self,
@@ -1039,6 +2869,166 @@ class CmsApi(object):
             cms_update_parameter_request
         return self.frontend_edit_activity_configuration_parameter_endpoint.call_with_http_info(**kwargs)
 
+    def frontend_edit_exception_policy(
+        self,
+        id,
+        cmspb_frontend_edit_policy_request,
+        **kwargs
+    ):
+        """Edit exception policy  # noqa: E501
+
+        Edit exception policy  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.frontend_edit_exception_policy(id, cmspb_frontend_edit_policy_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Exception Policy ID
+            cmspb_frontend_edit_policy_request (CmspbFrontendEditPolicyRequest): Exception policy edit request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbFrontendSingleExceptionPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        kwargs['cmspb_frontend_edit_policy_request'] = \
+            cmspb_frontend_edit_policy_request
+        return self.frontend_edit_exception_policy_endpoint.call_with_http_info(**kwargs)
+
+    def frontend_get_activity_configuration(
+        self,
+        id,
+        **kwargs
+    ):
+        """Get activity configurations  # noqa: E501
+
+        Get activity configurations  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.frontend_get_activity_configuration(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Activity Configuration ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbFrontendSingleConfigurationResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.frontend_get_activity_configuration_endpoint.call_with_http_info(**kwargs)
+
     def frontend_get_configuration_criteria(
         self,
         id,
@@ -1206,6 +3196,84 @@ class CmsApi(object):
         kwargs['kind'] = \
             kind
         return self.frontend_get_configuration_parameter_endpoint.call_with_http_info(**kwargs)
+
+    def frontend_get_exception_policy(
+        self,
+        id,
+        **kwargs
+    ):
+        """Get exception policy  # noqa: E501
+
+        Get exception policy  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.frontend_get_exception_policy(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Exception Policy ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbFrontendSingleExceptionPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.frontend_get_exception_policy_endpoint.call_with_http_info(**kwargs)
 
     def frontend_list_activity_configuration(
         self,
@@ -1613,24 +3681,26 @@ class CmsApi(object):
             entity_type
         return self.frontend_list_applicable_entities_parameters_endpoint.call_with_http_info(**kwargs)
 
-    def frontend_list_single_activity_configuration(
+    def frontend_list_configurations_for_policy(
         self,
         id,
         **kwargs
     ):
-        """Get activity configurations  # noqa: E501
+        """List configurations for exception policy  # noqa: E501
 
-        Get activity configurations  # noqa: E501
+        List configurations for exception policy  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.frontend_list_single_activity_configuration(id, async_req=True)
+        >>> thread = api.frontend_list_configurations_for_policy(id, async_req=True)
         >>> result = thread.get()
 
         Args:
-            id (str): Activity Configuration ID
+            id (str): Exception Policy ID
 
         Keyword Args:
+            limit (int): Limit. [optional]
+            offset (int): Offset. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -1659,7 +3729,7 @@ class CmsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            CmspbFrontendSingleConfigurationResponse
+            CmspbFrontendListConfigurationsResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1689,7 +3759,84 @@ class CmsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['id'] = \
             id
-        return self.frontend_list_single_activity_configuration_endpoint.call_with_http_info(**kwargs)
+        return self.frontend_list_configurations_for_policy_endpoint.call_with_http_info(**kwargs)
+
+    def frontend_list_exception_policies(
+        self,
+        **kwargs
+    ):
+        """List exception policy  # noqa: E501
+
+        List exception policy  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.frontend_list_exception_policies(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            q (str): QueryBuilder query. [optional]
+            sort (str): Sort order. [optional]
+            limit (int): Limit. [optional]
+            offset (int): Offset. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbFrontendListExceptionPoliciesResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.frontend_list_exception_policies_endpoint.call_with_http_info(**kwargs)
 
     def frontend_validate_now(
         self,
@@ -1768,4 +3915,713 @@ class CmsApi(object):
         kwargs['cms_validate_now_request'] = \
             cms_validate_now_request
         return self.frontend_validate_now_endpoint.call_with_http_info(**kwargs)
+
+    def get_activity_configuration_version(
+        self,
+        id,
+        **kwargs
+    ):
+        """Retrieve activity configuration version.  # noqa: E501
+
+        Retrieve activity configuration version.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_activity_configuration_version(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Activity Configuration ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbGetConfigurationsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.get_activity_configuration_version_endpoint.call_with_http_info(**kwargs)
+
+    def get_activity_configuration_versions(
+        self,
+        org_id,
+        **kwargs
+    ):
+        """List activity configuration versions for org  # noqa: E501
+
+        List activity configurations versions for org  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_activity_configuration_versions(org_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Organization ID
+
+        Keyword Args:
+            configuration_id (str): Configuration ID. [optional]
+            policy_id (str): Policy ID. [optional]
+            limit (int): Limit. [optional]
+            offset (int): Offset. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbListConfigurationsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        return self.get_activity_configuration_versions_endpoint.call_with_http_info(**kwargs)
+
+    def get_exception_policies(
+        self,
+        org_id,
+        **kwargs
+    ):
+        """List exception policies for org  # noqa: E501
+
+        List exception policies for org  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_exception_policies(org_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            org_id (str): Organization ID
+
+        Keyword Args:
+            limit (int): Limit. [optional]
+            offset (int): Offset. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbListPoliciesResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['org_id'] = \
+            org_id
+        return self.get_exception_policies_endpoint.call_with_http_info(**kwargs)
+
+    def get_exception_policy(
+        self,
+        id,
+        **kwargs
+    ):
+        """Retrieve exception policy.  # noqa: E501
+
+        Retrieve exception policy.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_exception_policy(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Exception Policy ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.get_exception_policy_endpoint.call_with_http_info(**kwargs)
+
+    def get_organization_settings(
+        self,
+        id,
+        **kwargs
+    ):
+        """Get organization settings  # noqa: E501
+
+        Get organization settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_organization_settings(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Activity type ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbGetOrganizationResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.get_organization_settings_endpoint.call_with_http_info(**kwargs)
+
+    def list_organizations_settings(
+        self,
+        **kwargs
+    ):
+        """List organizations with settings  # noqa: E501
+
+        List organizations with settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_organizations_settings(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            limit (int): Limit. [optional]
+            offset (int): Offset. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbListOrganizationSettingsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.list_organizations_settings_endpoint.call_with_http_info(**kwargs)
+
+    def publish_activity_configuration(
+        self,
+        id,
+        **kwargs
+    ):
+        """Publish activity configuration.  # noqa: E501
+
+        Publish activity configuration.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.publish_activity_configuration(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Activity Configuration Version ID
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbConfigurationsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.publish_activity_configuration_endpoint.call_with_http_info(**kwargs)
+
+    def upload_exception_policy(
+        self,
+        cms_upload_policy_request,
+        **kwargs
+    ):
+        """Upload an exception policy  # noqa: E501
+
+        Upload an exception policy  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.upload_exception_policy(cms_upload_policy_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            cms_upload_policy_request (CmsUploadPolicyRequest): Exception Policy upload request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['cms_upload_policy_request'] = \
+            cms_upload_policy_request
+        return self.upload_exception_policy_endpoint.call_with_http_info(**kwargs)
+
+    def validate_activity_configuration_version(
+        self,
+        id,
+        cmspb_start_validation_series_request,
+        **kwargs
+    ):
+        """Validate activity configuration-version  # noqa: E501
+
+        Validate activity configuration version  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.validate_activity_configuration_version(id, cmspb_start_validation_series_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): Activity Configuration Version ID
+            cmspb_start_validation_series_request (CmspbStartValidationSeriesRequest): Validation Series Request
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CmspbStartValidationSeriesResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        kwargs['cmspb_start_validation_series_request'] = \
+            cmspb_start_validation_series_request
+        return self.validate_activity_configuration_version_endpoint.call_with_http_info(**kwargs)
 
