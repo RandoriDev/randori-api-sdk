@@ -1,0 +1,32 @@
+######################################################################
+# © Copyright IBM Corp. 2025
+######################################################################
+name: Run Mend
+
+on:
+  push:
+    branches:
+    - main
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Setup CI
+      uses: RandoriDev/ci-actions/setup-ci@setup-ci-v1
+      with:
+        golang_version: "1.22"
+
+    - name: Run Mend
+      uses: RandoriDev/ci-actions/run-mend@run-mend-v1
+      with:
+        apikey: ${{ secrets.WS_APIKEY }}
+        userkey: ${{ secrets.WS_USERKEY }}
+        productname: ${{ secrets.WS_PRODUCTNAME }}
+        producttoken: ${{ secrets.WS_PRODUCTTOKEN }}
+        wss_url: ${{ secrets.WS_WSS_URL }}

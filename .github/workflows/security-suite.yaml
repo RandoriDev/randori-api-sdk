@@ -1,0 +1,32 @@
+######################################################################
+# © Copyright IBM Corp. 2025
+######################################################################
+name: Security Scanning Suite
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      dispatch-id:
+        description: Dispatch ID. Unique value used to track the workflow status, if desired.
+        required: false
+        type: string
+      dispatch-config:
+        description: Dispatch configuration. Only used by security scanning cron actions.
+        required: false
+        type: string
+
+jobs:
+  security-scanning:
+    uses: RandoriDev/ci-workflows/.github/workflows/security-suite.yaml@security-suite-v1
+    with:
+      dispatch-id: ${{ github.event.inputs.dispatch-id }}
+      dispatch-config: ${{ github.event.inputs.dispatch-config }}
+    secrets: inherit
