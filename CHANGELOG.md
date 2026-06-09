@@ -1,2 +1,4 @@
-# 2.0.0
+# 1.7.1
+- updated urllib3
+# before
 - Introduce api keys and short lived jwts
