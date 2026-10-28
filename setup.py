@@ -24,7 +24,7 @@ VERSION = "1.7.0"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = [
-  "urllib3 >= 1.25.3",
+  "urllib3 >= 2.8.0",
   "python-dateutil",
 ]
 
