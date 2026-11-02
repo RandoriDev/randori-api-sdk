@@ -13,6 +13,14 @@ build:
 	--global-property=modelTests=false,apiTests=false \
 	--additional-properties=packageName=randori_api_sdk,packageUrl=https://github.com/RandoriDev/randori-api-sdk,projectName=randori-api-sdk,packageVersion=$(VERSION)
 
+URLLIB3_MIN := 2.8.0
+
+# Fails if the generator reverted the urllib3 pin (see templates/requirements.mustache and templates/setup.mustache)
+check-deps:
+	@grep -qE '^urllib3 >= $(URLLIB3_MIN)$$' requirements.txt || { echo "requirements.txt: expected 'urllib3 >= $(URLLIB3_MIN)'"; exit 1; }
+	@grep -qE '"urllib3 >= $(URLLIB3_MIN)"' setup.py || { echo "setup.py: expected 'urllib3 >= $(URLLIB3_MIN)'"; exit 1; }
+	@echo "urllib3 >= $(URLLIB3_MIN) pin OK"
+
 COPYRIGHT_SKIPPED_EXPRESSIONS := --skip-expressions '.*/vendor/.*'
 COPYRIGHT_MAJ_VERSION := v2
 COPYRIGHT_IMAGE := us-central1-docker.pkg.dev/randori-inf/us-central1-container/copyrighter:$(COPYRIGHT_MAJ_VERSION)
