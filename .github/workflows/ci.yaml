@@ -45,6 +45,9 @@ jobs:
       - name: Build sdk
         run: make build
 
+      - name: Verify urllib3 pin survived generation
+        run: make check-deps
+
       - name: Commit changes to branch
         if: ${{ env.ON_HEAD_BRANCH == 'false' }}
         run: |
